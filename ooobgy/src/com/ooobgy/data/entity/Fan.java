@@ -75,5 +75,30 @@ public class Fan {
 		this.authority = authority;
 	}
 
-	
+	/**
+	 * override equals使用hibernate二级缓存提高速率
+	 */
+	public boolean equals(Object o) {
+		if (this == o)
+			return true;
+		if (o == null || !(o instanceof Fan))
+			return false;
+
+		Fan other = (Fan) o;
+
+		if (other.getFanId() == null)
+			return false;
+		return fanId.equals(other.getFanId());
+	}
+
+	/**
+	 * override hashCode使用hibernate二级缓存提高速率
+	 */
+	public int hashCode() {
+		if (fanId != null) {
+			return fanId.hashCode();
+		} else {
+			return super.hashCode();
+		}
+	}
 }
