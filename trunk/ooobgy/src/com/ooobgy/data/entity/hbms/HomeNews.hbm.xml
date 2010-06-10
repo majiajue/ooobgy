@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+ <class name="com.ooobgy.data.entity.HomeNews" table="HomeNews">
+  <id name="newsId" type="integer">
+   <column name="newsId" not-null="true" sql-type="INTEGER" unique="true"/>
+   <generator class="native"/>
+  </id>
+  <property name="title" type="string">
+   <column name="title" not-null="true" sql-type="VARCHAR(150)"/>
+  </property>
+  <property name="content" type="string">
+   <column name="content" sql-type="TEXT"/>
+  </property>
+  <property name="publishTime" type="timestamp">
+   <column name="publishTime" sql-type="TIMESTAMP"/>
+  </property>
+  <property name="top" type="boolean">
+   <column name="top" sql-type="BOOLEAN"/>
+  </property>
+  <property name="popularity" type="integer">
+   <column name="popularity" sql-type="INTEGER"/>
+  </property>
+  <property name="editor" type="string">
+   <column name="editor" sql-type="VARCHAR(45)"/>
+  </property>
+  <many-to-one class="com.ooobgy.data.entity.Admin" column="AdminId" name="admin"/>
+ </class>
+</hibernate-mapping>

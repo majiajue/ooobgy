@@ -36,6 +36,8 @@ public class Fan {
 	 * 权限
 	 */
 	private Integer authority;
+	
+	
 	public Integer getFanId() {
 		return fanId;
 	}

@@ -32,7 +32,7 @@ public class HomeNews {
 	/**
 	 * 人气
 	 */
-	private int popularity;
+	private Integer popularity;
 	/**
 	 * 编辑
 	 */
@@ -72,10 +72,10 @@ public class HomeNews {
 	public void setTop(boolean top) {
 		this.top = top;
 	}
-	public int getPopularity() {
+	public Integer getPopularity() {
 		return popularity;
 	}
-	public void setPopularity(int popularity) {
+	public void setPopularity(Integer popularity) {
 		this.popularity = popularity;
 	}
 	public String getEditor() {
