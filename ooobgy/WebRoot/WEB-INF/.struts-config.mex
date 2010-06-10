@@ -1,2 +1,12 @@
-<FlowViewLayout Version="1.1">
+<?xml version="1.0" encoding="UTF-8"?>
+<FlowViewLayout Version="1.2">
+  <StrutsActivity path="/makeDatabase.do" location="50,50" dimension="304,84" />
+  <StrutsActivity path="/superAdmin/makeDatabase.jsp" location="450,45" dimension="208,48" />
+  <StrutsTransition id="/superAdmin/makeDatabase.jsp,null,/makeDatabase.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="450,69" />
+      <AbsolutePoint location="354,69" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
 </FlowViewLayout>
+

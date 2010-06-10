@@ -2,10 +2,25 @@
 <!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.3//EN" "http://struts.apache.org/dtds/struts-config_1_3.dtd">
 
 <struts-config>
-  <form-beans />
+  <form-beans >
+    <form-bean name="makeDatabaseForm" type="com.ooobgy.struts.form.MakeDatabaseForm" />
+
+  </form-beans>
+
   <global-exceptions />
   <global-forwards />
-  <action-mappings />
+  <action-mappings >
+    <action
+      attribute="makeDatabaseForm"
+      input="/superAdmin/makeDatabase.jsp"
+      name="makeDatabaseForm"
+      path="/makeDatabase"
+      scope="request"
+      type="com.ooobgy.struts.action.MakeDatabaseAction"
+      cancellable="true" />
+
+  </action-mappings>
+
   <message-resources parameter="com.ooobgy.struts.ApplicationResources" />
 </struts-config>
 
