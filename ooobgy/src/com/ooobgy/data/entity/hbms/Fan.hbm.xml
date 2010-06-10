@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+ <class name="com.ooobgy.data.entity.Fan" table="Fan">
+  <id name="fanId" type="integer">
+   <column name="fanId" not-null="true" sql-type="INTEGER" unique="true"/>
+   <generator class="native"/>
+  </id>
+  <property name="name" type="string">
+   <column name="name" not-null="true" sql-type="VARCHAR(45)" unique="true"/>
+  </property>
+  <property name="nickname" type="string">
+   <column name="nickname" not-null="false" sql-type="VARCHAR(45)"/>
+  </property>
+  <property name="password" type="string">
+   <column name="password" not-null="true" sql-type="VARCHAR(45)"/>
+  </property>
+  <property name="checkinTime" type="timestamp">
+   <column name="checkinTime" not-null="true" sql-type="TIMESTAMP"/>
+  </property>
+  <property name="authority" type="string">
+   <column name="authority" sql-type="INTEGER"/>
+  </property>
+ </class>
+</hibernate-mapping>
