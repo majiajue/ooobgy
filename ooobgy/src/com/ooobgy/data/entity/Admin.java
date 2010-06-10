@@ -1,5 +1,5 @@
 /**
- * @Author ÖÜÏşÁú   frogcherry
+ * @Author å‘¨æ™“é¾™ frogcherry
  * @Email frogcherry@gmail.com
  * @CreateDate 2010-6-10
  */
@@ -7,26 +7,36 @@
 package com.ooobgy.data.entity;
 
 import java.sql.Timestamp;
+import java.util.Set;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 
+@Entity
 public class Admin {
 	/**
-	 * ÍĞ¹ÜÖ÷¼ü
+	 * æ‰˜ç®¡ä¸»é”®
 	 */
+	@Id
+	@GeneratedValue
 	private Integer adminId;
 	/**
-	 * µÇÂ¼Ãû
+	 * ç™»å½•å
 	 */
 	private String name;
 	private String password;
 	/**
-	 * êÇ³Æ
+	 * æ˜µç§°
 	 */
 	private String nickname;
 	/**
-	 * ×¢²áÊ±¼ä
+	 * æ³¨å†Œæ—¶é—´
 	 */
 	private Timestamp checkinTime;
+	@OneToMany
+	private Set<HomeNews> homeNewses;
 	public Integer getAdminId() {
 		return adminId;
 	}
@@ -56,6 +66,12 @@ public class Admin {
 	}
 	public void setCheckinTime(Timestamp checkinTime) {
 		this.checkinTime = checkinTime;
+	}
+	public Set<HomeNews> getHomeNewses() {
+		return homeNewses;
+	}
+	public void setHomeNewses(Set<HomeNews> homeNewses) {
+		this.homeNewses = homeNewses;
 	}
 	
 	
