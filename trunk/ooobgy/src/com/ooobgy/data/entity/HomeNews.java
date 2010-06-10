@@ -91,5 +91,30 @@ public class HomeNews {
 		this.admin = admin;
 	}
 	
-	
+	/**
+	 * override equals使用hibernate二级缓存提高速率
+	 */
+	public boolean equals(Object o) {
+		if (this == o)
+			return true;
+		if (o == null || !(o instanceof HomeNews))
+			return false;
+
+		HomeNews other = (HomeNews) o;
+
+		if (other.getNewsId() == null)
+			return false;
+		return newsId.equals(other.getNewsId());
+	}
+
+	/**
+	 * override hashCode使用hibernate二级缓存提高速率
+	 */
+	public int hashCode() {
+		if (newsId != null) {
+			return newsId.hashCode();
+		} else {
+			return super.hashCode();
+		}
+	}
 }

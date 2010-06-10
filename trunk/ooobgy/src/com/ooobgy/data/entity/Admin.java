@@ -74,5 +74,30 @@ public class Admin {
 		this.homeNewses = homeNewses;
 	}
 	
-	
+	/**
+	 * override equals使用hibernate二级缓存提高速率
+	 */
+	public boolean equals(Object o) {
+		if (this == o)
+			return true;
+		if (o == null || !(o instanceof Admin))
+			return false;
+
+		Admin other = (Admin) o;
+
+		if (other.getAdminId() == null)
+			return false;
+		return adminId.equals(other.getAdminId());
+	}
+
+	/**
+	 * override hashCode使用hibernate二级缓存提高速率
+	 */
+	public int hashCode() {
+		if (adminId != null) {
+			return adminId.hashCode();
+		} else {
+			return super.hashCode();
+		}
+	}
 }
