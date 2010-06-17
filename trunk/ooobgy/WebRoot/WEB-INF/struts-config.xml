@@ -4,6 +4,7 @@
 <struts-config>
   <form-beans >
     <form-bean name="makeDatabaseForm" type="com.ooobgy.struts.form.MakeDatabaseForm" />
+    <form-bean name="makeDataForm" type="com.ooobgy.struts.form.MakeDataForm" />
 
   </form-beans>
 
@@ -17,6 +18,14 @@
       path="/makeDatabase"
       scope="request"
       type="com.ooobgy.struts.action.MakeDatabaseAction"
+      cancellable="true" />
+    <action
+      attribute="makeDataForm"
+      input="/makeData.jsp"
+      name="makeDataForm"
+      path="/makeData"
+      scope="request"
+      type="com.ooobgy.struts.action.MakeDataAction"
       cancellable="true" />
 
   </action-mappings>
