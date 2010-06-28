@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<project name="search_top" basedir="." default="all">
+    <description>
+        搜索排行榜
+    </description>
+    <property name="src.java" value="src" />
+    <property name="src.test" value="test" />
+    <property name="lib.dir" value="lib" />
+    <property name="dist.dir" value="dist" />
+    <property name="build.dir" value="build" />
+    <property name="conf.dir" value="conf" />
+
+    <property name="hadoop_version" value="0.19.0" />
+
+
+    <target name="compile" depends="init">
+        <javac srcdir="${src.java}" destdir="${build.dir}" source="1.6" target="1.6" nowarn="yes" debug="yes">
+            <classpath>
+                <fileset dir="${lib.dir}" />
+            </classpath>
+            <compilerarg line="-encoding GBK"/>         
+        </javac>
+    </target>
+
+    <target name="comm" depends="compile" description="Creates Jar of mrs Tasks">
+            <jar jarfile="dist/keywords.jar" compress="true" basedir="${build.dir}">
+            </jar>
+            <jar jarfile="dist/algo.jar" compress="true" basedir="${build.dir}">
+            </jar>
+    </target>
+
+    <target name="lucene" depends="compile" description="Generate lucene indexed for mrs">
+            <jar jarfile="dist/generate_lucene_index.jar" compress="true" basedir="${build.dir}">
+                    <manifest>
+                            <attribute name="Main-Class" value="com.alimama.loganalyzer.jobs.mrs.keywords.GenerateLuceneIndex"/>
+                            <attribute name="Class-path" value="."/>
+                    </manifest>
+                    <zipfileset excludes="META-INF/*.SF" src="./${lib.dir}/lucene-core-2.4.1.jar"/>
+            </jar>
+    </target>
+
+    <target name="init">
+        <tstamp/>
+        <mkdir dir="${build.dir}"/>
+        <mkdir dir="${dist.dir}"/>
+    </target>
+
+    <target name="clean">
+        <delete dir="${build.dir}"/>
+        <delete dir="${dist.dir}"/>
+    </target>
+
+    <target name="all" depends="comm"/>
+</project>

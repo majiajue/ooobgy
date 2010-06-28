@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry excluding="test/" kind="src" path="src"/>
+	<classpathentry kind="src" path="data"/>
+	<classpathentry kind="src" path="test"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="lib/AcookieLogParser.jar"/>
+	<classpathentry kind="lib" path="lib/ClickLogParser.jar"/>
+	<classpathentry kind="lib" path="lib/CPSClickLogParser.jar"/>
+	<classpathentry kind="lib" path="lib/hadoop-0.19.0-core.jar"/>
+	<classpathentry kind="lib" path="lib/junit-3.8.1.jar"/>
+	<classpathentry kind="lib" path="lib/LogUtil.jar"/>
+	<classpathentry kind="lib" path="lib/P4PClickLogParser.jar"/>
+	<classpathentry kind="lib" path="lib/P4PClickLogPreParser.jar"/>
+	<classpathentry kind="lib" path="lib/P4PPVLogParser_old.jar"/>
+	<classpathentry kind="lib" path="lib/P4PPVLogParser.jar"/>
+	<classpathentry kind="lib" path="lib/PVLogParser.jar"/>
+	<classpathentry kind="lib" path="lib/TaoBaoACookieLogParser.jar"/>
+	<classpathentry kind="lib" path="lib/perf4j-0.9.13.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
+	<classpathentry kind="lib" path="lib/lucene-core-2.9.2.jar"/>
+	<classpathentry kind="lib" path="lib/hadoop-0.20.1+169.56-mrunit.jar"/>
+	<classpathentry kind="lib" path="lib/commons-logging-1.0.4.jar"/>
+	<classpathentry kind="output" path="build"/>
+</classpath>
