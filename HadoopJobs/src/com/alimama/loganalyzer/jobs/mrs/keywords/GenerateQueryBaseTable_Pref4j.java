@@ -101,7 +101,7 @@ public class GenerateQueryBaseTable_Pref4j extends AbstractProcessor {
 				WordSeperator tws = TwsWordSeperator.getInstance();
 				((TwsWordSeperator)tws).setTws(tokenization);
 				
-				queryFlagJudger = new QueryFlagJudger("./cats", "./brands", "./types");			
+				queryFlagJudger = new QueryFlagJudger(normalizer, "./cats", "./brands", "./types");			
 				
 				queryFlagJudger.setWordSperator(tws);
 				

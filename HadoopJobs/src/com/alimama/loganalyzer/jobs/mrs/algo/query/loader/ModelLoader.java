@@ -13,6 +13,7 @@ import java.util.Map;
 
 import org.w3c.dom.stylesheets.LinkStyle;
 
+import com.alimama.loganalyzer.jobs.mrs.algo.Normalizer;
 import com.alimama.loganalyzer.jobs.mrs.algo.query.po.Model;
 import com.alimama.loganalyzer.jobs.mrs.util.KQConst;
 import com.alimama.loganalyzer.jobs.mrs.util.StringUtils;
@@ -33,7 +34,7 @@ import com.alimama.loganalyzer.jobs.mrs.util.StringUtils;
  * @author 明风
  * @date  2010-04-27
  */
-public class ModelLoader implements DataLoader{
+public class ModelLoader extends DataLoader{
 //	private static final int CAT_SIZE = 9000;
 //	private static final int BRAND_SIZE = 9000;
 //	private static final int MODEL_PER_BRAND_SIZE = 70;	
@@ -53,7 +54,7 @@ public class ModelLoader implements DataLoader{
 
 	public int duplicate;
 	public int dataLineNum;
-	@Override
+
 	public void loadFromPath(String dataPath) {
 		BufferedReader reader = null;
 		String line = null;
@@ -100,10 +101,9 @@ public class ModelLoader implements DataLoader{
 	 * 添加型号
 	 */
 	private void addModel(String modelName, Integer modelId, Integer brandId, Integer catId) {
-		//		String name_normalized = normalizer.normalize(name);
-//		if (name_normalized.isEmpty()) {
-//			return;
-//		}		
+		if (super.normalizer != null){
+			modelName = super.normalizer.normalize(modelName);
+		}		
 		if (models.containsKey(modelName)){
 			Model model= models.get(modelName);
 			duplicate++;
@@ -122,7 +122,6 @@ public class ModelLoader implements DataLoader{
 	@Override
 	public Map getData() {
 		return this.models;
-	}
-	
+	}	
 
 }
