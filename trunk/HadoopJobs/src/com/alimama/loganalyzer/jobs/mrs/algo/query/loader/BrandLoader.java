@@ -13,6 +13,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import com.alimama.loganalyzer.jobs.mrs.algo.Normalizer;
 import com.alimama.loganalyzer.jobs.mrs.algo.query.po.Brand;
 import com.alimama.loganalyzer.jobs.mrs.util.KQConst;
 
@@ -34,7 +35,7 @@ import com.alimama.loganalyzer.jobs.mrs.util.KQConst;
  * @date 2010-04-27
   */
 
-public class BrandLoader implements DataLoader{
+public class BrandLoader extends DataLoader{
 //	private static final int CAT_SIZE = 4000;
 //	private static final int BRAND_PER_CAT_SIZE = 40;
 
@@ -111,10 +112,10 @@ public class BrandLoader implements DataLoader{
 	 * @param brandCatId 品牌所属类目ID
 	 * @param brandId 品牌ID
 	 */
-	private void addBrand(String brandName, Integer catId, Integer brandId) {
-//		if (brandCatId.equals("1629")){
-//			System.out.printf("BrandCatId:[%s]. BrandId:[%s]. BrandName:[%s]\n", brandCatId, brandId, brandName);
-//		}
+	private void addBrand(String brandName, Integer catId, Integer brandId) {		
+		if (super.normalizer != null){
+			brandName = super.normalizer.normalize(brandName);
+		}
 		Brand brand = brands.get(brandName);
 		if (brand == null) {
 			brand = new Brand(brandName, catId, brandId);

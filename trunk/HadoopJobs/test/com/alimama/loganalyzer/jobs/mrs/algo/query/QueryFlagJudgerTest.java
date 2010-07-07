@@ -1,14 +1,17 @@
 package com.alimama.loganalyzer.jobs.mrs.algo.query;
 
 
+import junit.framework.TestCase;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import com.alimama.loganalyzer.jobs.mrs.algo.Normalizer;
 import com.alimama.loganalyzer.jobs.mrs.algo.query.helper.QueryCatPredictMock;
 import com.alimama.loganalyzer.jobs.mrs.algo.query.helper.WordSeperatorMock;
 
-public class QueryFlagJudgerTest {
+public class QueryFlagJudgerTest extends TestCase{
 	QueryFlagJudger queryFlagJudger;
 
 	@Before
@@ -17,7 +20,7 @@ public class QueryFlagJudgerTest {
 		String _brandPath = Thread.currentThread().getContextClassLoader().getResource("brands").getFile(); 
 		String _modelPath = Thread.currentThread().getContextClassLoader().getResource("types").getFile();
 		
-		queryFlagJudger = new QueryFlagJudger(_catPath, _brandPath, _modelPath);
+		queryFlagJudger = new QueryFlagJudger(new Normalizer(),_catPath, _brandPath, _modelPath);
 		queryFlagJudger.setWordSperator(new WordSeperatorMock());
 		queryFlagJudger.setQueryCatPredict(new QueryCatPredictMock());
 	}

@@ -47,7 +47,6 @@ import com.alimama.loganalyzer.jobs.mrs.util.GlobalInfo;
  * @date 2010-04-26
  */
 public class QueryFlagJudger {
-
 	//类目，品牌，型号初始化器，负责从文件系统读取数据
 	private static CatLoader catLoader = new CatLoader();
 	private static BrandLoader brandLoader = new BrandLoader();
@@ -57,17 +56,29 @@ public class QueryFlagJudger {
 	private static CatJudger catJudger;
 	private static BrandJudger brandJudger;
 	private static ModelJudger modelJudger;
+	
 	//修饰词判断器
 	private static DescJudger descJudger = new DescJudger();
 	
 	//Query类目预测器
-	private static QueryCatPredictor queryCatPredictor;
-	
+	private static QueryCatPredictor queryCatPredictor;	
 	//Query分词器
-	private static WordSeperator wordSeperator;
+	private static WordSeperator wordSeperator;	
+	//Query归一化器
+	private static Normalizer normalizer;
 	
 	//Query标识位类
 	QueryFlag queryFlag = new QueryFlag();
+	
+	//禁用
+	private QueryFlagJudger(){
+		super();
+	}
+	
+	public QueryFlagJudger(Normalizer _normalizer, String _catPath, String _brandPath, String _modelPath) {
+		this.normalizer = _normalizer;
+		init(_catPath, _brandPath, _modelPath);
+	}
 	
 	/**
 	 * 构造器中，通过Loader读取数据，并把数据分发到不同的Judger中
@@ -76,11 +87,16 @@ public class QueryFlagJudger {
 	 * @param _catPath 		类目库位置
 	 * @param _brandsPath	品牌库位置
 	 * @param _stylesPath	型号库位置
+	 * @return 
 	 */
-	public QueryFlagJudger(String _catPath, String _brandPath, String _modelPath) {
+	public void init(String _catPath, String _brandPath, String _modelPath) {
 		System.out.println("QueryFlagJudger start initing……");		
 		
 		try {
+			catLoader.setNormalizer(normalizer);
+			brandLoader.setNormalizer(normalizer);
+			modelLoader.setNormalizer(normalizer);
+			
 			catLoader.loadFromPath(_catPath);
 			brandLoader.loadFromPath(_brandPath);
 			modelLoader.loadFromPath(_modelPath);
@@ -102,20 +118,6 @@ public class QueryFlagJudger {
 		}		
 	}
 
-	public void setQueryCatPredict(QueryCatPredictor _queryCatPredict){
-		this.queryCatPredictor = _queryCatPredict;
-	}
-	
-	public void setWordSperator(WordSeperator _wordSeperator){
-		this.wordSeperator = _wordSeperator;
-	}
-	
-	//禁用
-	private QueryFlagJudger(){
-		super();
-	}
-	
-	
 	/**
 	 * 判断Query词的类型，调用该接口，表示Query词为归一化，未分词，需要处理，并且没有预测出类目
 	 * 
@@ -130,7 +132,6 @@ public class QueryFlagJudger {
 		int catPredicted = queryCatPredictor.predict(query);
 		return judge(query, catPredicted);
 	}
-
 	
 	/**
 	 * Query词未归一化，未分词，已经预测好类目
@@ -143,6 +144,9 @@ public class QueryFlagJudger {
 		if (this.wordSeperator == null){
 			throw new RuntimeException("分词器为空，Query判断器不能正常工作");
 		}		
+		if (this.wordSeperator == null){
+			throw new RuntimeException("归一化器为空，Query判断器不能正常工作");
+		}
 		
 		List<String> words = wordSeperator.segment(query);
 		List<String> descs = wordSeperator.getDescWords();
@@ -166,6 +170,10 @@ public class QueryFlagJudger {
 		queryFlag.reset();
 	
 		for (String word: words){
+			if (this.normalizer != null){
+				word = this.normalizer.normalize(word);
+			}
+			
 			GlobalInfo.debugMessage("开始判断:[" + word + "]");
 			int catId = catJudger.judge(word, catPredicted);
 			if (catId > 0){
@@ -198,6 +206,7 @@ public class QueryFlagJudger {
 			//如果不是任何一种，则为普通词
 			queryFlag.setNormal(true);
 			GlobalInfo.debugMessage("5.普通词");
+			
 		}
 		
 		return queryFlag.getFlag();		
@@ -223,7 +232,6 @@ public class QueryFlagJudger {
 	}	
 	
 	public static String generateUniformQuery(String query, String cat, List<String> words, List<String> brands, Normalizer normalizer, BrandStylePredict brandStylePredict) {
-		// Step 1) generate all brands, types
 		List<String> wordsNormalized = normalizeList(words, 380, normalizer); // 对所有词汇进行归一化（同义词替换，停用词过滤，大写变小写）
 		if (wordsNormalized.isEmpty()) {
 			return null;
@@ -244,6 +252,18 @@ public class QueryFlagJudger {
 		return querySorted;
 	}	
 	
+	public void setQueryCatPredict(QueryCatPredictor _queryCatPredict){
+		this.queryCatPredictor = _queryCatPredict;
+	}
+	
+	public void setWordSperator(WordSeperator _wordSeperator){
+		this.wordSeperator = _wordSeperator;
+	}
+		
+	private void setNormalizer(Normalizer _normalizer) {
+		this.normalizer = _normalizer;		
+	}
+	
 	public static void main(String[] args){
 		if(args.length != 2) {
 			System.out.println("usage: QueryFlagJudger <Query> <CatId>");
@@ -261,12 +281,14 @@ public class QueryFlagJudger {
 		WordSeperator tws = TwsWordSeperator.getInstance();
 		((TwsWordSeperator)tws).setTws(tokenization);
 		
-		QueryFlagJudger queryFlagJudger = new QueryFlagJudger("./data/cats", "./data/brands", "./data/types");		
+		QueryFlagJudger queryFlagJudger = new QueryFlagJudger(normalizer, "./data/cats", "./data/brands", "./data/types");		
 		queryFlagJudger.setWordSperator(tws);
+		queryFlagJudger.setNormalizer(normalizer);
+		
 
 		String query = args[0];
 
-		String queryNormalized = normalizer.normalize(query, 24);
+		String queryNormalized = normalizer.normalize(query);
 		tokenization.segment(queryNormalized);
 		List<String> words = tokenization.getKeyWords();
 		List<String> descs = tokenization.getDescWords();
@@ -285,6 +307,7 @@ public class QueryFlagJudger {
 		
 		GlobalInfo.setDebugOn(false);
 	}
+	
 
 }
 

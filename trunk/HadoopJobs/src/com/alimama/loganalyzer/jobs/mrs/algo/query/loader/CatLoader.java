@@ -9,6 +9,7 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
+import com.alimama.loganalyzer.jobs.mrs.algo.Normalizer;
 import com.alimama.loganalyzer.jobs.mrs.algo.query.po.Cat;
 import com.alimama.loganalyzer.jobs.mrs.util.KQConst;
 
@@ -26,7 +27,7 @@ import com.alimama.loganalyzer.jobs.mrs.util.KQConst;
  * @date 2010-04-29
  * 
  */
-public class CatLoader implements DataLoader {
+public class CatLoader extends DataLoader {
 	/**
 	 * 类目库大小为11419，根据这个确定初始大小为11419/0.75 = 15,225~=16000
 	 */
@@ -101,6 +102,9 @@ public class CatLoader implements DataLoader {
 	 * @param childCatIds
 	 */
 	private void addCat(String catName, Integer catId) {
+		if (super.normalizer != null){
+			catName = super.normalizer.normalize(catName);
+		}		
 		Cat cat = cats.get(catName);
 		if (cat == null) {
 			cat = new Cat(catName, catId);
