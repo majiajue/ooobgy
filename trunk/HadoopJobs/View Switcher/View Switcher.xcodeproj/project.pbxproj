@@ -1,0 +1,350 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 45;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0481A5581182EF3A00EE8929 /* SwitchDataBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 0481A5571182EF3A00EE8929 /* SwitchDataBase.m */; };
+		0481A5601182F29F00EE8929 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0481A55F1182F29F00EE8929 /* libsqlite3.0.dylib */; };
+		0481A5621182F33E00EE8929 /* ShoeSockDatabase_ver010101.sql in Resources */ = {isa = PBXBuildFile; fileRef = 0481A5611182F33E00EE8929 /* ShoeSockDatabase_ver010101.sql */; };
+		04B85760118325F800B4DFA7 /* Color.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B8575F118325F800B4DFA7 /* Color.m */; };
+		04B8576911832A5400B4DFA7 /* Shoe.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B8576811832A5400B4DFA7 /* Shoe.m */; };
+		04B8576C11832D8900B4DFA7 /* Sock.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B8576B11832D8900B4DFA7 /* Sock.m */; };
+		1D3623260D0F684500981E51 /* View_SwitcherAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* View_SwitcherAppDelegate.m */; };
+		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
+		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
+		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
+		288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765FC0DF74451002DB57D /* CoreGraphics.framework */; };
+		28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD733E0D9D9553002E5188 /* MainWindow.xib */; };
+		2A2A385E117897080009B427 /* SwitchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A2A385D117897080009B427 /* SwitchViewController.m */; };
+		2A2A3862117897250009B427 /* StartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A2A3861117897250009B427 /* StartViewController.m */; };
+		2A2A3864117897610009B427 /* StartViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2A2A3863117897610009B427 /* StartViewController.xib */; };
+		2AAA7012117CCD0D002A034C /* sock1.png in Resources */ = {isa = PBXBuildFile; fileRef = 2AAA7010117CCD0D002A034C /* sock1.png */; };
+		2AAA7013117CCD0D002A034C /* sock2.png in Resources */ = {isa = PBXBuildFile; fileRef = 2AAA7011117CCD0D002A034C /* sock2.png */; };
+		2AAA702E117CCE95002A034C /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 2AAA702D117CCE95002A034C /* icon.png */; };
+		2AAA705A117CD47B002A034C /* ChooseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AAA7059117CD47B002A034C /* ChooseViewController.m */; };
+		2AAA705C117CD49B002A034C /* ChooseViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2AAA705B117CD49B002A034C /* ChooseViewController.xib */; };
+		2AAA7061117CD4EE002A034C /* shoe1.png in Resources */ = {isa = PBXBuildFile; fileRef = 2AAA705E117CD4EE002A034C /* shoe1.png */; };
+		2AAA7062117CD4EE002A034C /* shoe2.png in Resources */ = {isa = PBXBuildFile; fileRef = 2AAA705F117CD4EE002A034C /* shoe2.png */; };
+		2AAA7063117CD4EE002A034C /* shoe3.png in Resources */ = {isa = PBXBuildFile; fileRef = 2AAA7060117CD4EE002A034C /* shoe3.png */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		0481A5561182EF3A00EE8929 /* SwitchDataBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SwitchDataBase.h; sourceTree = "<group>"; };
+		0481A5571182EF3A00EE8929 /* SwitchDataBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SwitchDataBase.m; sourceTree = "<group>"; };
+		0481A55F1182F29F00EE8929 /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
+		0481A5611182F33E00EE8929 /* ShoeSockDatabase_ver010101.sql */ = {isa = PBXFileReference; lastKnownFileType = file; name = ShoeSockDatabase_ver010101.sql; path = DBfiles/ShoeSockDatabase_ver010101.sql; sourceTree = "<group>"; };
+		04B8575E118325F800B4DFA7 /* Color.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Color.h; path = datavo/Color.h; sourceTree = "<group>"; };
+		04B8575F118325F800B4DFA7 /* Color.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Color.m; path = datavo/Color.m; sourceTree = "<group>"; };
+		04B8576711832A5400B4DFA7 /* Shoe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Shoe.h; path = datavo/Shoe.h; sourceTree = "<group>"; };
+		04B8576811832A5400B4DFA7 /* Shoe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Shoe.m; path = datavo/Shoe.m; sourceTree = "<group>"; };
+		04B8576A11832D8900B4DFA7 /* Sock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Sock.h; sourceTree = "<group>"; };
+		04B8576B11832D8900B4DFA7 /* Sock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Sock.m; sourceTree = "<group>"; };
+		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		1D3623240D0F684500981E51 /* View_SwitcherAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = View_SwitcherAppDelegate.h; sourceTree = "<group>"; };
+		1D3623250D0F684500981E51 /* View_SwitcherAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = View_SwitcherAppDelegate.m; sourceTree = "<group>"; };
+		1D6058910D05DD3D006BFB54 /* View Switcher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "View Switcher.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		288765FC0DF74451002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		28AD733E0D9D9553002E5188 /* MainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
+		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		2A2A385C117897080009B427 /* SwitchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SwitchViewController.h; sourceTree = "<group>"; };
+		2A2A385D117897080009B427 /* SwitchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SwitchViewController.m; sourceTree = "<group>"; };
+		2A2A3860117897250009B427 /* StartViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StartViewController.h; sourceTree = "<group>"; };
+		2A2A3861117897250009B427 /* StartViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StartViewController.m; sourceTree = "<group>"; };
+		2A2A3863117897610009B427 /* StartViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StartViewController.xib; sourceTree = "<group>"; };
+		2AAA7010117CCD0D002A034C /* sock1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = sock1.png; path = ../sock1.png; sourceTree = "<group>"; };
+		2AAA7011117CCD0D002A034C /* sock2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = sock2.png; path = ../sock2.png; sourceTree = "<group>"; };
+		2AAA702D117CCE95002A034C /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon.png; path = ../icon.png; sourceTree = "<group>"; };
+		2AAA7058117CD47B002A034C /* ChooseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChooseViewController.h; sourceTree = "<group>"; };
+		2AAA7059117CD47B002A034C /* ChooseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChooseViewController.m; sourceTree = "<group>"; };
+		2AAA705B117CD49B002A034C /* ChooseViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChooseViewController.xib; sourceTree = "<group>"; };
+		2AAA705E117CD4EE002A034C /* shoe1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = shoe1.png; path = ../shoe1.png; sourceTree = "<group>"; };
+		2AAA705F117CD4EE002A034C /* shoe2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = shoe2.png; path = ../shoe2.png; sourceTree = "<group>"; };
+		2AAA7060117CD4EE002A034C /* shoe3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = shoe3.png; path = ../shoe3.png; sourceTree = "<group>"; };
+		32CA4F630368D1EE00C91783 /* View_Switcher_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = View_Switcher_Prefix.pch; sourceTree = "<group>"; };
+		8D1107310486CEB800E47090 /* View_Switcher-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "View_Switcher-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1D60588F0D05DD3D006BFB54 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */,
+				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
+				288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */,
+				0481A5601182F29F00EE8929 /* libsqlite3.0.dylib in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0481A56A118323DF00EE8929 /* Dao */ = {
+			isa = PBXGroup;
+			children = (
+				0481A5571182EF3A00EE8929 /* SwitchDataBase.m */,
+				0481A5561182EF3A00EE8929 /* SwitchDataBase.h */,
+			);
+			name = Dao;
+			sourceTree = "<group>";
+		};
+		0481A56B1183240800EE8929 /* DataVo */ = {
+			isa = PBXGroup;
+			children = (
+				04B8575E118325F800B4DFA7 /* Color.h */,
+				04B8575F118325F800B4DFA7 /* Color.m */,
+				04B8576711832A5400B4DFA7 /* Shoe.h */,
+				04B8576811832A5400B4DFA7 /* Shoe.m */,
+				04B8576A11832D8900B4DFA7 /* Sock.h */,
+				04B8576B11832D8900B4DFA7 /* Sock.m */,
+			);
+			name = DataVo;
+			sourceTree = "<group>";
+		};
+		0481A56C1183242200EE8929 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				2AAA702D117CCE95002A034C /* icon.png */,
+				2AAA705E117CD4EE002A034C /* shoe1.png */,
+				2AAA705F117CD4EE002A034C /* shoe2.png */,
+				2AAA7060117CD4EE002A034C /* shoe3.png */,
+				2AAA7010117CCD0D002A034C /* sock1.png */,
+				2AAA7011117CCD0D002A034C /* sock2.png */,
+			);
+			name = Images;
+			sourceTree = "<group>";
+		};
+		080E96DDFE201D6D7F000001 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				0481A56C1183242200EE8929 /* Images */,
+				0481A56B1183240800EE8929 /* DataVo */,
+				0481A56A118323DF00EE8929 /* Dao */,
+				2AAA7058117CD47B002A034C /* ChooseViewController.h */,
+				2AAA7059117CD47B002A034C /* ChooseViewController.m */,
+				1D3623240D0F684500981E51 /* View_SwitcherAppDelegate.h */,
+				1D3623250D0F684500981E51 /* View_SwitcherAppDelegate.m */,
+				2A2A385C117897080009B427 /* SwitchViewController.h */,
+				2A2A385D117897080009B427 /* SwitchViewController.m */,
+				2A2A3860117897250009B427 /* StartViewController.h */,
+				2A2A3861117897250009B427 /* StartViewController.m */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		19C28FACFE9D520D11CA2CBB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1D6058910D05DD3D006BFB54 /* View Switcher.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
+			isa = PBXGroup;
+			children = (
+				080E96DDFE201D6D7F000001 /* Classes */,
+				29B97315FDCFA39411CA2CEA /* Other Sources */,
+				29B97317FDCFA39411CA2CEA /* Resources */,
+				29B97323FDCFA39411CA2CEA /* Frameworks */,
+				19C28FACFE9D520D11CA2CBB /* Products */,
+				0481A55F1182F29F00EE8929 /* libsqlite3.0.dylib */,
+			);
+			name = CustomTemplate;
+			sourceTree = "<group>";
+		};
+		29B97315FDCFA39411CA2CEA /* Other Sources */ = {
+			isa = PBXGroup;
+			children = (
+				32CA4F630368D1EE00C91783 /* View_Switcher_Prefix.pch */,
+				29B97316FDCFA39411CA2CEA /* main.m */,
+			);
+			name = "Other Sources";
+			sourceTree = "<group>";
+		};
+		29B97317FDCFA39411CA2CEA /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				0481A5611182F33E00EE8929 /* ShoeSockDatabase_ver010101.sql */,
+				2AAA705B117CD49B002A034C /* ChooseViewController.xib */,
+				28AD733E0D9D9553002E5188 /* MainWindow.xib */,
+				8D1107310486CEB800E47090 /* View_Switcher-Info.plist */,
+				2A2A3863117897610009B427 /* StartViewController.xib */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
+				1D30AB110D05D00D00671497 /* Foundation.framework */,
+				288765FC0DF74451002DB57D /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		1D6058900D05DD3D006BFB54 /* View Switcher */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "View Switcher" */;
+			buildPhases = (
+				1D60588D0D05DD3D006BFB54 /* Resources */,
+				1D60588E0D05DD3D006BFB54 /* Sources */,
+				1D60588F0D05DD3D006BFB54 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "View Switcher";
+			productName = "View Switcher";
+			productReference = 1D6058910D05DD3D006BFB54 /* View Switcher.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		29B97313FDCFA39411CA2CEA /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				ORGANIZATIONNAME = sock3;
+			};
+			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "View Switcher" */;
+			compatibilityVersion = "Xcode 3.1";
+			hasScannedForEncodings = 1;
+			mainGroup = 29B97314FDCFA39411CA2CEA /* CustomTemplate */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				1D6058900D05DD3D006BFB54 /* View Switcher */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		1D60588D0D05DD3D006BFB54 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */,
+				2A2A3864117897610009B427 /* StartViewController.xib in Resources */,
+				2AAA7012117CCD0D002A034C /* sock1.png in Resources */,
+				2AAA7013117CCD0D002A034C /* sock2.png in Resources */,
+				2AAA702E117CCE95002A034C /* icon.png in Resources */,
+				2AAA705C117CD49B002A034C /* ChooseViewController.xib in Resources */,
+				2AAA7061117CD4EE002A034C /* shoe1.png in Resources */,
+				2AAA7062117CD4EE002A034C /* shoe2.png in Resources */,
+				2AAA7063117CD4EE002A034C /* shoe3.png in Resources */,
+				0481A5621182F33E00EE8929 /* ShoeSockDatabase_ver010101.sql in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1D60588E0D05DD3D006BFB54 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
+				1D3623260D0F684500981E51 /* View_SwitcherAppDelegate.m in Sources */,
+				2A2A385E117897080009B427 /* SwitchViewController.m in Sources */,
+				2A2A3862117897250009B427 /* StartViewController.m in Sources */,
+				2AAA705A117CD47B002A034C /* ChooseViewController.m in Sources */,
+				0481A5581182EF3A00EE8929 /* SwitchDataBase.m in Sources */,
+				04B85760118325F800B4DFA7 /* Color.m in Sources */,
+				04B8576911832A5400B4DFA7 /* Shoe.m in Sources */,
+				04B8576C11832D8900B4DFA7 /* Sock.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		1D6058940D05DD3E006BFB54 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = View_Switcher_Prefix.pch;
+				INFOPLIST_FILE = "View_Switcher-Info.plist";
+				PRODUCT_NAME = "View Switcher";
+			};
+			name = Debug;
+		};
+		1D6058950D05DD3E006BFB54 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = View_Switcher_Prefix.pch;
+				INFOPLIST_FILE = "View_Switcher-Info.plist";
+				PRODUCT_NAME = "View Switcher";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		C01FCF4F08A954540054247B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				PREBINDING = NO;
+				SDKROOT = iphoneos3.1.3;
+			};
+			name = Debug;
+		};
+		C01FCF5008A954540054247B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				PREBINDING = NO;
+				SDKROOT = iphoneos3.1.3;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "View Switcher" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1D6058940D05DD3E006BFB54 /* Debug */,
+				1D6058950D05DD3E006BFB54 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C01FCF4E08A954540054247B /* Build configuration list for PBXProject "View Switcher" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C01FCF4F08A954540054247B /* Debug */,
+				C01FCF5008A954540054247B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 29B97313FDCFA39411CA2CEA /* Project object */;
+}

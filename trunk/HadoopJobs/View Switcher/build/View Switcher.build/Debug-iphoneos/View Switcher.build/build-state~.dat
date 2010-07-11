@@ -1,0 +1,353 @@
+TView Switcher
+v7
+r0
+t293391458.251626
+cCheck dependencies
+cCpResource "build/Debug-iphoneos/View Switcher.app/ResourceRules.plist" /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk/ResourceRules.plist
+cProcessInfoPlistFile "/Users/cuiluhai/Documents/cmz/View Switcher/build/Debug-iphoneos/View Switcher.app/Info.plist" View_Switcher-Info.plist
+cCompileXIB "/Users/cuiluhai/Documents/cmz/View Switcher/MainWindow.xib"
+cCompileXIB "/Users/cuiluhai/Documents/cmz/View Switcher/BlueView.xib"
+cProcessPCH /var/folders/yG/yG85Od1uHVaOW-ACMHGZr++++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/View_Switcher_Prefix-acwprigaoumbvrhgzevsvlrhsjfe/View_Switcher_Prefix.pch.gch View_Switcher_Prefix.pch normal armv6 objective-c com.apple.compilers.gcc.4_2
+cCompileC "build/View Switcher.build/Debug-iphoneos/View Switcher.build/Objects-normal/armv6/main.o" "/Users/cuiluhai/Documents/cmz/View Switcher/main.m" normal armv6 objective-c com.apple.compilers.gcc.4_2
+cCompileC "build/View Switcher.build/Debug-iphoneos/View Switcher.build/Objects-normal/armv6/View_SwitcherAppDelegate.o" "/Users/cuiluhai/Documents/cmz/View Switcher/Classes/View_SwitcherAppDelegate.m" normal armv6 objective-c com.apple.compilers.gcc.4_2
+cCompileC "build/View Switcher.build/Debug-iphoneos/View Switcher.build/Objects-normal/armv6/SwitchViewController.o" "/Users/cuiluhai/Documents/cmz/View Switcher/Classes/SwitchViewController.m" normal armv6 objective-c com.apple.compilers.gcc.4_2
+cCompileC "build/View Switcher.build/Debug-iphoneos/View Switcher.build/Objects-normal/armv6/BlueViewController.o" "/Users/cuiluhai/Documents/cmz/View Switcher/Classes/BlueViewController.m" normal armv6 objective-c com.apple.compilers.gcc.4_2
+cLd "/Users/cuiluhai/Documents/cmz/View Switcher/build/Debug-iphoneos/View Switcher.app/View Switcher" normal armv6
+cGenerateDSYMFile "/Users/cuiluhai/Documents/cmz/View Switcher/build/Debug-iphoneos/View Switcher.app.dSYM" "/Users/cuiluhai/Documents/cmz/View Switcher/build/Debug-iphoneos/View Switcher.app/View Switcher"
+cProcessProductPackaging "/Users/cuiluhai/Library/MobileDevice/Provisioning Profiles/1539EB7B-6F51-4599-9095-DD0884F5CAF9.mobileprovision" "/Users/cuiluhai/Documents/cmz/View Switcher/build/Debug-iphoneos/View Switcher.app/embedded.mobileprovision"
+cTouch "/Users/cuiluhai/Documents/cmz/View Switcher/build/Debug-iphoneos/View Switcher.app"
+cProcessProductPackaging /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk/Entitlements.plist "/Users/cuiluhai/Documents/cmz/View Switcher/build/View Switcher.build/Debug-iphoneos/View Switcher.build/View Switcher.xcent"
+cCodeSign "/Users/cuiluhai/Documents/cmz/View Switcher/build/Debug-iphoneos/View Switcher.app"
+
+N/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk
+c000000004B7F9C7F0000000000000110
+t1266654335
+s272
+
+N/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk/Entitlements.plist
+c000000004B7C99D000000000000000DD
+t1266457040
+s221
+
+N/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk/ResourceRules.plist
+c000000004B7C99D000000000000001E5
+t1266457040
+s485
+
+N/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk/System/Library/Frameworks/CoreGraphics.framework/CoreGraphics
+c000000004B7D0F6D00000000003B4B70
+t1266487149
+s3885936
+
+N/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk/System/Library/Frameworks/Foundation.framework/Foundation
+c000000004B7D0FBE000000000036A580
+t1266487230
+s3581312
+
+N/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk/System/Library/Frameworks/Foundation.framework/Headers/Foundation.h
+c000000004B7D0F9B0000000000001355
+t1266487195
+s4949
+
+N/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIKit.h
+c000000004B7E2A02000000000000098F
+t1266559490
+s2447
+
+N/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk/System/Library/Frameworks/UIKit.framework/UIKit
+c000000004B7E2AAA00000000026E4750
+t1266559658
+s40781648
+
+N/Users/cuiluhai/Documents/cmz/View Switcher/BlueView.xib
+c000000004BC864D50000000000003E48
+t1271424213
+s15944
+
+N/Users/cuiluhai/Documents/cmz/View Switcher/Classes/BlueViewController.h
+c000000004BC85FA500000000000000EE
+t1271422885
+s238
+i<UIKit/UIKit.h>
+
+N/Users/cuiluhai/Documents/cmz/View Switcher/Classes/BlueViewController.m
+c000000004BC85FA50000000000000620
+t1271422885
+s1568
+i"BlueViewController.h"
+
+N/Users/cuiluhai/Documents/cmz/View Switcher/Classes/SwitchViewController.h
+c000000004BC86159000000000000017A
+t1271423321
+s378
+i<UIKit/UIKit.h>
+
+N/Users/cuiluhai/Documents/cmz/View Switcher/Classes/SwitchViewController.m
+c000000004BC8657F0000000000000753
+t1271424383
+s1875
+i"SwitchViewController.h"
+i"BlueViewController.h"
+
+N/Users/cuiluhai/Documents/cmz/View Switcher/Classes/View_SwitcherAppDelegate.h
+c000000004BC865AD00000000000001F5
+t1271424429
+s501
+i<UIKit/UIKit.h>
+
+N/Users/cuiluhai/Documents/cmz/View Switcher/Classes/View_SwitcherAppDelegate.m
+c000000004BC860F60000000000000285
+t1271423222
+s645
+i"View_SwitcherAppDelegate.h"
+i"SwitchViewController.h"
+
+N/Users/cuiluhai/Documents/cmz/View Switcher/MainWindow.xib
+c000000004BC862620000000000005482
+t1271423586
+s21634
+
+N/Users/cuiluhai/Documents/cmz/View Switcher/View_Switcher_Prefix.pch
+c000000004BC8092900000000000000C3
+t1271400745
+s195
+i<Foundation/Foundation.h>
+i<UIKit/UIKit.h>
+
+N/Users/cuiluhai/Documents/cmz/View Switcher/build/Debug-iphoneos/View Switcher.app
+t1271698658
+s374
+
+N/Users/cuiluhai/Documents/cmz/View Switcher/build/Debug-iphoneos/View Switcher.app.dSYM
+t1271698657
+s102
+
+N/Users/cuiluhai/Documents/cmz/View Switcher/build/Debug-iphoneos/View Switcher.app/BlueView.nib
+t1271698656
+s769
+
+N/Users/cuiluhai/Documents/cmz/View Switcher/build/Debug-iphoneos/View Switcher.app/Info.plist
+t1271698656
+s677
+
+N/Users/cuiluhai/Documents/cmz/View Switcher/build/Debug-iphoneos/View Switcher.app/MainWindow.nib
+t1271698656
+s1197
+
+N/Users/cuiluhai/Documents/cmz/View Switcher/build/Debug-iphoneos/View Switcher.app/PkgInfo
+t1271698656
+s8
+
+N/Users/cuiluhai/Documents/cmz/View Switcher/build/Debug-iphoneos/View Switcher.app/ResourceRules.plist
+t1271698656
+s485
+
+N/Users/cuiluhai/Documents/cmz/View Switcher/build/Debug-iphoneos/View Switcher.app/View Switcher
+t1271698657
+s17772
+
+N/Users/cuiluhai/Documents/cmz/View Switcher/build/Debug-iphoneos/View Switcher.app/embedded.mobileprovision
+t1271698657
+s7160
+
+N/Users/cuiluhai/Documents/cmz/View Switcher/build/View Switcher.build/Debug-iphoneos/View Switcher.build/Objects-normal/armv6/BlueViewController.o
+t1271698657
+s33356
+
+N/Users/cuiluhai/Documents/cmz/View Switcher/build/View Switcher.build/Debug-iphoneos/View Switcher.build/Objects-normal/armv6/SwitchViewController.o
+t1271698657
+s36660
+
+N/Users/cuiluhai/Documents/cmz/View Switcher/build/View Switcher.build/Debug-iphoneos/View Switcher.build/Objects-normal/armv6/View Switcher.LinkFileList
+c000000004BCC94E00000000000000246
+t1271698656
+s582
+
+N/Users/cuiluhai/Documents/cmz/View Switcher/build/View Switcher.build/Debug-iphoneos/View Switcher.build/Objects-normal/armv6/View_SwitcherAppDelegate.o
+t1271698657
+s43020
+
+N/Users/cuiluhai/Documents/cmz/View Switcher/build/View Switcher.build/Debug-iphoneos/View Switcher.build/Objects-normal/armv6/main.o
+t1271698657
+s6448
+
+N/Users/cuiluhai/Documents/cmz/View Switcher/build/View Switcher.build/Debug-iphoneos/View Switcher.build/View Switcher.xcent
+t1271698657
+s326
+
+N/Users/cuiluhai/Documents/cmz/View Switcher/main.m
+c000000004BC80929000000000000016F
+t1271400745
+s367
+i<UIKit/UIKit.h>
+
+N/Users/cuiluhai/Library/MobileDevice/Provisioning Profiles/1539EB7B-6F51-4599-9095-DD0884F5CAF9.mobileprovision
+c000000004BCB19610000000000001BF8
+t1271601505
+s7160
+
+N/var/folders/yG/yG85Od1uHVaOW-ACMHGZr++++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/View_Switcher_Prefix-acwprigaoumbvrhgzevsvlrhsjfe/View_Switcher_Prefix.pch.gch
+t1271698657
+s8962708
+
+NView_Switcher-Info.plist
+c000000004BC80929000000000000038D
+t1271400745
+s909
+
+CCheck dependencies
+r0
+lSLF07#2@18"Check dependencies293391456#293391456#0(0"0(0#1#0"4300907800#0"0#
+
+CCodeSign "/Users/cuiluhai/Documents/cmz/View Switcher/build/Debug-iphoneos/View Switcher.app"
+s293391457.958710
+e293391458.251420
+r1
+xCodeSign
+x/Users/cuiluhai/Documents/cmz/View Switcher/build/Debug-iphoneos/View Switcher.app
+lSLF07#2@49"CodeSign "build/Debug-iphoneos/View Switcher.app"293391457#293391458#0(0"0(0#0#82"/Users/cuiluhai/Documents/cmz/View Switcher/build/Debug-iphoneos/View Switcher.app4300907800#722"    cd "/Users/cuiluhai/Documents/cmz/View Switcher"    setenv IGNORE_CODESIGN_ALLOCATE_RADAR_7181968 /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/codesign_allocate    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /usr/bin/codesign -f -s "iPhone Developer: Luhai Cui (FCR7L3W6YJ)" "--resource-rules=/Users/cuiluhai/Documents/cmz/View Switcher/build/Debug-iphoneos/View Switcher.app/ResourceRules.plist" --entitlements "/Users/cuiluhai/Documents/cmz/View Switcher/build/View Switcher.build/Debug-iphoneos/View Switcher.build/View Switcher.xcent" "/Users/cuiluhai/Documents/cmz/View Switcher/build/Debug-iphoneos/View Switcher.app"0#
+
+CCompileC "build/View Switcher.build/Debug-iphoneos/View Switcher.build/Objects-normal/armv6/BlueViewController.o" "/Users/cuiluhai/Documents/cmz/View Switcher/Classes/BlueViewController.m" normal armv6 objective-c com.apple.compilers.gcc.4_2
+s293391457.759475
+e293391457.817133
+r1
+xCompileC
+xbuild/View Switcher.build/Debug-iphoneos/View Switcher.build/Objects-normal/armv6/BlueViewController.o
+x/Users/cuiluhai/Documents/cmz/View Switcher/Classes/BlueViewController.m
+xnormal
+xarmv6
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@80"Compile /Users/cuiluhai/Documents/cmz/View Switcher/Classes/BlueViewController.m293391457#293391457#0(0"0(0#0#72"/Users/cuiluhai/Documents/cmz/View Switcher/Classes/BlueViewController.m4300907800#1957"    cd "/Users/cuiluhai/Documents/cmz/View Switcher"    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch armv6 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk -fvisibility=hidden -gdwarf-2 -mthumb -miphoneos-version-min=3.2 -iquote "/Users/cuiluhai/Documents/cmz/View Switcher/build/View Switcher.build/Debug-iphoneos/View Switcher.build/View Switcher-generated-files.hmap" "-I/Users/cuiluhai/Documents/cmz/View Switcher/build/View Switcher.build/Debug-iphoneos/View Switcher.build/View Switcher-own-target-headers.hmap" "-I/Users/cuiluhai/Documents/cmz/View Switcher/build/View Switcher.build/Debug-iphoneos/View Switcher.build/View Switcher-all-target-headers.hmap" -iquote "/Users/cuiluhai/Documents/cmz/View Switcher/build/View Switcher.build/Debug-iphoneos/View Switcher.build/View Switcher-project-headers.hmap" "-F/Users/cuiluhai/Documents/cmz/View Switcher/build/Debug-iphoneos" "-I/Users/cuiluhai/Documents/cmz/View Switcher/build/Debug-iphoneos/include" "-I/Users/cuiluhai/Documents/cmz/View Switcher/build/View Switcher.build/Debug-iphoneos/View Switcher.build/DerivedSources/armv6" "-I/Users/cuiluhai/Documents/cmz/View Switcher/build/View Switcher.build/Debug-iphoneos/View Switcher.build/DerivedSources" -include /var/folders/yG/yG85Od1uHVaOW-ACMHGZr++++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/View_Switcher_Prefix-acwprigaoumbvrhgzevsvlrhsjfe/View_Switcher_Prefix.pch -c "/Users/cuiluhai/Documents/cmz/View Switcher/Classes/BlueViewController.m" -o "/Users/cuiluhai/Documents/cmz/View Switcher/build/View Switcher.build/Debug-iphoneos/View Switcher.build/Objects-normal/armv6/BlueViewController.o"0#
+
+CCompileC "build/View Switcher.build/Debug-iphoneos/View Switcher.build/Objects-normal/armv6/SwitchViewController.o" "/Users/cuiluhai/Documents/cmz/View Switcher/Classes/SwitchViewController.m" normal armv6 objective-c com.apple.compilers.gcc.4_2
+s293391457.730832
+e293391457.797704
+r1
+xCompileC
+xbuild/View Switcher.build/Debug-iphoneos/View Switcher.build/Objects-normal/armv6/SwitchViewController.o
+x/Users/cuiluhai/Documents/cmz/View Switcher/Classes/SwitchViewController.m
+xnormal
+xarmv6
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@82"Compile /Users/cuiluhai/Documents/cmz/View Switcher/Classes/SwitchViewController.m293391457#293391457#0(0"0(0#0#74"/Users/cuiluhai/Documents/cmz/View Switcher/Classes/SwitchViewController.m4300907800#1961"    cd "/Users/cuiluhai/Documents/cmz/View Switcher"    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch armv6 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk -fvisibility=hidden -gdwarf-2 -mthumb -miphoneos-version-min=3.2 -iquote "/Users/cuiluhai/Documents/cmz/View Switcher/build/View Switcher.build/Debug-iphoneos/View Switcher.build/View Switcher-generated-files.hmap" "-I/Users/cuiluhai/Documents/cmz/View Switcher/build/View Switcher.build/Debug-iphoneos/View Switcher.build/View Switcher-own-target-headers.hmap" "-I/Users/cuiluhai/Documents/cmz/View Switcher/build/View Switcher.build/Debug-iphoneos/View Switcher.build/View Switcher-all-target-headers.hmap" -iquote "/Users/cuiluhai/Documents/cmz/View Switcher/build/View Switcher.build/Debug-iphoneos/View Switcher.build/View Switcher-project-headers.hmap" "-F/Users/cuiluhai/Documents/cmz/View Switcher/build/Debug-iphoneos" "-I/Users/cuiluhai/Documents/cmz/View Switcher/build/Debug-iphoneos/include" "-I/Users/cuiluhai/Documents/cmz/View Switcher/build/View Switcher.build/Debug-iphoneos/View Switcher.build/DerivedSources/armv6" "-I/Users/cuiluhai/Documents/cmz/View Switcher/build/View Switcher.build/Debug-iphoneos/View Switcher.build/DerivedSources" -include /var/folders/yG/yG85Od1uHVaOW-ACMHGZr++++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/View_Switcher_Prefix-acwprigaoumbvrhgzevsvlrhsjfe/View_Switcher_Prefix.pch -c "/Users/cuiluhai/Documents/cmz/View Switcher/Classes/SwitchViewController.m" -o "/Users/cuiluhai/Documents/cmz/View Switcher/build/View Switcher.build/Debug-iphoneos/View Switcher.build/Objects-normal/armv6/SwitchViewController.o"0#
+
+CCompileC "build/View Switcher.build/Debug-iphoneos/View Switcher.build/Objects-normal/armv6/View_SwitcherAppDelegate.o" "/Users/cuiluhai/Documents/cmz/View Switcher/Classes/View_SwitcherAppDelegate.m" normal armv6 objective-c com.apple.compilers.gcc.4_2
+s293391457.548480
+e293391457.759378
+r1
+xCompileC
+xbuild/View Switcher.build/Debug-iphoneos/View Switcher.build/Objects-normal/armv6/View_SwitcherAppDelegate.o
+x/Users/cuiluhai/Documents/cmz/View Switcher/Classes/View_SwitcherAppDelegate.m
+xnormal
+xarmv6
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@86"Compile /Users/cuiluhai/Documents/cmz/View Switcher/Classes/View_SwitcherAppDelegate.m293391457#293391457#0(0"0(0#0#78"/Users/cuiluhai/Documents/cmz/View Switcher/Classes/View_SwitcherAppDelegate.m4300907800#1969"    cd "/Users/cuiluhai/Documents/cmz/View Switcher"    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch armv6 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk -fvisibility=hidden -gdwarf-2 -mthumb -miphoneos-version-min=3.2 -iquote "/Users/cuiluhai/Documents/cmz/View Switcher/build/View Switcher.build/Debug-iphoneos/View Switcher.build/View Switcher-generated-files.hmap" "-I/Users/cuiluhai/Documents/cmz/View Switcher/build/View Switcher.build/Debug-iphoneos/View Switcher.build/View Switcher-own-target-headers.hmap" "-I/Users/cuiluhai/Documents/cmz/View Switcher/build/View Switcher.build/Debug-iphoneos/View Switcher.build/View Switcher-all-target-headers.hmap" -iquote "/Users/cuiluhai/Documents/cmz/View Switcher/build/View Switcher.build/Debug-iphoneos/View Switcher.build/View Switcher-project-headers.hmap" "-F/Users/cuiluhai/Documents/cmz/View Switcher/build/Debug-iphoneos" "-I/Users/cuiluhai/Documents/cmz/View Switcher/build/Debug-iphoneos/include" "-I/Users/cuiluhai/Documents/cmz/View Switcher/build/View Switcher.build/Debug-iphoneos/View Switcher.build/DerivedSources/armv6" "-I/Users/cuiluhai/Documents/cmz/View Switcher/build/View Switcher.build/Debug-iphoneos/View Switcher.build/DerivedSources" -include /var/folders/yG/yG85Od1uHVaOW-ACMHGZr++++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/View_Switcher_Prefix-acwprigaoumbvrhgzevsvlrhsjfe/View_Switcher_Prefix.pch -c "/Users/cuiluhai/Documents/cmz/View Switcher/Classes/View_SwitcherAppDelegate.m" -o "/Users/cuiluhai/Documents/cmz/View Switcher/build/View Switcher.build/Debug-iphoneos/View Switcher.build/Objects-normal/armv6/View_SwitcherAppDelegate.o"0#
+
+CCompileC "build/View Switcher.build/Debug-iphoneos/View Switcher.build/Objects-normal/armv6/main.o" "/Users/cuiluhai/Documents/cmz/View Switcher/main.m" normal armv6 objective-c com.apple.compilers.gcc.4_2
+s293391457.547263
+e293391457.730738
+r1
+xCompileC
+xbuild/View Switcher.build/Debug-iphoneos/View Switcher.build/Objects-normal/armv6/main.o
+x/Users/cuiluhai/Documents/cmz/View Switcher/main.m
+xnormal
+xarmv6
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@58"Compile /Users/cuiluhai/Documents/cmz/View Switcher/main.m293391457#293391457#0(0"0(0#0#50"/Users/cuiluhai/Documents/cmz/View Switcher/main.m4300907800#1921"    cd "/Users/cuiluhai/Documents/cmz/View Switcher"    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch armv6 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk -fvisibility=hidden -gdwarf-2 -mthumb -miphoneos-version-min=3.2 -iquote "/Users/cuiluhai/Documents/cmz/View Switcher/build/View Switcher.build/Debug-iphoneos/View Switcher.build/View Switcher-generated-files.hmap" "-I/Users/cuiluhai/Documents/cmz/View Switcher/build/View Switcher.build/Debug-iphoneos/View Switcher.build/View Switcher-own-target-headers.hmap" "-I/Users/cuiluhai/Documents/cmz/View Switcher/build/View Switcher.build/Debug-iphoneos/View Switcher.build/View Switcher-all-target-headers.hmap" -iquote "/Users/cuiluhai/Documents/cmz/View Switcher/build/View Switcher.build/Debug-iphoneos/View Switcher.build/View Switcher-project-headers.hmap" "-F/Users/cuiluhai/Documents/cmz/View Switcher/build/Debug-iphoneos" "-I/Users/cuiluhai/Documents/cmz/View Switcher/build/Debug-iphoneos/include" "-I/Users/cuiluhai/Documents/cmz/View Switcher/build/View Switcher.build/Debug-iphoneos/View Switcher.build/DerivedSources/armv6" "-I/Users/cuiluhai/Documents/cmz/View Switcher/build/View Switcher.build/Debug-iphoneos/View Switcher.build/DerivedSources" -include /var/folders/yG/yG85Od1uHVaOW-ACMHGZr++++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/View_Switcher_Prefix-acwprigaoumbvrhgzevsvlrhsjfe/View_Switcher_Prefix.pch -c "/Users/cuiluhai/Documents/cmz/View Switcher/main.m" -o "/Users/cuiluhai/Documents/cmz/View Switcher/build/View Switcher.build/Debug-iphoneos/View Switcher.build/Objects-normal/armv6/main.o"0#
+
+CCompileXIB "/Users/cuiluhai/Documents/cmz/View Switcher/BlueView.xib"
+s293391456.440867
+e293391456.752498
+r1
+xCompileXIB
+x/Users/cuiluhai/Documents/cmz/View Switcher/BlueView.xib
+lSLF07#2@23"CompileXIB BlueView.xib293391456#293391456#0(0"0(0#0#56"/Users/cuiluhai/Documents/cmz/View Switcher/BlueView.xib4300907800#489"    cd "/Users/cuiluhai/Documents/cmz/View Switcher"    setenv IBC_MINIMUM_COMPATIBILITY_VERSION 3.2    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/usr/bin/ibtool --errors --warnings --notices --output-format human-readable-text --compile "/Users/cuiluhai/Documents/cmz/View Switcher/build/Debug-iphoneos/View Switcher.app/BlueView.nib" "/Users/cuiluhai/Documents/cmz/View Switcher/BlueView.xib"0#
+
+CCompileXIB "/Users/cuiluhai/Documents/cmz/View Switcher/MainWindow.xib"
+s293391456.439837
+e293391456.767844
+r1
+xCompileXIB
+x/Users/cuiluhai/Documents/cmz/View Switcher/MainWindow.xib
+lSLF07#2@25"CompileXIB MainWindow.xib293391456#293391456#0(0"0(0#0#58"/Users/cuiluhai/Documents/cmz/View Switcher/MainWindow.xib4300907800#493"    cd "/Users/cuiluhai/Documents/cmz/View Switcher"    setenv IBC_MINIMUM_COMPATIBILITY_VERSION 3.2    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/usr/bin/ibtool --errors --warnings --notices --output-format human-readable-text --compile "/Users/cuiluhai/Documents/cmz/View Switcher/build/Debug-iphoneos/View Switcher.app/MainWindow.nib" "/Users/cuiluhai/Documents/cmz/View Switcher/MainWindow.xib"0#
+
+CCpResource "build/Debug-iphoneos/View Switcher.app/ResourceRules.plist" /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk/ResourceRules.plist
+s293391456.396912
+e293391456.439753
+r1
+xCpResource
+xbuild/Debug-iphoneos/View Switcher.app/ResourceRules.plist
+x/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk/ResourceRules.plist
+lSLF07#2@94"Copy /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk/ResourceRules.plist293391456#293391456#0(0"0(0#0#89"/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk/ResourceRules.plist4300907800#500"    cd "/Users/cuiluhai/Documents/cmz/View Switcher"    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -resolve-src-symlinks /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk/ResourceRules.plist "/Users/cuiluhai/Documents/cmz/View Switcher/build/Debug-iphoneos/View Switcher.app"0#
+
+CGenerateDSYMFile "/Users/cuiluhai/Documents/cmz/View Switcher/build/Debug-iphoneos/View Switcher.app.dSYM" "/Users/cuiluhai/Documents/cmz/View Switcher/build/Debug-iphoneos/View Switcher.app/View Switcher"
+s293391457.922033
+e293391457.937356
+r1
+xGenerateDSYMFile
+x/Users/cuiluhai/Documents/cmz/View Switcher/build/Debug-iphoneos/View Switcher.app.dSYM
+x/Users/cuiluhai/Documents/cmz/View Switcher/build/Debug-iphoneos/View Switcher.app/View Switcher
+lSLF07#2@117"GenerateDSYMFile "build/Debug-iphoneos/View Switcher.app.dSYM" "build/Debug-iphoneos/View Switcher.app/View Switcher"293391457#293391457#0(0"0(0#0#96"/Users/cuiluhai/Documents/cmz/View Switcher/build/Debug-iphoneos/View Switcher.app/View Switcher4300907800#401"    cd "/Users/cuiluhai/Documents/cmz/View Switcher"    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/usr/bin/dsymutil "/Users/cuiluhai/Documents/cmz/View Switcher/build/Debug-iphoneos/View Switcher.app/View Switcher" -o "/Users/cuiluhai/Documents/cmz/View Switcher/build/Debug-iphoneos/View Switcher.app.dSYM"0#
+
+CLd "/Users/cuiluhai/Documents/cmz/View Switcher/build/Debug-iphoneos/View Switcher.app/View Switcher" normal armv6
+s293391457.817210
+e293391457.921846
+r1
+xLd
+x/Users/cuiluhai/Documents/cmz/View Switcher/build/Debug-iphoneos/View Switcher.app/View Switcher
+xnormal
+xarmv6
+lSLF07#2@101"Link /Users/cuiluhai/Documents/cmz/View Switcher/build/Debug-iphoneos/View Switcher.app/View Switcher293391457#293391457#0(0"0(0#0#0"4300907800#887"    cd "/Users/cuiluhai/Documents/cmz/View Switcher"    setenv IPHONEOS_DEPLOYMENT_TARGET 3.2    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/gcc-4.2 -arch armv6 -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk "-L/Users/cuiluhai/Documents/cmz/View Switcher/build/Debug-iphoneos" "-F/Users/cuiluhai/Documents/cmz/View Switcher/build/Debug-iphoneos" -filelist "/Users/cuiluhai/Documents/cmz/View Switcher/build/View Switcher.build/Debug-iphoneos/View Switcher.build/Objects-normal/armv6/View Switcher.LinkFileList" -dead_strip -miphoneos-version-min=3.2 -framework Foundation -framework UIKit -framework CoreGraphics -o "/Users/cuiluhai/Documents/cmz/View Switcher/build/Debug-iphoneos/View Switcher.app/View Switcher"0#
+
+CProcessInfoPlistFile "/Users/cuiluhai/Documents/cmz/View Switcher/build/Debug-iphoneos/View Switcher.app/Info.plist" View_Switcher-Info.plist
+s293391456.397704
+e293391456.424284
+r1
+xProcessInfoPlistFile
+x/Users/cuiluhai/Documents/cmz/View Switcher/build/Debug-iphoneos/View Switcher.app/Info.plist
+xView_Switcher-Info.plist
+lSLF07#2@32"Process View_Switcher-Info.plist293391456#293391456#0(0"0(0#0#68"/Users/cuiluhai/Documents/cmz/View Switcher/View_Switcher-Info.plist4300907800#614"    cd "/Users/cuiluhai/Documents/cmz/View Switcher"    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    builtin-infoPlistUtility View_Switcher-Info.plist -genpkginfo "/Users/cuiluhai/Documents/cmz/View Switcher/build/Debug-iphoneos/View Switcher.app/PkgInfo" -expandbuildsettings -format binary -platform iphoneos -resourcerulesfile "/Users/cuiluhai/Documents/cmz/View Switcher/build/Debug-iphoneos/View Switcher.app/ResourceRules.plist" -o "/Users/cuiluhai/Documents/cmz/View Switcher/build/Debug-iphoneos/View Switcher.app/Info.plist"0#
+
+CProcessPCH /var/folders/yG/yG85Od1uHVaOW-ACMHGZr++++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/View_Switcher_Prefix-acwprigaoumbvrhgzevsvlrhsjfe/View_Switcher_Prefix.pch.gch View_Switcher_Prefix.pch normal armv6 objective-c com.apple.compilers.gcc.4_2
+s293391456.767953
+e293391457.547166
+r1
+xProcessPCH
+x/var/folders/yG/yG85Od1uHVaOW-ACMHGZr++++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/View_Switcher_Prefix-acwprigaoumbvrhgzevsvlrhsjfe/View_Switcher_Prefix.pch.gch
+xView_Switcher_Prefix.pch
+xnormal
+xarmv6
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@35"Precompile View_Switcher_Prefix.pch293391456#293391457#0(0"0(0#0#68"/Users/cuiluhai/Documents/cmz/View Switcher/View_Switcher_Prefix.pch4300907800#1806"    cd "/Users/cuiluhai/Documents/cmz/View Switcher"    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/gcc-4.2 -x objective-c-header -arch armv6 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk -fvisibility=hidden -gdwarf-2 -mthumb -miphoneos-version-min=3.2 -iquote "/Users/cuiluhai/Documents/cmz/View Switcher/build/View Switcher.build/Debug-iphoneos/View Switcher.build/View Switcher-generated-files.hmap" "-I/Users/cuiluhai/Documents/cmz/View Switcher/build/View Switcher.build/Debug-iphoneos/View Switcher.build/View Switcher-own-target-headers.hmap" "-I/Users/cuiluhai/Documents/cmz/View Switcher/build/View Switcher.build/Debug-iphoneos/View Switcher.build/View Switcher-all-target-headers.hmap" -iquote "/Users/cuiluhai/Documents/cmz/View Switcher/build/View Switcher.build/Debug-iphoneos/View Switcher.build/View Switcher-project-headers.hmap" "-F/Users/cuiluhai/Documents/cmz/View Switcher/build/Debug-iphoneos" "-I/Users/cuiluhai/Documents/cmz/View Switcher/build/Debug-iphoneos/include" "-I/Users/cuiluhai/Documents/cmz/View Switcher/build/View Switcher.build/Debug-iphoneos/View Switcher.build/DerivedSources/armv6" "-I/Users/cuiluhai/Documents/cmz/View Switcher/build/View Switcher.build/Debug-iphoneos/View Switcher.build/DerivedSources" -c "/Users/cuiluhai/Documents/cmz/View Switcher/View_Switcher_Prefix.pch" -o /var/folders/yG/yG85Od1uHVaOW-ACMHGZr++++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/View_Switcher_Prefix-acwprigaoumbvrhgzevsvlrhsjfe/View_Switcher_Prefix.pch.gch0#
+
+CProcessProductPackaging "/Users/cuiluhai/Library/MobileDevice/Provisioning Profiles/1539EB7B-6F51-4599-9095-DD0884F5CAF9.mobileprovision" "/Users/cuiluhai/Documents/cmz/View Switcher/build/Debug-iphoneos/View Switcher.app/embedded.mobileprovision"
+s293391457.937444
+e293391457.941886
+r1
+xProcessProductPackaging
+x/Users/cuiluhai/Library/MobileDevice/Provisioning Profiles/1539EB7B-6F51-4599-9095-DD0884F5CAF9.mobileprovision
+x/Users/cuiluhai/Documents/cmz/View Switcher/build/Debug-iphoneos/View Switcher.app/embedded.mobileprovision
+lSLF07#2@203"ProcessProductPackaging "/Users/cuiluhai/Library/MobileDevice/Provisioning Profiles/1539EB7B-6F51-4599-9095-DD0884F5CAF9.mobileprovision" "build/Debug-iphoneos/View Switcher.app/embedded.mobileprovision"293391457#293391457#0(0"0(0#0#107"/Users/cuiluhai/Documents/cmz/View Switcher/build/Debug-iphoneos/View Switcher.app/embedded.mobileprovision4300907800#446"    cd "/Users/cuiluhai/Documents/cmz/View Switcher"    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    <com.apple.tools.product-pkg-utility> "/Users/cuiluhai/Library/MobileDevice/Provisioning Profiles/1539EB7B-6F51-4599-9095-DD0884F5CAF9.mobileprovision" -o "/Users/cuiluhai/Documents/cmz/View Switcher/build/Debug-iphoneos/View Switcher.app/embedded.mobileprovision"0#
+
+CProcessProductPackaging /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk/Entitlements.plist "/Users/cuiluhai/Documents/cmz/View Switcher/build/View Switcher.build/Debug-iphoneos/View Switcher.build/View Switcher.xcent"
+s293391457.944479
+e293391457.958647
+r1
+xProcessProductPackaging
+x/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk/Entitlements.plist
+x/Users/cuiluhai/Documents/cmz/View Switcher/build/View Switcher.build/Debug-iphoneos/View Switcher.build/View Switcher.xcent
+lSLF07#2@195"ProcessProductPackaging /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk/Entitlements.plist "build/View Switcher.build/Debug-iphoneos/View Switcher.build/View Switcher.xcent"293391457#293391457#0(0"0(0#0#124"/Users/cuiluhai/Documents/cmz/View Switcher/build/View Switcher.build/Debug-iphoneos/View Switcher.build/View Switcher.xcent4300907800#464"    cd "/Users/cuiluhai/Documents/cmz/View Switcher"    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    <com.apple.tools.product-pkg-utility> /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.2.sdk/Entitlements.plist -entitlements -format xml -o "/Users/cuiluhai/Documents/cmz/View Switcher/build/View Switcher.build/Debug-iphoneos/View Switcher.build/View Switcher.xcent"0#
+
+CTouch "/Users/cuiluhai/Documents/cmz/View Switcher/build/Debug-iphoneos/View Switcher.app"
+s293391457.941934
+e293391457.944406
+r1
+xTouch
+x/Users/cuiluhai/Documents/cmz/View Switcher/build/Debug-iphoneos/View Switcher.app
+lSLF07#2@88"Touch /Users/cuiluhai/Documents/cmz/View Switcher/build/Debug-iphoneos/View Switcher.app293391457#293391457#0(0"0(0#0#0"4300907800#284"    cd "/Users/cuiluhai/Documents/cmz/View Switcher"    setenv PATH "/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /usr/bin/touch -c "/Users/cuiluhai/Documents/cmz/View Switcher/build/Debug-iphoneos/View Switcher.app"0#
+
