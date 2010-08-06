@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<project name="lucene_ooo" basedir="." default="all">
+    <description>
+        lucene测试
+    </description>
+    <property name="src.java" value="src" />
+    <property name="src.test" value="test" />
+    <property name="lib.dir" value="lib" />
+    <property name="dist.dir" value="dist" />
+    <property name="build.dir" value="build" />
+    <property name="conf.dir" value="conf" />
+
+
+    <target name="compile" depends="init">
+        <javac srcdir="${src.java}" destdir="${build.dir}" source="1.6" target="1.6" nowarn="yes" debug="yes">
+            <classpath>
+                <fileset dir="${lib.dir}" />
+            </classpath>
+            <compilerarg line="-encoding GBK"/>         
+        </javac>
+    </target>
+
+    <target name="comm" depends="compile" description="Creates Jar of mrs Tasks">
+            <jar jarfile="dist/ooo_lucene.jar" compress="true" basedir="${build.dir}">
+            </jar>
+    </target>
+
+    <target name="init">
+        <tstamp/>
+        <mkdir dir="${build.dir}"/>
+        <mkdir dir="${dist.dir}"/>
+    </target>
+
+    <target name="clean">
+        <delete dir="${build.dir}"/>
+        <delete dir="${dist.dir}"/>
+    </target>
+
+    <target name="all" depends="comm"/>
+</project>
