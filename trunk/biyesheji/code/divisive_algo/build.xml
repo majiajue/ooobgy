@@ -4,18 +4,19 @@
     	query_keyword_udf
     </description>
     <property name="src.java" value="src" />
+	<property name="src.db" value="database" />
     <property name="src.jung" value="jung" />
     <property name="lib.dir" value="lib" />
     <property name="dist.dir" value="dist" />
     <property name="build.dir" value="build" />
 
 
-    <target name="compile" depends="compile_jung">
+    <target name="compile" depends="init">
         <javac srcdir="${src.java}" destdir="${build.dir}" source="1.6" target="1.6" nowarn="yes" debug="yes">
             <classpath>
                 <fileset dir="${lib.dir}" />
             </classpath>
-            <compilerarg line="-encoding GBK"/>         
+            <compilerarg line="-encoding UTF-8"/>         
         </javac>
     </target>
 	
@@ -24,11 +25,20 @@
             <classpath>
                 <fileset dir="${lib.dir}" />
             </classpath>
-            <compilerarg line="-encoding GBK"/>         
+            <compilerarg line="-encoding UTF-8"/>         
         </javac>
     </target>
+	
+	<target name="compile_db" depends="init">
+	        <javac srcdir="${src.db}" destdir="${build.dir}" source="1.6" target="1.6" nowarn="yes" debug="yes">
+	            <classpath>
+	                <fileset dir="${lib.dir}" />
+	            </classpath>
+	            <compilerarg line="-encoding UTF-8"/>         
+	        </javac>
+	    </target>
 
-    <target name="comm" depends="compile" description="Creates Jar of mrs Tasks">
+    <target name="comm" depends="compile,compile_db,compile_jung" description="Creates Jar of mrs Tasks">
             <jar jarfile="dist/divisive_algo.jar" compress="true" basedir="${build.dir}">
             </jar>
     </target>
