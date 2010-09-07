@@ -1,5 +1,5 @@
 /**
- * @Author ÖÜÏşÁú   frogcherry
+ * @Author å‘¨æ™“é¾™   frogcherry
  * @Email frogcherry@gmail.com
  * @CreateDate 2010-9-7
  */
