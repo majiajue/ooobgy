@@ -92,6 +92,7 @@ public class BetweennessCentrality<V, E>
 			this.edge_scores.put(e, 0.0);
 	}
 	
+	@SuppressWarnings("unchecked")
 	protected void computeBetweenness(Queue<V> queue, 
 			Transformer<E, ? extends Number> edge_weights)
 	{

@@ -233,7 +233,8 @@ public class DijkstraDistance<V,E> implements Distance<V>
      * the set of incident edges for instances of <code>Hypergraph</code>,
      * and is otherwise undefined.
      */
-    protected Collection<E> getEdgesToCheck(V v)
+    @SuppressWarnings("unchecked")
+	protected Collection<E> getEdgesToCheck(V v)
     {
         if (g instanceof Graph)
             return ((Graph<V,E>)g).getOutEdges(v);
