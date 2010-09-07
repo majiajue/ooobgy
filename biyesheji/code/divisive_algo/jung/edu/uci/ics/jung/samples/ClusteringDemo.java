@@ -118,7 +118,7 @@ public class ClusteringDemo extends JApplet {
 //		InputStream is = this.getClass().getClassLoader().getResourceAsStream("datasets/zachary.net");
 		try
         {
-			InputStream is = new FileInputStream("datasets/smyth.net");
+			InputStream is = new FileInputStream("datasets/zachary.net");
 			BufferedReader br = new BufferedReader( new InputStreamReader( is ));         
             setUpView(br);
         }
