@@ -8,16 +8,8 @@ package edu.zju.cs.ooobgy.db.entity;
 
 import java.sql.Timestamp;
 
-//create table HD_DEMO
-//(
-//  CALLER_NUM    VARCHAR2(50),
-//  RECEIVER_NUM  VARCHAR2(50),
-//  START_TIME    DATE,
-//  SWITCH_ID     VARCHAR2(50),
-//  STATION_CODE  VARCHAR2(50),
-//  CALL_DURATION NUMBER
-//);
 public class CallRecord {
+	private Integer cid;
 	private String callerNum;
 	private String receiverNum;
 	private Timestamp startTime;
@@ -59,6 +51,12 @@ public class CallRecord {
 	}
 	public void setCallDuration(Double callDuration) {
 		this.callDuration = callDuration;
+	}
+	public Integer getCid() {
+		return cid;
+	}
+	public void setCid(Integer cid) {
+		this.cid = cid;
 	}
 	
 	
