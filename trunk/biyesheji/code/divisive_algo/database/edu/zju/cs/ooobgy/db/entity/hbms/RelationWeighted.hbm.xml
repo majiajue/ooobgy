@@ -4,16 +4,16 @@
 <hibernate-mapping>
  <class name="edu.zju.cs.ooobgy.db.entity.RelationWeighted" table="relation_weighted">
   <id name="rid" type="integer">
-   <column name="rid" not-null="true" unique="true"/>
+   <column name="rid" not-null="true" sql-type="INTEGER" unique="true"/>
    <generator class="native"/>
   </id>
-  <property name="callerId" type="integer">
+  <property generated="never" lazy="false" name="callerId" type="integer">
    <column name="caller_id" sql-type="INTEGER"/>
   </property>
-  <property name="receiverId" type="integer">
+  <property generated="never" lazy="false" name="receiverId" type="integer">
    <column name="receiver_id" sql-type="INTEGER"/>
   </property>
-  <property name="weight" type="integer">
+  <property generated="never" lazy="false" name="weight" type="integer">
    <column name="weight" sql-type="INTEGER"/>
   </property>
  </class>
