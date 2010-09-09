@@ -2,6 +2,19 @@
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
                                    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
-
+ <class name="edu.zju.cs.ooobgy.db.entity.RelationWeighted" table="relation_weighted">
+  <id name="rid" type="integer">
+   <column name="rid" not-null="true" unique="true"/>
+   <generator class="native"/>
+  </id>
+  <property name="callerId" type="integer">
+   <column name="caller_id" sql-type="INTEGER"/>
+  </property>
+  <property name="receiverId" type="integer">
+   <column name="receiver_id" sql-type="INTEGER"/>
+  </property>
+  <property name="weight" type="integer">
+   <column name="weight" sql-type="INTEGER"/>
+  </property>
+ </class>
 </hibernate-mapping>
-
