@@ -2,6 +2,13 @@
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
                                    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
-
+ <class name="edu.zju.cs.ooobgy.db.entity.PersonNode" table="person_node">
+  <id name="pid" type="integer">
+   <column name="pid" not-null="true" sql-type="INTEGER" unique="true"/>
+   <generator class="native"/>
+  </id>
+  <property name="telNum" type="string">
+   <column name="tel_num" sql-type="VARCHAR(50)"/>
+  </property>
+ </class>
 </hibernate-mapping>
-
