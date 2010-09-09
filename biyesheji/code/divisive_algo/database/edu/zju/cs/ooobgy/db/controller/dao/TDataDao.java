@@ -6,10 +6,14 @@
 
 package edu.zju.cs.ooobgy.db.controller.dao;
 
-public interface TDataDao<T> {
+import java.util.List;
+
+public interface TDataDao<T,K> {
 	public void save(T o);
-
 	public void delete(T o);
-
 	public void update(T o);
+	
+	public List<T> findAll();
+	public int findCount();
+	public T findWithId(K id);
 }

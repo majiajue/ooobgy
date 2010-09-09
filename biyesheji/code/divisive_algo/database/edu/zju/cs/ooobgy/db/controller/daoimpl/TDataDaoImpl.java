@@ -17,7 +17,7 @@ import org.hibernate.Transaction;
 import edu.zju.cs.ooobgy.db.controller.HibernateSessionFactory;
 import edu.zju.cs.ooobgy.db.controller.dao.TDataDao;
 
-public class TDataDaoImpl<T> implements TDataDao<T> {
+public abstract class TDataDaoImpl<T,K> implements TDataDao<T,K> {
 
 	public void save(T object) {
 		// 开启会话
@@ -61,7 +61,7 @@ public class TDataDaoImpl<T> implements TDataDao<T> {
 	}
 
 	@SuppressWarnings( { "unchecked" })
-	protected <K> T findWithID(K id, Class impclass) {
+	protected T findWithID(K id, Class impclass) {
 		T object = (T) new Object();
 		// 开启会话
 		Session session = HibernateSessionFactory.getSession();
@@ -77,7 +77,7 @@ public class TDataDaoImpl<T> implements TDataDao<T> {
 	}
 
 	@SuppressWarnings( { "unchecked" })
-	protected <K> List<T> findAll(Class impclass, String order) {
+	protected List<T> findAll(Class impclass, String order) {
 		List<T> list = new ArrayList<T>();
 		// 开启会话
 		Session session = HibernateSessionFactory.getSession();
@@ -95,7 +95,7 @@ public class TDataDaoImpl<T> implements TDataDao<T> {
 	}
 
 	@SuppressWarnings( { "unchecked" })
-	protected <K> List<T> findPage(Class impclass, String order, int start,
+	protected List<T> findPage(Class impclass, String order, int start,
 			int pageSize) {
 		List<T> list = new ArrayList<T>();
 		// 开启会话
@@ -116,7 +116,7 @@ public class TDataDaoImpl<T> implements TDataDao<T> {
 	}
 
 	@SuppressWarnings( { "unchecked" })
-	protected <K> List<T> findOnePage(Class impclass, String order, int start,
+	protected List<T> findOnePage(Class impclass, String order, int start,
 			int pageSize) {
 		List<T> list = new ArrayList<T>();
 		// 开启会话
