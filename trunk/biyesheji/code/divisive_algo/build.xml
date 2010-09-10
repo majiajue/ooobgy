@@ -1,4 +1,4 @@
-<?xml version="1.0"?>
+<?xml version='1.0'?>
 <project name="divisive_algo" basedir="." default="all">
     <description>
     	query_keyword_udf
