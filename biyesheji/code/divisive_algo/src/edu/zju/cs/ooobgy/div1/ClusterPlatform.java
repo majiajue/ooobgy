@@ -7,7 +7,7 @@
 * "license.txt" or
 * http://jung.sourceforge.net/license.txt for a description.
 */
-package edu.uci.ics.jung.samples;
+package edu.zju.cs.ooobgy.div1;
 
 import java.awt.BasicStroke;
 import java.awt.BorderLayout;
@@ -74,7 +74,7 @@ import edu.uci.ics.jung.visualization.control.DefaultModalGraphMouse;
  * @author Scott White
  */
 @SuppressWarnings({ "serial", "unchecked" })
-public class ClusteringDemo extends JApplet {
+public class ClusterPlatform extends JApplet {
 	private String filePath = "datasets/zachary.net";
 
 	VisualizationViewer<Number,Number> vv;
@@ -104,7 +104,7 @@ public class ClusteringDemo extends JApplet {
 	
 	public static void main(String[] args) throws IOException {
 		
-		ClusteringDemo cd = new ClusteringDemo();
+		ClusterPlatform cd = new ClusterPlatform();
 		cd.start();
 		// Add a restart button so the graph can be redrawn to fit the size of the frame
 		JFrame jf = new JFrame();
