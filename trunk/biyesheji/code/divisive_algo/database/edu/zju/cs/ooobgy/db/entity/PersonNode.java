@@ -8,7 +8,7 @@ package edu.zju.cs.ooobgy.db.entity;
 
 public class PersonNode {
 	private Integer pid;
-	private String telNum;
+	private String name;
 	
 	public Integer getPid() {
 		return pid;
@@ -17,10 +17,10 @@ public class PersonNode {
 		this.pid = pid;
 	}
 	public String getName() {
-		return telNum;
+		return name;
 	}
 	public void setName(String name) {
-		this.telNum = name;
+		this.name = name;
 	}
 	
 	

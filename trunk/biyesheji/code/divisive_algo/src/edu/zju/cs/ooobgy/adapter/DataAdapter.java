@@ -3,7 +3,6 @@ package edu.zju.cs.ooobgy.adapter;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.InputStreamReader;
 import java.io.PrintStream;
 import java.util.List;
@@ -43,6 +42,7 @@ public class DataAdapter {
 				savePersonById(personDao, receiverId);
 				saveEdgeById(relationDao, edgeId, callerId, receiverId, weight);
 			}
+			reader.close();
 		} catch (Throwable e) {
 			e.printStackTrace();
 		}
@@ -53,7 +53,6 @@ public class DataAdapter {
 		RelationWeighted edge = relationDao.findWithId(edgeId);
 		if (edge == null) {
 			edge = new RelationWeighted();
-			edge.setRid(edgeId);
 			edge.setCallerId(callerId);
 			edge.setReceiverId(receiverId);
 			edge.setWeight(weight);
@@ -80,13 +79,21 @@ public class DataAdapter {
 			RelationWeightedDao edgeDao = new RelationWeightedDaoImpl();
 			List<PersonNode> persons = personDao.findAll();
 			List<RelationWeighted> edges = edgeDao.findAll();
+			
 			out.println("*Vertices " + persons.size());
 			for (PersonNode person : persons) {
-				
+				String line = person.getPid() + " " + person.getName();
+				out.println(line);
 			}
+			
+			out.println("*Edges");
 			for (RelationWeighted edge : edges) {
-				
+				String line = edge.getCallerId() + " " + edge.getReceiverId()
+						+ " " + edge.getWeight();
+				out.println(line);
 			}
+
+			out.close();
 		} catch (Throwable e) {
 			e.printStackTrace();
 		}

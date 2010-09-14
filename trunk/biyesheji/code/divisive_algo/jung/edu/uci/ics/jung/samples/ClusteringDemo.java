@@ -75,6 +75,7 @@ import edu.uci.ics.jung.visualization.control.DefaultModalGraphMouse;
  */
 @SuppressWarnings({ "serial", "unchecked" })
 public class ClusteringDemo extends JApplet {
+	private String filePath = "datasets/zachary.net";
 
 	VisualizationViewer<Number,Number> vv;
 	
@@ -114,11 +115,22 @@ public class ClusteringDemo extends JApplet {
 		jf.setVisible(true);
 	}
 
+	public void runSharedPlatForm() {
+		start();
+		
+		JFrame jf = new JFrame();
+		jf.getContentPane().add(this);
+		
+		jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		jf.pack();
+		jf.setVisible(true);
+	}
+	
 	public void start() {
 //		InputStream is = this.getClass().getClassLoader().getResourceAsStream("datasets/zachary.net");
 		try
         {
-			InputStream is = new FileInputStream("datasets/zachary.net");
+			InputStream is = new FileInputStream(filePath);
 			BufferedReader br = new BufferedReader( new InputStreamReader( is ));         
             setUpView(br);
         }
@@ -333,5 +345,13 @@ public class ClusteringDemo extends JApplet {
 			layout.put(subLayout,center);
 			vv.repaint();
 		}
+	}
+
+	public String getFilePath() {
+		return filePath;
+	}
+
+	public void setFilePath(String filePath) {
+		this.filePath = filePath;
 	}
 }
