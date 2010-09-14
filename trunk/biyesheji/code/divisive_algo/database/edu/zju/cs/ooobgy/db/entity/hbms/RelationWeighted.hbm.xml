@@ -5,7 +5,7 @@
  <class name="edu.zju.cs.ooobgy.db.entity.RelationWeighted" table="relation_weighted">
   <id name="rid" type="integer">
    <column name="rid" not-null="true" sql-type="INTEGER" unique="true"/>
-   <generator class="native"/>
+   <generator class="assigned"/>
   </id>
   <property generated="never" lazy="false" name="callerId" type="integer">
    <column name="caller_id" sql-type="INTEGER"/>
