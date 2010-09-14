@@ -7,8 +7,8 @@
    <column name="pid" not-null="true" sql-type="INTEGER" unique="true"/>
    <generator class="assigned"/>
   </id>
-  <property generated="never" lazy="false" name="telNum" type="string">
-   <column name="tel_num" sql-type="VARCHAR(50)"/>
+  <property generated="never" lazy="false" name="name" type="string">
+   <column name="name" sql-type="VARCHAR(50)"/>
   </property>
  </class>
 </hibernate-mapping>
