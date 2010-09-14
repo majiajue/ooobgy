@@ -5,9 +5,9 @@
  <class name="edu.zju.cs.ooobgy.db.entity.PersonNode" table="person_node">
   <id name="pid" type="integer">
    <column name="pid" not-null="true" sql-type="INTEGER" unique="true"/>
-   <generator class="native"/>
+   <generator class="assigned"/>
   </id>
-  <property name="telNum" type="string">
+  <property generated="never" lazy="false" name="telNum" type="string">
    <column name="tel_num" sql-type="VARCHAR(50)"/>
   </property>
  </class>
