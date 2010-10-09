@@ -13,4 +13,6 @@ job_class=$class_root.jobs.RecordBase
 jar_path=../dist/record_base_mr.jar
 hadoop_cmd=hadoop
 
+out_path=/group/taobao/ooobgy/call_record/record_base
+$hadoop_cmd fs -rmr $out_path
 $hadoop_cmd jar $jar_path $laucher $job_class $jobconf_file
