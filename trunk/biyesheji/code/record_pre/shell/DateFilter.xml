@@ -23,12 +23,12 @@
 
 <property>
 <name>mapred.input.dir</name>
-<value>/group/taobao/ooobgy/call_record/origin</value>
+<value>/group/taobao/ooobgy/call_record/record_base</value>
 </property>
 
 <property>
 <name>mapred.output.dir</name>
-<value>/group/taobao/ooobgy/call_record/record_base</value>
+<value>/group/taobao/ooobgy/call_record/date_filter/${date_filter}</value>
 </property>
 
 <property>
