@@ -112,6 +112,7 @@ public class WeightRecord implements HadoopJob {
 			keyBuilder.append(Integer.toString(callCount)).append(KQConst.COMMON_SPLIT);
 			keyBuilder.append(Integer.toString(totalTime)).append(KQConst.COMMON_SPLIT);
 			keyBuilder.append(Integer.toString(weight));
+			output.collect(new Text(keyBuilder.toString()), new Text());
 		}
 	}
 

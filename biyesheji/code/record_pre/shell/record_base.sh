@@ -1,7 +1,5 @@
 #!/bin/bash
 
-export jobconf_file=RecordBase.xml
-
 if [ $# -eq 1 ];
 then
     export jobconf_file=$1
