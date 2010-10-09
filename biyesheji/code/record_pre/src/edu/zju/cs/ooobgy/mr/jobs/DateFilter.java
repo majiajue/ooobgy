@@ -15,6 +15,11 @@ import org.apache.hadoop.mapred.Reporter;
 import edu.zju.cs.ooobgy.common.KQConst;
 import edu.zju.cs.ooobgy.mr.common.HadoopJob;
 
+/**
+ * 按时间戳标识过滤
+ * @author 周晓龙
+ * @created 2010-10-9
+ */
 public class DateFilter implements HadoopJob {
 	
 	public static class TopMapper extends MapReduceBase implements
