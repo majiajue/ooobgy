@@ -3,15 +3,15 @@
 
 <property>
 <name>mapred.job.name</name>
-<value>Parse Acookie</value>
+<value>Record Base</value>
 </property>
 <property>
 <name>job_date</name>
-<value>20100803</value>
+<value>20101009</value>
 </property>
 <property>
 <name>mapred.input.format.class</name>
-<value>org.apache.hadoop.mapred.SequenceFileInputFormat</value>
+<value>org.apache.hadoop.mapred.TextInputFormat</value>
 </property>
 <property>
 <name>mapred.output.format.class</name>
@@ -38,8 +38,11 @@
 </property>
 <property>
 <name>mapred.reduce.tasks</name>
+<value>0</value>
+</property>
+<property>
+<name>mapred.map.tasks</name>
 <value>1</value>
 </property>
-
 
 </configuration>
