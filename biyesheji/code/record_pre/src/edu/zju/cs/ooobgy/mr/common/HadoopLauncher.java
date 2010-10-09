@@ -30,14 +30,14 @@ public class HadoopLauncher {
 		String configFilePath = null;
 		if (args.length < 1) {
 			System.err
-					.println("Usage : HadoopLauncher [HadoopJobClass] {[Date(yyyyMMdd)]} {[ConfigFile]}");
+					.println("Usage : HadoopLauncher [HadoopJobClass] {[ConfigFile]}");
 			System.exit(1);
-		} else if (args.length == 1 || args.length == 2) {
+		} else if (args.length == 1) {
 			String[] detail = args[0].split("\\.");
 			String configFile = detail[detail.length - 1];
 			configFilePath = configFile + ".xml";// 默认载入与JobClass同名同路径的配置文件
-		} else if (args.length == 3) {
-			configFilePath = args[2];
+		} else if (args.length == 2) {
+			configFilePath = args[1];
 		}
 		HadoopJob hadoopJob = null;
 		try {
@@ -49,9 +49,6 @@ public class HadoopLauncher {
 		conf.setMapperClass(hadoopJob.getMapper());
 		conf.setReducerClass(hadoopJob.getReducer());
 		launcher.configFromFile(configFilePath, conf);// 先从文件配置
-		if (args.length == 2 || args.length == 3) {
-			conf.set("job_date", args[1]);
-		}
 		hadoopJob.configJob(conf);// 再从程序配置
 		try {
 			JobClient.runJob(conf);
