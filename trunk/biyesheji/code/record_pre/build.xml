@@ -21,7 +21,7 @@
     </target>
 
     <target name="comm" depends="compile" description="Creates Jar of mrs Tasks">
-            <jar jarfile="dist/query_keyword_mr.jar" compress="true" basedir="${build.dir}">
+            <jar jarfile="dist/record_base_mr.jar" compress="true" basedir="${build.dir}">
             </jar>
     </target>
 
