@@ -20,12 +20,12 @@
 
 <property>
 <name>mapred.input.dir</name>
-<value>/group/tbads/logdata/taobao_acookie/${job_date}/*/*/*/*.log</value>
+<value>/group/taobao/ooobgy/call_record/origin</value>
 </property>
 
 <property>
 <name>mapred.output.dir</name>
-<value>hdfs://dw81:9000/group/tbads/sds/search_top/hadoop/temp/${job_date}/keywords/keywords_temp</value>
+<value>/group/taobao/ooobgy/call_record/record_base</value>
 </property>
 
 <property>
@@ -39,10 +39,6 @@
 <property>
 <name>mapred.reduce.tasks</name>
 <value>0</value>
-</property>
-<property>
-<name>mapred.map.tasks</name>
-<value>1</value>
 </property>
 
 </configuration>
