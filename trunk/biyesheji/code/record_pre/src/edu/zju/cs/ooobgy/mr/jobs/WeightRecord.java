@@ -22,7 +22,7 @@ import edu.zju.cs.ooobgy.mr.common.HadoopJob;
  * @author 周晓龙
  * @created 2010-10-9
  */
-public class RecordWeight implements HadoopJob {
+public class WeightRecord implements HadoopJob {
 
 	/**
 	 * 权值计算公式 weight = 60 + (第1分钟内的秒数)/1 + (第2分钟内的秒数)/2 + ...
