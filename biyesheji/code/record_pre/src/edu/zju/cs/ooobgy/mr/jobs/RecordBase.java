@@ -44,8 +44,13 @@ public class RecordBase implements HadoopJob {
 			String baseStation = items[4];// 基站编号
 			String callTime = items[5];// 通话时长(秒)
 
+			String[] dayHour = timeStamp.split(KQConst.SPACE_SPLIT);
+			String day = dayHour[0];
+			String hour = dayHour[1];
+			
 			StringBuilder keyBuilder = new StringBuilder();
-			keyBuilder.append(timeStamp).append(KQConst.COMMON_SPLIT);
+			keyBuilder.append(day).append(KQConst.COMMON_SPLIT);
+			keyBuilder.append(hour).append(KQConst.COMMON_SPLIT);
 			keyBuilder.append(caller).append(KQConst.COMMON_SPLIT);
 			keyBuilder.append(reciever).append(KQConst.COMMON_SPLIT);
 			keyBuilder.append(callTime).append(KQConst.COMMON_SPLIT);
