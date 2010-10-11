@@ -28,6 +28,9 @@ import edu.zju.cs.ooobgy.mr.common.HadoopJob;
  * @created 2010-10-11
  */
 public class PersonRecord implements HadoopJob {
+	
+	public static final String CALL_FLAG = "1";
+	public static final String RECEIVE_FLAG = "0";
 	/**
 	 * 权值公式 weight = (主叫权值/10+主叫人数*50)*1.0 + (被叫权值/10+被叫人数*50)*0.8 
 	 * 向下取整
@@ -69,14 +72,14 @@ public class PersonRecord implements HadoopJob {
 			String weight = items[4];
 			
 			StringBuilder calRecBuilder = new StringBuilder();
-			calRecBuilder.append("1").append(KQConst.COMMON_SPLIT);
+			calRecBuilder.append(CALL_FLAG).append(KQConst.COMMON_SPLIT);
 			calRecBuilder.append(receiver).append(KQConst.COMMON_SPLIT);
 			calRecBuilder.append(cnt).append(KQConst.COMMON_SPLIT);
 			calRecBuilder.append(time).append(KQConst.COMMON_SPLIT);
 			calRecBuilder.append(weight);
 			
 			StringBuilder recRecBuilder = new StringBuilder();
-			recRecBuilder.append("0").append(KQConst.COMMON_SPLIT);
+			recRecBuilder.append(RECEIVE_FLAG).append(KQConst.COMMON_SPLIT);
 			recRecBuilder.append(caller).append(KQConst.COMMON_SPLIT);
 			recRecBuilder.append(cnt).append(KQConst.COMMON_SPLIT);
 			recRecBuilder.append(time).append(KQConst.COMMON_SPLIT);
@@ -122,7 +125,7 @@ public class PersonRecord implements HadoopJob {
 				String count = items[2];
 				String time = items[3];
 				String weight = items[4];
-				if (flag.equals("1")) {//主叫
+				if (flag.equals(CALL_FLAG)) {//主叫
 					callCount += Integer.parseInt(count);
 					callPcnt ++;
 					callTime += Integer.parseInt(time);
@@ -133,7 +136,7 @@ public class PersonRecord implements HadoopJob {
 					} else {
 						pubBuff.add(target);
 					}
-				}else if (flag.equals("0")) {//被叫
+				}else if (flag.equals(RECEIVE_FLAG)) {//被叫
 					receiveCount += Integer.parseInt(count);
 					receivePcnt ++;
 					receiveTime += Integer.parseInt(time);
@@ -151,15 +154,15 @@ public class PersonRecord implements HadoopJob {
 			
 			StringBuilder outLine = new StringBuilder();
 			outLine.append(key.toString()).append(KQConst.COMMON_SPLIT);
+									
+			outLine.append(Integer.toString(callCount)).append(KQConst.COMMON_SPLIT);
+			outLine.append(Integer.toString(callTime)).append(KQConst.COMMON_SPLIT);
+			outLine.append(Integer.toString(callPcnt)).append(KQConst.COMMON_SPLIT);
 			
 			outLine.append(Integer.toString(receiveCount)).append(KQConst.COMMON_SPLIT);
 			outLine.append(Integer.toString(receiveTime)).append(KQConst.COMMON_SPLIT);
 			outLine.append(Integer.toString(receivePcnt)).append(KQConst.COMMON_SPLIT);
-			
-//			outLine.append(Integer.toString(callCount)).append(KQConst.COMMON_SPLIT);
-//			outLine.append(Integer.toString(callTime)).append(KQConst.COMMON_SPLIT);
-//			outLine.append(Integer.toString(callPcnt)).append(KQConst.COMMON_SPLIT);
-			
+
 			outLine.append(Integer.toString(twoWayCnt)).append(KQConst.COMMON_SPLIT);
 			outLine.append(Integer.toString(totalWeight));
 			output.collect(new Text(outLine.toString()), null);
