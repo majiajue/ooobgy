@@ -17,8 +17,10 @@ import edu.zju.cs.ooobgy.mr.common.HadoopJob;
 
 /**
  * 归一化两个人之间的通话次数，通话时间，
- * 归一权值 output_format: 主叫^A被叫^A通话次数^A通话总时间（秒）^A归一化权值
- * 
+ * 归一权值 output_format: 
+ * 主叫^A被叫^A通话次数^A通话总时间（秒）^A归一化权值
+ * 权值计算公式 weight = 60 + (第1分钟内的秒数)/1 + (第2分钟内的秒数)/2 + ...
+ * 向下取整
  * @author 周晓龙
  * @created 2010-10-9
  */
@@ -26,7 +28,7 @@ public class WeightRecord implements HadoopJob {
 
 	/**
 	 * 权值计算公式 weight = 60 + (第1分钟内的秒数)/1 + (第2分钟内的秒数)/2 + ...
-	 * 
+	 * 向下取整
 	 * @return weight
 	 */
 	public static int weightEvaluate(int time) {
@@ -60,12 +62,12 @@ public class WeightRecord implements HadoopJob {
 			String line = value.toString();
 			String[] items = line.split(KQConst.COMMON_SPLIT);
 			String caller = items[2];
-			String reciever = items[3];
+			String receiver = items[3];
 			String time = items[4];
 
 			StringBuilder keyBuilder = new StringBuilder();
 			keyBuilder.append(caller).append(KQConst.COMMON_SPLIT);
-			keyBuilder.append(reciever);
+			keyBuilder.append(receiver);
 			StringBuilder valueBuilder = new StringBuilder();
 			valueBuilder.append(time);
 
