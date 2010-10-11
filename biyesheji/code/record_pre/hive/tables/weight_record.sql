@@ -3,9 +3,9 @@ create external table weight_record
 (
     caller string,
     reciever string,
-    call_count integer,
-    call_time integer,
-    weight integer
+    call_count int,
+    call_time int,
+    weight int
 )
 partitioned by(ds string)
 row format delimited fields terminated by '\001' lines terminated by '\n'
