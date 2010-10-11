@@ -86,7 +86,7 @@ public class PersonRecord implements HadoopJob {
 			recRecBuilder.append(weight);
 			
 			output.collect(new Text(caller), new Text(calRecBuilder.toString()));
-			output.collect(new Text(receiver), new Text(recRecBuilder.toString()));	
+			//output.collect(new Text(receiver), new Text(recRecBuilder.toString()));	
 		}
 	}
 
