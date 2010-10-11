@@ -40,7 +40,7 @@ public class DateFilter implements HadoopJob {
 			String[] items = line.split(KQConst.COMMON_SPLIT, 1);
 			String date = items[0];
 			if (date.contains(date_filter)) {//过滤掉不需要的信息,只输出需要的信息
-				output.collect(value, new Text());
+				output.collect(value, null);
 			}		
 		}
 

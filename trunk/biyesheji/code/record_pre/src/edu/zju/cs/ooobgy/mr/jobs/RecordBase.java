@@ -57,7 +57,7 @@ public class RecordBase implements HadoopJob {
 			keyBuilder.append(switcher).append(KQConst.COMMON_SPLIT);
 			keyBuilder.append(baseStation);
 
-			output.collect(new Text(keyBuilder.toString()), new Text());
+			output.collect(new Text(keyBuilder.toString()), null);
 		}
 
 	}
