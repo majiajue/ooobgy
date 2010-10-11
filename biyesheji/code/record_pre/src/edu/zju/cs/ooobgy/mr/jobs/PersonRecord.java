@@ -122,7 +122,7 @@ public class PersonRecord implements HadoopJob {
 				String count = items[2];
 				String time = items[3];
 				String weight = items[4];
-				if (flag.equals("0")) {//主叫
+				if (flag.equals("1")) {//主叫
 					callCount += Integer.parseInt(count);
 					callPcnt ++;
 					callTime += Integer.parseInt(time);
@@ -133,7 +133,7 @@ public class PersonRecord implements HadoopJob {
 					} else {
 						pubBuff.add(target);
 					}
-				}else if (flag.equals("1")) {//被叫
+				}else if (flag.equals("0")) {//被叫
 					receiveCount += Integer.parseInt(count);
 					receivePcnt ++;
 					receiveTime += Integer.parseInt(time);
