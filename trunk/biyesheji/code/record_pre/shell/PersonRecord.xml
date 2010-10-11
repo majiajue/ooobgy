@@ -3,7 +3,7 @@
 
 <property>
 <name>mapred.job.name</name>
-<value>Weight Record</value>
+<value>Person Record</value>
 </property>
 <property>
 <name>job_date</name>
