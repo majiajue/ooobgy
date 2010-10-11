@@ -151,12 +151,13 @@ public class PersonRecord implements HadoopJob {
 			
 			StringBuilder outLine = new StringBuilder();
 			outLine.append(key.toString()).append(KQConst.COMMON_SPLIT);
-			outLine.append(Integer.toString(callCount)).append(KQConst.COMMON_SPLIT);
-			outLine.append(Integer.toString(callTime)).append(KQConst.COMMON_SPLIT);
-			outLine.append(Integer.toString(callPcnt)).append(KQConst.COMMON_SPLIT);
 			outLine.append(Integer.toString(receiveCount)).append(KQConst.COMMON_SPLIT);
 			outLine.append(Integer.toString(receiveTime)).append(KQConst.COMMON_SPLIT);
 			outLine.append(Integer.toString(receivePcnt)).append(KQConst.COMMON_SPLIT);
+			
+			outLine.append(Integer.toString(callCount)).append(KQConst.COMMON_SPLIT);
+			outLine.append(Integer.toString(callTime)).append(KQConst.COMMON_SPLIT);
+			outLine.append(Integer.toString(callPcnt)).append(KQConst.COMMON_SPLIT);
 			outLine.append(Integer.toString(twoWayCnt)).append(KQConst.COMMON_SPLIT);
 			outLine.append(Integer.toString(totalWeight));
 			output.collect(new Text(outLine.toString()), null);
