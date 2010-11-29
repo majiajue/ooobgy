@@ -1,5 +1,4 @@
 package edu.zju.cs.ooobgy.div1;
-import edu.zju.cs.ooobgy.adapter.DataAdapter;
 
 public class AdpDevisive {
 
