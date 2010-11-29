@@ -1,14 +1,3 @@
-/*
- * Created on Oct 17, 2005
- *
- * Copyright (c) 2005, the JUNG Project and the Regents of the University 
- * of California
- * All rights reserved.
- *
- * This software is open-source under the BSD license; see either
- * "license.txt" or
- * http://jung.sourceforge.net/license.txt for a description.
- */
 package edu.zju.cs.ooobgy.graph;
 
 import java.util.Collection;
@@ -52,7 +41,7 @@ import edu.zju.cs.ooobgy.graph.util.Pair;
  * 
  * @author Joshua O'Madadhain
  */
-public interface Graph<V,E> extends Hypergraph<V,E>
+public interface Graph<V,E>
 {
     /**
      * Returns a <code>Collection</code> view of the incoming edges incident to <code>vertex</code>
