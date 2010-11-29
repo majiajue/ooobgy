@@ -16,4 +16,9 @@ public class InitDatabase {
 		SchemaExport doExport = new SchemaExport(cfg);
 		doExport.create(true, true);
 	}
+	
+	public static void main(String[] args) {
+		InitDatabase initDatabase = new InitDatabase();
+		initDatabase.createSchema();
+	}
 }
