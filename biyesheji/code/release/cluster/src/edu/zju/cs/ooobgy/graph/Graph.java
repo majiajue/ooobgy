@@ -6,118 +6,75 @@ import edu.zju.cs.ooobgy.graph.util.EdgeType;
 import edu.zju.cs.ooobgy.graph.util.Pair;
 
 
-
 /**
- * A graph consisting of a set of vertices of type <code>V</code>
- * set and a set of edges of type <code>E</code>.  Edges of this
- * graph type have exactly two endpoints; whether these endpoints 
- * must be distinct depends on the implementation.
- * <P>
- * This interface permits, but does not enforce, any of the following 
- * common variations of graphs:
- * <ul>
- * <li> directed and undirected edges
- * <li> vertices and edges with attributes (for example, weighted edges)
- * <li> vertices and edges of different types (for example, bipartite 
- *      or multimodal graphs)
- * <li> parallel edges (multiple edges which connect a single set of vertices)
- * <li> representations as matrices or as adjacency lists or adjacency maps
- * </ul> 
- * Extensions or implementations of this interface 
- * may enforce or disallow any or all of these variations.
- * 
- * <p>Definitions (with respect to a given vertex <code>v</code>):
- * <ul>
- * <li/><b>incoming edge</b> of <code>v</code>: an edge that can be traversed 
- * from a neighbor of <code>v</code> to reach <code>v</code>
- * <li/><b>outgoing edge</b> of <code>v</code>: an edge that can be traversed
- * from <code>v</code> to reach some neighbor of <code>v</code> 
- * <li/><b>predecessor</b> of <code>v</code>: a vertex at the other end of an
- * incoming edge of <code>v</code>
- * <li/><b>successor</b> of <code>v</code>: a vertex at the other end of an 
- * outgoing edge of <code>v</code>
- * <li/>
- * </ul> 
- * 
- * @author Joshua O'Madadhain
+ * 基本的graph定义的接口，规定实现了表达graph结构的类必须实现的方法
+ * @author frogcherry 周晓龙
+ * @created 2010-11-29
  */
 public interface Graph<V,E>
 {
     /**
-     * Returns a <code>Collection</code> view of the incoming edges incident to <code>vertex</code>
-     * in this graph.
-     * @param vertex    the vertex whose incoming edges are to be returned
-     * @return  a <code>Collection</code> view of the incoming edges incident 
-     * to <code>vertex</code> in this graph
+     * 给一个<code>vertex</code>，返回对于该<code>vertex</code>的InEdges
+     * @param vertex
+     * @return
      */
-    Collection<E> getInEdges(V vertex);
+	public Collection<E> getInEdges(V vertex);
     
     /**
-     * Returns a <code>Collection</code> view of the outgoing edges incident to <code>vertex</code>
-     * in this graph.
-     * @param vertex    the vertex whose outgoing edges are to be returned
-     * @return  a <code>Collection</code> view of the outgoing edges incident 
-     * to <code>vertex</code> in this graph
+     * 给一个<code>vertex</code>，返回对于该<code>vertex</code>的OutEdges
+     * @param vertex
+     * @return
      */
-    Collection<E> getOutEdges(V vertex);
+	public Collection<E> getOutEdges(V vertex);
 
     /**
-     * Returns a <code>Collection</code> view of the predecessors of <code>vertex</code> 
-     * in this graph.  A predecessor of <code>vertex</code> is defined as a vertex <code>v</code> 
-     * which is connected to 
-     * <code>vertex</code> by an edge <code>e</code>, where <code>e</code> is an outgoing edge of 
-     * <code>v</code> and an incoming edge of <code>vertex</code>.
-     * @param vertex    the vertex whose predecessors are to be returned
-     * @return  a <code>Collection</code> view of the predecessors of 
-     * <code>vertex</code> in this graph
+     * 返回一个<code>vertex</code>的先导<code>vertex</code>，
+     * 即该<code>vertex</code>的入边所连接的另一个<code>vertex</code>
+     * @param vertex
+     * @return
      */
-    Collection<V> getPredecessors(V vertex);
+	public Collection<V> getPredecessors(V vertex);
     
     /**
-     * Returns a <code>Collection</code> view of the successors of <code>vertex</code> 
-     * in this graph.  A successor of <code>vertex</code> is defined as a vertex <code>v</code> 
-     * which is connected to 
-     * <code>vertex</code> by an edge <code>e</code>, where <code>e</code> is an incoming edge of 
-     * <code>v</code> and an outgoing edge of <code>vertex</code>.
-     * @param vertex    the vertex whose predecessors are to be returned
-     * @return  a <code>Collection</code> view of the successors of 
-     * <code>vertex</code> in this graph
+     * 返回一个<code>vertex</code>的后续<code>vertex</code>，
+     * 即该<code>vertex</code>的出边所连接的另一个<code>vertex</code>
+     * @param vertex
+     * @return
      */
-    Collection<V> getSuccessors(V vertex);
+	public Collection<V> getSuccessors(V vertex);
     
     /**
-     * Returns the number of incoming edges incident to <code>vertex</code>.
-     * Equivalent to <code>getInEdges(vertex).size()</code>.
-     * @param vertex    the vertex whose indegree is to be calculated
-     * @return  the number of incoming edges incident to <code>vertex</code>
+     * 返回一个<code>vertex</code>的入度inDegree，
+     * 即该<code>vertex</code>的入边条数
+     * @param vertex
+     * @return
      */
-    int inDegree(V vertex);
+	public int inDegree(V vertex);
+    
+   
+	/**
+	 * 返回一个<code>vertex</code>的出度outDegree，
+     * 即该<code>vertex</code>的出边条数
+	 * @param vertex
+	 * @return
+	 */
+	public int outDegree(V vertex);
     
     /**
-     * Returns the number of outgoing edges incident to <code>vertex</code>.
-     * Equivalent to <code>getOutEdges(vertex).size()</code>.
-     * @param vertex    the vertex whose outdegree is to be calculated
-     * @return  the number of outgoing edges incident to <code>vertex</code>
+     * 如果v1是v2的先导Vertex则返回true
+     * @param v1
+     * @param v2
+     * @return
      */
-    int outDegree(V vertex);
+	public boolean isPredecessor(V v1, V v2);
     
     /**
-     * Returns <code>true</code> if <code>v1</code> is a predecessor of <code>v2</code> in this graph.
-     * Equivalent to <code>v1.getPredecessors().contains(v2)</code>.
-     * @param v1 the first vertex to be queried
-     * @param v2 the second vertex to be queried
-     * @return <code>true</code> if <code>v1</code> is a predecessor of <code>v2</code>, and false otherwise.
+     * 如果v1是v2的后续Vertex则返回true
+     * @param v1
+     * @param v2
+     * @return
      */
-    boolean isPredecessor(V v1, V v2);
-    
-    /**
-     * Returns <code>true</code> if <code>v1</code> is a successor of <code>v2</code> in this graph.
-     * Equivalent to <code>v1.getSuccessors().contains(v2)</code>.
-     * @param v1 the first vertex to be queried
-     * @param v2 the second vertex to be queried
-     * @return <code>true</code> if <code>v1</code> is a successor of <code>v2</code>, and false otherwise.
-     */
-    boolean isSuccessor(V v1, V v2);
+	public boolean isSuccessor(V v1, V v2);
 
     /**
      * Returns the number of predecessors that <code>vertex</code> has in this graph.
@@ -125,7 +82,7 @@ public interface Graph<V,E>
      * @param vertex the vertex whose predecessor count is to be returned
      * @return  the number of predecessors that <code>vertex</code> has in this graph
      */
-    int getPredecessorCount(V vertex);
+	public int getPredecessorCount(V vertex);
     
     /**
      * Returns the number of successors that <code>vertex</code> has in this graph.
@@ -133,7 +90,7 @@ public interface Graph<V,E>
      * @param vertex the vertex whose successor count is to be returned
      * @return  the number of successors that <code>vertex</code> has in this graph
      */
-    int getSuccessorCount(V vertex);
+	public int getSuccessorCount(V vertex);
     
     /**
      * If <code>directed_edge</code> is a directed edge in this graph, returns the source; 
@@ -145,7 +102,7 @@ public interface Graph<V,E>
      * @param directed_edge
      * @return  the source of <code>directed_edge</code> if it is a directed edge in this graph, or <code>null</code> otherwise
      */
-    V getSource(E directed_edge);
+	public V getSource(E directed_edge);
 
     /**
      * If <code>directed_edge</code> is a directed edge in this graph, returns the destination; 
@@ -158,7 +115,7 @@ public interface Graph<V,E>
      * @param directed_edge
      * @return  the destination of <code>directed_edge</code> if it is a directed edge in this graph, or <code>null</code> otherwise
      */
-    V getDest(E directed_edge);
+    public V getDest(E directed_edge);
     
     /**
      * Returns <code>true</code> if <code>vertex</code> is the source of <code>edge</code>.
@@ -167,7 +124,7 @@ public interface Graph<V,E>
      * @param edge the edge to be queried
      * @return <code>true</code> iff <code>vertex</code> is the source of <code>edge</code>
      */
-    boolean isSource(V vertex, E edge);
+    public boolean isSource(V vertex, E edge);
     
     /**
      * Returns <code>true</code> if <code>vertex</code> is the destination of <code>edge</code>.
@@ -176,7 +133,7 @@ public interface Graph<V,E>
      * @param edge the edge to be queried
      * @return <code>true</code> iff <code>vertex</code> is the destination of <code>edge</code>
      */
-    boolean isDest(V vertex, E edge);
+    public boolean isDest(V vertex, E edge);
 
     /**
      * Adds edge <code>e</code> to this graph such that it connects 
@@ -196,7 +153,7 @@ public interface Graph<V,E>
      * @see Hypergraph#addEdge(Object, Collection)
      * @see #addEdge(Object, Object, Object, EdgeType)
      */
-    boolean addEdge(E e, V v1, V v2);
+    public boolean addEdge(E e, V v1, V v2);
     
     /**
      * Adds edge <code>e</code> to this graph such that it connects 
@@ -217,14 +174,14 @@ public interface Graph<V,E>
      * @see Hypergraph#addEdge(Object, Collection)
      * @see #addEdge(Object, Object, Object)
      */
-    boolean addEdge(E e, V v1, V v2, EdgeType edgeType);
+    public boolean addEdge(E e, V v1, V v2, EdgeType edgeType);
 
     /**
      * Returns the endpoints of <code>edge</code> as a <code>Pair<V></code>.
      * @param edge the edge whose endpoints are to be returned
      * @return the endpoints (incident vertices) of <code>edge</code>
      */
-    Pair<V> getEndpoints(E edge);
+    public Pair<V> getEndpoints(E edge);
     
     /**
      * Returns the vertex at the other end of <code>edge</code> from <code>vertex</code>.
@@ -233,5 +190,5 @@ public interface Graph<V,E>
      * @param edge the edge to be queried
      * @return the vertex at the other end of <code>edge</code> from <code>vertex</code>
      */
-    V getOpposite(V vertex, E edge); 
+    public V getOpposite(V vertex, E edge); 
 }
