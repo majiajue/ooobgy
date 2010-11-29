@@ -104,9 +104,16 @@ public interface Graph<V,E>
      * @return
      */
     public boolean isDest(V vertex, E edge);
+    
+    /**
+     * 增加一个vertex
+     * @param vertex
+     * @return
+     */
+    public boolean addVertex(V vertex);
 
     /**
-     * 增加一条边e,v1指向v2的边
+     * 增加一条边e,v1指向v2的边，v1,v2中的任何一个不存在会自动add进该vertex
      * @param e
      * @param v1
      * @param v2
