@@ -61,7 +61,7 @@ public abstract class TDataDaoImpl<T,K> implements TDataDao<T,K> {
 	}
 
 	@SuppressWarnings( { "unchecked" })
-	protected T findWithID(K id, Class impclass) {
+	protected T findWithID(K id, Class<?> impclass) {
 		T object = (T) new Object();
 		// 开启会话
 		Session session = HibernateSessionFactory.getSession();
@@ -77,7 +77,7 @@ public abstract class TDataDaoImpl<T,K> implements TDataDao<T,K> {
 	}
 
 	@SuppressWarnings( { "unchecked" })
-	protected List<T> findAll(Class impclass, String order) {
+	protected List<T> findAll(Class<?> impclass, String order) {
 		List<T> list = new ArrayList<T>();
 		// 开启会话
 		Session session = HibernateSessionFactory.getSession();
@@ -95,7 +95,7 @@ public abstract class TDataDaoImpl<T,K> implements TDataDao<T,K> {
 	}
 
 	@SuppressWarnings( { "unchecked" })
-	protected List<T> findPage(Class impclass, String order, int start,
+	protected List<T> findPage(Class<?> impclass, String order, int start,
 			int pageSize) {
 		List<T> list = new ArrayList<T>();
 		// 开启会话
@@ -116,7 +116,7 @@ public abstract class TDataDaoImpl<T,K> implements TDataDao<T,K> {
 	}
 
 	@SuppressWarnings( { "unchecked" })
-	protected List<T> findOnePage(Class impclass, String order, int start,
+	protected List<T> findOnePage(Class<?> impclass, String order, int start,
 			int pageSize) {
 		List<T> list = new ArrayList<T>();
 		// 开启会话
@@ -136,8 +136,7 @@ public abstract class TDataDaoImpl<T,K> implements TDataDao<T,K> {
 		return list;
 	}
 
-	@SuppressWarnings("unchecked")
-	protected int findCount(Class impclass) {
+	protected int findCount(Class<?> impclass) {
 		int count;
 		// 开启会话
 		Session session = HibernateSessionFactory.getSession();
@@ -155,8 +154,7 @@ public abstract class TDataDaoImpl<T,K> implements TDataDao<T,K> {
 		return count;
 	}
 
-	@SuppressWarnings("unchecked")
-	protected int findCountByOrder(Class impclass, String order) {
+	protected int findCountByOrder(Class<?> impclass, String order) {
 		int count;
 		// 开启会话
 		Session session = HibernateSessionFactory.getSession();
