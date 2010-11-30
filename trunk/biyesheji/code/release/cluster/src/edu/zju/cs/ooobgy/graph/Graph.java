@@ -12,6 +12,18 @@ import edu.zju.cs.ooobgy.graph.util.Pair;
  */
 public interface Graph<V,E>
 {
+	/**
+	 * 返回图中所有顶点
+	 * @return
+	 */
+	public Collection<? extends V> getVertices(); 
+	
+	/**
+	 * 返回图中所有边
+	 * @return
+	 */
+    public Collection<E> getEdges();
+    
     /**
      * 给一个<code>vertex</code>，返回对于该<code>vertex</code>的InEdges
      * @param vertex
@@ -134,5 +146,12 @@ public interface Graph<V,E>
      * @param edge
      * @return
      */
-    public V getOpposite(V vertex, E edge); 
+    public V getOpposite(V vertex, E edge);
+
+    /**
+     * 返回一个顶点的所有相邻顶点
+     * @param vertex
+     * @return
+     */
+    public Collection<V> getNeighbors(V vertex);
 }
