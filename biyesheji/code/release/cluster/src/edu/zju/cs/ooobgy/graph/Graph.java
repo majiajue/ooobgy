@@ -9,6 +9,8 @@ import edu.zju.cs.ooobgy.graph.util.Pair;
  * 基本的graph定义的接口，规定实现了表达graph结构的类必须实现的方法
  * @author frogcherry 周晓龙
  * @created 2010-11-29
+ * @see Graph
+ * @see WeakComponentGraph
  */
 public interface Graph<V,E>
 {
