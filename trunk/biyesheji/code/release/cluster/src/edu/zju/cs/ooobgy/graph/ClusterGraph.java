@@ -8,7 +8,7 @@ import edu.zju.cs.ooobgy.graph.util.Pair;
 /**
  * 在聚类算法中常用的一个Graph描述的实现，
  * 这个实现包含图的基本操作，默认地，这个图是：有向的、有权的.</br>
- * 该类也实现了存储Weak Components,允许通过getComponents()快速得到弱连通分量
+ * 该类也实现了存储Weak Components,允许通过{@link WeakComponentGraph#getComponents()}快速得到弱连通分量
  * @author frogcherry 周晓龙
  * @created 2010-11-30
  * @Email frogcherry@gmail.com
