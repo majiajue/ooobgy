@@ -8,6 +8,7 @@ import edu.zju.cs.ooobgy.algo.cluster.WeakComponentClusterer;
  * 实现了保存弱连通分量WeakComponent的Graph描述
  * @author frogcherry 周晓龙
  * @created 2010-11-30
+ * @see Graph
  */
 public abstract class WeakComponentGraph<V, E> implements Graph<V, E>{
 	private boolean isWeakCompClustered = false;
