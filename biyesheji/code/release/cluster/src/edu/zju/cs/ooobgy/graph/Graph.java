@@ -134,6 +134,20 @@ public interface Graph<V,E>
     public boolean addEdge(E e, V v1, V v2);
     
     /**
+     * 去掉一个顶点
+     * @param vertex
+     * @return
+     */
+    public boolean removeVertex(V vertex);
+
+    /**
+     * 去掉一条边
+     * @param edge
+     * @return
+     */
+    public boolean removeEdge(E edge);
+    
+    /**
      * 返回一个边的两个端点，以<code>Pair</code>方式返回[source,dest]
      * @param edge
      * @return
