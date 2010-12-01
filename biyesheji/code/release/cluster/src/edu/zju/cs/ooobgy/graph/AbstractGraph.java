@@ -62,4 +62,15 @@ public abstract class AbstractGraph<V, E> implements Graph<V, E> {
 	public boolean containsEdge(E edge) {
 		return getEdges().contains(edge);
 	}
+
+	@Override
+	public int getEdgeCount() {
+		return getEdges().size();
+	}
+
+	@Override
+	public int getVertexCount() {
+		return getVertices().size();
+	}
+	
 }
