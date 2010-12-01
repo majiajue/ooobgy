@@ -170,4 +170,18 @@ public interface Graph<V,E>
      * @return
      */
     public Collection<V> getNeighbors(V vertex);
+    
+    /**
+     * 图中是否已经包含该vertex
+     * @param vertex
+     * @return
+     */
+    public boolean containsVertex(V vertex);
+    
+    /**
+     * 图中是否已经包含该edge
+     * @param edge
+     * @return
+     */
+    public boolean containsEdge(E edge);
 }

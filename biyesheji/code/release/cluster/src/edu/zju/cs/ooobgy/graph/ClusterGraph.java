@@ -111,26 +111,54 @@ public class ClusterGraph<V, E> extends WeakComponentGraph<V, E> {
 
 	@Override
 	protected boolean addVertex2WC(V vertex) {
-		// TODO Auto-generated method stub
-		return false;
+		if (containsVertex(vertex)) {
+			return false;
+		}else{
+			this.vertices.put(vertex, new HashSet<E>());
+			return true;
+		}
 	}
 
 	@Override
 	protected boolean addEdge2WC(E e, V v1, V v2) {
-		// TODO Auto-generated method stub
-		return false;
+		if (containsEdge(e)) {
+			return false;
+		} else {
+			Pair<V> endPoints = new Pair<V>(v1, v2);
+			addVertex2WC(v1);
+			addVertex2WC(v2);
+			this.edges.put(e, endPoints);
+			this.vertices.get(v1).add(e);
+			this.vertices.get(v2).add(e);
+			return true;
+		}
 	}
 
 	@Override
 	protected boolean removeVertex2WC(V vertex) {
-		// TODO Auto-generated method stub
-		return false;
+		if (containsVertex(vertex)) {
+			Set<E> v_edges = getEdges(vertex);
+			for (E e : v_edges) {
+				removeEdge2WC(e);
+			}
+			this.vertices.remove(vertex);
+			return true;
+		} else {
+			return false;
+		}
 	}
 
 	@Override
 	protected boolean removeEdge2WC(E edge) {
-		// TODO Auto-generated method stub
-		return false;
+		if (containsEdge(edge)) {
+			Pair<V> endPoints = getEndpoints(edge);
+			for (V v : endPoints) {
+				this.vertices.get(v).remove(edge);
+			}
+			this.edges.remove(edge);
+			return true;
+		} else {
+			return false;
+		}
 	}
-
 }

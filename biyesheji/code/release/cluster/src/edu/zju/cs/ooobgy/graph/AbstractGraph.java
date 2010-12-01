@@ -52,4 +52,14 @@ public abstract class AbstractGraph<V, E> implements Graph<V, E> {
     	}
         return sb.toString();
     }
+    
+	@Override
+	public boolean containsVertex(V vertex) {
+		return getVertices().contains(vertex);
+	}
+
+	@Override
+	public boolean containsEdge(E edge) {
+		return getEdges().contains(edge);
+	}
 }
