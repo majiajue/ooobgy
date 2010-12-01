@@ -1,5 +1,8 @@
 package edu.zju.cs.ooobgy.graph;
 
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 
 import edu.zju.cs.ooobgy.algo.cluster.WeakComponentClusterer;
@@ -7,7 +10,9 @@ import edu.zju.cs.ooobgy.graph.util.Pair;
 
 /**
  * 在聚类算法中常用的一个Graph描述的实现，
- * 这个实现包含图的基本操作，默认地，这个图是：有向的、有权的.</br>
+ * 这个实现包含图的基本操作，默认地，这个图是：无向的、有权的.</br>
+ * <li>无向是已经实现的特性，无法继续扩充为有向</li>
+ * <li>权的实现依赖于V,E的具体实现</li>
  * 该类也实现了存储Weak Components,允许通过{@link WeakComponentGraph#getComponents()}快速得到弱连通分量
  * @author frogcherry 周晓龙
  * @created 2010-11-30
@@ -17,107 +22,91 @@ import edu.zju.cs.ooobgy.graph.util.Pair;
  * @see WeakComponentGraph
  */
 public class ClusterGraph<V, E> extends WeakComponentGraph<V, E> {
+	private Map<V, Set<E>> vertices;//vertex为key,edges为value
+	private Map<E, Pair<V>> edges;//edge为key,vertex为value
+
+	public ClusterGraph(Map<V, Set<E>> vertices, Map<E, Pair<V>> edges) {
+		super();
+		this.vertices = vertices;
+		this.edges = edges;
+	}
+
+	public ClusterGraph() {
+		super();
+		this.edges = new HashMap<E, Pair<V>>();
+		this.vertices = new HashMap<V, Set<E>>();
+	}
 
 	@Override
 	public Set<? extends V> getVertices() {
-		// TODO Auto-generated method stub
-		return null;
+		return this.vertices.keySet();
 	}
 
 	@Override
 	public Set<E> getEdges() {
-		// TODO Auto-generated method stub
-		return null;
+		return this.edges.keySet();
 	}
 
+	public Set<E> getEdges(V vertex) {
+		return this.vertices.get(vertex);
+	}
+	
 	@Override
 	public Set<E> getInEdges(V vertex) {
-		// TODO Auto-generated method stub
-		return null;
+		return getEdges(vertex);
 	}
 
 	@Override
 	public Set<E> getOutEdges(V vertex) {
-		// TODO Auto-generated method stub
-		return null;
+		return getEdges(vertex);
 	}
 
 	@Override
 	public Set<V> getPredecessors(V vertex) {
-		// TODO Auto-generated method stub
-		return null;
+		return getNeighbors(vertex);
 	}
 
 	@Override
 	public Set<V> getSuccessors(V vertex) {
-		// TODO Auto-generated method stub
-		return null;
+		return getNeighbors(vertex);
 	}
 
+	/**
+	 * 由于图无向，所以对于edge的source，返回第1个，谨慎使用
+	 */
 	@Override
-	public int inDegree(V vertex) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public int outDegree(V vertex) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public boolean isPredecessor(V v1, V v2) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public boolean isSuccessor(V v1, V v2) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
+	@Deprecated
 	public V getSource(E directed_edge) {
-		// TODO Auto-generated method stub
-		return null;
+		return getEndpoints(directed_edge).getFirst();
 	}
 
+	/**
+	 * 由于图无向，所以对于edge的dest，返回第2个，谨慎使用
+	 */
 	@Override
+	@Deprecated
 	public V getDest(E directed_edge) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public boolean isSource(V vertex, E edge) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public boolean isDest(V vertex, E edge) {
-		// TODO Auto-generated method stub
-		return false;
+		return getEndpoints(directed_edge).getFirst();
 	}
 
 	@Override
 	public Pair<V> getEndpoints(E edge) {
-		// TODO Auto-generated method stub
-		return null;
+		return this.edges.get(edge);
 	}
 
 	@Override
 	public V getOpposite(V vertex, E edge) {
-		// TODO Auto-generated method stub
-		return null;
+		return getEndpoints(edge).getAnother(vertex);
 	}
 
 	@Override
 	public Set<V> getNeighbors(V vertex) {
-		// TODO Auto-generated method stub
-		return null;
+		Set<V> result = new HashSet<V>();
+		Set<E> edges = getEdges(vertex);
+		for (E e : edges) {
+			result.add(getOpposite(vertex, e));
+		}
+		return result;
 	}
 
 	@Override
