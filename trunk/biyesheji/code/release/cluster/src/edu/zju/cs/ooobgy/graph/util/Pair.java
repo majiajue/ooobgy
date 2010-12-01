@@ -46,6 +46,17 @@ public final class Pair<T> implements Collection<T>, Serializable
         return second;
     }
     
+    /**
+     * 返回另外一个点
+     * @param one
+     * @return
+     */
+    public T getAnother(T one){
+    	T first_o = getFirst();
+    	T second_o = getSecond();
+    	return one.equals(first_o)?first_o:second_o;
+    }
+    
     @Override
     public boolean equals( Object o ) {
         if (o == this)

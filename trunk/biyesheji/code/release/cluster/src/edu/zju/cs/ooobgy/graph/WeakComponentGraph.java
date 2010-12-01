@@ -10,7 +10,7 @@ import edu.zju.cs.ooobgy.algo.cluster.WeakComponentClusterer;
  * @created 2010-11-30
  * @see Graph
  */
-public abstract class WeakComponentGraph<V, E> implements Graph<V, E>{
+public abstract class WeakComponentGraph<V, E> extends AbstractGraph<V, E>{
 	private boolean isWeakCompClustered = false;
 	private Set<Set<V>> components;
 	
