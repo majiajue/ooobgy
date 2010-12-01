@@ -184,4 +184,16 @@ public interface Graph<V,E>
      * @return
      */
     public boolean containsEdge(E edge);
+
+    /**
+     * 统计edge的条数
+     * @return
+     */
+	public int getEdgeCount();
+	
+	/**
+	 * 统计vertex的个数
+	 * @return
+	 */
+	public int getVertexCount();
 }
