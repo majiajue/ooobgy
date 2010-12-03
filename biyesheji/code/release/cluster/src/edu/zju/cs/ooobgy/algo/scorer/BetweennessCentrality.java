@@ -1,14 +1,3 @@
-/**
- * Copyright (c) 2008, the JUNG Project and the Regents of the University 
- * of California
- * All rights reserved.
- *
- * This software is open-source under the BSD license; see either
- * "license.txt" or
- * http://jung.sourceforge.net/license.txt for a description.
- * Created on Sep 16, 2008
- * 
- */
 package edu.zju.cs.ooobgy.algo.scorer;
 
 import java.util.ArrayList;
@@ -100,21 +89,15 @@ public class BetweennessCentrality<V, E>
 			// initialize the betweenness data for this new vertex
 			for (V s : graph.getVertices()) 
 				this.vertex_data.put(s, new BetweennessData());
-
-//			if (v.equals(new Integer(0)))
-//				System.out.println("pause");
 			
             vertex_data.get(v).numSPs = 1;
             vertex_data.get(v).distance = 0;
 
             Stack<V> stack = new Stack<V>();
-//            Buffer<V> queue = new UnboundedFifoBuffer<V>();
-//            queue.add(v);
             queue.offer(v);
 
             while (!queue.isEmpty()) 
             {
-//                V w = queue.remove();
             	V w = queue.poll();
                 stack.push(w);
             	BetweennessData w_data = vertex_data.get(w);
@@ -125,32 +108,7 @@ public class BetweennessCentrality<V, E>
                 	V x = graph.getOpposite(w, e);
                 	if (x.equals(w))
                 		continue;
-                	double wx_weight = edge_weights.transform(e).doubleValue();
-                	
-                	
-//                for(V x : graph.getSuccessors(w)) 
-//                {
-//                	if (x.equals(w))
-//                		continue;
-                	
-                	// FIXME: the other problem is that I need to 
-                	// keep putting the neighbors of things we've just 
-                	// discovered in the queue, if they're undiscovered or
-                	// at greater distance.
-                	
-                	// FIXME: this is the problem, right here, I think: 
-                	// need to update position in queue if distance changes
-                	// (which can only happen with weighted edges).
-                	// for each outgoing edge e from w, get other end x
-                	// if x not already visited (dist x < 0)
-                	//   set x's distance to w's dist + edge weight
-                	//   add x to queue; pri in queue is x's dist
-                	// if w's dist + edge weight < x's dist 
-                	//   update x's dist
-                	//   update x in queue (MapBinaryHeap)
-                	//   clear x's incoming edge list
-                	// if w's dist + edge weight = x's dist
-                	//   add e to x's incoming edge list
+                	double wx_weight = edge_weights.transform(e).doubleValue(); 
                 	
                 	BetweennessData x_data = vertex_data.get(x);
                 	double x_potential_dist = w_data.distance + wx_weight;
@@ -175,14 +133,6 @@ public class BetweennessCentrality<V, E>
                         // update x's position in queue
                     	((MapBinaryHeap<V>)queue).update(x);
                     }
-//                  if (vertex_data.get(x).distance == vertex_data.get(w).distance + 1) 
-                    // 
-//                    if (x_data.distance == x_potential_dist) 
-//                    {
-//                        x_data.numSPs += w_data.numSPs;
-////                        vertex_data.get(x).predecessors.add(w);
-//                        x_data.incomingEdges.add(e);
-//                    }
                 }
                 for (E e: graph.getOutEdges(w))
                 {
@@ -195,7 +145,6 @@ public class BetweennessCentrality<V, E>
                     if (x_data.distance == x_potential_dist) 
                     {
                         x_data.numSPs += w_data.numSPs;
-//                        vertex_data.get(x).predecessors.add(w);
                         x_data.incomingEdges.add(e);
                     }
                 }
@@ -204,7 +153,6 @@ public class BetweennessCentrality<V, E>
     		{
     		    V x = stack.pop();
 
-//    		    for (V w : vertex_data.get(x).predecessors) 
     		    for (E e : vertex_data.get(x).incomingEdges)
     		    {
     		    	V w = graph.getOpposite(x, e);
@@ -212,10 +160,6 @@ public class BetweennessCentrality<V, E>
     		        	vertex_data.get(w).numSPs / vertex_data.get(x).numSPs *
     		        	(1.0 + vertex_data.get(x).dependency);
     		        vertex_data.get(w).dependency +=  partialDependency;
-//    		        E w_x = graph.findEdge(w, x);
-//    		        double w_x_score = edge_scores.get(w_x).doubleValue();
-//    		        w_x_score += partialDependency;
-//    		        edge_scores.put(w_x, w_x_score);
     		        double e_score = edge_scores.get(e).doubleValue();
     		        edge_scores.put(e, e_score + partialDependency);
     		    }
@@ -244,66 +188,6 @@ public class BetweennessCentrality<V, E>
 
         vertex_data.clear();
 	}
-
-//	protected void computeWeightedBetweenness(Transformer<E, ? extends Number> edge_weights)
-//	{
-//		for (V v : graph.getVertices())
-//		{
-//			// initialize the betweenness data for this new vertex
-//			for (V s : graph.getVertices()) 
-//				this.vertex_data.put(s, new BetweennessData());
-//            vertex_data.get(v).numSPs = 1;
-//            vertex_data.get(v).distance = 0;
-//
-//            Stack<V> stack = new Stack<V>();
-////            Buffer<V> queue = new UnboundedFifoBuffer<V>();
-//            SortedSet<V> pqueue = new TreeSet<V>(new BetweennessComparator());
-////          queue.add(v);
-//            pqueue.add(v);
-//
-////            while (!queue.isEmpty()) 
-//            while (!pqueue.isEmpty()) 
-//            {
-////              V w = queue.remove();
-//            	V w = pqueue.first();
-//            	pqueue.remove(w);
-//                stack.push(w);
-//
-////                for(V x : graph.getSuccessors(w)) 
-//                for (E e : graph.getOutEdges(w))
-//                {
-//                	// TODO (jrtom): change this to getOtherVertices(w, e)
-//                	V x = graph.getOpposite(w, e);
-//                	if (x.equals(w))
-//                		continue;
-//                	double e_weight = edge_weights.transform(e).doubleValue();
-//                	
-//                    if (vertex_data.get(x).distance < 0) 
-//                    {
-////                        queue.add(x);
-//                    	pqueue.add(v);
-////                        vertex_data.get(x).distance = vertex_data.get(w).distance + 1;
-//                        vertex_data.get(x).distance = 
-//                        	vertex_data.get(w).distance + e_weight;
-//                    }
-//
-////                    if (vertex_data.get(x).distance == vertex_data.get(w).distance + 1) 
-//                    if (vertex_data.get(x).distance == 
-//                    	vertex_data.get(w).distance + e_weight)
-//                    {
-//                        vertex_data.get(x).numSPs += vertex_data.get(w).numSPs;
-//                        vertex_data.get(x).predecessors.add(w);
-//                    }
-//                }
-//            }
-//            updateScores(v, stack);
-//        }
-//
-//        if(graph instanceof UndirectedGraph) 
-//            adjustUndirectedScores();
-//
-//        vertex_data.clear();
-//	}
 	
 	public Double getVertexScore(V v) 
 	{
@@ -319,7 +203,6 @@ public class BetweennessCentrality<V, E>
     {
         double distance;
         double numSPs;
-//        List<V> predecessors;
         List<E> incomingEdges;
         double dependency;
 
@@ -327,7 +210,6 @@ public class BetweennessCentrality<V, E>
         {
             distance = -1;
             numSPs = 0;
-//            predecessors = new ArrayList<V>();
             incomingEdges = new ArrayList<E>();
             dependency = 0;
         }
@@ -337,7 +219,6 @@ public class BetweennessCentrality<V, E>
         {
         	return "[d:" + distance + ", sp:" + numSPs + 
         		", p:" + incomingEdges + ", d:" + dependency + "]\n";
-//        		", p:" + predecessors + ", d:" + dependency + "]\n";
         }
     }
     
