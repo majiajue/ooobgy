@@ -80,7 +80,6 @@ public class BetweennessCentrality<V, E>
 			this.edge_scores.put(e, 0.0);
 	}
 	
-	@SuppressWarnings("unchecked")
 	protected void computeBetweenness(Queue<V> queue, 
 			Transformer<E, ? extends Number> edge_weights)
 	{
@@ -104,7 +103,6 @@ public class BetweennessCentrality<V, E>
                 
                 for (E e : graph.getOutEdges(w))
                 {
-                	// TODO (jrtom): change this to getOtherVertices(w, e)
                 	V x = graph.getOpposite(w, e);
                 	if (x.equals(w))
                 		continue;
@@ -115,8 +113,6 @@ public class BetweennessCentrality<V, E>
                 	
                     if (x_data.distance < 0) 
                     {
-//                        queue.add(x);
-//                        vertex_data.get(x).distance = vertex_data.get(w).distance + 1;
                     	x_data.distance = x_potential_dist;
                       	queue.offer(x);
                     }
@@ -127,10 +123,7 @@ public class BetweennessCentrality<V, E>
                     if (x_data.distance > x_potential_dist)
                     {
                     	x_data.distance = x_potential_dist;
-                    	// invalidate previously identified incoming edges
-                    	// (we have a new shortest path distance to x)
                     	x_data.incomingEdges.clear(); 
-                        // update x's position in queue
                     	((MapBinaryHeap<V>)queue).update(x);
                     }
                 }
