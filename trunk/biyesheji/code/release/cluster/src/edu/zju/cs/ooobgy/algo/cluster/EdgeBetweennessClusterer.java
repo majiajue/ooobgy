@@ -7,6 +7,7 @@ import java.util.Map;
 import java.util.Set;
 
 import org.apache.commons.collections15.Transformer;
+import org.apache.commons.collections15.functors.ConstantTransformer;
 
 import edu.zju.cs.ooobgy.algo.scorer.BetweennessCentrality;
 import edu.zju.cs.ooobgy.graph.Graph;
@@ -14,44 +15,47 @@ import edu.zju.cs.ooobgy.graph.util.Pair;
 
 
 /**
- * An algorithm for computing clusters (community structure) in graphs based on edge betweenness.
- * The betweenness of an edge is defined as the extent to which that edge lies along 
- * shortest paths between all pairs of nodes.
- *
- * This algorithm works by iteratively following the 2 step process:
- * <ul>
- * <li> Compute edge betweenness for all edges in current graph
- * <li> Remove edge with highest betweenness
- * </ul>
- * <p>
- * Running time is: O(kmn) where k is the number of edges to remove, m is the total number of edges, and
- * n is the total number of vertices. For very sparse graphs the running time is closer to O(kn^2) and for
- * graphs with strong community structure, the complexity is even lower.
- * <p>
- * This algorithm is a slight modification of the algorithm discussed below in that the number of edges
- * to be removed is parameterized.
- * @author Scott White
- * @author Tom Nelson (converted to jung2)
+ * 经典的G&N的betweenness聚类算法，该算法的复杂度为o(kmn)，
+ * 算法的复杂度很大程度上依赖于betweenness的计算速度，后者使用了优化过的betweenness计算方式
+ * 已支持加权和未加权的图的计算
+ * @author frogcherry 周晓龙
+ * @created 2010-12-9
+ * @Email frogcherry@gmail.com
  * @see "Community structure in social and biological networks by Michelle Girvan and Mark Newman"
  */
 public class EdgeBetweennessClusterer<V,E> implements Transformer<Graph<V,E>,Set<Set<V>>> {
     private int mNumEdgesToRemove;
     private Map<E, Pair<V>> edges_removed;
+    private Transformer<E, ? extends Number> edge_weights;
 
    /**
-    * Constructs a new clusterer for the specified graph.
-    * @param numEdgesToRemove the number of edges to be progressively removed from the graph
+    * 无权图的初始化操作
+    * @param numEdgesToRemove 想要移去的边的条数
     */
-    public EdgeBetweennessClusterer(int numEdgesToRemove) {
+    @SuppressWarnings({ "unchecked", "rawtypes" })
+	public EdgeBetweennessClusterer(int numEdgesToRemove) {
         mNumEdgesToRemove = numEdgesToRemove;
         edges_removed = new LinkedHashMap<E, Pair<V>>();
+        edge_weights = new ConstantTransformer(1);
     }
 
     /**
-    * Finds the set of clusters which have the strongest "community structure".
-    * The more edges removed the smaller and more cohesive the clusters.
-    * @param graph the graph
-    */
+     * 加权图的初始化操作
+     * @param mNumEdgesToRemove
+     * @param edge_weights
+     */
+    public EdgeBetweennessClusterer(int mNumEdgesToRemove,
+		Transformer<E, ? extends Number> edge_weights) {
+    	this.mNumEdgesToRemove = mNumEdgesToRemove;
+    	edges_removed = new LinkedHashMap<E, Pair<V>>();
+    	this.edge_weights = edge_weights;
+    }
+
+
+	/**
+	 * 初始化后对待处理的图进行聚类操作
+     * @param graph 待处理的图
+     */
     public Set<Set<V>> transform(Graph<V,E> graph) {
                 
         if (mNumEdgesToRemove < 0 || mNumEdgesToRemove > graph.getEdgeCount()) {
@@ -61,7 +65,7 @@ public class EdgeBetweennessClusterer<V,E> implements Transformer<Graph<V,E>,Set
         edges_removed.clear();
 
         for (int k=0;k<mNumEdgesToRemove;k++) {
-            BetweennessCentrality<V,E> bc = new BetweennessCentrality<V,E>(graph);
+            BetweennessCentrality<V,E> bc = new BetweennessCentrality<V,E>(graph,edge_weights);
             E to_remove = null;
             double score = 0;
             for (E e : graph.getEdges())
@@ -86,15 +90,19 @@ public class EdgeBetweennessClusterer<V,E> implements Transformer<Graph<V,E>,Set
     }
 
     /**
-     * Retrieves the list of all edges that were removed 
-     * (assuming extract(...) was previously called).  
-     * The edges returned
-     * are stored in order in which they were removed.
-     * 
-     * @return the edges in the original graph
+     * 调用前记得先用{@link EdgeBetweennessClusterer#transform(Graph)}计算
+     * @return List 被移去的边
      */
     public List<E> getEdgesRemoved() 
     {
         return new ArrayList<E>(edges_removed.keySet());
     }
+
+    /**
+     * 调用前记得先用{@link EdgeBetweennessClusterer#transform(Graph)}计算
+     * @return Map 被移去的边
+     */
+	public Map<E, Pair<V>> getEdges_removed() {
+		return edges_removed;
+	}
 }
