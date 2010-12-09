@@ -16,8 +16,11 @@ import edu.zju.cs.ooobgy.algo.util.MapBinaryHeap;
 import edu.zju.cs.ooobgy.graph.Graph;
 
 /**
- * Computes betweenness centrality for each vertex and edge in the graph.
+ * 对图中betweenness进行计算，比M. E. J. Newman and M. Girvan定义的最短路径算法稍有优化
  * 
+ * @author frogcherry 周晓龙
+ * @created 2010-12-9
+ * @Email frogcherry@gmail.com
  * @see "Ulrik Brandes: A Faster Algorithm for Betweenness Centrality. Journal of Mathematical Sociology 25(2):163-177, 2001."
  */
 public class BetweennessCentrality<V, E> 

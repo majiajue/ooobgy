@@ -13,9 +13,11 @@ package edu.zju.cs.ooobgy.algo.scorer;
 
 
 /**
- * An interface for algorithms that assign scores to edges.
- *
- * @param <E> the edge type
+ * 基本的score接口，度量边
+ * @author frogcherry 周晓龙
+ * @created 2010-12-9
+ * @Email frogcherry@gmail.com
+ * @param <V> the vertex type
  * @param <S> the score type
  */
 public interface EdgeScorer<E, S>
