@@ -32,11 +32,10 @@ public class BetweennessCentrality<V, E>
 	protected Map<V, BetweennessData> vertex_data;
 		
 	/**
-	 * Calculates betweenness scores based on the all-pairs unweighted shortest paths
-	 * in the graph.
-	 * @param graph the graph for which the scores are to be calculated
+	 * 对于无权图的betweenness计算的初始化构造
+	 * @param graph 待计算的无权图
 	 */
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public BetweennessCentrality(Graph<V, E> graph) 
 	{
 		initialize(graph);
@@ -44,18 +43,15 @@ public class BetweennessCentrality<V, E>
 	}
 
 	/**
-	 * Calculates betweenness scores based on the all-pairs weighted shortest paths in the
-	 * graph.
+	 * 对加权的图进行betweenness计算
 	 * 
-	 * <p>NOTE: This version of the algorithm may not work correctly on all graphs; we're still
-	 * working out the bugs.  Use at your own risk.
-	 * @param graph the graph for which the scores are to be calculated
-	 * @param edge_weights the edge weights to be used in the path length calculations
+	 * @param graph 待计算的加权图
+	 * @param edge_weights 存储边的加权的结构
 	 */
 	public BetweennessCentrality(Graph<V, E> graph, 
 			Transformer<E, ? extends Number> edge_weights) 
 	{
-		// reject negative-weight edges up front
+		// 防治负权参与计算
 		for (E e : graph.getEdges())
 		{
 			double e_weight = edge_weights.transform(e).doubleValue();
@@ -120,9 +116,6 @@ public class BetweennessCentrality<V, E>
                       	queue.offer(x);
                     }
                     
-                    // note:
-                    // (1) this can only happen with weighted edges
-                    // (2) x's SP count and incoming edges are updated below 
                     if (x_data.distance > x_potential_dist)
                     {
                     	x_data.distance = x_potential_dist;
