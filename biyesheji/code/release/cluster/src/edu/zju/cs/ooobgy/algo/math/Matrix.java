@@ -24,5 +24,31 @@ public class Matrix {
 		this.matrix = new double[rowCount][columnCount];
 	}
 	
+	/**
+	 * 取一个元素
+	 * @param rowIndex
+	 * @param columnIndex
+	 * @return
+	 */
+	public double element(int rowIndex, int columnIndex){
+		//TODO Exception
+		return matrix[rowIndex][columnIndex];
+	}
 	
+	/**
+	 * 获得某行的加和结果
+	 * @return
+	 */
+	public double sumRow(int rowIndex){
+		if (rowIndex >= rowCount) {
+			throw new IllegalArgumentException("matrix row index <" + rowIndex + "> id out of bound [" + rowCount + "]!");
+		}
+		
+		double sum = 0;
+		for (int i = 0; i < columnCount; i++) {
+			sum += matrix[rowIndex][i];
+		}
+		
+		return sum;
+	}
 }
