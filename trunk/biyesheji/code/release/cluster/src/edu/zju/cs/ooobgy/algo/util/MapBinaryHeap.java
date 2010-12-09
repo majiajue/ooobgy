@@ -1,16 +1,3 @@
-/*
- * Copyright (c) 2003, the JUNG Project and the Regents of the University 
- * of California
- * All rights reserved.
- *
- * This software is open-source under the BSD license; see either
- * "license.txt" or
- * http://jung.sourceforge.net/license.txt for a description.
- */
-/*
- * 
- * Created on Oct 29, 2003
- */
 package edu.zju.cs.ooobgy.algo.util;
 
 import java.util.AbstractCollection;
@@ -26,15 +13,10 @@ import java.util.Vector;
 import org.apache.commons.collections15.IteratorUtils;
 
 /**
- * An array-based binary heap implementation of a priority queue, 
- * which also provides
- * efficient <code>update()</code> and <code>contains</code> operations.
- * It contains extra infrastructure (a hash table) to keep track of the 
- * position of each element in the array; thus, if the key value of an element
- * changes, it may be "resubmitted" to the heap via <code>update</code>
- * so that the heap can reposition it efficiently, as necessary.  
- * 
- * @author Joshua O'Madadhain
+ * 基本数据结构结构二项堆的实现
+ * @author frogcherry 周晓龙
+ * @created 2010-12-9
+ * @Email frogcherry@gmail.com
  */
 public class MapBinaryHeap<T>
     extends AbstractCollection<T> 
@@ -47,7 +29,7 @@ public class MapBinaryHeap<T>
 
     /**
      * Creates a <code>MapBinaryHeap</code> whose heap ordering
-     * is based on the ordering of the elements specified by <code>c</code>.
+     * is based on the ordering of the elements specified by <code>Comparator</code>.
      */
     public MapBinaryHeap(Comparator<T> comp)
     {
