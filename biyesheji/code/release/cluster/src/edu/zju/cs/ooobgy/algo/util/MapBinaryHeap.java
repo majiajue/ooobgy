@@ -13,7 +13,8 @@ import java.util.Vector;
 import org.apache.commons.collections15.IteratorUtils;
 
 /**
- * 基本数据结构结构二项堆的实现
+ * 基本数据结构结构二项堆的实现</br>
+ * 源于基本算法包的实现
  * @author frogcherry 周晓龙
  * @created 2010-12-9
  * @Email frogcherry@gmail.com
