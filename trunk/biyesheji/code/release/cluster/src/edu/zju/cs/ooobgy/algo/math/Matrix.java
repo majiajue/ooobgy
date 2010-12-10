@@ -12,12 +12,23 @@ public class Matrix {
 	private int rowCount;
 	private int columnCount;
 	
+	/**
+	 * 使用二维数组和行列规模初始化一个矩阵
+	 * @param matrix
+	 * @param rowCount
+	 * @param columnCount
+	 */
 	public Matrix(double[][] matrix, int rowCount, int columnCount) {
 		this.matrix = matrix;
 		this.rowCount = rowCount;
 		this.columnCount = columnCount;
 	}
 
+	/**
+	 * 使用行列规模初始化一个空的矩阵
+	 * @param rowCount
+	 * @param columnCount
+	 */
 	public Matrix(int rowCount, int columnCount) {
 		this.rowCount = rowCount;
 		this.columnCount = columnCount;
@@ -31,7 +42,10 @@ public class Matrix {
 	 * @return
 	 */
 	public double element(int rowIndex, int columnIndex){
-		//TODO Exception
+		if (rowIndex >= rowCount || columnIndex >= columnCount) {
+			throw new IllegalArgumentException("matrix row index <" + rowIndex + "> id out of bound [" + rowCount + "]!\n" 
+					+ "matrix column index <" + columnIndex + "> id out of bound [" + columnCount + "]!");
+		}
 		return matrix[rowIndex][columnIndex];
 	}
 	
@@ -51,4 +65,38 @@ public class Matrix {
 		
 		return sum;
 	}
+	
+	/**
+	 * 获得某列的加和结果
+	 * @return
+	 */
+	public double sumColumn(int columnIndex){
+		if (columnIndex >= columnCount) {
+			throw new IllegalArgumentException("matrix column index <" + columnIndex + "> id out of bound [" + columnCount + "]!");
+		}
+		
+		double sum = 0;
+		for (int i = 0; i < rowCount; i++) {
+			sum += matrix[i][columnIndex];
+		}
+		
+		return sum;
+	}
+	
+	/**
+	 * 对矩阵所有元素进行加和
+	 * @return
+	 */
+	public double sumElements() {
+		double sum = 0;
+		for (int i = 0; i < rowCount; i++) {
+			for (int j = 0; j < columnCount; j++) {
+				sum += matrix[i][j];
+			}
+		}
+		
+		return sum;
+	}
+	
+	
 }
