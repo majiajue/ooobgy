@@ -11,5 +11,9 @@ public class MatrixTest extends TestCase{
 			}
 			System.out.println();
 		}
+		
+		System.out.println("-------------------------");
+		matrix.addElement(1, 1, 0.3);
+		System.out.println(matrix);
 	}
 }

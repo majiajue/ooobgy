@@ -121,6 +121,20 @@ public class Matrix {
 	@Override
 	public String toString() {
 		StringBuilder matrixStr = new StringBuilder();
+		for (int i = 0; i < rowCount; i++) {
+			matrixStr.append("[");
+			for (int j = 0; j < columnCount; j++) {
+				matrixStr.append(matrix[i][j]);
+				if (j < columnCount - 1) {
+					matrixStr.append("\t");
+				}
+			}
+			matrixStr.append("]");
+			if (i < rowCount - 1) {
+				matrixStr.append("\n");
+			}
+		}
+		
 		return matrixStr.toString();
 	}
 }
