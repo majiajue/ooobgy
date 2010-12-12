@@ -9,6 +9,7 @@ import org.apache.commons.collections15.Transformer;
 
 import edu.zju.cs.ooobgy.algo.cluster.WeakComponentClusterer;
 import edu.zju.cs.ooobgy.graph.util.Pair;
+import edu.zju.cs.ooobgy.graph.weight.EdgeWeight;
 
 /**
  * 在聚类算法中常用的一个Graph描述的实现，
@@ -26,17 +27,30 @@ import edu.zju.cs.ooobgy.graph.util.Pair;
 public class ClusterGraph<V, E> extends WeakComponentGraph<V, E> implements WeightedGraph<V, E>, UndirectedGraph<V, E>{
 	private Map<V, Set<E>> vertices;//vertex为key,edges为value
 	private Map<E, Pair<V>> edges;//edge为key,vertex为value
+	private Transformer<E, ? extends Number> edge_weights;//边的权重
 
-	public ClusterGraph(Map<V, Set<E>> vertices, Map<E, Pair<V>> edges) {
+	/**
+	 * 使用已知的图的表示构件进行构造，不保证依赖的完备性，请谨慎使用，使用时许哟确保传入的构件配套
+	 * @param vertices
+	 * @param edges
+	 * @param edge_weights
+	 */
+	public ClusterGraph(Map<V, Set<E>> vertices, Map<E, Pair<V>> edges, 
+			Transformer<E, ? extends Number> edge_weights) {
 		super();
 		this.vertices = vertices;
 		this.edges = edges;
+		this.edge_weights = edge_weights;
 	}
 
+	/**
+	 * 全新空构造
+	 */
 	public ClusterGraph() {
 		super();
 		this.edges = new HashMap<E, Pair<V>>();
 		this.vertices = new HashMap<V, Set<E>>();
+		this.edge_weights = new EdgeWeight<E, Double>(this.getEdges());
 	}
 
 	@Override
@@ -166,7 +180,14 @@ public class ClusterGraph<V, E> extends WeakComponentGraph<V, E> implements Weig
 
 	@Override
 	public Transformer<E, ? extends Number> getEdgeWeights() {
-		// TODO Auto-generated method stub
-		return null;
+		return getEdge_weights();
+	}
+
+	public void setEdge_weights(Transformer<E, ? extends Number> edge_weights) {
+		this.edge_weights = edge_weights;
+	}
+
+	public Transformer<E, ? extends Number> getEdge_weights() {
+		return edge_weights;
 	}
 }
