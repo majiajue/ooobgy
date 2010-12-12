@@ -5,6 +5,8 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
+import org.apache.commons.collections15.Transformer;
+
 import edu.zju.cs.ooobgy.algo.cluster.WeakComponentClusterer;
 import edu.zju.cs.ooobgy.graph.util.Pair;
 
@@ -21,7 +23,7 @@ import edu.zju.cs.ooobgy.graph.util.Pair;
  * @see Graph
  * @see WeakComponentGraph
  */
-public class ClusterGraph<V, E> extends WeakComponentGraph<V, E> {
+public class ClusterGraph<V, E> extends WeakComponentGraph<V, E> implements WeightedGraph<V, E>, UndirectedGraph<V, E>{
 	private Map<V, Set<E>> vertices;//vertex为key,edges为value
 	private Map<E, Pair<V>> edges;//edge为key,vertex为value
 
@@ -160,5 +162,11 @@ public class ClusterGraph<V, E> extends WeakComponentGraph<V, E> {
 		} else {
 			return false;
 		}
+	}
+
+	@Override
+	public Transformer<E, ? extends Number> getEdgeWeights() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }
