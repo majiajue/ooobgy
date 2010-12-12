@@ -88,7 +88,7 @@ public class ClusterGraph<V, E> extends WeakComponentGraph<V, E> implements Weig
 	@Override
 	@Deprecated
 	public V getDest(E directed_edge) {
-		return getEndpoints(directed_edge).getFirst();
+		return getEndpoints(directed_edge).getSecond();
 	}
 
 	@Override
