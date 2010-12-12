@@ -42,10 +42,8 @@ public class Matrix {
 	 * @return
 	 */
 	public double element(int rowIndex, int columnIndex){
-		if (rowIndex >= rowCount || columnIndex >= columnCount) {
-			throw new IllegalArgumentException("matrix row index <" + rowIndex + "> id out of bound [" + rowCount + "]!\n" 
-					+ "matrix column index <" + columnIndex + "> id out of bound [" + columnCount + "]!");
-		}
+		checkColumn(columnIndex);
+		checkRow(rowIndex);
 		return matrix[rowIndex][columnIndex];
 	}
 	
@@ -54,9 +52,7 @@ public class Matrix {
 	 * @return
 	 */
 	public double sumRow(int rowIndex){
-		if (rowIndex >= rowCount) {
-			throw new IllegalArgumentException("matrix row index <" + rowIndex + "> id out of bound [" + rowCount + "]!");
-		}
+		checkRow(rowIndex);
 		
 		double sum = 0;
 		for (int i = 0; i < columnCount; i++) {
@@ -65,15 +61,19 @@ public class Matrix {
 		
 		return sum;
 	}
+
+	private void checkRow(int rowIndex) {
+		if (rowIndex >= rowCount) {
+			throw new IllegalArgumentException("matrix row index <" + rowIndex + "> id out of bound [" + rowCount + "]!");
+		}
+	}
 	
 	/**
 	 * 获得某列的加和结果
 	 * @return
 	 */
 	public double sumColumn(int columnIndex){
-		if (columnIndex >= columnCount) {
-			throw new IllegalArgumentException("matrix column index <" + columnIndex + "> id out of bound [" + columnCount + "]!");
-		}
+		checkColumn(columnIndex);
 		
 		double sum = 0;
 		for (int i = 0; i < rowCount; i++) {
@@ -81,6 +81,12 @@ public class Matrix {
 		}
 		
 		return sum;
+	}
+
+	private void checkColumn(int columnIndex) {
+		if (columnIndex >= columnCount) {
+			throw new IllegalArgumentException("matrix column index <" + columnIndex + "> id out of bound [" + columnCount + "]!");
+		}
 	}
 	
 	/**
@@ -98,5 +104,23 @@ public class Matrix {
 		return sum;
 	}
 	
-	
+	/**
+	 * 元素递加一个数据
+	 * @param rowIndex
+	 * @param columnIndex
+	 * @param addition
+	 * @return
+	 */
+	public double addElement(int rowIndex, int columnIndex, double addition){
+		checkColumn(columnIndex);
+		checkRow(rowIndex);
+		matrix[rowIndex][columnIndex] += addition;
+		return matrix[rowIndex][columnIndex];
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder matrixStr = new StringBuilder();
+		return matrixStr.toString();
+	}
 }
