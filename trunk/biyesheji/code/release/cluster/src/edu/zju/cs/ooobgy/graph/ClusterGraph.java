@@ -9,7 +9,7 @@ import org.apache.commons.collections15.Transformer;
 
 import edu.zju.cs.ooobgy.algo.cluster.WeakComponentClusterer;
 import edu.zju.cs.ooobgy.graph.util.Pair;
-import edu.zju.cs.ooobgy.graph.weight.EdgeWeight;
+import edu.zju.cs.ooobgy.graph.weight.EdgesWeight;
 
 /**
  * 在聚类算法中常用的一个Graph描述的实现，
@@ -50,7 +50,7 @@ public class ClusterGraph<V, E> extends WeakComponentGraph<V, E> implements Weig
 		super();
 		this.edges = new HashMap<E, Pair<V>>();
 		this.vertices = new HashMap<V, Set<E>>();
-		this.edge_weights = new EdgeWeight<E, Double>(this.getEdges());
+		this.edge_weights = new EdgesWeight<E, Double>(this.getEdges());
 	}
 
 	@Override
