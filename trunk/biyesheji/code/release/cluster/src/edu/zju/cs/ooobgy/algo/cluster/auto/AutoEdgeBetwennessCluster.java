@@ -1,4 +1,4 @@
-package edu.zju.cs.ooobgy.algo.cluster;
+package edu.zju.cs.ooobgy.algo.cluster.auto;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -9,6 +9,7 @@ import org.apache.commons.collections15.KeyValue;
 import org.apache.commons.collections15.Transformer;
 import org.apache.commons.collections15.functors.ConstantTransformer;
 
+import edu.zju.cs.ooobgy.algo.cluster.EdgeBetweennessClusterer;
 import edu.zju.cs.ooobgy.algo.cluster.qualify.ClusterQualify;
 import edu.zju.cs.ooobgy.algo.cluster.qualify.ModularityQualify;
 import edu.zju.cs.ooobgy.algo.util.SimpleKeyValue;
