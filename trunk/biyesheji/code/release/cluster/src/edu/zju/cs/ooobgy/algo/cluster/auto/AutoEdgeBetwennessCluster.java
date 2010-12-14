@@ -121,6 +121,12 @@ public class AutoEdgeBetwennessCluster<V, E> implements AutoEdgeRemovalCluster<V
 		this.clusterComplete = clusterComplete;
 	}
 	
+	/**
+	 * 最优切边效果entity
+	 * @author frogcherry 周晓龙
+	 * @created 2010-12-14
+	 * @Email frogcherry@gmail.com
+	 */
 	private class BestAEBCluster{
 		private KeyValue<Integer, Double> bestTrack;
 		private Set<Set<V>> bestClusterSet;
