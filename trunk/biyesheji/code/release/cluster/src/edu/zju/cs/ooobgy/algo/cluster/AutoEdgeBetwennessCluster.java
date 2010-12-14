@@ -1,6 +1,5 @@
 package edu.zju.cs.ooobgy.algo.cluster;
 
-import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
@@ -17,6 +16,13 @@ import edu.zju.cs.ooobgy.graph.ClusterGraph;
 import edu.zju.cs.ooobgy.graph.Graph;
 import edu.zju.cs.ooobgy.graph.util.Pair;
 
+/**
+ * 自动地使用MQ度量进行EdgeBetweenness聚类</br>
+ * 可选是否进行完全的切边
+ * @author frogcherry 周晓龙
+ * @created 2010-12-14
+ * @Email frogcherry@gmail.com
+ */
 public class AutoEdgeBetwennessCluster<V, E> implements AutoEdgeRemovalCluster<V, E> {
 	private Transformer<E, ? extends Number> edge_weights;
 	/** 跟踪聚类过程中的量值轨迹 */
@@ -24,7 +30,7 @@ public class AutoEdgeBetwennessCluster<V, E> implements AutoEdgeRemovalCluster<V
 	/** 跟踪聚类过程中的切边轨迹 */
 	private List<E> edgeTrack;
 	/** 记录最优的聚类<迭代次数Index, quality量值> */
-	private KeyValue<Integer, Double> bestCluster;
+	private BestAEBCluster bestCluster;
 	/**
 	 *  是否全切边 
 	 *  true: 切边到全图所有点变成孤立点，在整个过程中跟踪最优量值(MQ算法中为最高峰值)
@@ -42,7 +48,7 @@ public class AutoEdgeBetwennessCluster<V, E> implements AutoEdgeRemovalCluster<V
 		this.edge_weights = edge_weights;
 		this.qualityTrack = new LinkedList<Double>();
 		this.edgeTrack = new LinkedList<E>();
-		this.bestCluster = new SimpleKeyValue<Integer, Double>(0, 0d);
+		this.bestCluster = new BestAEBCluster();
 		this.clusterComplete = true;
 	}
 
@@ -55,7 +61,7 @@ public class AutoEdgeBetwennessCluster<V, E> implements AutoEdgeRemovalCluster<V
 		this.edge_weights = new ConstantTransformer(1);
 		this.qualityTrack = new LinkedList<Double>();
 		this.edgeTrack = new LinkedList<E>();
-		this.bestCluster = new SimpleKeyValue<Integer, Double>(0, 0d);
+		this.bestCluster = new BestAEBCluster();
 		this.clusterComplete = true;
 	}
 	
@@ -67,22 +73,43 @@ public class AutoEdgeBetwennessCluster<V, E> implements AutoEdgeRemovalCluster<V
 		this.clusterComplete = clusterComplete;
 		this.qualityTrack = new LinkedList<Double>();
 		this.edgeTrack = new LinkedList<E>();
-		this.bestCluster = new SimpleKeyValue<Integer, Double>(0, 0d);
+		this.bestCluster = new BestAEBCluster();
 	}
 
 	@Override
 	public Set<Set<V>> transform(Graph<V, E> graph1) {
 		if (graph1 instanceof ClusterGraph) {
 			throw new IllegalArgumentException("Trying cluster a graph could NOT cluster!");
-		}
-		
+		}		
 		ClusterGraph<V, E> graph = (ClusterGraph<V, E>)graph1;
-		//必须要克隆原始边集合，否则原始边信息会在切边过程中丢失
-		Map<E, Pair<V>> originEdges = new HashMap<E, Pair<V>>(graph.getEdgeMap());
+		
+		////必须要克隆原始边集合，否则原始边信息会在切边过程中丢失;
+		//Map<E, Pair<V>> originEdges = new HashMap<E, Pair<V>>(graph.getEdgeMap());
+		//note: 已修改聚类逻辑保证图分析不破坏图结构的原则，克隆便不必要
+		Map<E, Pair<V>> originEdges = graph.getEdgeMap();
 		//使用传入的权值和原始边集合构造度量器ModularityQualify
 		ClusterQualify<V, E> clusterQualify = new ModularityQualify<V, E>(originEdges, edge_weights);
-		// TODO Auto-generated method stub
-		return null;
+		
+		//自动切边，两种策略，依照@clusterComplete值
+		EdgeBetweennessClusterer<V, E> ebCluster;
+		for (int i = 0; i < originEdges.size(); i++) {
+			ebCluster = new EdgeBetweennessClusterer<V, E>(1, edge_weights);
+			Set<Set<V>> clusters = ebCluster.transform(graph);//1.切边
+			Double mq = new Double(clusterQualify.qualify(clusters));//2.评价
+			//3.加入track
+			qualityTrack.add(mq);
+			E removedEdge = ebCluster.getEdgesRemoved().get(0);
+			edgeTrack.add(removedEdge);
+			//4.更新最优记录
+			if (mq > bestCluster.bestMQ()) {
+				bestCluster.setBestClusterSet(clusters);
+				bestCluster.setBestTrack(new SimpleKeyValue<Integer, Double>(i, mq));
+			}else if (!clusterComplete) {
+				break;//如果选定不完全切边选项，则在第一个峰值就退出迭代
+			}
+		}
+		
+		return bestCluster.bestClusterSet;
 	}
 
 	public boolean isClusterComplete() {
@@ -91,5 +118,41 @@ public class AutoEdgeBetwennessCluster<V, E> implements AutoEdgeRemovalCluster<V
 
 	public void setClusterComplete(boolean clusterComplete) {
 		this.clusterComplete = clusterComplete;
+	}
+	
+	private class BestAEBCluster{
+		private KeyValue<Integer, Double> bestTrack;
+		private Set<Set<V>> bestClusterSet;
+		
+		public BestAEBCluster() {
+			super();
+			this.bestTrack = new SimpleKeyValue<Integer, Double>(0, 0d);
+			this.bestClusterSet = null;
+		}
+
+		public Set<Set<V>> getBestClusterSet() {
+			return bestClusterSet;
+		}
+		
+		public void setBestClusterSet(Set<Set<V>> bestClusterSet) {
+			this.bestClusterSet = bestClusterSet;
+		}
+		
+		@SuppressWarnings("unused")
+		public KeyValue<Integer, Double> getBestTrack() {
+			return bestTrack;
+		}
+
+		public void setBestTrack(KeyValue<Integer, Double> bestTrack) {
+			this.bestTrack = bestTrack;
+		}
+
+		public Integer bestTrackIndex(){
+			return this.bestTrack.getKey();
+		}
+		
+		public Double bestMQ(){
+			return this.bestTrack.getValue();
+		}
 	}
 }

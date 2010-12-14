@@ -81,6 +81,7 @@ public class EdgeBetweennessClusterer<V,E> implements Transformer<Graph<V,E>,Set
         WeakComponentClusterer<V,E> wcSearch = new WeakComponentClusterer<V,E>();
         Set<Set<V>> clusterSet = wcSearch.transform(graph);
 
+        //恢复图
         for (Map.Entry<E, Pair<V>> entry : edges_removed.entrySet())
         {
             Pair<V> endpoints = entry.getValue();
