@@ -36,9 +36,8 @@ public class ModularityQualify<V, E> implements ClusterQualify<V, E>{
 	}
 
 	/**
-	 * 对于Modularity Qualify评价算法，必须还要已知原始的图结构，可选传入边的权重
+	 * 对于Modularity Qualify评价算法，必须还要已知原始的图结构
 	 * @param originEdges
-	 * @param edge_weights
 	 */
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public ModularityQualify(Map<E, Pair<V>> originEdges) {
