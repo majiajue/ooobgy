@@ -24,6 +24,14 @@ public class Matrix {
 		this.columnCount = columnCount;
 	}
 
+	public int getRowCount() {
+		return rowCount;
+	}
+
+	public int getColumnCount() {
+		return columnCount;
+	}
+
 	/**
 	 * 使用行列规模初始化一个空的矩阵
 	 * @param rowCount
