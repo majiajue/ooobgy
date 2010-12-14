@@ -1,4 +1,4 @@
-package edu.zju.cs.ooobgy.algo.cluster;
+package edu.zju.cs.ooobgy.algo.cluster.auto;
 
 import java.util.List;
 import java.util.Set;
