@@ -109,7 +109,7 @@ public class AutoEdgeBetwennessCluster<V, E> implements AutoEdgeRemovalCluster<V
 			}
 		}
 		
-		return bestCluster.bestClusterSet;
+		return bestCluster.getBestClusterSet();
 	}
 
 	public boolean isClusterComplete() {
@@ -154,5 +154,23 @@ public class AutoEdgeBetwennessCluster<V, E> implements AutoEdgeRemovalCluster<V
 		public Double bestMQ(){
 			return this.bestTrack.getValue();
 		}
+	}
+
+	@Override
+	public Set<Set<V>> autoCluster(Graph<V, E> graph) {
+		return transform(graph);
+	}
+
+	/**
+	 * 必须先聚类才能得到移去的边的信息，否则得到的是空集
+	 */
+	@Override
+	public List<E> getRemovedEdged() {
+		List<E> edges = new LinkedList<E>();
+		for (int i = 0; i <= bestCluster.bestTrackIndex(); i++) {
+			edges.add(edgeTrack.get(i));
+		}
+		
+		return edges;
 	}
 }
