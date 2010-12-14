@@ -177,7 +177,11 @@ public class ClusterGraph<V, E> extends WeakComponentGraph<V, E> implements Weig
 			return false;
 		}
 	}
-
+	
+	public Map<E, Pair<V>> getEdgeMap(){
+		return this.edges;
+	}
+	
 	@Override
 	public Transformer<E, ? extends Number> getEdgeWeights() {
 		return getEdge_weights();
