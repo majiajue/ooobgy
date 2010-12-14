@@ -169,6 +169,7 @@ public class AutoEdgeBetwennessCluster<V, E> implements AutoEdgeRemovalCluster<V
 	}
 
 	/**
+	 * 获取切边信息
 	 * 必须先聚类才能得到移去的边的信息，否则得到的是空集
 	 */
 	@Override
