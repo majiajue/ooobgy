@@ -66,6 +66,11 @@ public class AutoEdgeBetwennessCluster<V, E> implements AutoEdgeRemovalCluster<V
 		this.clusterComplete = true;
 	}
 	
+	/**
+	 * 有权图构造，可指定是否切边到底
+	 * @param edge_weights
+	 * @param clusterComplete
+	 */
 	public AutoEdgeBetwennessCluster(
 			Transformer<E, ? extends Number> edge_weights,
 			boolean clusterComplete) {
