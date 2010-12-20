@@ -5,5 +5,7 @@
 	<classpathentry combineaccessrules="false" kind="src" path="/cluster"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/db_operator"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/visualization"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/comm_algo"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/dynamic_sna"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
