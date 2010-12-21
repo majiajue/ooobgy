@@ -1,6 +1,6 @@
 package edu.zju.cs.ooobgy.graph;
 
-import edu.zju.cs.ooobgy.graph.util.Pair;
+import edu.zju.cs.ooobgy.algo.util.Pair;
 
 /**
  * 提取公共方法的实现到抽象类中

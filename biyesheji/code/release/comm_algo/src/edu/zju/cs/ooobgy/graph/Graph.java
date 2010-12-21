@@ -2,7 +2,7 @@ package edu.zju.cs.ooobgy.graph;
 
 import java.util.Collection;
 
-import edu.zju.cs.ooobgy.graph.util.Pair;
+import edu.zju.cs.ooobgy.algo.util.Pair;
 
 
 /**
