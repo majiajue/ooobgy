@@ -8,7 +8,7 @@ import java.util.Set;
 import org.apache.commons.collections15.Transformer;
 
 import edu.zju.cs.ooobgy.algo.cluster.WeakComponentClusterer;
-import edu.zju.cs.ooobgy.graph.util.Pair;
+import edu.zju.cs.ooobgy.algo.util.Pair;
 import edu.zju.cs.ooobgy.graph.weight.EdgesWeight;
 
 /**
