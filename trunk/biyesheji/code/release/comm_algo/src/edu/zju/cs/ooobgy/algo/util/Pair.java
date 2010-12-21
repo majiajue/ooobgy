@@ -1,4 +1,4 @@
-package edu.zju.cs.ooobgy.graph.util;
+package edu.zju.cs.ooobgy.algo.util;
 
 import java.io.Serializable;
 import java.util.Collection;
