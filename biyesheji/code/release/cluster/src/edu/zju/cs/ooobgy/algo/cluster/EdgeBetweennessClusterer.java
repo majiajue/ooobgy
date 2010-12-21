@@ -10,8 +10,8 @@ import org.apache.commons.collections15.Transformer;
 import org.apache.commons.collections15.functors.ConstantTransformer;
 
 import edu.zju.cs.ooobgy.algo.scorer.BetweennessCentrality;
+import edu.zju.cs.ooobgy.algo.util.Pair;
 import edu.zju.cs.ooobgy.graph.Graph;
-import edu.zju.cs.ooobgy.graph.util.Pair;
 
 
 /**

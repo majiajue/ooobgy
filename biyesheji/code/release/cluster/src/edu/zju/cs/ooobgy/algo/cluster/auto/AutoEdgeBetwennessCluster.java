@@ -12,10 +12,10 @@ import org.apache.commons.collections15.functors.ConstantTransformer;
 import edu.zju.cs.ooobgy.algo.cluster.EdgeBetweennessClusterer;
 import edu.zju.cs.ooobgy.algo.cluster.qualify.ClusterQualify;
 import edu.zju.cs.ooobgy.algo.cluster.qualify.ModularityQualify;
+import edu.zju.cs.ooobgy.algo.util.Pair;
 import edu.zju.cs.ooobgy.algo.util.SimpleKeyValue;
 import edu.zju.cs.ooobgy.graph.ClusterGraph;
 import edu.zju.cs.ooobgy.graph.Graph;
-import edu.zju.cs.ooobgy.graph.util.Pair;
 
 /**
  * 自动地使用MQ度量进行EdgeBetweenness聚类</br>
