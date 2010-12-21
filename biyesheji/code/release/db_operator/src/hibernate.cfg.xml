@@ -18,3 +18,5 @@
   <mapping resource="edu/zju/cs/ooobgy/db/entity/hbms/Station.hbm.xml"/>
  </session-factory>
 </hibernate-configuration>
+
+
