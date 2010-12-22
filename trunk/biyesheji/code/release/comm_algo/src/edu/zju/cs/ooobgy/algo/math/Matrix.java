@@ -125,6 +125,21 @@ public class Matrix {
 		matrix[rowIndex][columnIndex] += addition;
 		return matrix[rowIndex][columnIndex];
 	}
+	
+	/**
+	 * 更新矩阵的元素，返回旧的元素
+	 * @param rowIndex
+	 * @param columnIndex
+	 * @param newElement
+	 * @return
+	 */
+	public double updateElement(int rowIndex, int columnIndex, double newElement){
+		checkColumn(columnIndex);
+		checkRow(rowIndex);
+		double oldElement = matrix[rowIndex][columnIndex];
+		matrix[rowIndex][columnIndex] = newElement;
+		return oldElement;
+	}
 
 	@Override
 	public String toString() {
@@ -144,5 +159,21 @@ public class Matrix {
 		}
 		
 		return matrixStr.toString();
+	}
+	
+	/**
+	 * 输出转置后的矩阵
+	 * @return
+	 */
+	public Matrix transpose() {
+		Matrix matrixT = new Matrix(columnCount, rowCount);
+		
+		for (int i = 0; i < rowCount; i++) {
+			for (int j = 0; j < columnCount; j++) {
+				matrixT.updateElement(j, i, matrix[i][j]);
+			}
+		}
+		
+		return matrixT;
 	}
 }
