@@ -11,7 +11,15 @@ import junit.framework.TestCase;
  * @Email frogcherry@gmail.com
  */
 public class MatrixTest extends TestCase{
+	private Matrix matrix;
 	
+	@Override
+	protected void setUp() throws Exception {
+		double[][] old = {{1,2,3,4},{11,22,33,44},{111,222,333,444}};
+		matrix = new Matrix(old, 3, 4);
+		super.setUp();
+	}
+
 	@Test
 	public void testMatrix(){
 		Matrix matrix = new Matrix(3, 3);
@@ -29,11 +37,19 @@ public class MatrixTest extends TestCase{
 	
 	@Test
 	public void testTranspose(){
-		double[][] old = {{1,2,3,4},{11,22,33,44},{111,222,333,444}};
-		Matrix matrix = new Matrix(old, 3, 4);
 		System.out.println("matrix:");
 		System.out.println(matrix);
 		System.out.println("Transposed matrix:");
 		System.out.println(matrix.transpose());
+	}
+	
+	@Test
+	public void testMakeSquare(){
+		System.out.println("matrix:");
+		System.out.println(matrix);
+		System.out.println("Squared matrix:");
+		System.out.println(matrix.makeSquareMatrix(0));
+		System.out.println("transposed Squared matrix:");
+		System.out.println(matrix.transpose().makeSquareMatrix(-1));
 	}
 }
