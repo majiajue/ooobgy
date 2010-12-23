@@ -15,8 +15,6 @@ import java.util.Map.Entry;
  * 3  3  1</br>
  * 的最优组合为m[0][2]+m[1][0]=6,或者m[0][2]+m[1][1]=6</br>
  * 当存在多个解时，返回第一个找到的解</br>
- * 该算法的各个分支在计算的时候，如果矩阵的行数大于列数，会先将其转置，再处理，保证行数小于列出，
- * 但该模块作为黑盒不对外界发生影响</br>
  * 各个算法接口:贪心法greedBestSumCombination,KM完备算法completeBestSumCombination返回最优元素和</br>
  * 通过getCombination方法获得取到的是哪些元素,map<Key行下标,Value列下标>，</br>
  * <li>当行数大于列数时,一些行rowi无法取到任何元素，这时对应map.get(rowi)返回越界的列值表示该行rowi不取值</li>
