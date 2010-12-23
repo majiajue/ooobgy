@@ -1,6 +1,10 @@
 package edu.zju.cs.ooobgy.algo.math;
 
+import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
 
 /**
  * 计算矩阵中一些最优组合的方法，这里主要是一些最优元素组合和的方法</br>
@@ -13,16 +17,18 @@ import java.util.List;
  * 当存在多个解时，返回第一个找到的解</br>
  * 该算法的各个分支在计算的时候，如果矩阵的行数大于列数，会先将其转置，再处理，保证行数小于列出，
  * 但该模块作为黑盒不对外界发生影响</br>
- * 各个算法接口返回最优元素和，可通过getCombination方法获得每行取第几列的，</br>
- * 如果行数大于列数，则该返回数组中的-1表示列数已取完，该行不取;</br>
- * 如果列数大于行数，另通过方法getUnusedCol取得未使用的列</br>
+ * 各个算法接口:贪心法greedBestSumCombination,KM完备算法completeBestSumCombination返回最优元素和</br>
+ * 通过getCombination方法获得取到的是哪些元素,map<Key行下标,Value列下标>，</br>
+ * <li>当行数大于列数时,一些行rowi无法取到任何元素，这时对应map.get(rowi)返回越界的列值表示该行rowi不取值</li>
+ * <li>当列数大于行数时,使用map.get(rowj) rowCount<=j<colCount,可以知道那些列没被使用</li></br>
+ * 另外使用List getUnusedRow和getUnusedCol可以知道那些行(列没有被使用) </br>
+ * </br>
  * @author frogcherry 周晓龙
  * @created 2010-12-22
  * @Email frogcherry@gmail.com
  */
 public class BestMatrixSum {
-	private List<Integer> combination;
-	private List<Integer> unusedCol;
+	private Map<Integer, Integer> combination;
 	private Matrix matrix;
 	
 	/**
@@ -32,6 +38,7 @@ public class BestMatrixSum {
 	public BestMatrixSum(Matrix matrix) {
 		super();
 		this.matrix = matrix;
+		this.combination = new HashMap<Integer, Integer>();
 	}
 
 	/**
@@ -59,18 +66,47 @@ public class BestMatrixSum {
 	 * 获得最优组合，每行取第几列
 	 * @return
 	 */
-	public List<Integer> getCombination() {
+	public Map<Integer, Integer> getCombination() {
 		return combination;
 	}
-
+	
 	/**
-	 * 获得未使用的列，如果列数小于行数，该值无意义
-	 * @return
+	 * 取得未被使用的行
 	 */
-	public List<Integer> getUnusedCol() {
-		return unusedCol;
+	public List<Integer> getUnusedRow(){
+		List<Integer> unRows = new LinkedList<Integer>();
+		int columnCount = matrix.getColumnCount();
+		int rowCount = matrix.getRowCount();
+		if (columnCount >= rowCount) {
+			return unRows;
+		}
+		
+		for (Entry<Integer, Integer> kv : combination.entrySet()) {
+			if (kv.getValue() >= columnCount) {
+				unRows.add(kv.getKey());
+			}
+		}
+		
+		return unRows;
 	}
 	
+	/**
+	 * 取得未被使用的列
+	 */
+	public List<Integer> getUnusedCol(){
+		List<Integer> unCols = new LinkedList<Integer>();
+		int colCount = matrix.getColumnCount();
+		int rowCount = matrix.getRowCount();
+		if (colCount <= rowCount) {
+			return unCols;
+		}
+		
+		for (int i = rowCount; i < colCount; i++) {
+			unCols.add(combination.get(i));
+		}
+		
+		return unCols;
+	}
 	/**
 	 * KM算法实现计算二部图最大权匹配的算法
 	 * @author frogcherry 周晓龙
