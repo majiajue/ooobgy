@@ -43,13 +43,16 @@ public class BestMatrixSum {
 	}
 	
 	/**
-	 * 穷举法计算真正最优解
+	 * 求最大匹配
+	 * 二部图的最大全匹配,KM算法
+	 * @see "二部图的最大全匹配,KM算法"
 	 * @param maxIsBest
-	 * @return
+	 * @return 最大匹配和
 	 */
 	public double completeBestSumCombination(boolean maxIsBest){
 		//TODO:
-		return 0;
+		KMalgo kmAlgo = new KMalgo();
+		return kmAlgo.km(maxIsBest);
 	}
 
 	/**
@@ -66,5 +69,20 @@ public class BestMatrixSum {
 	 */
 	public List<Integer> getUnusedCol() {
 		return unusedCol;
+	}
+	
+	/**
+	 * KM算法实现计算二部图最大权匹配的算法
+	 * @author frogcherry 周晓龙
+	 * @created 2010-12-23
+	 * @Email frogcherry@gmail.com
+	 */
+	private class KMalgo{
+		
+		public double km(boolean maxIsBest) {
+			// TODO Auto-generated method stub
+			return 0;
+		}
+		
 	}
 }
