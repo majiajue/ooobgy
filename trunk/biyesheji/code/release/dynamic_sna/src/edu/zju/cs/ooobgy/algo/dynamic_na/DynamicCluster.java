@@ -44,7 +44,12 @@ public class DynamicCluster<V, E> implements
 		List<Entry<String, Set<V>>> preCluster = new ArrayList<Entry<String, Set<V>>>(
 				preSlice.getClusters().entrySet());//已知团伙的id对应情况，转为list方便后续分析
 		List<Set<V>> newClusters = new ArrayList<Set<V>>(newSliceClusters);//新的团伙信息，待分析list
-		Matrix qualifyMatrix = new Matrix(preCluster.size(), newClusters.size());
+		Matrix similarityMatrix = new Matrix(preCluster.size(), newClusters.size());//相似度矩阵
+		
+		//1.填充相似度矩阵
+		for (int i = 0; i < preCluster.size(); i++) {
+			
+		}
 		
 		// TODO Auto-generated method stub
 		return slice;
