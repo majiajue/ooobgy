@@ -52,4 +52,11 @@ public class MatrixTest extends TestCase{
 		System.out.println("transposed Squared matrix:");
 		System.out.println(matrix.transpose().makeSquareMatrix(-1));
 	}
+	@Test
+	public void testNeg(){
+		System.out.println("matrix:");
+		System.out.println(matrix);
+		System.out.println("neg matrix:");
+		System.out.println(matrix.negElements());
+	}
 }

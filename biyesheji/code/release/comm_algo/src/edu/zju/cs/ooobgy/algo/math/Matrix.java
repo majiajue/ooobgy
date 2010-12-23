@@ -246,6 +246,21 @@ public class Matrix {
 		return matrixS;
 	}
 	
+	/**
+	 * 将矩阵的每个元素都取反，返回新矩阵，原矩阵不处理
+	 * @return
+	 */
+	public Matrix negElements() {
+		Matrix nMatrix = new Matrix(rowCount, columnCount);
+		for (int i = 0; i < rowCount; i++) {
+			for (int j = 0; j < columnCount; j++) {
+				nMatrix.updateElement(i, j, -matrix[i][j]);
+			}
+		}
+		
+		return nMatrix;
+	}
+	
 	@Override
 	protected Object clone() throws CloneNotSupportedException {
 		Matrix cloneMatrix = new Matrix(this);
