@@ -267,7 +267,45 @@ public class Matrix implements AbstractMatrix<Double> {
 		return cloneMatrix;
 	}
 	
+	/**
+	 * 转换成str矩阵
+	 * @return
+	 */
 	public MatrixStr toMatrixStr() {
 		return new MatrixStr(this);
+	}
+	
+	/**
+	 * 返回矩阵中的最大元素
+	 * @return
+	 */
+	public double maxElement(){
+		double max = matrix[0][0] ;
+		for (int i = 0; i < rowCount; i++) {
+			for (int j = 0; j < columnCount; j++) {
+				if (matrix[i][j] > max) {
+					max = matrix[i][j];
+				}
+			}
+		}
+		
+		return max;
+	}
+	
+	/**
+	 * 将矩阵中的每一个元素对一个值complete取补
+	 * 即m[i][j] = complete - m[i][j]
+	 * @param complete
+	 * @return
+	 */
+	public Matrix invMatrix(double complete){
+		Matrix invMatrix = new Matrix(rowCount, columnCount);
+		for (int i = 0; i < rowCount; i++) {
+			for (int j = 0; j < columnCount; j++) {
+				invMatrix.updateElement(i, j, complete - matrix[i][j]);
+			}
+		}
+		
+		return invMatrix;
 	}
 }

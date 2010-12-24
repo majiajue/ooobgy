@@ -57,9 +57,10 @@ public class BestMatrixSum {
 	 * @return 最大匹配和
 	 */
 	public double completeBestSumCombination(boolean maxIsBest){
-		//TODO:
-		KMalgo kmAlgo = new KMalgo();
-		return kmAlgo.km(maxIsBest);
+		Matrix todoMatrix = maxIsBest ? matrix : matrix.negElements();
+		KMalgo kmAlgo = new KMalgo(todoMatrix);
+		double res = maxIsBest ? kmAlgo.km() : -kmAlgo.km();
+		return res;
 	}
 
 	/**
@@ -109,16 +110,59 @@ public class BestMatrixSum {
 	}
 	/**
 	 * KM算法实现计算二部图最大权匹配的算法
+	 * 只做最大值
 	 * @author frogcherry 周晓龙
 	 * @created 2010-12-23
 	 * @Email frogcherry@gmail.com
 	 */
 	private class KMalgo{
+		public static final double UNDEFINE = Double.NEGATIVE_INFINITY;
 		
-		public double km(boolean maxIsBest) {
+		private Matrix wMatrix;
+		private int maxn;
+		private double[] lx;
+		private double[] ly;
+		private double[] linky;
+		private double[] visx;
+		private double[] visy;
+		private double lack;
+		
+		/**
+		 * 构造时进行初始化工作
+		 */
+		public KMalgo(Matrix matrix) {
+			this.wMatrix = matrix.makeSquareMatrix(0);//填充成方阵
+			this.maxn = wMatrix.getRowCount();
+			this.lx = new double[maxn];
+			this.ly = new double[maxn];
+			this.linky = new double[maxn];
+			this.visx = new double[maxn];
+			this.visy = new double[maxn];
+		}
+		
+		/**
+		 * KM算法求最大全匹配
+		 * @return
+		 */
+		public double km() {
+			this.linky = formatArray(linky, UNDEFINE, maxn);
+			//1.初始化顶标
+			for(int i = 0; i < maxn; i++){
+		        for(int j = 0; j < maxn; j++){
+		        	
+		        }
+			}
+			
 			// TODO Auto-generated method stub
 			return 0;
 		}
 		
+		private double[] formatArray(double[] array, double value, int size){
+			for (int i = 0; i < size; i++) {
+				array[i] = value;
+			}
+			
+			return array;
+		}
 	}
 }
