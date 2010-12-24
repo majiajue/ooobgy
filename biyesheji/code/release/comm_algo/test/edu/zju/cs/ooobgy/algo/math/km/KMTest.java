@@ -47,6 +47,7 @@ public class KMTest extends TestCase{
 	
 	@Test
 	public void testOther(){
+		caseId = 10;
 		{double[][] old = {{1,7,1},{1,7,3},{1,8,1}};
 		matrix = new Matrix(old, 3, 3);
 		testKM();}
@@ -77,6 +78,33 @@ public class KMTest extends TestCase{
 		
 		{double[][] old = {{9,1,8},{1,9,1},{1,8,1}};
 		matrix = new Matrix(old, 3, 3);
+		testKM();}
+	}
+	
+	/**
+	 * 测试非方阵
+	 */
+	public void testNosq(){
+		caseId = 20;
+		
+		{double[][] old = {{9,1,8,10},{1,9,1,10},{1,8,1,10}};
+		matrix = new Matrix(old, 3, 4);
+		testKM();}
+
+		{double[][] old = {{9,1,8,10},{1,8,1,10},{1,8,1,10}};
+		matrix = new Matrix(old, 3, 4);
+		testKM();}
+		
+		{double[][] old = {{9,1,8},{1,8,1},{1,8,1},{10,10,10}};
+		matrix = new Matrix(old, 4, 3);
+		testKM();}
+		
+		{double[][] old = {{5,1,8,1,8,10,1,8,1,10,10,10}};
+		matrix = new Matrix(old, 1, 12);
+		testKM();}
+		
+		{double[][] old = {{5},{1},{8},{1},{8},{10},{1},{8},{1},{12},{10},{10}};
+		matrix = new Matrix(old, 12, 1);
 		testKM();}
 	}
 	
