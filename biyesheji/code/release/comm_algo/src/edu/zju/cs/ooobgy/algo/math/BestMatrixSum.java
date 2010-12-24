@@ -191,6 +191,10 @@ public class BestMatrixSum {
 				}
 			}
 			
+			for (int i = 0; i < maxn; i++) {
+				combination.put(new Integer(i), new Integer(linky[i]));
+			}
+			
 			return 0;
 		}
 
