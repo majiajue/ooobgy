@@ -41,7 +41,6 @@ public class KMTest extends TestCase{
 			matrixStr.updateElement(kv.getKey(), kv.getValue(), chosed);
 		}
 		System.out.println(matrixStr);
-		System.out.println("--------------------------------");
 		caseId ++;
 	}
 	
