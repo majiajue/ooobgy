@@ -8,7 +8,7 @@ import java.util.Set;
 import org.apache.commons.collections15.Transformer;
 
 import edu.zju.cs.ooobgy.algo.dynamic_na.pojo.ClusterSlice;
-import edu.zju.cs.ooobgy.algo.math.Matrix;
+import edu.zju.cs.ooobgy.algo.math.matrix.Matrix;
 
 /**
  * 对两个切片进行动态分析
