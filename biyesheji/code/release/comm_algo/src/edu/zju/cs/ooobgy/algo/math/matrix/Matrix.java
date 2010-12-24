@@ -1,4 +1,4 @@
-package edu.zju.cs.ooobgy.algo.math;
+package edu.zju.cs.ooobgy.algo.math.matrix;
 
 /**
  * 描述矩阵的数据结构的封装，仅实现现在需要的功能 内容元素使用double基本类型填充，暂时不需要复杂的封装实现，
@@ -8,7 +8,7 @@ package edu.zju.cs.ooobgy.algo.math;
  * @created 2010-12-9
  * @Email frogcherry@gmail.com
  */
-public class Matrix {
+public class Matrix implements AbstractMatrix<Double> {
 	private double[][] matrix;
 	private int rowCount;
 	private int columnCount;
@@ -54,22 +54,27 @@ public class Matrix {
 		}
 	}
 
+	/**
+	 * @see edu.zju.cs.ooobgy.algo.math.matrix.AbstractMatrix#getRowCount()
+	 */
+	@Override
 	public int getRowCount() {
 		return rowCount;
 	}
 
+	/**
+	 * @see edu.zju.cs.ooobgy.algo.math.matrix.AbstractMatrix#getColumnCount()
+	 */
+	@Override
 	public int getColumnCount() {
 		return columnCount;
 	}
 
 	/**
-	 * 取一个元素
-	 * 
-	 * @param rowIndex
-	 * @param columnIndex
-	 * @return
+	 * @see edu.zju.cs.ooobgy.algo.math.matrix.AbstractMatrix#element(int, int)
 	 */
-	public double element(int rowIndex, int columnIndex) {
+	@Override
+	public Double element(int rowIndex, int columnIndex) {
 		checkColumn(columnIndex);
 		checkRow(rowIndex);
 		return matrix[rowIndex][columnIndex];
@@ -163,14 +168,10 @@ public class Matrix {
 	}
 
 	/**
-	 * 更新矩阵的元素，返回旧的元素
-	 * 
-	 * @param rowIndex
-	 * @param columnIndex
-	 * @param newElement
-	 * @return
+	 * @see edu.zju.cs.ooobgy.algo.math.matrix.AbstractMatrix#updateElement(int, int, double)
 	 */
-	public double updateElement(int rowIndex, int columnIndex, double newElement) {
+	@Override
+	public Double updateElement(int rowIndex, int columnIndex, Double newElement) {
 		checkColumn(columnIndex);
 		checkRow(rowIndex);
 		double oldElement = matrix[rowIndex][columnIndex];
@@ -199,10 +200,9 @@ public class Matrix {
 	}
 
 	/**
-	 * 输出转置后的矩阵，原矩阵不变
-	 * 
-	 * @return
+	 * @see edu.zju.cs.ooobgy.algo.math.matrix.AbstractMatrix#transpose()
 	 */
+	@Override
 	public Matrix transpose() {
 		Matrix matrixT = new Matrix(columnCount, rowCount);
 

@@ -6,6 +6,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import edu.zju.cs.ooobgy.algo.math.matrix.Matrix;
+
 /**
  * 计算矩阵中一些最优组合的方法，这里主要是一些最优元素组合和的方法</br>
  * 最优元素和组合：矩阵的每一行取一个元素，已经取过的列不能再取，这些取到的元素具有最大（最小）值的时候，称作这是一个
