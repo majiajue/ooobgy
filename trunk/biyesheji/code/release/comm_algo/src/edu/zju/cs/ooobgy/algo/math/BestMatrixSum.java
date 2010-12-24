@@ -135,16 +135,14 @@ public class BestMatrixSum {
 	 * @created 2010-12-23
 	 * @Email frogcherry@gmail.com
 	 */
-	private class KMalgo{
-		public static final double UNDEFINE = Double.NEGATIVE_INFINITY;
-		
+	private class KMalgo{	
 		private Matrix wMatrix;
 		private int maxn;
 		private double[] lx;
 		private double[] ly;
-		private double[] linky;
-		private double[] visx;
-		private double[] visy;
+		private int[] linky;
+		private boolean[] visx;
+		private boolean[] visy;
 		private double lack;
 		
 		/**
@@ -155,9 +153,9 @@ public class BestMatrixSum {
 			this.maxn = wMatrix.getRowCount();
 			this.lx = new double[maxn];
 			this.ly = new double[maxn];
-			this.linky = new double[maxn];
-			this.visx = new double[maxn];
-			this.visy = new double[maxn];
+			this.linky = new int[maxn];
+			this.visx = new boolean[maxn];
+			this.visy = new boolean[maxn];
 		}
 		
 		/**
@@ -165,19 +163,66 @@ public class BestMatrixSum {
 		 * @return
 		 */
 		public double km() {
-			this.linky = formatArray(linky, UNDEFINE, maxn);
+			this.linky = formatArray(linky, Integer.MIN_VALUE, maxn);
 			//1.初始化顶标
 			for(int i = 0; i < maxn; i++){
 		        for(int j = 0; j < maxn; j++){
-		        	
+		        	if (wMatrix.element(i, j) > lx[i]) {
+						lx[i] = wMatrix.element(i, j);
+					}
 		        }
 			}
 			
-			// TODO Auto-generated method stub
+			//2.最大全匹配
+			for (int x = 0; x < maxn; x++) {
+				while (true) {
+					this.visx = new boolean[maxn];
+					this.visy = new boolean[maxn];
+					lack = Integer.MAX_VALUE;
+					if(find(x)) 
+						break;
+					for(int i = 0; i < maxn; i++){
+						if(visx[i]) 
+							lx[i] -= lack;
+						if(visy[i]) 
+							ly[i] -= lack;
+					}
+				}
+			}
+			
 			return 0;
 		}
-		
+
+		private boolean find(int x) {
+			visx[x] = true;
+			for(int y = 0; y < maxn; y++){
+				if(visy[y])
+					continue;
+				double t = lx[x] + ly[y] - wMatrix.element(x, y);
+				if(t == 0){
+					visy[y] = true;
+					if (linky[y] == Integer.MIN_VALUE || find(linky[y])) {
+						linky[y] = x;
+						return true;
+					}
+				}else if (lack > t) {
+					lack = t;
+				}
+			}
+
+			return false;
+		}
+
+		@SuppressWarnings("unused")
 		private double[] formatArray(double[] array, double value, int size){
+			for (int i = 0; i < size; i++) {
+				array[i] = value;
+			}
+			
+			return array;
+		}
+		
+		private int[] formatArray(int[] array, int value, int size) {
 			for (int i = 0; i < size; i++) {
 				array[i] = value;
 			}
