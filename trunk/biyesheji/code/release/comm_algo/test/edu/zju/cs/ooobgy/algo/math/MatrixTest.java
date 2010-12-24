@@ -2,6 +2,8 @@ package edu.zju.cs.ooobgy.algo.math;
 
 import org.junit.Test;
 
+import edu.zju.cs.ooobgy.algo.math.matrix.Matrix;
+
 import junit.framework.TestCase;
 
 /**
