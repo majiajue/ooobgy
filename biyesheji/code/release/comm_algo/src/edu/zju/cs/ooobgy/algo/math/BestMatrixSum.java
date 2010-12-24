@@ -144,7 +144,7 @@ public class BestMatrixSum {
 		private int[] linky;
 		private boolean[] visx;
 		private boolean[] visy;
-		private double lack;
+		private double[] slack;
 		
 		/**
 		 * 构造时进行初始化工作
@@ -157,6 +157,7 @@ public class BestMatrixSum {
 			this.linky = new int[maxn];
 			this.visx = new boolean[maxn];
 			this.visy = new boolean[maxn];
+			this.slack = new double[maxn];
 		}
 		
 		/**
@@ -164,6 +165,7 @@ public class BestMatrixSum {
 		 * @return
 		 */
 		public double km() {
+			double d = Integer.MAX_VALUE;
 			this.linky = ArrayUtil.formatArray(linky, Integer.MIN_VALUE, maxn);
 			//1.初始化顶标
 			for(int i = 0; i < maxn; i++){
@@ -176,23 +178,34 @@ public class BestMatrixSum {
 			
 			//2.最大全匹配
 			for (int x = 0; x < maxn; x++) {
+				//回复松弛变量
+				for (int i = 0; i < maxn; i++) {
+					slack[i] = Integer.MAX_VALUE;
+				}
 				while (true) {
 					this.visx = new boolean[maxn];
 					this.visy = new boolean[maxn];
-					lack = Integer.MAX_VALUE;
 					if(find(x)) 
 						break;
+					d = Integer.MAX_VALUE;//刷新d值
+					for(int i = 0; i < maxn; i++){
+						if (!visy[i] && d > slack[i]) {
+							d = slack[i];
+						}
+					}
 					for(int i = 0; i < maxn; i++){
 						if(visx[i]) 
-							lx[i] -= lack;
+							lx[i] -= d;
 						if(visy[i]) 
-							ly[i] -= lack;
+							ly[i] += d;
+						else
+							slack[i] -= d;
 					}
 				}
 			}
 			
 			for (int i = 0; i < maxn; i++) {
-				combination.put(new Integer(i), new Integer(linky[i]));
+				combination.put(new Integer(linky[i]), new Integer(i));
 			}
 			
 			return 0;
@@ -210,8 +223,8 @@ public class BestMatrixSum {
 						linky[y] = x;
 						return true;
 					}
-				}else if (lack > t) {
-					lack = t;
+				}else if (slack[y] > t) {
+					slack[y] = t;
 				}
 			}
 

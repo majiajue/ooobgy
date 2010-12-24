@@ -47,13 +47,41 @@ public class KMTest extends TestCase{
 	
 	@Test
 	public void testOther(){
-		double[][] old = {{1,7,1},{1,7,3},{1,8,1}};
+		{double[][] old = {{1,7,1},{1,7,3},{1,8,1}};
 		matrix = new Matrix(old, 3, 3);
-		testKM();
+		testKM();}
 		
-		double[][] old2 = {{8,2,8},{8,2,6},{8,1,8}};
-		matrix = new Matrix(old2, 3, 3);
-		testKM();
+		{double[][] old = {{8,2,8},{8,2,7},{8,1,8}};
+		matrix = new Matrix(old, 3, 3);
+		testKM();}
 		
+		{double[][] old = {{8,1,8},{8,8,1},{8,8,8}};
+		matrix = new Matrix(old, 3, 3);
+		testKM();}
+		
+		{double[][] old = {{9,1,8},{8,8,1},{8,8,8}};
+		matrix = new Matrix(old, 3, 3);
+		testKM();}
+		
+		{double[][] old = {{9,1,8},{8,8,1},{8,8,1}};
+		matrix = new Matrix(old, 3, 3);
+		testKM();}
+		
+		{double[][] old = {{9,1,8},{8,8,1},{1,8,1}};
+		matrix = new Matrix(old, 3, 3);
+		testKM();}
+		
+		{double[][] old = {{9,1,8},{1,8,1},{1,8,1}};
+		matrix = new Matrix(old, 3, 3);
+		testKM();}
+		
+		{double[][] old = {{9,1,8},{1,9,1},{1,8,1}};
+		matrix = new Matrix(old, 3, 3);
+		testKM();}
+	}
+	
+	public static void main(String[] args) {
+		KMTest kmTest = new KMTest();
+		kmTest.testOther();
 	}
 }
