@@ -17,6 +17,17 @@ public class MatrixStr implements AbstractMatrix<String>{
 		this.matrix = new String[rowCount][columnCount];
 	}
 
+	public MatrixStr(Matrix matrixd) {
+		this.rowCount = matrixd.getRowCount();
+		this.columnCount = matrixd.getColumnCount();
+		this.matrix = new String[rowCount][columnCount];
+		for (int i = 0; i < rowCount; i++) {
+			for (int j = 0; j < columnCount; j++) {
+				updateElement(i, j, matrixd.element(i, j).toString());
+			}
+		}
+	}
+
 	@Override
 	public int getRowCount() {
 		return rowCount;
@@ -49,5 +60,24 @@ public class MatrixStr implements AbstractMatrix<String>{
 
 		return matrixT;
 	}
+	
+	@Override
+	public String toString() {
+		StringBuilder matrixStr = new StringBuilder();
+		for (int i = 0; i < rowCount; i++) {
+			matrixStr.append("[");
+			for (int j = 0; j < columnCount; j++) {
+				matrixStr.append(matrix[i][j]);
+				if (j < columnCount - 1) {
+					matrixStr.append("\t");
+				}
+			}
+			matrixStr.append("]");
+			if (i < rowCount - 1) {
+				matrixStr.append("\n");
+			}
+		}
 
+		return matrixStr.toString();
+	}
 }
