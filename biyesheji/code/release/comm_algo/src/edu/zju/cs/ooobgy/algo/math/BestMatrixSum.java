@@ -7,6 +7,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 
 import edu.zju.cs.ooobgy.algo.math.matrix.Matrix;
+import edu.zju.cs.ooobgy.algo.util.array.ArrayUtil;
 
 /**
  * 计算矩阵中一些最优组合的方法，这里主要是一些最优元素组合和的方法</br>
@@ -163,7 +164,7 @@ public class BestMatrixSum {
 		 * @return
 		 */
 		public double km() {
-			this.linky = formatArray(linky, Integer.MIN_VALUE, maxn);
+			this.linky = ArrayUtil.formatArray(linky, Integer.MIN_VALUE, maxn);
 			//1.初始化顶标
 			for(int i = 0; i < maxn; i++){
 		        for(int j = 0; j < maxn; j++){
@@ -211,23 +212,6 @@ public class BestMatrixSum {
 			}
 
 			return false;
-		}
-
-		@SuppressWarnings("unused")
-		private double[] formatArray(double[] array, double value, int size){
-			for (int i = 0; i < size; i++) {
-				array[i] = value;
-			}
-			
-			return array;
-		}
-		
-		private int[] formatArray(int[] array, int value, int size) {
-			for (int i = 0; i < size; i++) {
-				array[i] = value;
-			}
-			
-			return array;
 		}
 	}
 }
