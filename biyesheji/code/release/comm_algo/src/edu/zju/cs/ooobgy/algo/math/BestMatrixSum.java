@@ -23,6 +23,7 @@ import edu.zju.cs.ooobgy.algo.math.matrix.Matrix;
  * <li>当列数大于行数时,使用map.get(rowj) rowCount<=j<colCount,可以知道那些列没被使用</li></br>
  * 另外使用List getUnusedRow和getUnusedCol可以知道那些行(列没有被使用) </br>
  * </br>
+ * 警告：矩阵内的参数非负数；有负数将可能产生不可预料的结果
  * @author frogcherry 周晓龙
  * @created 2010-12-22
  * @Email frogcherry@gmail.com
@@ -57,9 +58,28 @@ public class BestMatrixSum {
 	 * @return 最大匹配和
 	 */
 	public double completeBestSumCombination(boolean maxIsBest){
-		Matrix todoMatrix = maxIsBest ? matrix : matrix.negElements();
+		Matrix todoMatrix = matrix;
+		
+		//对于最小权的预处理
+		double roof = 0;
+		if (!maxIsBest) {
+			roof = matrix.maxElement() + 1;
+			todoMatrix = matrix.invMatrix(roof);
+		}
+		
 		KMalgo kmAlgo = new KMalgo(todoMatrix);
-		double res = maxIsBest ? kmAlgo.km() : -kmAlgo.km();
+		double res = kmAlgo.km();
+		
+		//对于最小权的数据恢复处理
+		if (!maxIsBest) {
+			int min = matrix.getRowCount();
+			if (matrix.getRowCount() > matrix.getColumnCount()) {
+				min = matrix.getColumnCount();
+			}
+			res = res - roof * min;
+			res = -res;
+		}
+		
 		return res;
 	}
 
