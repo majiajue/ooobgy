@@ -7,7 +7,7 @@ import java.util.Set;
 import org.apache.commons.collections15.Transformer;
 import org.apache.commons.collections15.functors.ConstantTransformer;
 
-import edu.zju.cs.ooobgy.algo.math.Matrix;
+import edu.zju.cs.ooobgy.algo.math.matrix.Matrix;
 import edu.zju.cs.ooobgy.algo.util.Pair;
 import edu.zju.cs.ooobgy.graph.WeakComponentGraph;
 
