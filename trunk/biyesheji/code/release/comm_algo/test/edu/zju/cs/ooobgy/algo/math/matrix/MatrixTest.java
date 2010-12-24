@@ -1,4 +1,4 @@
-package edu.zju.cs.ooobgy.algo.math;
+package edu.zju.cs.ooobgy.algo.math.matrix;
 
 import org.junit.Test;
 

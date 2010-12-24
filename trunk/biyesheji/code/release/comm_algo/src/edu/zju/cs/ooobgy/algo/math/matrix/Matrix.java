@@ -266,4 +266,8 @@ public class Matrix implements AbstractMatrix<Double> {
 		Matrix cloneMatrix = new Matrix(this);
 		return cloneMatrix;
 	}
+	
+	public MatrixStr toMatrixStr() {
+		return new MatrixStr(this);
+	}
 }
