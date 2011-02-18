@@ -18,7 +18,7 @@ import junit.framework.TestCase;
  */
 public class KMTest extends TestCase{
 	private Matrix matrix;
-	private int caseId = 0;
+	private static int caseId = 0;
 	
 	@Override
 	protected void setUp() throws Exception {
