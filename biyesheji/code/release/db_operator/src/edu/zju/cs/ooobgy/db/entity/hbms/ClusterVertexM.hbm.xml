@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2010-12-21 15:38:42 by Hibernate Tools 3.4.0.Beta1 -->
+<hibernate-mapping>
+ <class entity-name="ClusterVertexM"
+  name="edu.zju.cs.ooobgy.db.entity.ClusterVertexM" table="cluster_vertex_m">
+  <id name="cvm_id" type="Integer">
+   <column name="cvm_id" sql-type="INTEGER" unique="true"/>
+   <generator class="native"/>
+  </id>
+  <property name="time_range" type="string">
+   <column length="6" name="time_range" sql-type="VARCHAR(6)"/>
+  </property>
+  <property name="pnode" type="string">
+   <column length="15" name="pnode" sql-type="VARCHAR(15)"/>
+  </property>
+  <property name="cluster_id" type="string">
+   <column length="35" name="cluster_id" sql-type="VARCHAR(35)"/>
+  </property>
+ </class>
+</hibernate-mapping>
