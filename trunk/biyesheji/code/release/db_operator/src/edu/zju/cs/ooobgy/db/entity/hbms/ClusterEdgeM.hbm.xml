@@ -3,7 +3,7 @@
                                    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <!-- Generated 2011-2-22 13:21:35 by Hibernate Tools 3.4.0.Beta1 -->
 <hibernate-mapping>
- <class name="edu.zju.cs.ooobgy.db.entity.ClusterEdgeM" table="CLUSTEREDGEM">
+ <class name="edu.zju.cs.ooobgy.db.entity.ClusterEdgeM" table="CLUSTER_EDGE_M">
   <id name="cem_id" type="java.lang.Integer">
    <column name="CEM_ID" sql-type="INTEGER"/>
    <generator class="native"/>
