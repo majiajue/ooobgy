@@ -3,7 +3,7 @@
                                    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <!-- Generated 2010-12-21 16:28:33 by Hibernate Tools 3.4.0.Beta1 -->
 <hibernate-mapping>
- <class name="edu.zju.cs.ooobgy.db.entity.UndirectedRalation" table="UNDIRECTEDRALATION">
+ <class name="edu.zju.cs.ooobgy.db.entity.UndirectedRalation" table="UNDIRECTED_RALATION">
   <id name="udr_id" type="java.lang.Integer">
    <column name="UDR_ID" sql-type="INTEGER"/>
    <generator class="native"/>
@@ -24,7 +24,7 @@
    <column name="CALL_TIME" sql-type="INTEGER"/>
   </property>
   <property generated="never" lazy="false" name="udr_weight" type="java.lang.Integer">
-   <column name="UDR_WEIGHT" sql-type="i"/>
+   <column name="UDR_WEIGHT" sql-type="INTEGER"/>
   </property>
  </class>
 </hibernate-mapping>
