@@ -1,6 +1,6 @@
 package edu.zju.cs.ooobgy.db.controller.dao;
 
-import edu.zju.cs.ooobgy.db.entity.UndirectedRalation;
+import edu.zju.cs.ooobgy.db.entity.ClusterEdgeM;
 
 /**
  * 
@@ -8,7 +8,6 @@ import edu.zju.cs.ooobgy.db.entity.UndirectedRalation;
  * @created 2011-2-22
  * @Email frogcherry@gmail.com
  */
-public interface UndirectedRalationDao extends
-		TDataDao<UndirectedRalation, Integer> {
-	
+public interface ClusterEdgeMDao extends TDataDao<ClusterEdgeM, Integer> {
+
 }
