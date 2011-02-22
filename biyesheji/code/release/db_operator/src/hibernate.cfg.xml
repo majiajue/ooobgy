@@ -14,9 +14,9 @@
   <mapping resource="edu/zju/cs/ooobgy/db/entity/hbms/CallRecord.hbm.xml"/>
   <mapping resource="edu/zju/cs/ooobgy/db/entity/hbms/DirectedRalation.hbm.xml"/>
   <mapping resource="edu/zju/cs/ooobgy/db/entity/hbms/PersonNode.hbm.xml"/>
-  <mapping resource="edu/zju/cs/ooobgy/db/entity/hbms/RelationWeighted.hbm.xml"/>
   <mapping resource="edu/zju/cs/ooobgy/db/entity/hbms/Station.hbm.xml"/>
+  <mapping resource="edu/zju/cs/ooobgy/db/entity/hbms/ClusterVertexM.hbm.xml"/>
+  <mapping resource="edu/zju/cs/ooobgy/db/entity/hbms/ClusterEdgeM.hbm.xml"/>
+  <mapping resource="edu/zju/cs/ooobgy/db/entity/hbms/UndirectedRalation.hbm.xml"/>
  </session-factory>
 </hibernate-configuration>
-
-
