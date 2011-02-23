@@ -1,5 +1,7 @@
 package edu.zju.cs.ooobgy.db.controller.dao;
 
+import java.util.List;
+
 import edu.zju.cs.ooobgy.db.entity.UndirectedRalation;
 
 /**
@@ -10,5 +12,6 @@ import edu.zju.cs.ooobgy.db.entity.UndirectedRalation;
  */
 public interface UndirectedRalationDao extends
 		TDataDao<UndirectedRalation, Integer> {
+	public List<UndirectedRalation> findAllInTimeRange(String time_range);
 	
 }

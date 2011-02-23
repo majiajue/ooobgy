@@ -28,5 +28,9 @@ public class UndirectedRalationDaoImpl extends TDataDaoImpl<UndirectedRalation, 
 	public UndirectedRalation findWithId(Integer id) {
 		return findWithID(id, UndirectedRalation.class);
 	}
-
+	
+	@Override
+	public List<UndirectedRalation> findAllInTimeRange(String time_range){
+		return findAll(UndirectedRalation.class, " p where p.time_range='"+ time_range +"'");
+	}
 }

@@ -57,5 +57,18 @@ public class UndirectedRalation {
 		this.udr_weight = udr_weight;
 	}
 	
-	
+	@Override
+	public String toString() {
+		StringBuilder str = new StringBuilder();
+		str.append("udrBean:[ ");
+		str.append(this.udr_id).append(", ");
+		str.append(this.time_range).append(", ");
+		str.append(this.pnode_1).append(", ");
+		str.append(this.pnode_2).append(", ");
+		str.append(this.call_count).append(", ");
+		str.append(this.call_time).append(", ");
+		str.append(this.udr_weight);
+		str.append("]");
+		return str.toString();
+	}
 }
