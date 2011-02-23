@@ -27,6 +27,7 @@ public class EdgeBetweennessClusterer<V,E> implements Transformer<Graph<V,E>,Set
     private int mNumEdgesToRemove;
     private Map<E, Pair<V>> edges_removed;
     private Transformer<E, ? extends Number> edge_weights;
+    private Graph<V,E> optGraph;//正在操作的图
 
    /**
     * 无权图的初始化操作
@@ -57,7 +58,7 @@ public class EdgeBetweennessClusterer<V,E> implements Transformer<Graph<V,E>,Set
      * @param graph 待处理的图
      */
     public Set<Set<V>> transform(Graph<V,E> graph) {
-                
+        this.optGraph = graph;
         if (mNumEdgesToRemove < 0 || mNumEdgesToRemove > graph.getEdgeCount()) {
             throw new IllegalArgumentException("Invalid number of edges passed in.");
         }
@@ -81,15 +82,21 @@ public class EdgeBetweennessClusterer<V,E> implements Transformer<Graph<V,E>,Set
         WeakComponentClusterer<V,E> wcSearch = new WeakComponentClusterer<V,E>();
         Set<Set<V>> clusterSet = wcSearch.transform(graph);
 
-        //恢复图
-        for (Map.Entry<E, Pair<V>> entry : edges_removed.entrySet())
-        {
-            Pair<V> endpoints = entry.getValue();
-            graph.addEdge(entry.getKey(), endpoints.getFirst(), endpoints.getSecond());
-        }
         return clusterSet;
     }
 
+    /**
+     * 需要恢复图请在当前聚类后马上进行
+     */
+    public void recoverGraph(){
+    	//恢复图
+        for (Map.Entry<E, Pair<V>> entry : edges_removed.entrySet())
+        {
+            Pair<V> endpoints = entry.getValue();
+            this.optGraph.addEdge(entry.getKey(), endpoints.getFirst(), endpoints.getSecond());
+        }
+    }
+    
     /**
      * 调用前记得先用{@link EdgeBetweennessClusterer#transform(Graph)}计算
      * @return List 被移去的边
