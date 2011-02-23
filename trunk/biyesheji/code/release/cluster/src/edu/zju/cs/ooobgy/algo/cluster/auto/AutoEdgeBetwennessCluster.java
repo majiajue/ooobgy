@@ -178,7 +178,7 @@ public class AutoEdgeBetwennessCluster<V, E> implements AutoEdgeRemovalCluster<V
 	 * 必须先聚类才能得到移去的边的信息，否则得到的是空集
 	 */
 	@Override
-	public List<E> getRemovedEdged() {
+	public List<E> getRemovedEdges() {
 		List<E> edges = new LinkedList<E>();
 		for (int i = 0; i <= bestCluster.bestTrackIndex(); i++) {
 			edges.add(edgeTrack.get(i));

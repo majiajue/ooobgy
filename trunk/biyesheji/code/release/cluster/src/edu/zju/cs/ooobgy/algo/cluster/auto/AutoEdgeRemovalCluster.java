@@ -14,5 +14,5 @@ import edu.zju.cs.ooobgy.graph.Graph;
  * @Email frogcherry@gmail.com
  */
 public interface AutoEdgeRemovalCluster<V,E> extends Transformer<Graph<V,E>,Set<Set<V>>>, AutoCluster<V, E>{
-	public List<E> getRemovedEdged();
+	public List<E> getRemovedEdges();
 }
