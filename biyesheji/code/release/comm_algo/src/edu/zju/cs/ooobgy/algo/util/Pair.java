@@ -54,7 +54,7 @@ public final class Pair<T> implements Collection<T>, Serializable
     public T getAnother(T one){
     	T first_o = getFirst();
     	T second_o = getSecond();
-    	return one.equals(first_o)?first_o:second_o;
+    	return one.equals(first_o)?second_o:first_o;
     }
     
     @Override
