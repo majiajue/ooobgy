@@ -194,4 +194,25 @@ public class ClusterGraph<V, E> extends WeakComponentGraph<V, E> implements Weig
 	public Transformer<E, ? extends Number> getEdge_weights() {
 		return edge_weights;
 	}
+	
+	@Override
+	public String toString() {
+		StringBuilder graphStr = new StringBuilder();
+		graphStr.append("{\nClusterGraph: \n");
+		
+		for (E e : this.edges.keySet()) {
+			graphStr.append("[ ");
+			graphStr.append(e).append(", ");
+			graphStr.append(this.getEndpoints(e)).append(", ");
+			graphStr.append(this.getEdgeWeight(e));
+			graphStr.append(" ]\n");
+		}
+		
+		graphStr.append("}");
+		return graphStr.toString();
+	}
+
+	public Number getEdgeWeight(E e) {
+		return edge_weights.transform(e);
+	}
 }

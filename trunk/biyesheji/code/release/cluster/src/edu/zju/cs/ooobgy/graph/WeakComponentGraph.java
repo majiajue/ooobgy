@@ -62,7 +62,7 @@ public abstract class WeakComponentGraph<V, E> extends AbstractGraph<V, E>{
 	@Override
 	public final boolean addEdge(E e, V v1, V v2) {
 		disableComponent();
-		return addEdge(e, v1, v2);
+		return addEdge2WC(e, v1, v2);
 	}
 
 	@Override
