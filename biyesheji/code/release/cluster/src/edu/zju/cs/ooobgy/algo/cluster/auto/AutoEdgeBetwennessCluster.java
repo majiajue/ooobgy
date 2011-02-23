@@ -84,7 +84,7 @@ public class AutoEdgeBetwennessCluster<V, E> implements AutoEdgeRemovalCluster<V
 
 	@Override
 	public Set<Set<V>> transform(Graph<V, E> graph1) {
-		if (graph1 instanceof ClusterGraph) {
+		if (!(graph1 instanceof ClusterGraph)) {
 			throw new IllegalArgumentException("Trying cluster a graph could NOT cluster!");
 		}		
 		ClusterGraph<V, E> graph = (ClusterGraph<V, E>)graph1;
