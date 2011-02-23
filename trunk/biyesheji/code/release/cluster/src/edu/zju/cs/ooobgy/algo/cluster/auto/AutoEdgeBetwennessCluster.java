@@ -1,5 +1,6 @@
 package edu.zju.cs.ooobgy.algo.cluster.auto;
 
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
@@ -90,9 +91,7 @@ public class AutoEdgeBetwennessCluster<V, E> implements AutoEdgeRemovalCluster<V
 		ClusterGraph<V, E> graph = (ClusterGraph<V, E>)graph1;
 		
 		////必须要克隆原始边集合，否则原始边信息会在切边过程中丢失;
-		//Map<E, Pair<V>> originEdges = new HashMap<E, Pair<V>>(graph.getEdgeMap());
-		//note: 已修改聚类逻辑保证图分析不破坏图结构的原则，克隆便不必要
-		Map<E, Pair<V>> originEdges = graph.getEdgeMap();
+		Map<E, Pair<V>> originEdges = new HashMap<E, Pair<V>>(graph.getEdgeMap());
 		//使用传入的权值和原始边集合构造度量器ModularityQualify
 		ClusterQualify<V, E> clusterQualify = new ModularityQualify<V, E>(originEdges, edge_weights);
 		
