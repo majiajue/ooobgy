@@ -23,5 +23,6 @@ public class EBClusterTest extends TestCase {
 		System.out.println("----------groups--------");
 		System.out.println(groups);
 		System.out.println("rm edges: " + clusterer.getEdgesRemoved());
+		System.out.println("rm edges: " + clusterer.getEdges_removed());
 	}
 }
