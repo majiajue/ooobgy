@@ -107,12 +107,16 @@ public class AutoEdgeBetwennessCluster<V, E> implements AutoEdgeRemovalCluster<V
 			edgeTrack.add(removedEdge);
 			//4.更新最优记录
 			if (mq > bestCluster.bestMQ()) {
+				////System.out.println("best change!");
 				bestCluster.setBestClusterSet(clusters);
 				bestCluster.setBestTrack(new SimpleKeyValue<Integer, Double>(i, mq));
 			}else if (!clusterComplete) {
 				break;//如果选定不完全切边选项，则在第一个峰值就退出迭代
 			}
 		}
+		
+		////System.out.println(edgeTrack);
+		////System.out.println(qualityTrack);
 		
 		return bestCluster.getBestClusterSet();
 	}
@@ -137,7 +141,7 @@ public class AutoEdgeBetwennessCluster<V, E> implements AutoEdgeRemovalCluster<V
 		
 		public BestAEBCluster() {
 			super();
-			this.bestTrack = new SimpleKeyValue<Integer, Double>(0, 0d);
+			this.bestTrack = new SimpleKeyValue<Integer, Double>(0, Double.NEGATIVE_INFINITY);
 			this.bestClusterSet = null;
 		}
 
