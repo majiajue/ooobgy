@@ -54,16 +54,13 @@ import edu.zju.cs.ooobgy.visualization.layout.Layout;
 
 
 /**
- * This simple app demonstrates how one can use our algorithms and visualization libraries in unison.
- * In this case, we generate use the Zachary karate club data set, widely known in the social networks literature, then
- * we cluster the vertices using an edge-betweenness clusterer, and finally we visualize the graph using
- * Fruchtermain-Rheingold layout and provide a slider so that the user can adjust the clustering granularity.
- * @author Scott White
+ * 
+ * @author frogcherry 周晓龙
+ * @created 2011-2-24
+ * @Email frogcherry@gmail.com
  */
 @SuppressWarnings({ "serial", "unchecked" })
 public class ClusterPlatform extends JApplet {
-	private String filePath = "datasets/zachary.net";
-
 	VisualizationViewer<String, Integer> vv;
 	
 //	Factory<Graph<String, Integer>> graphFactory;
@@ -96,18 +93,6 @@ public class ClusterPlatform extends JApplet {
 		// Add a restart button so the graph can be redrawn to fit the size of the frame
 		JFrame jf = new JFrame();
 		jf.getContentPane().add(cd);
-		
-		jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		jf.pack();
-		jf.setVisible(true);
-	}
-
-	public void runSharedPlatForm(String filePath) {
-		setFilePath(filePath);
-		start();
-		
-		JFrame jf = new JFrame();
-		jf.getContentPane().add(this);
 		
 		jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		jf.pack();
@@ -329,13 +314,5 @@ public class ClusterPlatform extends JApplet {
 			layout.put(subLayout,center);
 			vv.repaint();
 		}
-	}
-
-	public String getFilePath() {
-		return filePath;
-	}
-
-	public void setFilePath(String filePath) {
-		this.filePath = filePath;
 	}
 }
