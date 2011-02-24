@@ -3,6 +3,7 @@ package edu.zju.cs.ooobgy.graph;
 import java.util.Collection;
 
 import edu.zju.cs.ooobgy.algo.util.Pair;
+import edu.zju.cs.ooobgy.graph.util.EdgeType;
 
 
 /**
@@ -196,4 +197,6 @@ public interface Graph<V,E>
 	 * @return
 	 */
 	public int getVertexCount();
+	
+	public EdgeType getEdgeType(E e);
 }
