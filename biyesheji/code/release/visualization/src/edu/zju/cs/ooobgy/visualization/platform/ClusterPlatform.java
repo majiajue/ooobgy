@@ -44,7 +44,6 @@ import org.apache.commons.collections15.functors.MapTransformer;
 import org.apache.commons.collections15.map.LazyMap;
 
 import edu.uci.ics.jung.algorithms.cluster.EdgeBetweennessClusterer;
-import edu.uci.ics.jung.algorithms.layout.AggregateLayout;
 import edu.uci.ics.jung.algorithms.layout.CircleLayout;
 import edu.uci.ics.jung.algorithms.layout.util.Relaxer;
 import edu.uci.ics.jung.visualization.GraphZoomScrollPane;
@@ -53,6 +52,7 @@ import edu.uci.ics.jung.visualization.control.DefaultModalGraphMouse;
 import edu.zju.cs.ooobgy.dt.db.ClusterGraphDBLoader;
 import edu.zju.cs.ooobgy.graph.ClusterGraph;
 import edu.zju.cs.ooobgy.graph.Graph;
+import edu.zju.cs.ooobgy.visualization.layout.AggregateLayout;
 import edu.zju.cs.ooobgy.visualization.layout.FRLayout;
 import edu.zju.cs.ooobgy.visualization.layout.Layout;
 

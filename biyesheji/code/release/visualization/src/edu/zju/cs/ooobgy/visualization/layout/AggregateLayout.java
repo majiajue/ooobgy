@@ -1,13 +1,3 @@
-/*
- * Copyright (c) 2003, the JUNG Project and the Regents of the University of
- * California All rights reserved.
- * 
- * This software is open-source under the BSD license; see either "license.txt"
- * or http://jung.sourceforge.net/license.txt for a description.
- * 
- * 
- * 
- */
 package edu.zju.cs.ooobgy.visualization.layout;
 
 import java.awt.Dimension;
@@ -19,7 +9,7 @@ import java.util.Map;
 import org.apache.commons.collections15.Transformer;
 
 import edu.uci.ics.jung.algorithms.util.IterativeContext;
-import edu.uci.ics.jung.graph.Graph;
+import edu.zju.cs.ooobgy.graph.Graph;
 
 /**
  * A {@code Layout} implementation that combines 
@@ -95,7 +85,7 @@ public class AggregateLayout<V, E> implements Layout<V,E>, IterativeContext {
 	/**
 	 * Returns the graph for which this layout is defined.
 	 * @return the graph for which this layout is defined
-	 * @see edu.uci.ics.jung.algorithms.layout.Layout#getGraph()
+	 * @see edu.zju.cs.ooobgy.visualization.layout#getGraph()
 	 */
 	public Graph<V, E> getGraph() {
 		return delegate.getGraph();
