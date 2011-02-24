@@ -13,11 +13,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.awt.geom.Point2D;
-import java.io.BufferedReader;
-import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -285,7 +281,9 @@ public class ClusterPlatform extends JApplet {
 			new EdgeBetweennessClusterer<String, Integer>(numEdgesToRemove);
 		Set<Set<String>> clusterSet = clusterer.transform(g);
 		List<Integer> edges = clusterer.getEdgesRemoved();
-
+		//恢复图
+		clusterer.recoverGraph();
+		
 		int i = 0;
 		//Set the colors of each node so that each cluster's vertices have the same color
 		for (Iterator<Set<String>> cIt = clusterSet.iterator(); cIt.hasNext();) {
