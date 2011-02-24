@@ -118,8 +118,11 @@ public class AutoEdgeBetwennessCluster<V, E> implements AutoEdgeRemovalCluster<V
 			}
 		}
 		
-		////System.out.println(edgeTrack);
-		////System.out.println(qualityTrack);
+		//------debug
+		System.out.println(edgeTrack);
+		System.out.println(qualityTrack);
+		System.out.println(bestCluster.bestTrack);
+		//------
 		
 		return bestCluster.getBestClusterSet();
 	}
