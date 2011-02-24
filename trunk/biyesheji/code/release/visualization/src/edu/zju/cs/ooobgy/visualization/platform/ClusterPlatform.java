@@ -47,11 +47,11 @@ import edu.uci.ics.jung.algorithms.cluster.EdgeBetweennessClusterer;
 import edu.uci.ics.jung.algorithms.layout.CircleLayout;
 import edu.uci.ics.jung.algorithms.layout.util.Relaxer;
 import edu.uci.ics.jung.visualization.GraphZoomScrollPane;
-import edu.uci.ics.jung.visualization.VisualizationViewer;
 import edu.uci.ics.jung.visualization.control.DefaultModalGraphMouse;
 import edu.zju.cs.ooobgy.dt.db.ClusterGraphDBLoader;
 import edu.zju.cs.ooobgy.graph.ClusterGraph;
 import edu.zju.cs.ooobgy.graph.Graph;
+import edu.zju.cs.ooobgy.visualization.VisualizationViewer;
 import edu.zju.cs.ooobgy.visualization.layout.AggregateLayout;
 import edu.zju.cs.ooobgy.visualization.layout.FRLayout;
 import edu.zju.cs.ooobgy.visualization.layout.Layout;
@@ -68,9 +68,9 @@ import edu.zju.cs.ooobgy.visualization.layout.Layout;
 public class ClusterPlatform extends JApplet {
 	private String filePath = "datasets/zachary.net";
 
-	VisualizationViewer<Number,Number> vv;
+	VisualizationViewer<String, Integer> vv;
 	
-//	Factory<Graph<Number,Number>> graphFactory;
+//	Factory<Graph<String, Integer>> graphFactory;
 	
 	Map<Number,Paint> vertexPaints = 
 		LazyMap.<Number,Paint>decorate(new HashMap<Number,Paint>(),
@@ -149,10 +149,10 @@ public class ClusterPlatform extends JApplet {
 
 		//Create a simple layout frame
         //specify the Fruchterman-Rheingold layout algorithm
-        final AggregateLayout<Number,Number> layout = 
-        	new AggregateLayout<Number,Number>(new FRLayout<Number,Number>(graph));
+        final AggregateLayout<String, Integer> layout = 
+        	new AggregateLayout<String, Integer>(new FRLayout<String, Integer>(graph));
 
-		vv = new VisualizationViewer<Number,Number>(layout);
+		vv = new VisualizationViewer<String, Integer>(layout);
 		vv.setBackground( Color.white );
 		//Tell the renderer to use our own customized color rendering
 		vv.getRenderContext().setVertexFillPaintTransformer(MapTransformer.<Number,Paint>getInstance(vertexPaints));
@@ -272,7 +272,7 @@ public class ClusterPlatform extends JApplet {
 		content.add(south, BorderLayout.SOUTH);
 	}
 
-	public void clusterAndRecolor(AggregateLayout<Number,Number> layout,
+	public void clusterAndRecolor(AggregateLayout<String, Integer> layout,
 		int numEdgesToRemove,
 		Color[] colors, boolean groupClusters) {
 		//Now cluster the vertices by removing the top 50 edges with highest betweenness
@@ -280,11 +280,11 @@ public class ClusterPlatform extends JApplet {
 		//			colorCluster( g.getVertices(), colors[0] );
 		//		} else {
 		
-		Graph<Number,Number> g = layout.getGraph();
+		Graph<String, Integer> g = layout.getGraph();
         layout.removeAll();
 
-		EdgeBetweennessClusterer<Number,Number> clusterer =
-			new EdgeBetweennessClusterer<Number,Number>(numEdgesToRemove);
+		EdgeBetweennessClusterer<String, Integer> clusterer =
+			new EdgeBetweennessClusterer<String, Integer>(numEdgesToRemove);
 		Set<Set<Number>> clusterSet = clusterer.transform(g);
 		List<Number> edges = clusterer.getEdgesRemoved();
 
@@ -318,15 +318,15 @@ public class ClusterPlatform extends JApplet {
 		}
 	}
 	
-	private void groupCluster(AggregateLayout<Number,Number> layout, Set<Number> vertices) {
+	private void groupCluster(AggregateLayout<String, Integer> layout, Set<Number> vertices) {
 		if(vertices.size() < layout.getGraph().getVertexCount()) {
 			Point2D center = layout.transform(vertices.iterator().next());
-			Graph<Number,Number> subGraph = SparseMultigraph.<Number,Number>getFactory().create();
+			Graph<String, Integer> subGraph = SparseMultigraph.<String, Integer>getFactory().create();
 			for(Number v : vertices) {
 				subGraph.addVertex(v);
 			}
-			Layout<Number,Number> subLayout = 
-				new CircleLayout<Number,Number>(subGraph);
+			Layout<String, Integer> subLayout = 
+				new CircleLayout<String, Integer>(subGraph);
 			subLayout.setInitializer(vv.getGraphLayout());
 			subLayout.setSize(new Dimension(40,40));
 

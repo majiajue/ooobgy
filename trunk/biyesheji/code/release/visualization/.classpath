@@ -10,5 +10,6 @@
 	<classpathentry combineaccessrules="false" kind="src" path="/cluster"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/comm_algo"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/data_transform"/>
+	<classpathentry kind="lib" path="lib/jung-api-2.0.1.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
