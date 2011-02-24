@@ -9,6 +9,7 @@ import org.apache.commons.collections15.Transformer;
 
 import edu.zju.cs.ooobgy.algo.cluster.WeakComponentClusterer;
 import edu.zju.cs.ooobgy.algo.util.Pair;
+import edu.zju.cs.ooobgy.graph.util.EdgeType;
 import edu.zju.cs.ooobgy.graph.weight.EdgesWeight;
 
 /**
@@ -214,5 +215,10 @@ public class ClusterGraph<V, E> extends WeakComponentGraph<V, E> implements Weig
 
 	public Number getEdgeWeight(E e) {
 		return edge_weights.transform(e);
+	}
+
+	@Override
+	public EdgeType getEdgeType(E e) {
+		return EdgeType.UNDIRECTED;
 	}
 }
