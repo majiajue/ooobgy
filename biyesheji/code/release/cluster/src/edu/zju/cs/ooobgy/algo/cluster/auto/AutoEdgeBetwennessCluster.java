@@ -11,6 +11,7 @@ import org.apache.commons.collections15.Transformer;
 import org.apache.commons.collections15.functors.ConstantTransformer;
 
 import edu.zju.cs.ooobgy.algo.cluster.EdgeBetweennessClusterer;
+import edu.zju.cs.ooobgy.algo.cluster.WeakComponentClusterer;
 import edu.zju.cs.ooobgy.algo.cluster.qualify.ClusterQualify;
 import edu.zju.cs.ooobgy.algo.cluster.qualify.ModularityQualify;
 import edu.zju.cs.ooobgy.algo.util.Pair;
@@ -50,7 +51,6 @@ public class AutoEdgeBetwennessCluster<V, E> implements AutoEdgeRemovalCluster<V
 		this.edge_weights = edge_weights;
 		this.qualityTrack = new LinkedList<Double>();
 		this.edgeTrack = new LinkedList<E>();
-		this.bestCluster = new BestAEBCluster();
 		this.clusterComplete = true;
 	}
 
@@ -63,7 +63,6 @@ public class AutoEdgeBetwennessCluster<V, E> implements AutoEdgeRemovalCluster<V
 		this.edge_weights = new ConstantTransformer(1);
 		this.qualityTrack = new LinkedList<Double>();
 		this.edgeTrack = new LinkedList<E>();
-		this.bestCluster = new BestAEBCluster();
 		this.clusterComplete = true;
 	}
 	
@@ -80,7 +79,6 @@ public class AutoEdgeBetwennessCluster<V, E> implements AutoEdgeRemovalCluster<V
 		this.clusterComplete = clusterComplete;
 		this.qualityTrack = new LinkedList<Double>();
 		this.edgeTrack = new LinkedList<E>();
-		this.bestCluster = new BestAEBCluster();
 	}
 
 	@Override
@@ -89,6 +87,11 @@ public class AutoEdgeBetwennessCluster<V, E> implements AutoEdgeRemovalCluster<V
 			throw new IllegalArgumentException("Trying cluster a graph could NOT cluster!");
 		}		
 		ClusterGraph<V, E> graph = (ClusterGraph<V, E>)graph1;
+		
+		//先获取原始的分组情况,建立最优轨迹初始化
+		WeakComponentClusterer<V, E> wcSearcher = new WeakComponentClusterer<V, E>();
+		Set<Set<V>> initClusterSet = wcSearcher.transform(graph);
+		this.bestCluster = new BestAEBCluster(initClusterSet);
 		
 		////必须要克隆原始边集合，否则原始边信息会在切边过程中丢失;
 		Map<E, Pair<V>> originEdges = new HashMap<E, Pair<V>>(graph.getEdgeMap());
@@ -139,10 +142,10 @@ public class AutoEdgeBetwennessCluster<V, E> implements AutoEdgeRemovalCluster<V
 		private KeyValue<Integer, Double> bestTrack;
 		private Set<Set<V>> bestClusterSet;
 		
-		public BestAEBCluster() {
+		public BestAEBCluster(Set<Set<V>> initClusterSet) {
 			super();
 			this.bestTrack = new SimpleKeyValue<Integer, Double>(0, Double.NEGATIVE_INFINITY);
-			this.bestClusterSet = null;
+			this.bestClusterSet = initClusterSet;
 		}
 
 		public Set<Set<V>> getBestClusterSet() {
