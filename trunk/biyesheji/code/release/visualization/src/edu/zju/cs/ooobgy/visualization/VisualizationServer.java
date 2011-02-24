@@ -18,9 +18,8 @@ import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import javax.swing.event.EventListenerList;
 
-import edu.uci.ics.jung.algorithms.layout.GraphElementAccessor;
-import edu.uci.ics.jung.visualization.RenderContext;
 import edu.uci.ics.jung.visualization.picking.PickedState;
+import edu.zju.cs.ooobgy.visualization.layout.GraphElementAccessor;
 import edu.zju.cs.ooobgy.visualization.layout.Layout;
 import edu.zju.ooobgy.visualization.renderers.Renderer;
 

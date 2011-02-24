@@ -43,16 +43,16 @@ import org.apache.commons.collections15.functors.ConstantTransformer;
 import org.apache.commons.collections15.functors.MapTransformer;
 import org.apache.commons.collections15.map.LazyMap;
 
-import edu.uci.ics.jung.algorithms.cluster.EdgeBetweennessClusterer;
-import edu.uci.ics.jung.algorithms.layout.CircleLayout;
 import edu.uci.ics.jung.algorithms.layout.util.Relaxer;
-import edu.uci.ics.jung.visualization.GraphZoomScrollPane;
-import edu.uci.ics.jung.visualization.control.DefaultModalGraphMouse;
+import edu.zju.cs.ooobgy.algo.cluster.EdgeBetweennessClusterer;
 import edu.zju.cs.ooobgy.dt.db.ClusterGraphDBLoader;
 import edu.zju.cs.ooobgy.graph.ClusterGraph;
 import edu.zju.cs.ooobgy.graph.Graph;
+import edu.zju.cs.ooobgy.visualization.GraphZoomScrollPane;
 import edu.zju.cs.ooobgy.visualization.VisualizationViewer;
+import edu.zju.cs.ooobgy.visualization.control.DefaultModalGraphMouse;
 import edu.zju.cs.ooobgy.visualization.layout.AggregateLayout;
+import edu.zju.cs.ooobgy.visualization.layout.CircleLayout;
 import edu.zju.cs.ooobgy.visualization.layout.FRLayout;
 import edu.zju.cs.ooobgy.visualization.layout.Layout;
 
@@ -72,11 +72,11 @@ public class ClusterPlatform extends JApplet {
 	
 //	Factory<Graph<String, Integer>> graphFactory;
 	
-	Map<Number,Paint> vertexPaints = 
-		LazyMap.<Number,Paint>decorate(new HashMap<Number,Paint>(),
+	Map<String,Paint> vertexPaints = 
+		LazyMap.<String,Paint>decorate(new HashMap<String,Paint>(),
 				new ConstantTransformer(Color.white));
-	Map<Number,Paint> edgePaints =
-	LazyMap.<Number,Paint>decorate(new HashMap<Number,Paint>(),
+	Map<Integer,Paint> edgePaints =
+	LazyMap.<Integer,Paint>decorate(new HashMap<Integer,Paint>(),
 			new ConstantTransformer(Color.blue));
 
 	public final Color[] similarColors =
@@ -121,10 +121,8 @@ public class ClusterPlatform extends JApplet {
 	public void start() {
 //		InputStream is = this.getClass().getClassLoader().getResourceAsStream("datasets/zachary.net");
 		try
-        {
-			InputStream is = new FileInputStream(filePath);
-			BufferedReader br = new BufferedReader( new InputStreamReader( is ));         
-            setUpView(br);
+        {        
+            setUpView();
         }
         catch (IOException e)
         {
@@ -133,7 +131,7 @@ public class ClusterPlatform extends JApplet {
         }
 	}
 
-	private void setUpView(BufferedReader br) throws IOException {
+	private void setUpView() throws IOException {
 		
     	Factory<Number> vertexFactory = new Factory<Number>() {
             int n = 0;
@@ -155,9 +153,9 @@ public class ClusterPlatform extends JApplet {
 		vv = new VisualizationViewer<String, Integer>(layout);
 		vv.setBackground( Color.white );
 		//Tell the renderer to use our own customized color rendering
-		vv.getRenderContext().setVertexFillPaintTransformer(MapTransformer.<Number,Paint>getInstance(vertexPaints));
-		vv.getRenderContext().setVertexDrawPaintTransformer(new Transformer<Number,Paint>() {
-			public Paint transform(Number v) {
+		vv.getRenderContext().setVertexFillPaintTransformer(MapTransformer.<String,Paint>getInstance(vertexPaints));
+		vv.getRenderContext().setVertexDrawPaintTransformer(new Transformer<String,Paint>() {
+			public Paint transform(String v) {
 				if(vv.getPickedVertexState().isPicked(v)) {
 					return Color.cyan;
 				} else {
@@ -166,12 +164,12 @@ public class ClusterPlatform extends JApplet {
 			}
 		});
 
-		vv.getRenderContext().setEdgeDrawPaintTransformer(MapTransformer.<Number,Paint>getInstance(edgePaints));
+		vv.getRenderContext().setEdgeDrawPaintTransformer(MapTransformer.<Integer,Paint>getInstance(edgePaints));
 
-		vv.getRenderContext().setEdgeStrokeTransformer(new Transformer<Number,Stroke>() {
+		vv.getRenderContext().setEdgeStrokeTransformer(new Transformer<Integer,Stroke>() {
                 protected final Stroke THIN = new BasicStroke(1);
                 protected final Stroke THICK= new BasicStroke(2);
-                public Stroke transform(Number e)
+                public Stroke transform(Integer e)
                 {
                     Paint c = edgePaints.get(e);
                     if (c == Color.LIGHT_GRAY)
@@ -285,14 +283,14 @@ public class ClusterPlatform extends JApplet {
 
 		EdgeBetweennessClusterer<String, Integer> clusterer =
 			new EdgeBetweennessClusterer<String, Integer>(numEdgesToRemove);
-		Set<Set<Number>> clusterSet = clusterer.transform(g);
-		List<Number> edges = clusterer.getEdgesRemoved();
+		Set<Set<String>> clusterSet = clusterer.transform(g);
+		List<Integer> edges = clusterer.getEdgesRemoved();
 
 		int i = 0;
 		//Set the colors of each node so that each cluster's vertices have the same color
-		for (Iterator<Set<Number>> cIt = clusterSet.iterator(); cIt.hasNext();) {
+		for (Iterator<Set<String>> cIt = clusterSet.iterator(); cIt.hasNext();) {
 
-			Set<Number> vertices = cIt.next();
+			Set<String> vertices = cIt.next();
 			Color c = colors[i % colors.length];
 
 			colorCluster(vertices, c);
@@ -301,7 +299,7 @@ public class ClusterPlatform extends JApplet {
 			}
 			i++;
 		}
-		for (Number e : g.getEdges()) {
+		for (Integer e : g.getEdges()) {
 
 			if (edges.contains(e)) {
 				edgePaints.put(e, Color.lightGray);
@@ -312,17 +310,17 @@ public class ClusterPlatform extends JApplet {
 
 	}
 
-	private void colorCluster(Set<Number> vertices, Color c) {
-		for (Number v : vertices) {
+	private void colorCluster(Set<String> vertices, Color c) {
+		for (String v : vertices) {
 			vertexPaints.put(v, c);
 		}
 	}
 	
-	private void groupCluster(AggregateLayout<String, Integer> layout, Set<Number> vertices) {
+	private void groupCluster(AggregateLayout<String, Integer> layout, Set<String> vertices) {
 		if(vertices.size() < layout.getGraph().getVertexCount()) {
 			Point2D center = layout.transform(vertices.iterator().next());
-			Graph<String, Integer> subGraph = SparseMultigraph.<String, Integer>getFactory().create();
-			for(Number v : vertices) {
+			Graph<String, Integer> subGraph = new ClusterGraph<String, Integer>();
+			for(String v : vertices) {
 				subGraph.addVertex(v);
 			}
 			Layout<String, Integer> subLayout = 
