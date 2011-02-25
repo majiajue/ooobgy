@@ -251,6 +251,13 @@ public class TimeSliceClusterPlatform extends JApplet {
 		p.add(gm.getModeComboBox());
 		south.add(p);
 		slice.add(south,BorderLayout.SOUTH);
+		if (time_range.equals("201002")) {
+			clusterAndRecolor(layout, 7, similarColors, groupVertices.isSelected());
+			edgeBetweennessSlider.setValue(7);
+		} else if (time_range.equals("201003")) {
+			clusterAndRecolor(layout, 6, similarColors, groupVertices.isSelected());
+			edgeBetweennessSlider.setValue(6);
+		}
 		return slice;
 	}
 
