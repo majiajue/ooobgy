@@ -1,0 +1,3 @@
+因翻译的外文文献为PDF格式，不易转换成Word文档添加到开题报告文件中，故将两者分开。
+
+其中Discovering Co-location Patterns from Spatial Database文件为英文原文。
