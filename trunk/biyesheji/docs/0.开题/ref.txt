@@ -8,3 +8,4 @@
 [8].	U. Brandes, A faster algorithm for betweenness centrality, J. Math. Sociol. 25 (2001) 163-177
 [9].	Santo Fortunato. Community detection in graphs. Physics Reports 486 (2010) 75-174
 [10].	H. W. Kuhn. The Hungarian method for the assignment problem. Naval Research Logistics Quarterly 2 (1955) 83¨C97
+[11].	J. Hopcroft, O. Khan, B. Kulis, B. Selman, Tracking evolving communities in large linked networks, Proc. Natl. Acad. Sci. USA 101 (2004) 5249-5253.
