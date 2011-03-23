@@ -9,3 +9,8 @@
 [9].	Santo Fortunato. Community detection in graphs. Physics Reports 486 (2010) 75-174
 [10].	H. W. Kuhn. The Hungarian method for the assignment problem. Naval Research Logistics Quarterly 2 (1955) 83–97
 [11].	J. Hopcroft, O. Khan, B. Kulis, B. Selman, Tracking evolving communities in large linked networks, Proc. Natl. Acad. Sci. USA 101 (2004) 5249-5253.
+[12]  [386]
+[13]  [388]
+记得改引用
+ 应用前景
+
