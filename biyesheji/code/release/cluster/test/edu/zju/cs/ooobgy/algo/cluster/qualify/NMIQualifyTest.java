@@ -68,6 +68,22 @@ public class NMIQualifyTest extends TestCase{
 			Integer[][] cbm = {{1,2,3}};
 			nmiCase(cam, cbm);
 		}
+		
+		System.out.println("========= case " + i + " =========");
+		i++;
+		{
+			Integer[][] cam = {{1}};
+			Integer[][] cbm = {{1}};
+			nmiCase(cam, cbm);
+		}
+		
+		System.out.println("========= case " + i + " =========");
+		i++;
+		{
+			Integer[][] cam = {{1}};
+			Integer[][] cbm = {{1,2}};
+			nmiCase(cam, cbm);
+		}
 	}
 
 	private void nmiCase(Integer[][] cam, Integer[][] cbm) {
