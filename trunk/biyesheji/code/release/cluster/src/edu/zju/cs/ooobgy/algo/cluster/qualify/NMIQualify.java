@@ -37,13 +37,20 @@ public class NMIQualify<V> {
 			ixy = qualifyI(realClusters, qClusters);
 			hx = qualifyH(realClusters, nh);
 			hy = qualifyH(qClusters, nl);
-			
+//			System.err.println("ixy:\n" + ixy);
+//			System.err.println("hx:\n" + hx);
+//			System.err.println("hy:\n" + hy);
 			nmi = ixy / Math.sqrt(hx * hy);
 		} catch (Throwable e) {
 			nmi = 0;
 			e.printStackTrace();
 		}
 		
+//		System.err.println("nh:\n" + nh);
+//		System.err.println("nl:\n" + nl);
+//		System.err.println("nhl:\n" + nhl);
+//		
+//		System.err.println("rc:\n" + realClusters);
 		return nmi;
 	}
 	
@@ -53,16 +60,18 @@ public class NMIQualify<V> {
 		this.nh = new ArrayList<Double>(ka);
 		this.nl = new ArrayList<Double>(kb);
 		this.nhl = new Matrix(ka, kb);
-		this.n = ka + kb;
+		//this.n = ka + kb;
 		
 		int i = 0;
 		int j = 0;
 		for (Collection<V> ca : realClusters) {
 			j = 0;
 			nh.add(i, new Double(ca.size()));
+			this.n = this.n + ca.size();
 			for (Collection<V> cb : qClusters) {
 				if (i == 0) {
 					nl.add(j, new Double(cb.size()));
+					this.n = this.n + cb.size();
 				}
 				
 				Collection<V> intersection = new HashSet<V>(ca);
@@ -72,7 +81,6 @@ public class NMIQualify<V> {
 			}
 			i++;
 		}
-		
 	}
 
 	/**
