@@ -178,6 +178,10 @@ public class Matrix implements AbstractMatrix<Double> {
 		matrix[rowIndex][columnIndex] = newElement;
 		return oldElement;
 	}
+	
+	public Double setElement(int rowIndex, int columnIndex, Double newElement){
+		return updateElement(rowIndex, columnIndex, newElement);
+	}
 
 	@Override
 	public String toString() {
