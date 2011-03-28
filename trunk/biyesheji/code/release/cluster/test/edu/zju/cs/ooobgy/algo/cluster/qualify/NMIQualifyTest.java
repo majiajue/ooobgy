@@ -12,8 +12,66 @@ public class NMIQualifyTest extends TestCase{
 	@SuppressWarnings("unchecked")
 	@Test
 	public void testNMI(){
-		Integer[][] cam = {{1,2},{3,4}};
-		Integer[][] cbm = {{1,2},{3,4}};
+		int i = 0;
+		
+		System.out.println("========= case " + i + " =========");
+		i++;
+		{
+			Integer[][] cam = {{1,2},{3,4}};
+			Integer[][] cbm = {{1,2},{3,4}};
+			nmiCase(cam, cbm);
+		}
+		
+		System.out.println("========= case " + i + " =========");
+		i++;
+		{
+			Integer[][] cam = {{1,2,},{3,4,5},{6}};
+			Integer[][] cbm = {{1,2},{3,4,5},{6}};
+			nmiCase(cam, cbm);
+		}
+		
+		System.out.println("========= case " + i + " =========");
+		i++;
+		{
+			Integer[][] cam = {{1,2,},{3,4,5},{6}};
+			Integer[][] cbm = {{1,2},{3,4,5,6}};
+			nmiCase(cam, cbm);
+		}
+		
+		System.out.println("========= case " + i + " =========");
+		i++;
+		{
+			Integer[][] cam = {{1,2},{3,4}};
+			Integer[][] cbm = {{1,3},{2,4}};
+			nmiCase(cam, cbm);
+		}
+		
+		System.out.println("========= case " + i + " =========");
+		i++;
+		{
+			Integer[][] cam = {{1,2,3},{4,5}};
+			Integer[][] cbm = {{1,2},{3,4,5}};
+			nmiCase(cam, cbm);
+		}
+		
+		System.out.println("========= case " + i + " =========");
+		i++;
+		{
+			Integer[][] cam = {{1,2,3,4,5}};
+			Integer[][] cbm = {{1,2,3,4,5}};
+			nmiCase(cam, cbm);
+		}
+		
+		System.out.println("========= case " + i + " =========");
+		i++;
+		{
+			Integer[][] cam = {{1,2,3}};
+			Integer[][] cbm = {{1,2,3}};
+			nmiCase(cam, cbm);
+		}
+	}
+
+	private void nmiCase(Integer[][] cam, Integer[][] cbm) {
 		Set<Set<Integer>> ca = makeSet(cam); 
 		Set<Set<Integer>> cb = makeSet(cbm);
 		
