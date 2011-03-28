@@ -1,0 +1,42 @@
+package edu.zju.cs.ooobgy.algo.cluster.qualify;
+
+import java.util.HashSet;
+import java.util.Set;
+
+import org.junit.Test;
+
+import junit.framework.TestCase;
+
+public class NMIQualifyTest extends TestCase{
+	
+	@SuppressWarnings("unchecked")
+	@Test
+	public void testNMI(){
+		Integer[][] cam = {{1,2},{3,4}};
+		Integer[][] cbm = {{1,2},{3,4}};
+		Set<Set<Integer>> ca = makeSet(cam); 
+		Set<Set<Integer>> cb = makeSet(cbm);
+		
+		System.out.println("ca = " + ca);
+		System.out.println("cb = " + cb);
+		
+		@SuppressWarnings("rawtypes")
+		NMIQualify qualify = new NMIQualify<Integer>();
+		double nmi = qualify.qualifyNMI(ca, cb);
+		
+		System.out.println("NMI(ca,cb) = " + nmi);
+	}
+
+	private Set<Set<Integer>> makeSet(Integer[][] cm) {
+		Set<Set<Integer>> cs = new HashSet<Set<Integer>>();
+		for (Integer[] c : cm) {
+			Set<Integer> cc = new HashSet<Integer>();
+			for (Integer v : c) {
+				cc.add(v);
+			}
+			cs.add(cc);
+		}
+		
+		return cs;
+	}
+}
