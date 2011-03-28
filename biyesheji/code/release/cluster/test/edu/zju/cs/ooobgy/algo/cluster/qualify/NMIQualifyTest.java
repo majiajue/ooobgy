@@ -9,7 +9,6 @@ import junit.framework.TestCase;
 
 public class NMIQualifyTest extends TestCase{
 	
-	@SuppressWarnings("unchecked")
 	@Test
 	public void testNMI(){
 		int i = 0;
@@ -80,6 +79,7 @@ public class NMIQualifyTest extends TestCase{
 		
 		@SuppressWarnings("rawtypes")
 		NMIQualify qualify = new NMIQualify<Integer>();
+		@SuppressWarnings("unchecked")
 		double nmi = qualify.qualifyNMI(ca, cb);
 		
 		System.out.println("NMI(ca,cb) = " + nmi);
