@@ -1,0 +1,43 @@
+%%============================================================
+%% 中文封面
+\newpage
+\thispagestyle{empty}
+
+\vspace{4cm}
+
+\begin{center}
+\songti\xiaoyi 浙江大学软件学院  \\
+\songti\xiaoyi 本科学生中期实习报告
+\end{center}
+
+\vspace{4cm}
+
+\begin{tabbing}
+              \= \songti\sihao 学生姓名：\quad \quad \= \underline{\makebox[6cm]{}} \\[2mm]
+               \> \songti\sihao 实习单位：\> \underline{\makebox[6cm]{\sihao\zjumentorc}} \\[2mm]
+               \> \songti\sihao 项目名称：\> \underline{\makebox[6cm]{\sihao\zjugrade\hspace{3mm}\zjumajor}} \\[2mm]
+              \> \songti\sihao 企业导师姓名： \>
+              \underline{\makebox[6cm]{}} \\[2mm]
+              \> \songti\sihao 学院导师姓名：  \>
+              \underline{\makebox[6cm]{}} \\[2mm]
+              \> \songti\sihao 实习开始日期： \>
+              \underline{\makebox[6cm]{}} \\[2mm]
+              \> \songti\sihao 实习结束日期： \>
+              \underline{\makebox[6cm]{}}
+\end{tabbing}
+
+\vspace{1cm}
+\begin{center}
+\songti\xiaosan 填表日期：\quad 年 \quad 月 \quad 日
+\end{center}
+%%============================================================
+% empty page for two-page print
+\ifthenelse{\equal{\zjuside}{T}}{%
+  \newpage\mbox{}%
+  \thispagestyle{empty}}{}
+  
+\chapter{实习项目概况}
+\chapter{实习工作成果及水平}
+\chapter{实习收获}
+\chapter{对实习工作建议}
+\chapter{其它}
