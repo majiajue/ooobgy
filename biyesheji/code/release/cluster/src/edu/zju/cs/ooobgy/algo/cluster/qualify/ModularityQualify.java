@@ -106,8 +106,15 @@ public class ModularityQualify<V, E> implements ClusterQualify<V, E>{
 		return qualify(graph.getComponents());
 	}
 
+	/**
+	 * 现在选用ulrik的推论公式来计算
+	 */
 	@Override
 	public double qualify(Set<Set<V>> clusters) {
+		return ulrikWeightedQualify(clusters);
+	}
+	
+	public double matrixQualify(Set<Set<V>> clusters){
 		//1.生成判定矩阵
 		Matrix moduleMatrix = genQMatrix(clusters);
 		//2.计算quality值

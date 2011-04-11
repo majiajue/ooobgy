@@ -87,6 +87,7 @@ public class AutoEdgeBetwennessCluster<V, E> implements AutoEdgeRemovalCluster<V
 			throw new IllegalArgumentException("Trying cluster a graph could NOT cluster!");
 		}		
 		ClusterGraph<V, E> graph = (ClusterGraph<V, E>)graph1;
+		ClusterGraph<V, E> originGraph = graph.clone();
 		
 		//先获取原始的分组情况,建立最优轨迹初始化
 		WeakComponentClusterer<V, E> wcSearcher = new WeakComponentClusterer<V, E>();
@@ -96,7 +97,7 @@ public class AutoEdgeBetwennessCluster<V, E> implements AutoEdgeRemovalCluster<V
 		////必须要克隆原始边集合，否则原始边信息会在切边过程中丢失;
 		Map<E, Pair<V>> originEdges = new HashMap<E, Pair<V>>(graph.getEdgeMap());
 		//使用传入的权值和原始边集合构造度量器ModularityQualify
-		ClusterQualify<V, E> clusterQualify = new ModularityQualify<V, E>(originEdges, edge_weights);
+		ClusterQualify<V, E> clusterQualify = new ModularityQualify<V, E>(originGraph);
 		
 		//自动切边，两种策略，依照@clusterComplete值
 		EdgeBetweennessClusterer<V, E> ebCluster;
