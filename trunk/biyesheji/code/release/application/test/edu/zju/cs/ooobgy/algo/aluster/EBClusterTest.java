@@ -17,7 +17,7 @@ public class EBClusterTest extends TestCase {
 		System.out.println("==========before cluster==========");
 		System.out.println(graph);
 		System.out.println("==========after cluster==========");
-		EdgeBetweennessClusterer<String, Integer> clusterer = new EdgeBetweennessClusterer<String, Integer>(1,graph.getEdge_weights());
+		EdgeBetweennessClusterer<String, Integer> clusterer = new EdgeBetweennessClusterer<String, Integer>(1,graph.getEdgeWeights());
 		Set<Set<String>> groups = clusterer.transform(graph);
 		System.out.println(graph);
 		System.out.println("----------groups--------");
