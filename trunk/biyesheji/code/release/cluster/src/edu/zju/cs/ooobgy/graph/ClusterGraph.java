@@ -53,6 +53,24 @@ public class ClusterGraph<V, E> extends WeakComponentGraph<V, E> implements Weig
 		this.vertices = new HashMap<V, Set<E>>();
 		this.edge_weights = new EdgesWeight<E, Double>(this.getEdges());
 	}
+	
+	/**
+	 * 返回一个图的克隆体,深度克隆，确保数据完整性;克隆深度到达图的边和节点为基本元素
+	 */
+	@Override
+	public ClusterGraph<V, E> clone() {
+		ClusterGraph<V, E> clonedGraph = new ClusterGraph<V, E>();
+		EdgesWeight<E, Double> edgesWeights = new EdgesWeight<E, Double>();
+		for(E e : this.edges.keySet()){
+			Pair<V> endPoints = this.getEndpoints(e);
+			clonedGraph.addEdge(e, endPoints.getFirst(), endPoints.getSecond());
+			edgesWeights.addEdgeWeight(e, this.getEdgeWeight(e).doubleValue());
+		}
+		
+		clonedGraph.setEdge_weights(edgesWeights);
+		
+		return clonedGraph;
+	}
 
 	@Override
 	public Set<? extends V> getVertices() {
