@@ -185,15 +185,11 @@ public class ClusterGraph<V, E> extends WeakComponentGraph<V, E> implements Weig
 	
 	@Override
 	public Transformer<E, ? extends Number> getEdgeWeights() {
-		return getEdge_weights();
+		return  edge_weights;
 	}
 
 	public void setEdge_weights(Transformer<E, ? extends Number> edge_weights) {
 		this.edge_weights = edge_weights;
-	}
-
-	public Transformer<E, ? extends Number> getEdge_weights() {
-		return edge_weights;
 	}
 	
 	@Override

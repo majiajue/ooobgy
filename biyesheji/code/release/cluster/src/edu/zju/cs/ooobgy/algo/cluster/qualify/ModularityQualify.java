@@ -1,6 +1,8 @@
 package edu.zju.cs.ooobgy.algo.cluster.qualify;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -9,6 +11,7 @@ import org.apache.commons.collections15.functors.ConstantTransformer;
 
 import edu.zju.cs.ooobgy.algo.math.matrix.Matrix;
 import edu.zju.cs.ooobgy.algo.util.Pair;
+import edu.zju.cs.ooobgy.graph.ClusterGraph;
 import edu.zju.cs.ooobgy.graph.WeakComponentGraph;
 
 /**
@@ -22,7 +25,16 @@ import edu.zju.cs.ooobgy.graph.WeakComponentGraph;
 public class ModularityQualify<V, E> implements ClusterQualify<V, E>{
 	private Map<E, Pair<V>> originEdges;
 	private Transformer<E, ? extends Number> edge_weights;
+	private ClusterGraph<V, E> originGraph;
 
+	/**
+	 * 传入原始图结构的构造可以用于Ulrik的推论公式
+	 */
+	public ModularityQualify(ClusterGraph<V, E> oGraph) {
+		this.originGraph = oGraph;
+		this.edge_weights = oGraph.getEdgeWeights();
+		this.originEdges = oGraph.getEdgeMap();
+	}
 	/**
 	 * 对于Modularity Qualify评价算法，必须还要已知原始的图结构，可选传入边的权重
 	 * @param originEdges
@@ -39,11 +51,54 @@ public class ModularityQualify<V, E> implements ClusterQualify<V, E>{
 	 * 对于Modularity Qualify评价算法，必须还要已知原始的图结构
 	 * @param originEdges
 	 */
-	@SuppressWarnings({ "rawtypes", "unchecked" })
+	@SuppressWarnings({  "unchecked" })
 	public ModularityQualify(Map<E, Pair<V>> originEdges) {
 		super();
 		this.originEdges = originEdges;
 		this.edge_weights = new ConstantTransformer(1);
+	}
+	
+	/**
+	 * 使用Ulrik的推论公式来计算,我们的公式扩展为考虑边的权重
+	 * @param clusters
+	 * @return
+	 */
+	public double ulrikWeightedQualify(Set<Set<V>> clusters){
+		double m = 0.0;//m是边的权重和
+		int k = clusters.size();//k是团伙的总个数
+		List<Double> M = new ArrayList<Double>(k);//各团内部边数和(权重)
+		List<Double> D = new ArrayList<Double>(k);//各团内部度数和(度数边权重)
+		
+		Set<E> edges = originGraph.getEdges();
+		for (E e : edges) {
+			m += edge_weights.transform(e).doubleValue();
+		}
+		
+		int i = 0; 
+		for (Set<V> cluster : clusters) {
+			Double mi = 0.0;//边
+			Double di = 0.0;//度数
+			for (V v : cluster) {
+				Set<E> ioEdges = originGraph.getEdges(v);
+				for (E e : ioEdges) {
+					double eWeight = edge_weights.transform(e).doubleValue();
+					di += eWeight;
+					if (cluster.contains(originGraph.getOpposite(v, e))) {
+						mi += eWeight;
+					}
+				}
+			}
+			M.set(i, mi / 2);
+			D.set(i, di);
+		}
+		
+		double MQ = 0.0;
+		for (i = 0; i < k; i++) {
+			double dMQ = M.get(i) / m - D.get(i) / (4 * m * m);
+			MQ += dMQ;
+		}
+		
+		return MQ;
 	}
 
 	@Override
