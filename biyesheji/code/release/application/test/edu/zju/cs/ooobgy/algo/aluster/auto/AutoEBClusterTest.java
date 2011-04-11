@@ -20,7 +20,7 @@ public class AutoEBClusterTest extends TestCase {
 		System.out.println(graph);
 		System.out.println("==========after cluster==========");
 		AutoEdgeBetwennessCluster<String, Integer> autoCluster = new AutoEdgeBetwennessCluster<String, Integer>(
-				graph.getEdge_weights());
+				graph.getEdgeWeights());
 		Set<Set<String>> groups = autoCluster.autoCluster(graph);
 		System.out.println(graph);
 		System.out.println("----------groups--------");
