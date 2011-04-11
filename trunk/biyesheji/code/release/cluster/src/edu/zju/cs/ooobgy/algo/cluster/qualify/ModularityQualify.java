@@ -74,7 +74,6 @@ public class ModularityQualify<V, E> implements ClusterQualify<V, E>{
 			m += edge_weights.transform(e).doubleValue();
 		}
 		
-		int i = 0; 
 		for (Set<V> cluster : clusters) {
 			Double mi = 0.0;//边
 			Double di = 0.0;//度数
@@ -88,12 +87,12 @@ public class ModularityQualify<V, E> implements ClusterQualify<V, E>{
 					}
 				}
 			}
-			M.set(i, mi / 2);
-			D.set(i, di);
+			M.add(mi / 2);
+			D.add(di);
 		}
 		
 		double MQ = 0.0;
-		for (i = 0; i < k; i++) {
+		for (int i = 0; i < k; i++) {
 			double dMQ = M.get(i) / m - D.get(i) / (4 * m * m);
 			MQ += dMQ;
 		}
@@ -111,7 +110,8 @@ public class ModularityQualify<V, E> implements ClusterQualify<V, E>{
 	 */
 	@Override
 	public double qualify(Set<Set<V>> clusters) {
-		return ulrikWeightedQualify(clusters);
+		//return ulrikWeightedQualify(clusters);
+		return matrixQualify(clusters);
 	}
 	
 	public double matrixQualify(Set<Set<V>> clusters){
