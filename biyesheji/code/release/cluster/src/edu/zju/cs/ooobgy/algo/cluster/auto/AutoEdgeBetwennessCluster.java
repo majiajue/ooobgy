@@ -87,7 +87,7 @@ public class AutoEdgeBetwennessCluster<V, E> implements AutoEdgeRemovalCluster<V
 			throw new IllegalArgumentException("Trying cluster a graph could NOT cluster!");
 		}		
 		ClusterGraph<V, E> graph = (ClusterGraph<V, E>)graph1;
-		ClusterGraph<V, E> originGraph = graph.clone();
+		ClusterGraph<V, E> optGraph = graph.clone();//克隆一份用于操作的图
 		
 		//先获取原始的分组情况,建立最优轨迹初始化
 		WeakComponentClusterer<V, E> wcSearcher = new WeakComponentClusterer<V, E>();
@@ -97,13 +97,13 @@ public class AutoEdgeBetwennessCluster<V, E> implements AutoEdgeRemovalCluster<V
 		////必须要克隆原始边集合，否则原始边信息会在切边过程中丢失;
 		Map<E, Pair<V>> originEdges = new HashMap<E, Pair<V>>(graph.getEdgeMap());
 		//使用传入的权值和原始边集合构造度量器ModularityQualify
-		ClusterQualify<V, E> clusterQualify = new ModularityQualify<V, E>(originGraph);
+		ClusterQualify<V, E> clusterQualify = new ModularityQualify<V, E>(graph);
 		
 		//自动切边，两种策略，依照@clusterComplete值
 		EdgeBetweennessClusterer<V, E> ebCluster;
 		for (int i = 0; i < originEdges.size(); i++) {
 			ebCluster = new EdgeBetweennessClusterer<V, E>(1, edge_weights);
-			Set<Set<V>> clusters = ebCluster.transform(graph);//1.切边
+			Set<Set<V>> clusters = ebCluster.transform(optGraph);//1.切边
 			Double mq = new Double(clusterQualify.qualify(clusters));//2.评价
 			//3.加入track
 			qualityTrack.add(mq);
@@ -120,9 +120,9 @@ public class AutoEdgeBetwennessCluster<V, E> implements AutoEdgeRemovalCluster<V
 		}
 		
 		//------debug
-		System.out.println(edgeTrack);
-		System.out.println(qualityTrack);
-		System.out.println(bestCluster.bestTrack);
+		System.out.println("edgeTrack:" + edgeTrack);
+		System.out.println("qualityTrack" + qualityTrack);
+		System.out.println("bestCluster" + bestCluster.bestTrack);
 		//------
 		
 		return bestCluster.getBestClusterSet();
