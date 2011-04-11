@@ -1,10 +1,7 @@
 package edu.zju.cs.ooobgy.dt.db;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
-import org.apache.commons.collections15.Transformer;
 
 import edu.zju.cs.ooobgy.db.controller.dao.UndirectedRalationDao;
 import edu.zju.cs.ooobgy.db.controller.daoimpl.UndirectedRalationDaoImpl;
@@ -26,7 +23,7 @@ public class ClusterGraphDBLoader implements DBLoader<ClusterGraph<String, Integ
 		ClusterGraph<String, Integer> graph = new ClusterGraph<String, Integer>();
 		UndirectedRalationDao udrDataDao = new UndirectedRalationDaoImpl();
 		List<UndirectedRalation> udr_edges = udrDataDao.findAllInTimeRange(time_range);
-		EdgeWeightTransformer udr_edge_weights = new EdgeWeightTransformer();
+		EdgeWeightTransformer udr_edge_weights = new EdgeWeightTransformer(this);
 		for (UndirectedRalation edge : udr_edges) {
 			udr_edge_weights.addUdrWeight(edge.getUdr_id(), edge.getUdr_weight());
 			graph.addEdge(edge.getUdr_id(), edge.getPnode_1(), edge.getPnode_2());
@@ -35,25 +32,5 @@ public class ClusterGraphDBLoader implements DBLoader<ClusterGraph<String, Integ
 		graph.setEdge_weights(udr_edge_weights);
 		
 		return graph;
-	}
-	
-	/**
-	 * 保存无向图的边权重的容器实现
-	 * @author frogcherry 周晓龙
-	 * @created 2011-2-23
-	 * @Email frogcherry@gmail.com
-	 */
-	private class EdgeWeightTransformer implements Transformer<Integer, Integer>{
-		private Map<Integer, Integer> udr_weights = new HashMap<Integer, Integer>();
-		
-		public void addUdrWeight(Integer udr_id, Integer udr_weight){
-			udr_weights.put(udr_id, udr_weight);
-		}
-
-		@Override
-		public Integer transform(Integer udr_id) {
-			return udr_weights.get(udr_id);
-		}
-		
 	}
 }
