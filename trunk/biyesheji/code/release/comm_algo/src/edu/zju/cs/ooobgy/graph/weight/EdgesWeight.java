@@ -15,6 +15,10 @@ import org.apache.commons.collections15.Transformer;
 public class EdgesWeight<E, W extends Number> implements Transformer<E, W>{
 	private Map<E, W> edgeWeights;
 	
+	public EdgesWeight() {
+		this.edgeWeights = new HashMap<E, W>();
+	}
+	
 	public EdgesWeight(Set<E> edges) {
 		this.edgeWeights = new HashMap<E, W>(edges.size()*2);
 	}
@@ -24,7 +28,7 @@ public class EdgesWeight<E, W extends Number> implements Transformer<E, W>{
 		this.edgeWeights = edgeWeights;
 	}
 	
-	public void addEdge(E edge, W weight){
+	public void addEdgeWeight(E edge, W weight){
 		edgeWeights.put(edge, weight);
 	}
 
