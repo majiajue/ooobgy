@@ -51,7 +51,7 @@ public class AutoEBClusterTest extends TestCase {
 		System.out.println("----------groups--------");
 		System.out.println(groups);
 		System.out.println("----------NMI--------");
-		Set<Set<String>> realClsters = makeSet(new String[][]{{"1","2","3"},{"4","5","6","7"}});
+		Set<Set<String>> realClsters = makeSet(new String[][]{{"1","2","3"},{"4","5","6","7","12"},{"8","9","10","11"}});
 		System.out.println("real cluster:" + realClsters);
 		NMIQualify qualify = new NMIQualify<String>();
 		double NMI = qualify.qualifyNMI(realClsters, groups);
