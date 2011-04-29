@@ -2,6 +2,7 @@ package edu.zju.cs.ooobgy.algo.cluster.qualify;
 
 import java.util.HashSet;
 import java.util.Set;
+import java.util.UUID;
 
 import org.junit.Test;
 
@@ -12,6 +13,7 @@ public class NMIQualifyTest extends TestCase{
 	@Test
 	public void testNMI(){
 		int i = 0;
+		System.err.println(UUID.randomUUID());
 		
 		System.out.println("========= case " + i + " =========");
 		i++;
