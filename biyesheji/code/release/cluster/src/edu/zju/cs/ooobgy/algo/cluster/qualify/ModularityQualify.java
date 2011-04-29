@@ -93,7 +93,7 @@ public class ModularityQualify<V, E> implements ClusterQualify<V, E>{
 		
 		double MQ = 0.0;
 		for (int i = 0; i < k; i++) {
-			double dMQ = M.get(i) / m - D.get(i) / (4 * m * m);
+			double dMQ = M.get(i) / m - D.get(i) * D.get(i) / (4 * m * m);
 			MQ += dMQ;
 		}
 		
@@ -110,8 +110,8 @@ public class ModularityQualify<V, E> implements ClusterQualify<V, E>{
 	 */
 	@Override
 	public double qualify(Set<Set<V>> clusters) {
-		//return ulrikWeightedQualify(clusters);
-		return matrixQualify(clusters);
+		return ulrikWeightedQualify(clusters);
+		//return matrixQualify(clusters);
 	}
 	
 	public double matrixQualify(Set<Set<V>> clusters){
