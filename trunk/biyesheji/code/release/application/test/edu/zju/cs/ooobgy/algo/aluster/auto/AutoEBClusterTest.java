@@ -38,8 +38,16 @@ public class AutoEBClusterTest extends TestCase {
 	
 	@Test
 	public void testCase2() {
+		caseTest("201002");
+	}
+	
+	public void testCase3(){
+		caseTest("001101");
+	}
+
+	private void caseTest(String sliceId) {
 		ClusterGraphDBLoader dbLoader = new ClusterGraphDBLoader();
-		ClusterGraph<String, Integer> graph = dbLoader.load("201002");
+		ClusterGraph<String, Integer> graph = dbLoader.load(sliceId);
 		System.out.println("==========before cluster==========");
 		System.out.println(graph);
 		System.out.println("==========clustering==========");

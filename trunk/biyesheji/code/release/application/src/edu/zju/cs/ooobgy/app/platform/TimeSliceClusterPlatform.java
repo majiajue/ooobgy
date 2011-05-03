@@ -41,6 +41,7 @@ import org.apache.commons.collections15.map.LazyMap;
 
 import edu.uci.ics.jung.algorithms.layout.util.Relaxer;
 import edu.zju.cs.ooobgy.algo.cluster.EdgeBetweennessClusterer;
+import edu.zju.cs.ooobgy.algo.cluster.auto.AutoEdgeBetwennessCluster;
 import edu.zju.cs.ooobgy.dt.db.ClusterGraphDBLoader;
 import edu.zju.cs.ooobgy.graph.ClusterGraph;
 import edu.zju.cs.ooobgy.graph.Graph;
@@ -251,13 +252,15 @@ public class TimeSliceClusterPlatform extends JApplet {
 		p.add(gm.getModeComboBox());
 		south.add(p);
 		slice.add(south,BorderLayout.SOUTH);
-		if (time_range.equals("201002")) {
-			clusterAndRecolor(layout, 7, similarColors, groupVertices.isSelected());
-			edgeBetweennessSlider.setValue(7);
-		} else if (time_range.equals("201003")) {
-			clusterAndRecolor(layout, 6, similarColors, groupVertices.isSelected());
-			edgeBetweennessSlider.setValue(6);
-		}
+		int removeEdgecount = autoClusterAndRecolor(layout, similarColors, groupVertices.isSelected());
+		edgeBetweennessSlider.setValue(removeEdgecount);
+//		if (time_range.equals("201002")) {
+//			clusterAndRecolor(layout, 7, similarColors, groupVertices.isSelected());
+//			edgeBetweennessSlider.setValue(7);
+//		} else if (time_range.equals("201003")) {
+//			clusterAndRecolor(layout, 6, similarColors, groupVertices.isSelected());
+//			edgeBetweennessSlider.setValue(6);
+//		}
 		return slice;
 	}
 
@@ -302,6 +305,46 @@ public class TimeSliceClusterPlatform extends JApplet {
 		}
 
 	}
+	
+	public int autoClusterAndRecolor(AggregateLayout<String, Integer> layout,
+			Color[] colors, boolean groupClusters) {
+			//Now cluster the vertices by removing the top 50 edges with highest betweenness
+			//		if (numEdgesToRemove == 0) {
+			//			colorCluster( g.getVertices(), colors[0] );
+			//		} else {
+			
+			ClusterGraph<String, Integer> g = (ClusterGraph<String, Integer>)layout.getGraph();
+	        layout.removeAll();
+
+	        AutoEdgeBetwennessCluster<String, Integer> autoCluster = new AutoEdgeBetwennessCluster<String, Integer>(
+					g.getEdgeWeights());
+			Set<Set<String>> clusterSet = autoCluster.transform(g);
+			List<Integer> removedEdges = autoCluster.getRemovedEdges();
+			
+			int i = 0;
+			//Set the colors of each node so that each cluster's vertices have the same color
+			for (Iterator<Set<String>> cIt = clusterSet.iterator(); cIt.hasNext();) {
+
+				Set<String> vertices = cIt.next();
+				Color c = colors[i % colors.length];
+
+				colorCluster(vertices, c);
+				if(groupClusters == true) {
+					groupCluster(layout, vertices);
+				}
+				i++;
+			}
+			for (Integer e : g.getEdges()) {
+
+				if (removedEdges.contains(e)) {
+					edgePaints.put(e, Color.lightGray);
+				} else {
+					edgePaints.put(e, Color.black);
+				}
+			}
+			
+			return removedEdges.size();
+		}
 
 	private void colorCluster(Set<String> vertices, Color c) {
 		for (String v : vertices) {

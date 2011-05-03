@@ -16,8 +16,8 @@ public class DynamicClusterDemo extends JApplet implements Runnable{
 		TimeSliceClusterPlatform platformLeft = new TimeSliceClusterPlatform();
 		TimeSliceClusterPlatform platformRight = new TimeSliceClusterPlatform();
 		try {
-			JPanel slice1 = platformLeft.setUpView("201002");
-			JPanel slice2 = platformRight.setUpView("201003");
+			JPanel slice1 = platformLeft.setUpView("001101");
+			JPanel slice2 = platformRight.setUpView("001102");
 			Container content = getContentPane();
 			content.setLayout(new BorderLayout());
             content.add(slice1,BorderLayout.WEST);
