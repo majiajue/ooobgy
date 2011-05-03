@@ -13,5 +13,9 @@ import edu.zju.cs.ooobgy.db.entity.UndirectedRalation;
 public interface UndirectedRalationDao extends
 		TDataDao<UndirectedRalation, Integer> {
 	public List<UndirectedRalation> findAllInTimeRange(String time_range);
-	
+	/**
+	 * 删除一个时间切片
+	 * @param time_range
+	 */
+	public void removeSlice(String time_range);
 }
