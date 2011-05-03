@@ -172,4 +172,20 @@ public abstract class TDataDaoImpl<T,K> implements TDataDao<T,K> {
 		return count;
 	}
 
+	protected int delete(Class<?> impclass, String cmd){
+		// 开启会话
+		Session session = HibernateSessionFactory.getSession();
+		// 事务处理对象
+		Transaction tx = null;
+		tx = session.beginTransaction();
+		String hql = "delete from " + impclass.getSimpleName() + cmd;
+		System.out.println(hql);
+		Query query = session.createQuery(hql);
+		int removeLines = query.executeUpdate();
+		tx.commit();
+		HibernateSessionFactory.closeSession();
+		HibernateSessionFactory.getSession();
+		
+		return removeLines;
+	}
 }

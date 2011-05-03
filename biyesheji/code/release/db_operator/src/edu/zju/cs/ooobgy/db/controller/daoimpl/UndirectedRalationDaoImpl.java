@@ -33,4 +33,10 @@ public class UndirectedRalationDaoImpl extends TDataDaoImpl<UndirectedRalation, 
 	public List<UndirectedRalation> findAllInTimeRange(String time_range){
 		return findAll(UndirectedRalation.class, " p where p.time_range='"+ time_range +"'");
 	}
+
+	@Override
+	public void removeSlice(String time_range) {
+		int removeLines = delete(UndirectedRalation.class, " p where p.time_range='"+ time_range +"'");
+		System.out.println(removeLines + " rows deleted from UndirectedRalation.");
+	}
 }
