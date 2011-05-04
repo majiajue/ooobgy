@@ -8,6 +8,7 @@ import java.util.Set;
 import org.apache.commons.collections15.Transformer;
 
 import edu.zju.cs.ooobgy.algo.dynamic_na.pojo.ClusterSlice;
+import edu.zju.cs.ooobgy.algo.dynamic_na.pojo.IdCluster;
 import edu.zju.cs.ooobgy.algo.math.matrix.Matrix;
 
 /**
@@ -41,7 +42,7 @@ public class DynamicCluster<V, E> implements
 	@Override
 	public ClusterSlice<V, E> transform(ClusterSlice<V, E> newSlice) {
 		ClusterSlice<V, E> slice = newSlice;
-		List<Entry<String, Set<V>>> preCluster = new ArrayList<Entry<String, Set<V>>>(
+		List<Entry<String, IdCluster<V>>> preCluster = new ArrayList<Entry<String, IdCluster<V>>>(
 				preSlice.getClusters().entrySet());//已知团伙的id对应情况，转为list方便后续分析
 		List<Set<V>> newClusters = new ArrayList<Set<V>>(newSliceClusters);//新的团伙信息，待分析list
 		Matrix similarityMatrix = new Matrix(preCluster.size(), newClusters.size());//相似度矩阵
