@@ -14,5 +14,6 @@
 	<classpathentry kind="lib" path="lib/jung-algorithms-2.0.1.jar"/>
 	<classpathentry kind="lib" path="lib/jung-api-2.0.1.jar"/>
 	<classpathentry kind="lib" path="lib/jung-visualization-2.0.1.jar"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/comm_conf"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

@@ -14,6 +14,7 @@ import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.awt.geom.Point2D;
 import java.io.IOException;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -42,6 +43,9 @@ import org.apache.commons.collections15.map.LazyMap;
 import edu.uci.ics.jung.algorithms.layout.util.Relaxer;
 import edu.zju.cs.ooobgy.algo.cluster.EdgeBetweennessClusterer;
 import edu.zju.cs.ooobgy.algo.cluster.auto.AutoEdgeBetwennessCluster;
+import edu.zju.cs.ooobgy.algo.dynamic_na.pojo.ClusterSlice;
+import edu.zju.cs.ooobgy.algo.dynamic_na.pojo.IdCluster;
+import edu.zju.cs.ooobgy.app.cache.DCD_Cache;
 import edu.zju.cs.ooobgy.dt.db.ClusterGraphDBLoader;
 import edu.zju.cs.ooobgy.graph.ClusterGraph;
 import edu.zju.cs.ooobgy.graph.Graph;
@@ -73,19 +77,9 @@ public class TimeSliceClusterPlatform extends JApplet {
 	LazyMap.<Integer,Paint>decorate(new HashMap<Integer,Paint>(),
 			new ConstantTransformer(Color.blue));
 
-	public final Color[] similarColors =
-	{
-		new Color(216, 134, 134),
-		new Color(135, 137, 211),
-		new Color(134, 206, 189),
-		new Color(206, 176, 134),
-		new Color(194, 204, 134),
-		new Color(145, 214, 134),
-		new Color(133, 178, 209),
-		new Color(103, 148, 255),
-		new Color(60, 220, 220),
-		new Color(30, 250, 100)
-	};
+	
+	
+	private ClusterSlice<String, Integer> clusterSlice;
 	
 	public static void main(String[] args) throws IOException {
 		
@@ -128,7 +122,7 @@ public class TimeSliceClusterPlatform extends JApplet {
 
         ClusterGraphDBLoader dbLoader = new ClusterGraphDBLoader();
 		ClusterGraph<String, Integer> graph = dbLoader.load(time_range);
-
+		this.clusterSlice = new ClusterSlice<String, Integer>(time_range, graph);
 		//Create a simple layout frame
         //specify the Fruchterman-Rheingold layout algorithm
         final AggregateLayout<String, Integer> layout = 
@@ -216,19 +210,19 @@ public class TimeSliceClusterPlatform extends JApplet {
 		groupVertices.addItemListener(new ItemListener() {
 			public void itemStateChanged(ItemEvent e) {
 					clusterAndRecolor(layout, edgeBetweennessSlider.getValue(), 
-							similarColors, e.getStateChange() == ItemEvent.SELECTED);
+							DCD_Cache.similarColors, e.getStateChange() == ItemEvent.SELECTED);
 					vv.repaint();
 			}});
 
 
-		clusterAndRecolor(layout, 0, similarColors, groupVertices.isSelected());
+		clusterAndRecolor(layout, 0, DCD_Cache.similarColors, groupVertices.isSelected());
 
 		edgeBetweennessSlider.addChangeListener(new ChangeListener() {
 			public void stateChanged(ChangeEvent e) {
 				JSlider source = (JSlider) e.getSource();
 				if (!source.getValueIsAdjusting()) {
 					int numEdgesToRemove = source.getValue();
-					clusterAndRecolor(layout, numEdgesToRemove, similarColors,
+					clusterAndRecolor(layout, numEdgesToRemove, DCD_Cache.similarColors,
 							groupVertices.isSelected());
 					sliderBorder.setTitle(
 						COMMANDSTRING + edgeBetweennessSlider.getValue());
@@ -252,7 +246,7 @@ public class TimeSliceClusterPlatform extends JApplet {
 		p.add(gm.getModeComboBox());
 		south.add(p);
 		slice.add(south,BorderLayout.SOUTH);
-		int removeEdgecount = autoClusterAndRecolor(layout, similarColors, groupVertices.isSelected());
+		int removeEdgecount = autoClusterAndRecolor(layout, DCD_Cache.similarColors, groupVertices.isSelected());
 		edgeBetweennessSlider.setValue(removeEdgecount);
 //		if (time_range.equals("201002")) {
 //			clusterAndRecolor(layout, 7, similarColors, groupVertices.isSelected());
@@ -282,6 +276,9 @@ public class TimeSliceClusterPlatform extends JApplet {
 		//恢复图
 		clusterer.recoverGraph();
 		
+		clusterSlice.setRemovedEdges(edges);
+		clusterSlice.clearClusters();
+		
 		int i = 0;
 		//Set the colors of each node so that each cluster's vertices have the same color
 		for (Iterator<Set<String>> cIt = clusterSet.iterator(); cIt.hasNext();) {
@@ -294,6 +291,9 @@ public class TimeSliceClusterPlatform extends JApplet {
 				groupCluster(layout, vertices);
 			}
 			i++;
+			
+			IdCluster<String> thisCluster = new IdCluster<String>(vertices, c);
+			clusterSlice.addCluster(thisCluster.getId(), thisCluster);
 		}
 		for (Integer e : g.getEdges()) {
 
@@ -321,6 +321,9 @@ public class TimeSliceClusterPlatform extends JApplet {
 			Set<Set<String>> clusterSet = autoCluster.transform(g);
 			List<Integer> removedEdges = autoCluster.getRemovedEdges();
 			
+			clusterSlice.setRemovedEdges(removedEdges);
+			clusterSlice.clearClusters();
+			
 			int i = 0;
 			//Set the colors of each node so that each cluster's vertices have the same color
 			for (Iterator<Set<String>> cIt = clusterSet.iterator(); cIt.hasNext();) {
@@ -333,6 +336,8 @@ public class TimeSliceClusterPlatform extends JApplet {
 					groupCluster(layout, vertices);
 				}
 				i++;
+				IdCluster<String> thisCluster = new IdCluster<String>(vertices, c);
+				clusterSlice.addCluster(thisCluster.getId(), thisCluster);
 			}
 			for (Integer e : g.getEdges()) {
 
@@ -366,6 +371,21 @@ public class TimeSliceClusterPlatform extends JApplet {
 
 			layout.put(subLayout,center);
 			vv.repaint();
+		}
+	}
+
+	public ClusterSlice<String, Integer> getClusterSlice() {
+		return clusterSlice;
+	}
+
+	public void setClusterSlice(ClusterSlice<String, Integer> clusterSlice) {
+		this.clusterSlice = clusterSlice;
+	}
+
+	public void repaintSlice() {
+		Collection<IdCluster<String>> cls = clusterSlice.getClusters().values();
+		for (IdCluster<String> idCluster : cls) {
+			colorCluster(idCluster.getVertexes(), idCluster.getColor());
 		}
 	}
 }
