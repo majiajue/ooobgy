@@ -37,7 +37,7 @@ public class ClusterSimilarity<V> implements Transformer<Set<V>, Double>{
 		}
 		unionSize = c1.size() + c2.size() - intersectionSize;
 		
-		return new Double(unionSize) / new Double(intersectionSize);
+		return new Double(intersectionSize) / new Double(unionSize);
 	}
 
 }
