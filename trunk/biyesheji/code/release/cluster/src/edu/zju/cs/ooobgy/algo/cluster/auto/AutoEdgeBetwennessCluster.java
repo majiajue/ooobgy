@@ -40,7 +40,22 @@ public class AutoEdgeBetwennessCluster<V, E> implements AutoEdgeRemovalCluster<V
 	 *  false: 切边到找到第一个较优值位置(MQ算法中为第一个峰值)
 	 */
 	private boolean clusterComplete;
+	/**
+	 * 是否打印聚类过程
+	 */
+	private boolean printClusterProcess;
 	
+	public AutoEdgeBetwennessCluster(
+			Transformer<E, ? extends Number> edge_weights,
+			boolean clusterComplete, boolean printClusterProcess) {
+		super();
+		this.edge_weights = edge_weights;
+		this.qualityTrack = new LinkedList<Double>();
+		this.edgeTrack = new LinkedList<E>();
+		this.clusterComplete = clusterComplete;
+		this.printClusterProcess = printClusterProcess;
+	}
+
 	/**
 	 * 对于有权图的构造
 	 * @param edge_weights
@@ -52,6 +67,7 @@ public class AutoEdgeBetwennessCluster<V, E> implements AutoEdgeRemovalCluster<V
 		this.qualityTrack = new LinkedList<Double>();
 		this.edgeTrack = new LinkedList<E>();
 		this.clusterComplete = true;
+		this.printClusterProcess = false;
 	}
 
 	/**
@@ -64,6 +80,7 @@ public class AutoEdgeBetwennessCluster<V, E> implements AutoEdgeRemovalCluster<V
 		this.qualityTrack = new LinkedList<Double>();
 		this.edgeTrack = new LinkedList<E>();
 		this.clusterComplete = true;
+		this.printClusterProcess = false;
 	}
 	
 	/**
@@ -79,6 +96,7 @@ public class AutoEdgeBetwennessCluster<V, E> implements AutoEdgeRemovalCluster<V
 		this.clusterComplete = clusterComplete;
 		this.qualityTrack = new LinkedList<Double>();
 		this.edgeTrack = new LinkedList<E>();
+		this.printClusterProcess = false;
 	}
 
 	@Override
@@ -109,23 +127,55 @@ public class AutoEdgeBetwennessCluster<V, E> implements AutoEdgeRemovalCluster<V
 			qualityTrack.add(mq);
 			E removedEdge = ebCluster.getEdgesRemoved().get(0);
 			edgeTrack.add(removedEdge);
+			printClusterProcess(removedEdge, mq);
 			//4.更新最优记录
 			if (mq > bestCluster.bestMQ()) {
 				////System.out.println("best change!");
 				bestCluster.setBestClusterSet(clusters);
 				bestCluster.setBestTrack(new SimpleKeyValue<Integer, Double>(i, mq));
-			}else if (!clusterComplete) {
+			}else if (mq < bestCluster.bestMQ() && !clusterComplete) {
+				bestCluster = backup(bestCluster, graph);
 				break;//如果选定不完全切边选项，则在第一个峰值就退出迭代
 			}
 		}
 		
 		//------debug
+		System.out.println("----------cluster end--------");
 		System.out.println("edgeTrack:" + edgeTrack);
 		System.out.println("qualityTrack" + qualityTrack);
 		System.out.println("bestCluster" + bestCluster.bestTrack);
 		//------
 		
 		return bestCluster.getBestClusterSet();
+	}
+
+
+	private BestAEBCluster backup(BestAEBCluster bestCluster, ClusterGraph<V, E> graph) {
+		ClusterGraph<V, E> optGraph = graph.clone();
+		Double bestMQ = Double.NEGATIVE_INFINITY;
+		int bestTrack = 0;
+		for (int i = qualityTrack.size()-1; i >=0; i--) {
+			if (bestMQ <= qualityTrack.get(i)) {
+				bestMQ = qualityTrack.get(i);
+				bestTrack = i;
+			}
+		}
+		for (int i = 0; i <= bestTrack; i++) {
+			optGraph.removeEdge(edgeTrack.get(i));
+		}
+		WeakComponentClusterer<V, E> wcSearch = new WeakComponentClusterer<V, E>();
+		Set<Set<V>> clusterSet = wcSearch.transform(optGraph);
+		
+		bestCluster.setBestClusterSet(clusterSet);
+		bestCluster.setBestTrack(new SimpleKeyValue<Integer, Double>(bestTrack, qualityTrack.get(bestTrack)));
+		
+		return bestCluster;
+	}
+
+	private void printClusterProcess(E removedEdge, Double mq) {
+		if (printClusterProcess) {
+			System.out.println("remove edge:\t" + removedEdge + "\tMQ = " + mq);
+		}	
 	}
 
 	public boolean isClusterComplete() {
@@ -195,5 +245,13 @@ public class AutoEdgeBetwennessCluster<V, E> implements AutoEdgeRemovalCluster<V
 		}
 		
 		return edges;
+	}
+
+	public boolean isPrintClusterProcess() {
+		return printClusterProcess;
+	}
+
+	public void setPrintClusterProcess(boolean printClusterProcess) {
+		this.printClusterProcess = printClusterProcess;
 	}
 }
