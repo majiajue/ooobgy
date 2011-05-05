@@ -23,7 +23,7 @@ public class ClusterGraphDBLoader implements DBLoader<ClusterGraph<String, Integ
 		ClusterGraph<String, Integer> graph = new ClusterGraph<String, Integer>();
 		UndirectedRalationDao udrDataDao = new UndirectedRalationDaoImpl();
 		List<UndirectedRalation> udr_edges = udrDataDao.findAllInTimeRange(time_range);
-		EdgeWeightTransformer udr_edge_weights = new EdgeWeightTransformer(this);
+		EdgeWeightTransformer udr_edge_weights = new EdgeWeightTransformer();
 		for (UndirectedRalation edge : udr_edges) {
 			udr_edge_weights.addUdrWeight(edge.getUdr_id(), edge.getUdr_weight());
 			graph.addEdge(edge.getUdr_id(), edge.getPnode_1(), edge.getPnode_2());

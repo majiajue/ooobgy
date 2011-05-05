@@ -13,15 +13,9 @@ import org.apache.commons.collections15.Transformer;
  */
 class EdgeWeightTransformer implements Transformer<Integer, Integer>{
 	/**
-	 * 
-	 */
-	private ClusterGraphDBLoader EdgeWeightTransformer;
-
-	/**
 	 * @param clusterGraphDBLoader
 	 */
-	EdgeWeightTransformer(ClusterGraphDBLoader clusterGraphDBLoader) {
-		EdgeWeightTransformer = clusterGraphDBLoader;
+	EdgeWeightTransformer() {
 	}
 
 	private Map<Integer, Integer> udr_weights = new HashMap<Integer, Integer>();
