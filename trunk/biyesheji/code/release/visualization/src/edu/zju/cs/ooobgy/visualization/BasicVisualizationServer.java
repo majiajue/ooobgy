@@ -44,8 +44,8 @@ import edu.zju.cs.ooobgy.visualization.control.ScalingControl;
 import edu.zju.cs.ooobgy.visualization.layout.GraphElementAccessor;
 import edu.zju.cs.ooobgy.visualization.layout.Layout;
 import edu.zju.cs.ooobgy.visualization.picking.ShapePickSupport;
-import edu.zju.ooobgy.visualization.renderers.BasicRenderer;
-import edu.zju.ooobgy.visualization.renderers.Renderer;
+import edu.zju.cs.ooobgy.visualization.renderers.BasicRenderer;
+import edu.zju.cs.ooobgy.visualization.renderers.Renderer;
 
 /**
  * A class that maintains many of the details necessary for creating 

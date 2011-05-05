@@ -21,7 +21,7 @@ import javax.swing.event.EventListenerList;
 import edu.uci.ics.jung.visualization.picking.PickedState;
 import edu.zju.cs.ooobgy.visualization.layout.GraphElementAccessor;
 import edu.zju.cs.ooobgy.visualization.layout.Layout;
-import edu.zju.ooobgy.visualization.renderers.Renderer;
+import edu.zju.cs.ooobgy.visualization.renderers.Renderer;
 
 /**
  * @author tom

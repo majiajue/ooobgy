@@ -7,7 +7,7 @@
 * "license.txt" or
 * http://jung.sourceforge.net/license.txt for a description.
 */
-package edu.zju.ooobgy.visualization.renderers;
+package edu.zju.cs.ooobgy.visualization.renderers;
 
 import java.awt.Dimension;
 
