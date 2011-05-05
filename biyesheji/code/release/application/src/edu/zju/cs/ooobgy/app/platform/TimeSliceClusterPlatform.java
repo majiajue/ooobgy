@@ -5,6 +5,7 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Container;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.Paint;
 import java.awt.Stroke;
@@ -12,6 +13,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
+import java.awt.font.TextAttribute;
 import java.awt.geom.Point2D;
 import java.io.IOException;
 import java.util.Collection;
@@ -52,10 +54,14 @@ import edu.zju.cs.ooobgy.graph.Graph;
 import edu.zju.cs.ooobgy.visualization.GraphZoomScrollPane;
 import edu.zju.cs.ooobgy.visualization.VisualizationViewer;
 import edu.zju.cs.ooobgy.visualization.control.DefaultModalGraphMouse;
+import edu.zju.cs.ooobgy.visualization.font.UnderLineFont;
+import edu.zju.cs.ooobgy.visualization.labeltransformer.EdgeWeightLabelTransformer;
+import edu.zju.cs.ooobgy.visualization.labeltransformer.VertexContextLabelTransformer;
 import edu.zju.cs.ooobgy.visualization.layout.AggregateLayout;
 import edu.zju.cs.ooobgy.visualization.layout.CircleLayout;
 import edu.zju.cs.ooobgy.visualization.layout.FRLayout;
 import edu.zju.cs.ooobgy.visualization.layout.Layout;
+import edu.zju.cs.ooobgy.visualization.renderers.BasicVertexLabelRenderer;
 
 
 /**
@@ -129,6 +135,16 @@ public class TimeSliceClusterPlatform extends JApplet {
         	new AggregateLayout<String, Integer>(new FRLayout<String, Integer>(graph));
 
 		vv = new VisualizationViewer<String, Integer>(layout);
+		
+		//hacked by cherry
+		//add label
+		vv.getRenderContext().setVertexLabelTransformer(new VertexContextLabelTransformer<String>());
+		//vv.getRenderContext().setVertexLabelRenderer(new BasicVertexLabelRenderer<String, Integer>());
+		//vv.getRenderContext().getVertexLabelRenderer().
+		vv.getRenderContext().setEdgeLabelTransformer(new EdgeWeightLabelTransformer<Integer>(graph.getEdgeWeights()));
+		
+		vv.getRenderContext().setVertexFontTransformer(new ConstantTransformer(new UnderLineFont("Helvetica", Font.BOLD, 12)));
+		
 		vv.setBackground( Color.white );
 		//Tell the renderer to use our own customized color rendering
 		vv.getRenderContext().setVertexFillPaintTransformer(MapTransformer.<String,Paint>getInstance(vertexPaints));
