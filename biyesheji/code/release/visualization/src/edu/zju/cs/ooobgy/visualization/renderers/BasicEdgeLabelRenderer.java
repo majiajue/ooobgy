@@ -7,7 +7,7 @@
  *
  * Created on Aug 23, 2005
  */
-package edu.zju.ooobgy.visualization.renderers;
+package edu.zju.cs.ooobgy.visualization.renderers;
 
 import java.awt.Component;
 import java.awt.Dimension;

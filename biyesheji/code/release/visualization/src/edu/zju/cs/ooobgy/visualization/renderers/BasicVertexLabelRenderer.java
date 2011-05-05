@@ -7,7 +7,7 @@
  *
  * Created on Aug 23, 2005
  */
-package edu.zju.ooobgy.visualization.renderers;
+package edu.zju.cs.ooobgy.visualization.renderers;
 
 
 import java.awt.Component;
@@ -29,7 +29,7 @@ import edu.zju.cs.ooobgy.graph.Graph;
 import edu.zju.cs.ooobgy.visualization.RenderContext;
 import edu.zju.cs.ooobgy.visualization.layout.Layout;
 
-public class BasicVertexLabelRenderer<V,E> implements Renderer.VertexLabel<V,E> {
+public class BasicVertexLabelRenderer<V,E> implements Renderer.VertexLabel<V,E>{
 
 	protected Position position = Position.SE;
 	private Positioner positioner = new OutsidePositioner();
