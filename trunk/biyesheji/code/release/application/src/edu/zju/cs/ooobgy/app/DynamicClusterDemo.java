@@ -1,6 +1,7 @@
 package edu.zju.cs.ooobgy.app;
 
 import java.awt.BorderLayout;
+import java.awt.CheckboxMenuItem;
 import java.awt.Container;
 import java.awt.Menu;
 import java.awt.MenuBar;
@@ -12,7 +13,8 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 
-import edu.zju.cs.ooobgy.app.action.DynamicClusterAction;
+import edu.zju.cs.ooobgy.app.action.DynamicClusterActionListener;
+import edu.zju.cs.ooobgy.app.action.OptionActionListener;
 import edu.zju.cs.ooobgy.app.platform.TimeSliceClusterPlatform;
 
 @SuppressWarnings("serial")
@@ -45,15 +47,14 @@ public class DynamicClusterDemo extends JApplet implements Runnable{
 	}
 
 	/**
-	 * AWT菜单，解决视图覆盖问题
+	 * AWT菜单，解决windows下视图覆盖问题
 	 * @return
 	 */
 	public MenuBar setUpAwtMenuBar(){
 		MenuBar menuBar = new MenuBar();
-		DynamicClusterAction actionListener = new DynamicClusterAction(leftPlatform,rightPlatform);
 		
-		Menu fenxiMenu;
-		fenxiMenu = new Menu("Dynamic Analysis");
+		DynamicClusterActionListener actionListener = new DynamicClusterActionListener(leftPlatform,rightPlatform);		
+		Menu fenxiMenu = new Menu("Dynamic Analysis");
 		menuBar.add(fenxiMenu);
 		MenuItem zongtiItem = new MenuItem("DA_all");
 		zongtiItem.setActionCommand("DA_all");//DA:dynamic analysis
@@ -68,15 +69,26 @@ public class DynamicClusterDemo extends JApplet implements Runnable{
 		clusterItem.addActionListener(actionListener);
 		fenxiMenu.add(clusterItem);
 		
+		OptionActionListener optionActionListener = new OptionActionListener(leftPlatform,rightPlatform);
+		Menu optionMenu = new Menu("Option");
+		menuBar.add(optionMenu);
+		CheckboxMenuItem nodeIdShow = new CheckboxMenuItem("Show Vertex Id", true);
+		nodeIdShow.addItemListener(optionActionListener);
+		
+		optionMenu.add(nodeIdShow);
+		CheckboxMenuItem edgeWeightShow = new CheckboxMenuItem("Show Edge Weight", false);
+		edgeWeightShow.addItemListener(optionActionListener);
+		optionMenu.add(edgeWeightShow);
+		
 		return menuBar;
 	}
 	
 	/**
-	 * Swing菜单
+	 * Swing菜单20110429，解决unix (linux, mac)下视图覆盖问题
 	 * @return
 	 */
 	public JMenuBar setUpSwingMenuBar() {
-		DynamicClusterAction actionListener = new DynamicClusterAction(leftPlatform,rightPlatform);
+		DynamicClusterActionListener actionListener = new DynamicClusterActionListener(leftPlatform,rightPlatform);
 		
 		JMenuBar menuBar = new JMenuBar();
 		JMenu fenxiMenu = new JMenu("演化分析");

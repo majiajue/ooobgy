@@ -11,16 +11,14 @@ import edu.zju.cs.ooobgy.algo.dynamic_na.pojo.ClusterSlice;
 import edu.zju.cs.ooobgy.app.cache.DCD_Cache;
 import edu.zju.cs.ooobgy.app.platform.TimeSliceClusterPlatform;
 
-public class DynamicClusterAction implements ActionListener {
-	private TimeSliceClusterPlatform leftPlatform;
+public class DynamicClusterActionListener implements ActionListener {
 	private TimeSliceClusterPlatform rightPlatform;
 	private ClusterSlice<String, Integer> preSlice;
 	private ClusterSlice<String, Integer> nowSlice;
 
-	public DynamicClusterAction(TimeSliceClusterPlatform leftPlatform,
+	public DynamicClusterActionListener(TimeSliceClusterPlatform leftPlatform,
 			TimeSliceClusterPlatform rightPlatform) {
 		super();
-		this.leftPlatform = leftPlatform;
 		this.rightPlatform = rightPlatform;
 		preSlice = leftPlatform.getClusterSlice();
 		nowSlice = rightPlatform.getClusterSlice();
@@ -67,7 +65,7 @@ public class DynamicClusterAction implements ActionListener {
 			ClusterSliceMapper<String, Integer> sliceMapper = new ClusterSliceMapper<String, Integer>(preSlice);
 			nowSlice = sliceMapper.transform(nowSlice);
 			rightPlatform.setClusterSlice(nowSlice);
-			rightPlatform.repaintSlice();
+			rightPlatform.recolorSlice();
 			
 			DCD_Cache.clusterMapped = true;
 		}
