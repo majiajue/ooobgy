@@ -13,7 +13,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
-import java.awt.font.TextAttribute;
 import java.awt.geom.Point2D;
 import java.io.IOException;
 import java.util.Collection;
@@ -61,7 +60,6 @@ import edu.zju.cs.ooobgy.visualization.layout.AggregateLayout;
 import edu.zju.cs.ooobgy.visualization.layout.CircleLayout;
 import edu.zju.cs.ooobgy.visualization.layout.FRLayout;
 import edu.zju.cs.ooobgy.visualization.layout.Layout;
-import edu.zju.cs.ooobgy.visualization.renderers.BasicVertexLabelRenderer;
 
 
 /**
@@ -141,7 +139,7 @@ public class TimeSliceClusterPlatform extends JApplet {
 		vv.getRenderContext().setVertexLabelTransformer(new VertexContextLabelTransformer<String>());
 		//vv.getRenderContext().setVertexLabelRenderer(new BasicVertexLabelRenderer<String, Integer>());
 		//vv.getRenderContext().getVertexLabelRenderer().
-		vv.getRenderContext().setEdgeLabelTransformer(new EdgeWeightLabelTransformer<Integer>(graph.getEdgeWeights()));
+		//vv.getRenderContext().setEdgeLabelTransformer(new EdgeWeightLabelTransformer<Integer>(graph.getEdgeWeights()));
 		
 		vv.getRenderContext().setVertexFontTransformer(new ConstantTransformer(new UnderLineFont("Helvetica", Font.BOLD, 12)));
 		
@@ -174,7 +172,7 @@ public class TimeSliceClusterPlatform extends JApplet {
             });
 
 		//add restart button
-		JButton scramble = new JButton("Restart");
+		JButton scramble = new JButton("Redraw");
 		scramble.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				Layout layout = vv.getGraphLayout();
@@ -398,10 +396,35 @@ public class TimeSliceClusterPlatform extends JApplet {
 		this.clusterSlice = clusterSlice;
 	}
 
-	public void repaintSlice() {
+	public void recolorSlice() {
 		Collection<IdCluster<String>> cls = clusterSlice.getClusters().values();
 		for (IdCluster<String> idCluster : cls) {
 			colorCluster(idCluster.getVertexes(), idCluster.getColor());
 		}
+	}
+	
+	/**
+	 * 调整视图中节点标签的可见性
+	 * @param visible
+	 */
+	public void changeVertexIdVisible(boolean visible){
+		if (visible) {
+			VertexContextLabelTransformer<String> vLabels = new VertexContextLabelTransformer<String>();
+			vv.getRenderContext().setVertexLabelTransformer(vLabels);
+		} else {
+			vv.getRenderContext().setVertexLabelTransformer(new ConstantTransformer(null));
+		}
+		vv.repaint();
+	}
+	
+	public void changeEdgeWeightVisible(boolean visible){
+		if (visible) {
+			ClusterGraph<String, Integer> graph = clusterSlice.getGraph();
+			EdgeWeightLabelTransformer<Integer> eLabels = new EdgeWeightLabelTransformer<Integer>(graph.getEdgeWeights());
+			vv.getRenderContext().setEdgeLabelTransformer(eLabels);
+		} else {
+			vv.getRenderContext().setEdgeLabelTransformer(new ConstantTransformer(null));
+		}
+		vv.repaint();
 	}
 }
