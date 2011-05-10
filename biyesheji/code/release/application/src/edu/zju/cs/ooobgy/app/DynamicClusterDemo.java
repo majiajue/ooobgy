@@ -84,7 +84,7 @@ public class DynamicClusterDemo extends JApplet implements Runnable{
 	}
 	
 	/**
-	 * Swing菜单20110429，解决unix (linux, mac)下视图覆盖问题
+	 * Swing菜单20110429，解决Unix (linux, mac)下视图覆盖问题
 	 * @return
 	 */
 	public JMenuBar setUpSwingMenuBar() {

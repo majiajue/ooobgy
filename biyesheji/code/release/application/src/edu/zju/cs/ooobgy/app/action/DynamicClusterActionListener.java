@@ -2,11 +2,10 @@ package edu.zju.cs.ooobgy.app.action;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Set;
-
+import java.util.List;
 import edu.zju.cs.ooobgy.algo.dynamic_na.ClusterSliceMapper;
-import edu.zju.cs.ooobgy.algo.dynamic_na.analayzer.NodeEventAnalyzer;
-import edu.zju.cs.ooobgy.algo.dynamic_na.event.NodeEvent;
+import edu.zju.cs.ooobgy.algo.dynamic_na.analayzer.VertexEventAnalyzer;
+import edu.zju.cs.ooobgy.algo.dynamic_na.event.VertexEvent;
 import edu.zju.cs.ooobgy.algo.dynamic_na.pojo.ClusterSlice;
 import edu.zju.cs.ooobgy.app.cache.DCD_Cache;
 import edu.zju.cs.ooobgy.app.platform.TimeSliceClusterPlatform;
@@ -43,10 +42,10 @@ public class DynamicClusterActionListener implements ActionListener {
 
 	private void nodeAction() {
 		mapCluster();
-		NodeEventAnalyzer<String, Integer> analyzer = new NodeEventAnalyzer<String, Integer>(preSlice);
-		Set<NodeEvent<String>> nodeEvents = analyzer.analyze(nowSlice);
+		VertexEventAnalyzer<String, Integer> analyzer = new VertexEventAnalyzer<String, Integer>(preSlice);
+		List<VertexEvent<String>> nodeEvents = analyzer.analyze(nowSlice);
 		System.out.println("================= Node Events =================");
-		for (NodeEvent<String> nodeEvent : nodeEvents) {
+		for (VertexEvent<String> nodeEvent : nodeEvents) {
 			System.out.println(nodeEvent);
 		}
 		System.out.println();
