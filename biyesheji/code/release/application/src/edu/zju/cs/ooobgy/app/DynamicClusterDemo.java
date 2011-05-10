@@ -60,8 +60,8 @@ public class DynamicClusterDemo extends JApplet implements Runnable{
 		zongtiItem.setActionCommand("DA_all");//DA:dynamic analysis
 		zongtiItem.addActionListener(actionListener);
 		fenxiMenu.add(zongtiItem);
-		MenuItem nodeItem = new MenuItem("DA_node");
-		nodeItem.setActionCommand("DA_node");
+		MenuItem nodeItem = new MenuItem("DA_vertex");
+		nodeItem.setActionCommand("DA_vertex");
 		nodeItem.addActionListener(actionListener);
 		fenxiMenu.add(nodeItem);
 		MenuItem clusterItem = new MenuItem("DA_cluster");
