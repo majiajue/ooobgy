@@ -24,6 +24,7 @@ public class DCD_Cache {
 		new Color(60, 220, 220),
 		new Color(30, 250, 100)
 	};
+	public static final String PRE_MAP_PREFIX = "pre_";//标记未被匹配的团伙id
 	//3.数据cache
 	
 }
