@@ -4,7 +4,7 @@ public class ClusterEvent_Dissolve extends ClusterEvent {
 	
 	
 	public ClusterEvent_Dissolve(String clusterId, String eventType) {
-		super(clusterId, eventType);
+		super(clusterId, "dissolve");
 	}
 
 	@Override

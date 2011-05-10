@@ -6,20 +6,16 @@ package edu.zju.cs.ooobgy.algo.dynamic_na.event;
  * @created 2011-5-4
  * @Email frogcherry@gmail.com
  */
-public class NodeEvent<V> {
-	private V nodeId;
+public class VertexEvent<V> {
+	private V vertexId;
 	private String eventType;
 	private String preClusterId;
 	private String nowClusterId;
-	
-	public NodeEvent() {
-		
-	}
 
-	public NodeEvent(V nodeId, String eventType, String preClusterId,
+	public VertexEvent(V nodeId, String eventType, String preClusterId,
 			String nowClusterId) {
 		super();
-		this.nodeId = nodeId;
+		this.vertexId = nodeId;
 		this.eventType = eventType;
 		this.preClusterId = preClusterId;
 		this.nowClusterId = nowClusterId;
@@ -28,10 +24,10 @@ public class NodeEvent<V> {
 
 
 	public V getNodeId() {
-		return nodeId;
+		return vertexId;
 	}
 	public void setNodeId(V nodeId) {
-		this.nodeId = nodeId;
+		this.vertexId = nodeId;
 	}
 	public String getEventType() {
 		return eventType;
@@ -55,7 +51,7 @@ public class NodeEvent<V> {
 	@Override
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
-		sb.append(nodeId);
+		sb.append(vertexId);
 		sb.append("\t: <");
 		sb.append(eventType);
 		sb.append(">    ");

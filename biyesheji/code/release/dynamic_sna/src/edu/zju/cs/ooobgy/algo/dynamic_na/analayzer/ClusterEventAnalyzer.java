@@ -1,13 +1,11 @@
 package edu.zju.cs.ooobgy.algo.dynamic_na.analayzer;
 
 import java.util.Collection;
-import java.util.HashSet;
-import java.util.Set;
-
+import java.util.LinkedList;
+import java.util.List;
 import org.apache.commons.collections15.Transformer;
 
 import edu.zju.cs.ooobgy.algo.dynamic_na.event.ClusterEvent;
-import edu.zju.cs.ooobgy.algo.dynamic_na.event.NodeEvent;
 import edu.zju.cs.ooobgy.algo.dynamic_na.pojo.ClusterSlice;
 import edu.zju.cs.ooobgy.algo.dynamic_na.pojo.IdCluster;
 
@@ -18,7 +16,7 @@ import edu.zju.cs.ooobgy.algo.dynamic_na.pojo.IdCluster;
  * @Email frogcherry@gmail.com
  */
 public class ClusterEventAnalyzer<V, E> implements
-				Transformer<ClusterSlice<V, E>, Set<ClusterEvent>> {
+				Transformer<ClusterSlice<V, E>, List<ClusterEvent>> {
 	private ClusterSlice<V, E> preSlice;
 	private Collection<IdCluster<V>> preClusters;
 
@@ -28,9 +26,9 @@ public class ClusterEventAnalyzer<V, E> implements
 		preClusters = preSlice.getClusters().values();
 	}
 	
-	public Set<ClusterEvent> analyze(ClusterSlice<V, E> nowSlice) {
+	public List<ClusterEvent> analyze(ClusterSlice<V, E> nowSlice) {
 		Collection<IdCluster<V>> nowClusters = nowSlice.getClusters().values();
-		Set<ClusterEvent> result = new HashSet<ClusterEvent>();
+		List<ClusterEvent> result = new LinkedList<ClusterEvent>();
 			
 		return result;
 	}
@@ -48,7 +46,7 @@ public class ClusterEventAnalyzer<V, E> implements
 	}
 
 	@Override
-	public Set<ClusterEvent> transform(ClusterSlice<V, E> nowSlice) {		
+	public List<ClusterEvent> transform(ClusterSlice<V, E> nowSlice) {		
 		return analyze(nowSlice);
 	}
 }

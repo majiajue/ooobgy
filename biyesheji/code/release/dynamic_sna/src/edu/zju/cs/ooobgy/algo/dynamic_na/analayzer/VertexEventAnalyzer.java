@@ -1,12 +1,11 @@
 package edu.zju.cs.ooobgy.algo.dynamic_na.analayzer;
 
 import java.util.Collection;
-import java.util.HashSet;
-import java.util.Set;
-
+import java.util.LinkedList;
+import java.util.List;
 import org.apache.commons.collections15.Transformer;
 
-import edu.zju.cs.ooobgy.algo.dynamic_na.event.NodeEvent;
+import edu.zju.cs.ooobgy.algo.dynamic_na.event.VertexEvent;
 import edu.zju.cs.ooobgy.algo.dynamic_na.pojo.ClusterSlice;
 import edu.zju.cs.ooobgy.algo.dynamic_na.pojo.IdCluster;
 
@@ -16,18 +15,18 @@ import edu.zju.cs.ooobgy.algo.dynamic_na.pojo.IdCluster;
  * @created 2011-5-4
  * @Email frogcherry@gmail.com
  */
-public class NodeEventAnalyzer<V, E> implements
-				Transformer<ClusterSlice<V, E>, Set<NodeEvent<V>>> {
+public class VertexEventAnalyzer<V, E> implements
+				Transformer<ClusterSlice<V, E>, List<VertexEvent<V>>> {
 	private ClusterSlice<V, E> preSlice;
 
-	public NodeEventAnalyzer(ClusterSlice<V, E> preSlice) {
+	public VertexEventAnalyzer(ClusterSlice<V, E> preSlice) {
 		super();
 		this.preSlice = preSlice;
 	}
 	
-	public Set<NodeEvent<V>> analyze(ClusterSlice<V, E> nowSlice) {
+	public List<VertexEvent<V>> analyze(ClusterSlice<V, E> nowSlice) {
 		Collection<IdCluster<V>> nowClusters = nowSlice.getClusters().values();
-		Set<NodeEvent<V>> result = new HashSet<NodeEvent<V>>();
+		List<VertexEvent<V>> result = new LinkedList<VertexEvent<V>>();
 		
 		String nowClusterId, preClusterId;
 		for (IdCluster<V> idCluster : nowClusters) {
@@ -43,7 +42,7 @@ public class NodeEventAnalyzer<V, E> implements
 		return result;
 	}
 
-	private NodeEvent<V> judge(V v, String preClusterId, String nowClusterId) {
+	private VertexEvent<V> judge(V v, String preClusterId, String nowClusterId) {
 		String eventType = "continue";
 		if (preClusterId.equals("NULL")) {
 			eventType = "appear";
@@ -53,11 +52,11 @@ public class NodeEventAnalyzer<V, E> implements
 			eventType = "leave_join";
 		}
 		
-		return new NodeEvent<V>(v, eventType, preClusterId, nowClusterId);
+		return new VertexEvent<V>(v, eventType, preClusterId, nowClusterId);
 	}
 
 	@Override
-	public Set<NodeEvent<V>> transform(ClusterSlice<V, E> nowSlice) {		
+	public List<VertexEvent<V>> transform(ClusterSlice<V, E> nowSlice) {		
 		return analyze(nowSlice);
 	}
 }
