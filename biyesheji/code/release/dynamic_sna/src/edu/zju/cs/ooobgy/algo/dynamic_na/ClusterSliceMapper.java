@@ -71,16 +71,19 @@ public class ClusterSliceMapper<V, E> implements
 			if (now_i >= nowC_cnt) {//nowkey越界说明在now_slice不存在该团
 				continue;
 			}
-			String id = "";
+			
 			Color color = Color.black;
+			IdCluster<V> nowCluster = nowClusters.get(now_i);
+			String id = nowCluster.getId();
 			if (pre_i >= preC_cnt) {//匹配越界说明在pre_slice里面不匹配该now_slice团
-				id = UUID.randomUUID().toString();
+				if (id.startsWith(DCD_Cache.PRE_MAP_PREFIX)) {//id还是表现为预定义格式的话才需要正式给出id
+					id = UUID.randomUUID().toString();
+				}
 				color = DCD_Cache.similarColors[now_i % DCD_Cache.similarColors.length];
 			} else {//有匹配的情况
 				id = preClusters.get(pre_i).getId();
 				color = preClusters.get(pre_i).getColor();
 			}
-			IdCluster<V> nowCluster = nowClusters.get(now_i);
 			nowCluster.setColor(color);
 			nowCluster.setId(id);
 			nowSlice.addCluster(id, nowCluster);

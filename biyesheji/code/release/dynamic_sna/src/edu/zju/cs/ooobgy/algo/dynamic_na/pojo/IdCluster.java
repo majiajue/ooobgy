@@ -4,6 +4,8 @@ import java.awt.Color;
 import java.util.Set;
 import java.util.UUID;
 
+import edu.zju.cs.ooobgy.app.cache.DCD_Cache;
+
 /**
  * 带有标记的cluster，包含点集，前端颜色，id
  * @author frogcherry 周晓龙
@@ -28,7 +30,7 @@ public class IdCluster<V> {
 		super();
 		this.vertexes = vertexes;
 		this.color = color;
-		this.id = UUID.randomUUID().toString();
+		this.id = DCD_Cache.PRE_MAP_PREFIX + UUID.randomUUID().toString();
 	}
 	
 	public boolean containsVertex(V v){
