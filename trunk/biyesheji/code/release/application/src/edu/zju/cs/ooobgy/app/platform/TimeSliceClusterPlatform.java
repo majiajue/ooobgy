@@ -226,6 +226,7 @@ public class TimeSliceClusterPlatform extends JApplet {
 					clusterAndRecolor(layout, edgeBetweennessSlider.getValue(), 
 							DCD_Cache.similarColors, e.getStateChange() == ItemEvent.SELECTED);
 					vv.repaint();
+					DCD_Cache.clusterMapped = false;
 			}});
 
 
@@ -426,5 +427,9 @@ public class TimeSliceClusterPlatform extends JApplet {
 			vv.getRenderContext().setEdgeLabelTransformer(new ConstantTransformer(null));
 		}
 		vv.repaint();
+	}
+
+	public VisualizationViewer<String, Integer> getVv() {
+		return vv;
 	}
 }
