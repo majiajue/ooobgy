@@ -10,7 +10,7 @@ import edu.zju.cs.ooobgy.algo.dynamic_na.pojo.ClusterSlice;
 import edu.zju.cs.ooobgy.algo.dynamic_na.pojo.IdCluster;
 
 /**
- * 挖掘节点事件
+ * 挖掘团伙事件
  * @author frogcherry 周晓龙
  * @created 2011-5-4
  * @Email frogcherry@gmail.com
@@ -19,6 +19,7 @@ public class ClusterEventAnalyzer<V, E> implements
 				Transformer<ClusterSlice<V, E>, List<ClusterEvent>> {
 	private ClusterSlice<V, E> preSlice;
 	private Collection<IdCluster<V>> preClusters;
+	private ClusterSlice<V, E> nowSlice;
 
 	public ClusterEventAnalyzer(ClusterSlice<V, E> preSlice) {
 		super();
@@ -26,13 +27,71 @@ public class ClusterEventAnalyzer<V, E> implements
 		preClusters = preSlice.getClusters().values();
 	}
 	
+	/**
+	 * 分析所有团伙事件
+	 * @param nowSlice
+	 * @return
+	 */
 	public List<ClusterEvent> analyze(ClusterSlice<V, E> nowSlice) {
-		Collection<IdCluster<V>> nowClusters = nowSlice.getClusters().values();
+		this.nowSlice = nowSlice;
 		List<ClusterEvent> result = new LinkedList<ClusterEvent>();
+		
+		result.addAll(judgeContinueEvents(nowSlice));
+		result.addAll(judgeKMergeEvents(nowSlice));
+		result.addAll(judgeKSplitEvents(nowSlice));
+		result.addAll(judgeFormEvents(nowSlice));
+		result.addAll(judgeDissolveEvents(nowSlice));
 			
 		return result;
 	}
 
+	/**
+	 * 检测延续事件
+	 * @param nowSlice
+	 * @return
+	 */
+	public List<ClusterEvent> judgeContinueEvents(ClusterSlice<V, E> nowSlice) {
+		this.nowSlice = nowSlice;
+		List<ClusterEvent> result = new LinkedList<ClusterEvent>();
+		// TODO Auto-generated method stub
+		return result;
+	}
+	
+	/**
+	 * 检测合并事件
+	 * @param nowSlice
+	 * @return
+	 */
+	public List<ClusterEvent> judgeKMergeEvents(ClusterSlice<V, E> nowSlice) {
+		this.nowSlice = nowSlice;
+		List<ClusterEvent> result = new LinkedList<ClusterEvent>();
+		// TODO Auto-generated method stub
+		return result;
+	}
+	
+	/**
+	 * 检测分裂事件
+	 * @param nowSlice
+	 * @return
+	 */
+	public List<ClusterEvent> judgeKSplitEvents(ClusterSlice<V, E> nowSlice) {
+		this.nowSlice = nowSlice;
+		List<ClusterEvent> result = new LinkedList<ClusterEvent>();
+		// TODO Auto-generated method stub
+		return result;
+	}
+	
+	/**
+	 * 检测形成事件
+	 * @param nowSlice
+	 * @return
+	 */
+	public List<ClusterEvent> judgeFormEvents(ClusterSlice<V, E> nowSlice) {
+		this.nowSlice = nowSlice;
+		List<ClusterEvent> result = new LinkedList<ClusterEvent>();
+		// TODO Auto-generated method stub
+		return result;
+	}
 
 	/**
 	 * 检测分解事件
@@ -40,11 +99,16 @@ public class ClusterEventAnalyzer<V, E> implements
 	 * @param nowClusterId
 	 * @return
 	 */
-	private ClusterEvent judgeDissolve(V v, String preClusterId, String nowClusterId) {
+	public List<ClusterEvent> judgeDissolveEvents(ClusterSlice<V, E> nowSlice) {
+		this.nowSlice = nowSlice;
+		List<ClusterEvent> result = new LinkedList<ClusterEvent>();
 		// TODO Auto-generated method stub
-		return null;
+		return result;
 	}
 
+	/**
+	 * 默认的transform计算所有事件类型
+	 */
 	@Override
 	public List<ClusterEvent> transform(ClusterSlice<V, E> nowSlice) {		
 		return analyze(nowSlice);

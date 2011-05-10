@@ -48,8 +48,11 @@ public class VertexEvent<V> {
 		this.nowClusterId = nowClusterId;
 	}
 	
-	@Override
-	public String toString() {
+	/**
+	 * 用长id表示cluster
+	 * @return
+	 */
+	public String toLongString() {
 		StringBuilder sb = new StringBuilder();
 		sb.append(vertexId);
 		sb.append("\t: <");
@@ -58,6 +61,20 @@ public class VertexEvent<V> {
 		sb.append(preClusterId);
 		sb.append("  ====>  ");
 		sb.append(nowClusterId);
+		
+		return sb.toString();
+	}
+	
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		sb.append(vertexId);
+		sb.append("\t: <");
+		sb.append(eventType);
+		sb.append(">    ");
+		sb.append(preClusterId.substring(28));
+		sb.append("  ====>  ");
+		sb.append(nowClusterId.substring(28));
 		
 		return sb.toString();
 	}

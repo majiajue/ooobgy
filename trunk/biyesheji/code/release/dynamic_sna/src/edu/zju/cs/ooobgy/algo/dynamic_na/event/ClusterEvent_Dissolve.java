@@ -7,14 +7,32 @@ public class ClusterEvent_Dissolve extends ClusterEvent {
 		super(clusterId, "dissolve");
 	}
 
-	@Override
-	public String toString() {
+	/**
+	 * 用长的cluster id
+	 * @return
+	 */
+	public String toLongString() {
 		StringBuilder sb = new StringBuilder();
 		sb.append(clusterId);
 		sb.append("\t: <");
 		sb.append(eventType);
 		sb.append(">    ");
 		
-		return super.toString();
+		return sb.toString( );
+	}
+	
+	/**
+	 * 用短的cluster id
+	 * @return
+	 */
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		sb.append(clusterId.substring(28));
+		sb.append("\t: <");
+		sb.append(eventType);
+		sb.append(">    ");
+		
+		return sb.toString( );
 	}
 }
