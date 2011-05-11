@@ -6,6 +6,7 @@ import java.util.List;
 import org.apache.commons.collections15.Transformer;
 
 import edu.zju.cs.ooobgy.algo.dynamic_na.event.ClusterEvent;
+import edu.zju.cs.ooobgy.algo.dynamic_na.eventjudger.ClusterContinueJudger;
 import edu.zju.cs.ooobgy.algo.dynamic_na.pojo.ClusterSlice;
 import edu.zju.cs.ooobgy.algo.dynamic_na.pojo.IdCluster;
 
@@ -52,8 +53,10 @@ public class ClusterEventAnalyzer<V, E> implements
 	 */
 	public List<ClusterEvent> judgeContinueEvents(ClusterSlice<V, E> nowSlice) {
 		this.nowSlice = nowSlice;
-		List<ClusterEvent> result = new LinkedList<ClusterEvent>();
-		// TODO Auto-generated method stub
+		List<ClusterEvent> result;
+		ClusterContinueJudger<V> judger = new ClusterContinueJudger<V>();
+		result = judger.judge(preSlice.getClusters(), nowSlice.getClusters());
+
 		return result;
 	}
 	

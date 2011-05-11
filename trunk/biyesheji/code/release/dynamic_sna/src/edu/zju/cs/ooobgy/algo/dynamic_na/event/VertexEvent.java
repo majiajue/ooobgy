@@ -70,7 +70,7 @@ public class VertexEvent<V> {
 		sb.append(vertexId);
 		sb.append("\t: <");
 		sb.append(eventType);
-		sb.append(">    ");
+		sb.append(">\t");
 		sb.append(preClusterId.substring(28));
 		sb.append("  ====>  ");
 		sb.append(nowClusterId.substring(28));

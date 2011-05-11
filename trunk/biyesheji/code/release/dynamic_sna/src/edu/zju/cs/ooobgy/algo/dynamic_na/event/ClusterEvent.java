@@ -25,7 +25,40 @@ public class ClusterEvent {
 	public String getEventType() {
 		return eventType;
 	}
+	
 	public void setEventType(String eventType) {
 		this.eventType = eventType;
+	}
+	/**
+	 * 用长的cluster id
+	 * @return
+	 */
+	public String toLongString() {
+		StringBuilder sb = new StringBuilder();
+		sb.append(clusterId);
+		sb.append("\t: <");
+		sb.append(eventType);
+		sb.append(">    ");
+		
+		return sb.toString( );
+	}
+	
+	/**
+	 * 用短的cluster id
+	 * @return
+	 */
+	public String toShortString() {
+		StringBuilder sb = new StringBuilder();
+		sb.append(clusterId.substring(28));
+		sb.append("\t: <");
+		sb.append(eventType);
+		sb.append(">    ");
+		
+		return sb.toString( );
+	}
+	
+	@Override
+	public String toString() {
+		return toShortString();
 	}
 }

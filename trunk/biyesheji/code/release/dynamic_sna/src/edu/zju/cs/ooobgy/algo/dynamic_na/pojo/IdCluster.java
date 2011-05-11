@@ -65,4 +65,19 @@ public class IdCluster<V> {
 				
 		return sb.toString();
 	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		if (obj instanceof IdCluster) {
+			IdCluster test = (IdCluster)obj;
+			if (test.id.equals(this.id) && test.color.equals(this.color) 
+					&& test.vertexes.equals(this.vertexes)) {
+				return true;
+			} else {
+				return false;
+			}
+		} else {
+			return false;
+		}
+	}
 }
