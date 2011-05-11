@@ -25,8 +25,7 @@ public class ClusterEvent_Dissolve extends ClusterEvent {
 	 * ÓÃ¶ÌµÄcluster id
 	 * @return
 	 */
-	@Override
-	public String toString() {
+	public String toShortString() {
 		StringBuilder sb = new StringBuilder();
 		sb.append(clusterId.substring(28));
 		sb.append("\t: <");
@@ -34,5 +33,10 @@ public class ClusterEvent_Dissolve extends ClusterEvent {
 		sb.append(">    ");
 		
 		return sb.toString( );
+	}
+	
+	@Override
+	public String toString() {
+		return toShortString();
 	}
 }

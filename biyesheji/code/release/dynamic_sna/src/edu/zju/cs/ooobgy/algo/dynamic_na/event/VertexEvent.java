@@ -65,8 +65,7 @@ public class VertexEvent<V> {
 		return sb.toString();
 	}
 	
-	@Override
-	public String toString() {
+	public String toShortString() {
 		StringBuilder sb = new StringBuilder();
 		sb.append(vertexId);
 		sb.append("\t: <");
@@ -77,5 +76,10 @@ public class VertexEvent<V> {
 		sb.append(nowClusterId.substring(28));
 		
 		return sb.toString();
+	}
+	
+	@Override
+	public String toString() {
+		return toShortString();
 	}
 }
