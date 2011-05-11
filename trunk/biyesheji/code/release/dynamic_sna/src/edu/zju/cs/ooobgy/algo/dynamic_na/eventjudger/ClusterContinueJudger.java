@@ -9,8 +9,8 @@ import edu.zju.cs.ooobgy.algo.dynamic_na.event.ClusterContinueEvent;
 import edu.zju.cs.ooobgy.algo.dynamic_na.pojo.IdCluster;
 
 /**
- * ÅĞ¶¨ÑÓĞøÊÂ¼şContinue
- * @author frogcherry ÖÜÏşÁú
+ * åˆ¤å®šå»¶ç»­äº‹ä»¶Continue
+ * @author frogcherry å‘¨æ™“é¾™
  * @created 2011-5-11
  * @Email frogcherry@gmail.com
  */

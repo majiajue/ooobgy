@@ -6,9 +6,9 @@ import org.apache.commons.collections15.Transformer;
 
 /**
  * Jaccard's coefficient and Adamic/Adar
- * ¼ÆËãÁ½¸öÍÅ»ïC1,C2µÄÏàËÆ¶È = |C1 ½» C@| / |C1 ²¢ C2| </br>
- * ÏÈÒÑÖªC1,È»ºó´«ÈëC2½øĞĞ¼ÆËã
- * @author frogcherry ÖÜÏşÁú
+ * è®¡ç®—ä¸¤ä¸ªå›¢ä¼™C1,C2çš„ç›¸ä¼¼åº¦ = |C1 äº¤ C@| / |C1 å¹¶ C2| </br>
+ * å…ˆå·²çŸ¥C1,ç„¶åä¼ å…¥C2è¿›è¡Œè®¡ç®—
+ * @author frogcherry å‘¨æ™“é¾™
  * @created 2010-12-18
  * @Email frogcherry@gmail.com
  * @see "David Liben-Nowell: The Link Prediction Problem for Social Networks"
@@ -22,13 +22,13 @@ public class ClusterSimilarity<V> implements Transformer<Set<V>, Double>{
 	}
 
 	/**
-	 * ¼ÆËãÁ½¸öÍÅ»ïC1,C2µÄÏàËÆ¶È = |C1 ½» C@| / |C1 ²¢ C2| </br>
-	 * ÏÈÒÑÖªC1,È»ºó´«ÈëC2½øĞĞ¼ÆËã
+	 * è®¡ç®—ä¸¤ä¸ªå›¢ä¼™C1,C2çš„ç›¸ä¼¼åº¦ = |C1 äº¤ C@| / |C1 å¹¶ C2| </br>
+	 * å…ˆå·²çŸ¥C1,ç„¶åä¼ å…¥C2è¿›è¡Œè®¡ç®—
 	 */
 	@Override
 	public Double transform(Set<V> c2) {
-		int intersectionSize = 0;//½»¼¯µÄ´óĞ¡
-		int unionSize = 0;//²¢¼¯µÄ´óĞ¡
+		int intersectionSize = 0;//äº¤é›†çš„å¤§å°
+		int unionSize = 0;//å¹¶é›†çš„å¤§å°
 		
 		for (V vertex : c1) {
 			if (c2.contains(vertex)) {

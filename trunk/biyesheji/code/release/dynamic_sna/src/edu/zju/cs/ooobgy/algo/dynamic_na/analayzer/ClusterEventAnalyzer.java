@@ -11,8 +11,8 @@ import edu.zju.cs.ooobgy.algo.dynamic_na.pojo.ClusterSlice;
 import edu.zju.cs.ooobgy.algo.dynamic_na.pojo.IdCluster;
 
 /**
- * ÍÚ¾òÍÅ»ïÊÂ¼ş
- * @author frogcherry ÖÜÏşÁú
+ * æŒ–æ˜å›¢ä¼™äº‹ä»¶
+ * @author frogcherry å‘¨æ™“é¾™
  * @created 2011-5-4
  * @Email frogcherry@gmail.com
  */
@@ -29,7 +29,7 @@ public class ClusterEventAnalyzer<V, E> implements
 	}
 	
 	/**
-	 * ·ÖÎöËùÓĞÍÅ»ïÊÂ¼ş
+	 * åˆ†ææ‰€æœ‰å›¢ä¼™äº‹ä»¶
 	 * @param nowSlice
 	 * @return
 	 */
@@ -47,7 +47,7 @@ public class ClusterEventAnalyzer<V, E> implements
 	}
 
 	/**
-	 * ¼ì²âÑÓĞøÊÂ¼ş
+	 * æ£€æµ‹å»¶ç»­äº‹ä»¶
 	 * @param nowSlice
 	 * @return
 	 */
@@ -61,7 +61,7 @@ public class ClusterEventAnalyzer<V, E> implements
 	}
 	
 	/**
-	 * ¼ì²âºÏ²¢ÊÂ¼ş
+	 * æ£€æµ‹åˆå¹¶äº‹ä»¶
 	 * @param nowSlice
 	 * @return
 	 */
@@ -73,7 +73,7 @@ public class ClusterEventAnalyzer<V, E> implements
 	}
 	
 	/**
-	 * ¼ì²â·ÖÁÑÊÂ¼ş
+	 * æ£€æµ‹åˆ†è£‚äº‹ä»¶
 	 * @param nowSlice
 	 * @return
 	 */
@@ -85,7 +85,7 @@ public class ClusterEventAnalyzer<V, E> implements
 	}
 	
 	/**
-	 * ¼ì²âĞÎ³ÉÊÂ¼ş
+	 * æ£€æµ‹å½¢æˆäº‹ä»¶
 	 * @param nowSlice
 	 * @return
 	 */
@@ -97,7 +97,7 @@ public class ClusterEventAnalyzer<V, E> implements
 	}
 
 	/**
-	 * ¼ì²â·Ö½âÊÂ¼ş
+	 * æ£€æµ‹åˆ†è§£äº‹ä»¶
 	 * @param preClusterId
 	 * @param nowClusterId
 	 * @return
@@ -110,7 +110,7 @@ public class ClusterEventAnalyzer<V, E> implements
 	}
 
 	/**
-	 * Ä¬ÈÏµÄtransform¼ÆËãËùÓĞÊÂ¼şÀàĞÍ
+	 * é»˜è®¤çš„transformè®¡ç®—æ‰€æœ‰äº‹ä»¶ç±»å‹
 	 */
 	@Override
 	public List<ClusterEvent> transform(ClusterSlice<V, E> nowSlice) {		

@@ -1,8 +1,8 @@
 package edu.zju.cs.ooobgy.algo.dynamic_na.event;
 
 /**
- * ¸öÌåĞĞÎª
- * @author frogcherry ÖÜÏşÁú
+ * ä¸ªä½“è¡Œä¸º
+ * @author frogcherry å‘¨æ™“é¾™
  * @created 2011-5-4
  * @Email frogcherry@gmail.com
  */
@@ -49,7 +49,7 @@ public class VertexEvent<V> {
 	}
 	
 	/**
-	 * ÓÃ³¤id±íÊ¾cluster
+	 * ç”¨é•¿idè¡¨ç¤ºcluster
 	 * @return
 	 */
 	public String toLongString() {

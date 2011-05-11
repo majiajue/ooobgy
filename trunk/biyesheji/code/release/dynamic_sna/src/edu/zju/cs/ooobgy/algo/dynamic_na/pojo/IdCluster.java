@@ -7,8 +7,8 @@ import java.util.UUID;
 import edu.zju.cs.ooobgy.app.cache.DCD_Cache;
 
 /**
- * ´øÓĞ±ê¼ÇµÄcluster£¬°üº¬µã¼¯£¬Ç°¶ËÑÕÉ«£¬id
- * @author frogcherry ÖÜÏşÁú
+ * å¸¦æœ‰æ ‡è®°çš„clusterï¼ŒåŒ…å«ç‚¹é›†ï¼Œå‰ç«¯é¢œè‰²ï¼Œid
+ * @author frogcherry å‘¨æ™“é¾™
  * @created 2011-5-4
  * @Email frogcherry@gmail.com
  */

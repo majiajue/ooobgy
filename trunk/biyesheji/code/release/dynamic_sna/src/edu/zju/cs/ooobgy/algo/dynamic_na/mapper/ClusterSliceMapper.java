@@ -18,10 +18,10 @@ import edu.zju.cs.ooobgy.algo.math.matrix.Matrix;
 import edu.zju.cs.ooobgy.app.cache.DCD_Cache;
 
 /**
- * ¶Ô2¸öÇĞÆ¬½øĞĞÍÅ»ïÓ³Éä£¬ÒÔÇ°Ò»Ê±¼äÆ¬µÄÇĞÆ¬Îª²ÎÊı¹¹ÔìÓ³ÉäÆ÷
- * µ÷ÓÃmap»òÕßtransform¶Ô´«ÈëµÄÇĞÆ¬½øĞĞÓ³Éä´¦Àí.×¢Òâ£¬´Ë´¦ÀíÄ¬ÈÏÆÆ»µ´«ÈëµÄslice;preSlice±£³Ö
+ * å¯¹2ä¸ªåˆ‡ç‰‡è¿›è¡Œå›¢ä¼™æ˜ å°„ï¼Œä»¥å‰ä¸€æ—¶é—´ç‰‡çš„åˆ‡ç‰‡ä¸ºå‚æ•°æ„é€ æ˜ å°„å™¨
+ * è°ƒç”¨mapæˆ–è€…transformå¯¹ä¼ å…¥çš„åˆ‡ç‰‡è¿›è¡Œæ˜ å°„å¤„ç†.æ³¨æ„ï¼Œæ­¤å¤„ç†é»˜è®¤ç ´åä¼ å…¥çš„slice;preSliceä¿æŒ
  * 
- * @author frogcherry ÖÜÏşÁú
+ * @author frogcherry å‘¨æ™“é¾™
  * @created 2011-5-4
  * @Email frogcherry@gmail.com
  */
@@ -40,7 +40,7 @@ public class ClusterSliceMapper<V, E> implements
 	}
 
 	public ClusterSlice<V, E> map(ClusterSlice<V, E> nowSlice) {
-		// 1.Éú³ÉÏàËÆ¶È¾ØÕó
+		// 1.ç”Ÿæˆç›¸ä¼¼åº¦çŸ©é˜µ
 		int preC_cnt = preSlice.getClusters().size();
 		//System.err.println(preSlice.getClusters());//debug
 		int nowC_cnt = nowSlice.getClusters().size();
@@ -59,26 +59,26 @@ public class ClusterSliceMapper<V, E> implements
 			}
 		}
 		//System.err.println(mapMatrix);//debug
-		// 2.ÏàËÆ¶ÈÓ³Éä
+		// 2.ç›¸ä¼¼åº¦æ˜ å°„
 		BestMatrixSum kmMapper = new BestMatrixSum(mapMatrix);
-		kmMapper.completeBestSumCombination(true);//Ä¬ÈÏjacÖµÔ½´óÏà¹ØĞÔÔ½¸ß
-		Map<Integer, Integer> bestMap = kmMapper.getCombination();//Ó³Éä½á¹û
-		//TODO 3.·´ÉäĞ´»ØÓ³Éä½á¹û£¬ºóÆÚĞèÒªĞ´»Øµ½Êı¾İ¿âÖĞ
-		nowSlice.clearClusters();//Çå¿Õ¾ÉµÄĞÅÏ¢
+		kmMapper.completeBestSumCombination(true);//é»˜è®¤jacå€¼è¶Šå¤§ç›¸å…³æ€§è¶Šé«˜
+		Map<Integer, Integer> bestMap = kmMapper.getCombination();//æ˜ å°„ç»“æœ
+		//TODO 3.åå°„å†™å›æ˜ å°„ç»“æœï¼ŒåæœŸéœ€è¦å†™å›åˆ°æ•°æ®åº“ä¸­
+		nowSlice.clearClusters();//æ¸…ç©ºæ—§çš„ä¿¡æ¯
 		for (Entry<Integer, Integer> now_pre : bestMap.entrySet()) {
 			int now_i = now_pre.getKey();
 			int pre_i = now_pre.getValue();
-			if (now_i >= nowC_cnt) {//nowkeyÔ½½çËµÃ÷ÔÚnow_slice²»´æÔÚ¸ÃÍÅ
+			if (now_i >= nowC_cnt) {//nowkeyè¶Šç•Œè¯´æ˜åœ¨now_sliceä¸å­˜åœ¨è¯¥å›¢
 				continue;
 			}
 			
 			Color color = Color.black;
 			IdCluster<V> nowCluster = nowClusters.get(now_i);
 			String id = nowCluster.getId();
-			if (pre_i >= preC_cnt) {//Æ¥ÅäÔ½½çËµÃ÷ÔÚpre_sliceÀïÃæ²»Æ¥Åä¸Ãnow_sliceÍÅ
-				//TODO ÑÕÉ«µÄÖ¸¶¨Ëã·¨»¹ĞèÒªµ÷Õû
+			if (pre_i >= preC_cnt) {//åŒ¹é…è¶Šç•Œè¯´æ˜åœ¨pre_sliceé‡Œé¢ä¸åŒ¹é…è¯¥now_sliceå›¢
+				//TODO é¢œè‰²çš„æŒ‡å®šç®—æ³•è¿˜éœ€è¦è°ƒæ•´
 				color = DCD_Cache.similarColors[now_i % DCD_Cache.similarColors.length];
-			} else {//ÓĞÆ¥ÅäµÄÇé¿ö
+			} else {//æœ‰åŒ¹é…çš„æƒ…å†µ
 				id = preClusters.get(pre_i).getId();
 				color = preClusters.get(pre_i).getColor();
 			}
