@@ -30,7 +30,7 @@ public class IdCluster<V> {
 		super();
 		this.vertexes = vertexes;
 		this.color = color;
-		this.id = DCD_Cache.PRE_MAP_PREFIX + UUID.randomUUID().toString();
+		this.id = UUID.randomUUID().toString();
 	}
 	
 	public boolean containsVertex(V v){
