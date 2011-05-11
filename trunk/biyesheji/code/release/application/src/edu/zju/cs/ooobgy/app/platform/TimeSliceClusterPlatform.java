@@ -254,7 +254,6 @@ public class TimeSliceClusterPlatform extends JApplet {
 					clusterAndRecolor(layout, edgeBetweennessSlider.getValue(), 
 							DCD_Cache.similarColors, e.getStateChange() == ItemEvent.SELECTED);
 					vv.repaint();
-					DCD_Cache.clusterMapped = false;
 			}});
 
 
@@ -347,7 +346,8 @@ public class TimeSliceClusterPlatform extends JApplet {
 				edgePaints.put(e, Color.black);
 			}
 		}
-
+		clusterSlice.refineClusterId();//根据cache重新调整cluster ID
+		DCD_Cache.clusterMapped = false;//聚类结构改变，则map就失效了
 	}
 	
 	public int autoClusterAndRecolor(AggregateLayout<String, Integer> layout,
@@ -391,6 +391,9 @@ public class TimeSliceClusterPlatform extends JApplet {
 					edgePaints.put(e, Color.black);
 				}
 			}
+			
+			clusterSlice.refineClusterId();//根据cache重新调整cluster ID
+			DCD_Cache.clusterMapped = false;//聚类结构改变，则map就失效了
 			
 			return removedEdges.size();
 		}
