@@ -124,6 +124,13 @@ public class ClusterSlice<V, E> {
 	public List<E> getRemovedEdges() {
 		return removedEdges;
 	}
+
+	/**
+	 * 根据数据库中的cache重新指派clusterId，如果已经cache了的就不赋新id了
+	 */
+	public void refineClusterId() {
+		//TODO
+	}
 	
 	
 }
