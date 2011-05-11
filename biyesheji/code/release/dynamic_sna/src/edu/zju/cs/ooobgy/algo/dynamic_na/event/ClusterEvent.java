@@ -1,8 +1,8 @@
 package edu.zju.cs.ooobgy.algo.dynamic_na.event;
 
 /**
- * ÍÅ»ïĞĞÎª
- * @author frogcherry ÖÜÏşÁú
+ * å›¢ä¼™è¡Œä¸º
+ * @author frogcherry å‘¨æ™“é¾™
  * @created 2011-5-4
  * @Email frogcherry@gmail.com
  */
@@ -30,7 +30,7 @@ public class ClusterEvent {
 		this.eventType = eventType;
 	}
 	/**
-	 * ÓÃ³¤µÄcluster id
+	 * ç”¨é•¿çš„cluster id
 	 * @return
 	 */
 	public String toLongString() {
@@ -44,7 +44,7 @@ public class ClusterEvent {
 	}
 	
 	/**
-	 * ÓÃ¶ÌµÄcluster id
+	 * ç”¨çŸ­çš„cluster id
 	 * @return
 	 */
 	public String toShortString() {

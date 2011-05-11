@@ -10,16 +10,16 @@ import java.util.Set;
 import edu.zju.cs.ooobgy.graph.ClusterGraph;
 
 /**
- * Ò»¸ö(Ê±¼äÇĞÆ¬)µÄÍ¼ÍÅ»ïÇé¿ö
- * @author frogcherry ÖÜÏşÁú
+ * ä¸€ä¸ª(æ—¶é—´åˆ‡ç‰‡)çš„å›¾å›¢ä¼™æƒ…å†µ
+ * @author frogcherry å‘¨æ™“é¾™
  * @created 2010-12-22
  * @Email frogcherry@gmail.com
  */
 public class ClusterSlice<V, E> {
-	private String sliceId;//ÇĞÆ¬±êÊ¶id£¬ÀıÈç201012
-	private ClusterGraph<V, E> graph;//Õâ¸öÇĞÆ¬¶ÔÓ¦µÄÍ¼
-	private Map<String, IdCluster<V>> clusters;//ÍÅ»ïÇé¿ö£¬KeyÊÇÍÅ»ïid£¬valueÊÇµ±Ç°ÇĞÆ¬µÄÍÅ»ïvertex×é³É
-	private List<E> removedEdges;//ÇĞÈ¥µÄ±ß
+	private String sliceId;//åˆ‡ç‰‡æ ‡è¯†idï¼Œä¾‹å¦‚201012
+	private ClusterGraph<V, E> graph;//è¿™ä¸ªåˆ‡ç‰‡å¯¹åº”çš„å›¾
+	private Map<String, IdCluster<V>> clusters;//å›¢ä¼™æƒ…å†µï¼ŒKeyæ˜¯å›¢ä¼™idï¼Œvalueæ˜¯å½“å‰åˆ‡ç‰‡çš„å›¢ä¼™vertexç»„æˆ
+	private List<E> removedEdges;//åˆ‡å»çš„è¾¹
 
 	public Set<Set<V>> getClusterSet(){
 		Set<Set<V>> cls = new HashSet<Set<V>>();
@@ -31,7 +31,7 @@ public class ClusterSlice<V, E> {
 	}
 	
 	/**
-	 * Çå¿ÕÒÑÓĞµÄÍÅ»ï
+	 * æ¸…ç©ºå·²æœ‰çš„å›¢ä¼™
 	 */
 	public void clearClusters(){
 		clusters.clear();
@@ -63,7 +63,7 @@ public class ClusterSlice<V, E> {
 
 
 	/**
-	 * È«¹¹Ôì
+	 * å…¨æ„é€ 
 	 * @param sliceId
 	 * @param graph
 	 * @param clusters
@@ -80,7 +80,7 @@ public class ClusterSlice<V, E> {
 
 
 	/**
-	 * ĞÂ½¨Ò»¸öÍÅ»ïmapµÄ¹¹Ôì£¬Ê¹ÓÃ¸Ã¹¹Ôìºó±ØĞëÒªÊ¹ÓÃputClusterÀ´¹¹ÔìÍÅ»ï½á¹¹
+	 * æ–°å»ºä¸€ä¸ªå›¢ä¼™mapçš„æ„é€ ï¼Œä½¿ç”¨è¯¥æ„é€ åå¿…é¡»è¦ä½¿ç”¨putClusteræ¥æ„é€ å›¢ä¼™ç»“æ„
 	 * @param sliceId
 	 * @param graph
 	 * @param removedEdges
@@ -94,7 +94,7 @@ public class ClusterSlice<V, E> {
 	}
 	
 	/**
-	 * ¸üĞÂ(´æÈë)Ò»¸öÍÅ»ï·ÖÍÅĞÅÏ¢
+	 * æ›´æ–°(å­˜å…¥)ä¸€ä¸ªå›¢ä¼™åˆ†å›¢ä¿¡æ¯
 	 */
 	public void addCluster(String clusterId, IdCluster<V> cluster){
 		clusters.put(clusterId, cluster);
@@ -126,7 +126,7 @@ public class ClusterSlice<V, E> {
 	}
 
 	/**
-	 * ¸ù¾İÊı¾İ¿âÖĞµÄcacheÖØĞÂÖ¸ÅÉclusterId£¬Èç¹ûÒÑ¾­cacheÁËµÄ¾Í²»¸³ĞÂidÁË
+	 * æ ¹æ®æ•°æ®åº“ä¸­çš„cacheé‡æ–°æŒ‡æ´¾clusterIdï¼Œå¦‚æœå·²ç»cacheäº†çš„å°±ä¸èµ‹æ–°idäº†
 	 */
 	public void refineClusterId() {
 		//TODO

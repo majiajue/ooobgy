@@ -12,19 +12,19 @@ import edu.zju.cs.ooobgy.algo.dynamic_na.pojo.IdCluster;
 import edu.zju.cs.ooobgy.algo.math.matrix.Matrix;
 
 /**
- * ¶ÔÁ½¸öÇĞÆ¬½øĞĞ¶¯Ì¬·ÖÎö
+ * å¯¹ä¸¤ä¸ªåˆ‡ç‰‡è¿›è¡ŒåŠ¨æ€åˆ†æ
  * 
- * @author frogcherry ÖÜÏşÁú
+ * @author frogcherry å‘¨æ™“é¾™
  * @created 2010-12-22
  * @Email frogcherry@gmail.com
  */
 public class DynamicCluster<V, E> implements
 		Transformer<ClusterSlice<V, E>, ClusterSlice<V, E>> {
-	private ClusterSlice<V, E> preSlice;// ÒÑÖªµÄÉÏÒ»ÇĞÆ¬
-	private Set<Set<V>> newSliceClusters;// ÒÑÖªµÄ´ı´¦ÀíÇĞÆ¬µÄÍÅ»ïĞÅÏ¢
+	private ClusterSlice<V, E> preSlice;// å·²çŸ¥çš„ä¸Šä¸€åˆ‡ç‰‡
+	private Set<Set<V>> newSliceClusters;// å·²çŸ¥çš„å¾…å¤„ç†åˆ‡ç‰‡çš„å›¢ä¼™ä¿¡æ¯
 
 	/**
-	 * Ê¹ÓÃÒÑÖªµÄÉÏÒ»ÇĞÆ¬£¬ÒÑÖªµÄ´ı´¦ÀíÇĞÆ¬µÄÍÅ»ïĞÅÏ¢½øĞĞ¹¹Ôì; ÒÑÖªÌõ¼ş²»Âú×ãÎŞ·¨½øĞĞ·ÖÎö
+	 * ä½¿ç”¨å·²çŸ¥çš„ä¸Šä¸€åˆ‡ç‰‡ï¼Œå·²çŸ¥çš„å¾…å¤„ç†åˆ‡ç‰‡çš„å›¢ä¼™ä¿¡æ¯è¿›è¡Œæ„é€ ; å·²çŸ¥æ¡ä»¶ä¸æ»¡è¶³æ— æ³•è¿›è¡Œåˆ†æ
 	 * 
 	 * @param preSlice
 	 * @param newSliceClusters
@@ -37,17 +37,17 @@ public class DynamicCluster<V, E> implements
 	}
 
 	/**
-	 * ´«ÈëĞÂµÄÇĞÆ¬£¨°üº¬Í¼ĞÅÏ¢£¬²»°üº¬ÍÅ»ï¶ÔÓ¦ĞÅÏ¢£©,¸ù¾İÒÑÖªµÄÉÏÒ»ÇĞÆ¬½øĞĞ¶ÔÓ¦¶¯Ì¬·ÖÎö
+	 * ä¼ å…¥æ–°çš„åˆ‡ç‰‡ï¼ˆåŒ…å«å›¾ä¿¡æ¯ï¼Œä¸åŒ…å«å›¢ä¼™å¯¹åº”ä¿¡æ¯ï¼‰,æ ¹æ®å·²çŸ¥çš„ä¸Šä¸€åˆ‡ç‰‡è¿›è¡Œå¯¹åº”åŠ¨æ€åˆ†æ
 	 */
 	@Override
 	public ClusterSlice<V, E> transform(ClusterSlice<V, E> newSlice) {
 		ClusterSlice<V, E> slice = newSlice;
 		List<Entry<String, IdCluster<V>>> preCluster = new ArrayList<Entry<String, IdCluster<V>>>(
-				preSlice.getClusters().entrySet());//ÒÑÖªÍÅ»ïµÄid¶ÔÓ¦Çé¿ö£¬×ªÎªlist·½±ãºóĞø·ÖÎö
-		List<Set<V>> newClusters = new ArrayList<Set<V>>(newSliceClusters);//ĞÂµÄÍÅ»ïĞÅÏ¢£¬´ı·ÖÎölist
-		Matrix similarityMatrix = new Matrix(preCluster.size(), newClusters.size());//ÏàËÆ¶È¾ØÕó
+				preSlice.getClusters().entrySet());//å·²çŸ¥å›¢ä¼™çš„idå¯¹åº”æƒ…å†µï¼Œè½¬ä¸ºlistæ–¹ä¾¿åç»­åˆ†æ
+		List<Set<V>> newClusters = new ArrayList<Set<V>>(newSliceClusters);//æ–°çš„å›¢ä¼™ä¿¡æ¯ï¼Œå¾…åˆ†ælist
+		Matrix similarityMatrix = new Matrix(preCluster.size(), newClusters.size());//ç›¸ä¼¼åº¦çŸ©é˜µ
 		
-		//1.Ìî³äÏàËÆ¶È¾ØÕó
+		//1.å¡«å……ç›¸ä¼¼åº¦çŸ©é˜µ
 		for (int i = 0; i < preCluster.size(); i++) {
 			
 		}

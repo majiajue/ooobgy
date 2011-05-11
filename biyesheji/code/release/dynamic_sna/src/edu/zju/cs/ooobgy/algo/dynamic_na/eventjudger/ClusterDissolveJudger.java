@@ -1,8 +1,8 @@
 package edu.zju.cs.ooobgy.algo.dynamic_na.eventjudger;
 
 /**
- * ÅĞ¶¨·Ö½âÊÂ¼şDissolve
- * @author frogcherry ÖÜÏşÁú
+ * åˆ¤å®šåˆ†è§£äº‹ä»¶Dissolve
+ * @author frogcherry å‘¨æ™“é¾™
  * @created 2011-5-11
  * @Email frogcherry@gmail.com
  */

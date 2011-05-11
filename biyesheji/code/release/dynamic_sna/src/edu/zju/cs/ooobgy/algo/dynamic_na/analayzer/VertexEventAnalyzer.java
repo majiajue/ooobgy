@@ -10,8 +10,8 @@ import edu.zju.cs.ooobgy.algo.dynamic_na.pojo.ClusterSlice;
 import edu.zju.cs.ooobgy.algo.dynamic_na.pojo.IdCluster;
 
 /**
- * ÍÚ¾ò½ÚµãÊÂ¼ş
- * @author frogcherry ÖÜÏşÁú
+ * æŒ–æ˜èŠ‚ç‚¹äº‹ä»¶
+ * @author frogcherry å‘¨æ™“é¾™
  * @created 2011-5-4
  * @Email frogcherry@gmail.com
  */
