@@ -9,6 +9,7 @@ package edu.zju.cs.ooobgy.db.entity;
 public class SliceClusterCache {
 	private Integer scc_id;
 	private String time_range;
+	private String clusterId;
 	private String members;
 	
 	public Integer getScc_id() {
@@ -28,5 +29,11 @@ public class SliceClusterCache {
 	}
 	public void setMembers(String members) {
 		this.members = members;
+	}
+	public String getClusterId() {
+		return clusterId;
+	}
+	public void setClusterId(String clusterId) {
+		this.clusterId = clusterId;
 	}
 }
