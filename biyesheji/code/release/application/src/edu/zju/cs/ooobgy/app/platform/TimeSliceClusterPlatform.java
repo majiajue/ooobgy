@@ -72,7 +72,9 @@ import edu.zju.cs.ooobgy.visualization.layout.Layout;
 public class TimeSliceClusterPlatform extends JApplet {
 	VisualizationViewer<String, Integer> vv;
 	
-//	Factory<Graph<String, Integer>> graphFactory;
+	final JSlider edgeBetweennessSlider = new JSlider(JSlider.HORIZONTAL);
+	final JToggleButton groupVertices = new JToggleButton("Group Clusters");
+	//	Factory<Graph<String, Integer>> graphFactory;
 	
 	Map<String,Paint> vertexPaints = 
 		LazyMap.<String,Paint>decorate(new HashMap<String,Paint>(),
@@ -171,7 +173,33 @@ public class TimeSliceClusterPlatform extends JApplet {
                 }
             });
 
-		//add restart button
+		//add Auto Cluster button
+		JButton autoClusterBtn = new JButton("Auto Cluster");
+		autoClusterBtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				int removeEdgecount = autoClusterAndRecolor(layout, DCD_Cache.similarColors, groupVertices.isSelected());
+				edgeBetweennessSlider.setValue(removeEdgecount);
+			}
+
+		});
+		
+		//add Auto Cluster button
+		JButton detailBtn = new JButton("Cluster Detail");
+		detailBtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				Layout layout = vv.getGraphLayout();
+				layout.initialize();
+				Relaxer relaxer = vv.getModel().getRelaxer();
+				if(relaxer != null) {
+					relaxer.stop();
+					relaxer.prerelax();
+					relaxer.relax();
+				}
+			}
+
+		});
+		
+		//add Redraw button
 		JButton scramble = new JButton("Redraw");
 		scramble.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -190,10 +218,10 @@ public class TimeSliceClusterPlatform extends JApplet {
 		DefaultModalGraphMouse gm = new DefaultModalGraphMouse();
 		vv.setGraphMouse(gm);
 		
-		final JToggleButton groupVertices = new JToggleButton("Group Clusters");
+		
 
 		//Create slider to adjust the number of edges to remove when clustering
-		final JSlider edgeBetweennessSlider = new JSlider(JSlider.HORIZONTAL);
+		
         edgeBetweennessSlider.setBackground(Color.WHITE);
 		edgeBetweennessSlider.setPreferredSize(new Dimension(210, 50));
 		edgeBetweennessSlider.setPaintTicks(true);
@@ -251,9 +279,11 @@ public class TimeSliceClusterPlatform extends JApplet {
 		JPanel slice = new JPanel(new BorderLayout());
 		slice.add(new GraphZoomScrollPane(vv),BorderLayout.NORTH);
 		JPanel south = new JPanel();
-		JPanel grid = new JPanel(new GridLayout(2,1));
+		JPanel grid = new JPanel(new GridLayout(2,2));
+		grid.add(autoClusterBtn);
 		grid.add(scramble);
 		grid.add(groupVertices);
+		grid.add(detailBtn);
 		south.add(grid);
 		south.add(eastControls);
 		JPanel p = new JPanel();
@@ -261,8 +291,7 @@ public class TimeSliceClusterPlatform extends JApplet {
 		p.add(gm.getModeComboBox());
 		south.add(p);
 		slice.add(south,BorderLayout.SOUTH);
-		int removeEdgecount = autoClusterAndRecolor(layout, DCD_Cache.similarColors, groupVertices.isSelected());
-		edgeBetweennessSlider.setValue(removeEdgecount);
+		
 //		if (time_range.equals("201002")) {
 //			clusterAndRecolor(layout, 7, similarColors, groupVertices.isSelected());
 //			edgeBetweennessSlider.setValue(7);
