@@ -1,6 +1,9 @@
 package edu.zju.cs.ooobgy.app.cache;
 
 import java.awt.Color;
+import java.util.List;
+
+import edu.zju.cs.ooobgy.algo.math.matrix.Matrix;
 /**
  * 公共数据区
  * @author frogcherry 周晓龙
@@ -25,5 +28,9 @@ public class DCD_Cache {
 		new Color(30, 250, 100)
 	};
 	//3.数据cache
+	public static List<String> map_row_now_cid = null;//矩阵行号序列，对应now切片团id
+	public static List<String> map_col_pre_cid = null;//矩阵列号序列，对应pre切片团id
+	public static Matrix jaccard_map_matrix = null;//jaccard相似度矩阵
+	public static Matrix inter_map_matrix = null;//交集规模矩阵
 	
 }
