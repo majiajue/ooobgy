@@ -8,6 +8,7 @@ import org.apache.commons.collections15.Transformer;
 import edu.zju.cs.ooobgy.algo.dynamic_na.event.ClusterEvent;
 import edu.zju.cs.ooobgy.algo.dynamic_na.eventjudger.ClusterContinueJudger;
 import edu.zju.cs.ooobgy.algo.dynamic_na.eventjudger.ClusterDissolveJudger;
+import edu.zju.cs.ooobgy.algo.dynamic_na.eventjudger.ClusterFormJudger;
 import edu.zju.cs.ooobgy.algo.dynamic_na.pojo.ClusterSlice;
 import edu.zju.cs.ooobgy.algo.dynamic_na.pojo.IdCluster;
 import edu.zju.cs.ooobgy.app.cache.DCD_Cache;
@@ -93,8 +94,9 @@ public class ClusterEventAnalyzer<V, E> implements
 	 */
 	public List<ClusterEvent> judgeFormEvents(ClusterSlice<V, E> nowSlice) {
 		this.nowSlice = nowSlice;
-		List<ClusterEvent> result = new LinkedList<ClusterEvent>();
-		// TODO Auto-generated method stub
+		List<ClusterEvent> result;
+		ClusterFormJudger<V> judger = new ClusterFormJudger<V>();
+		result = judger.judge(preSlice.getClusters(), nowSlice.getClusters());
 		return result;
 	}
 
