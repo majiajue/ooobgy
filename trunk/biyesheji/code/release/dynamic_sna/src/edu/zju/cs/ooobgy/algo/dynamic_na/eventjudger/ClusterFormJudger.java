@@ -4,7 +4,6 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
-import edu.zju.cs.ooobgy.algo.dynamic_na.event.ClusterDissolveEvent;
 import edu.zju.cs.ooobgy.algo.dynamic_na.event.ClusterEvent;
 import edu.zju.cs.ooobgy.algo.dynamic_na.event.ClusterFormEvent;
 import edu.zju.cs.ooobgy.algo.dynamic_na.pojo.IdCluster;

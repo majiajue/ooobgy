@@ -2,12 +2,9 @@ package edu.zju.cs.ooobgy.algo.dynamic_na.mapper;
 
 import java.awt.Color;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
-import java.util.UUID;
-
 import org.apache.commons.collections15.Transformer;
 
 import edu.zju.cs.ooobgy.algo.dynamic_na.pojo.ClusterSlice;

@@ -4,8 +4,6 @@ import java.awt.Color;
 import java.util.Set;
 import java.util.UUID;
 
-import edu.zju.cs.ooobgy.app.cache.DCD_Cache;
-
 /**
  * 带有标记的cluster，包含点集，前端颜色，id
  * @author frogcherry 周晓龙
