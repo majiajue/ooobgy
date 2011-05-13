@@ -9,7 +9,7 @@ package edu.zju.cs.ooobgy.algo.dynamic_na.event;
 public class ClusterDissolveEvent extends ClusterEvent {
 	
 	
-	public ClusterDissolveEvent(String clusterId, String eventType) {
+	public ClusterDissolveEvent(String clusterId) {
 		super(clusterId, "dissolve");
 	}
 	
