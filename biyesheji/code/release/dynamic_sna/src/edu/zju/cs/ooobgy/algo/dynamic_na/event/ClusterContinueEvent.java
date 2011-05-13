@@ -10,7 +10,7 @@ public class ClusterContinueEvent extends ClusterEvent {
 	
 	
 	public ClusterContinueEvent(String clusterId) {
-		super(clusterId, "Continue");
+		super(clusterId, "continue");
 	}
 	
 	@Override

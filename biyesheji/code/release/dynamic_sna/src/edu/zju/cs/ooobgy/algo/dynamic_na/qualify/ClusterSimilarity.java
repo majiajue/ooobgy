@@ -15,6 +15,7 @@ import org.apache.commons.collections15.Transformer;
  */
 public class ClusterSimilarity<V> implements Transformer<Set<V>, Double>{
 	private Set<V> c1;
+	private Double intersection;
 	
 	public ClusterSimilarity(Set<V> c1) {
 		super();
@@ -35,9 +36,14 @@ public class ClusterSimilarity<V> implements Transformer<Set<V>, Double>{
 				intersectionSize ++;
 			}
 		}
+		this.intersection = new Double(intersectionSize);
 		unionSize = c1.size() + c2.size() - intersectionSize;
 		
 		return new Double(intersectionSize) / new Double(unionSize);
+	}
+
+	public Double getIntersection() {
+		return intersection;
 	}
 
 }
