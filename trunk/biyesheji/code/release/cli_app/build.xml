@@ -1,0 +1,58 @@
+<?xml version='1.0'?>
+<project name="CLI_test" basedir="." default="all">
+    <description>
+    	CLI_test
+    </description>
+    <property name="src.java" value="src" />
+	<property name="src.algo" value="algo" />
+    <property name="src.cluster" value="cluster" />
+    <property name="lib.dir" value="lib" />
+    <property name="dist.dir" value="dist" />
+    <property name="build.dir" value="build" />
+
+
+    <target name="compile" depends="compile_cluster,compile_algo">
+        <javac srcdir="${src.java}" destdir="${build.dir}" source="1.6" target="1.6" nowarn="yes" debug="yes">
+            <classpath>
+                <fileset dir="${lib.dir}" />
+            </classpath>
+            <compilerarg line="-encoding UTF-8"/>         
+        </javac>
+    </target>
+	
+    <target name="compile_cluster" depends="compile_algo">
+        <javac srcdir="${src.cluster}" destdir="${build.dir}" source="1.6" target="1.6" nowarn="yes" debug="yes">
+            <classpath>
+                <fileset dir="${lib.dir}" />
+            </classpath>
+            <compilerarg line="-encoding UTF-8"/>         
+        </javac>
+    </target>
+	
+	<target name="compile_algo" depends="init">
+	        <javac srcdir="${src.algo}" destdir="${build.dir}" source="1.6" target="1.6" nowarn="yes" debug="yes">
+	            <classpath>
+	                <fileset dir="${lib.dir}" />
+	            </classpath>
+	            <compilerarg line="-encoding UTF-8"/>         
+	        </javac>
+	    </target>
+
+    <target name="comm" depends="compile,compile_algo,compile_cluster" description="Creates Jar of mrs Tasks">
+            <jar jarfile="dist/cli_test.jar" compress="true" basedir="${build.dir}">
+            </jar>
+    </target>
+
+    <target name="init">
+        <tstamp/>
+        <mkdir dir="${build.dir}"/>
+        <mkdir dir="${dist.dir}"/>
+    </target>
+
+    <target name="clean">
+        <delete dir="${build.dir}"/>
+        <delete dir="${dist.dir}"/>
+    </target>
+
+    <target name="all" depends="comm"/>
+</project>
