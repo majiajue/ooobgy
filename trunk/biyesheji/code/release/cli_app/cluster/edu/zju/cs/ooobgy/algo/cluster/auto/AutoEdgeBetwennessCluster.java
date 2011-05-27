@@ -44,6 +44,7 @@ public class AutoEdgeBetwennessCluster<V, E> implements AutoEdgeRemovalCluster<V
 	 * 是否打印聚类过程
 	 */
 	private boolean printClusterProcess;
+	private int removeCnt = 1;
 	
 	public AutoEdgeBetwennessCluster(
 			Transformer<E, ? extends Number> edge_weights,
@@ -119,11 +120,16 @@ public class AutoEdgeBetwennessCluster<V, E> implements AutoEdgeRemovalCluster<V
 		
 		//自动切边，两种策略，依照@clusterComplete值
 		EdgeBetweennessClusterer<V, E> ebCluster;
-		boolean checkPeak = false;
+		int peakState = 0;
+		Double mq = Double.NEGATIVE_INFINITY;
+		int clusterCnt = -1;
 		for (int i = 0; i < originEdges.size(); i++) {
 			ebCluster = new EdgeBetweennessClusterer<V, E>(1, edge_weights);
 			Set<Set<V>> clusters = ebCluster.transform(optGraph);//1.切边
-			Double mq = new Double(clusterQualify.qualify(clusters));//2.评价
+			if (clusterCnt != clusters.size()) {
+				mq = new Double(clusterQualify.qualify(clusters));//2.评价
+				clusterCnt = clusters.size();
+			}
 			//3.加入track
 			qualityTrack.add(mq);
 			E removedEdge = ebCluster.getEdgesRemoved().get(0);
@@ -131,12 +137,12 @@ public class AutoEdgeBetwennessCluster<V, E> implements AutoEdgeRemovalCluster<V
 			printClusterProcess(removedEdge, mq);
 			//4.更新最优记录
 			if (mq > bestCluster.bestMQ()) {
-				checkPeak = true;//从谷底上升后才开始检测峰值
+				peakState ++;//从谷底上升后才开始检测峰值
 				////System.out.println("best change!");
 				bestCluster.setBestClusterSet(clusters);
 				bestCluster.setBestTrack(new SimpleKeyValue<Integer, Double>(i, mq));
-			}else if (!clusterComplete && checkPeak && mq < bestCluster.bestMQ()) {
-				bestCluster = backup(bestCluster, graph);
+			}else if (!clusterComplete && peakState > 1 && mq < bestCluster.bestMQ()) {
+				//bestCluster = backup(bestCluster, graph);
 				break;//如果选定不完全切边选项，则在第一个峰值就退出迭代
 			}
 		}
@@ -176,7 +182,8 @@ public class AutoEdgeBetwennessCluster<V, E> implements AutoEdgeRemovalCluster<V
 
 	private void printClusterProcess(E removedEdge, Double mq) {
 		if (printClusterProcess) {
-			System.out.println("remove edge:\t" + removedEdge + "\tMQ = " + mq);
+			System.out.println("remove [" + removeCnt + "] edge:\t" + removedEdge + "\tMQ = " + mq);
+			removeCnt ++;
 		}	
 	}
 

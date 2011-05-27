@@ -31,7 +31,8 @@ public class AutoEBClusterDemo {
 		Set<Set<String>> realClsters = fileLoader.loadReal(sliceId);
 		
 		System.out.println("========== graph structure ==========");
-		System.out.println(graph);
+		//System.out.println(graph);
+		System.out.println("(skip)");
 		Date start = new Date();
 		System.out.println("========== clustering ==========");
 		AutoEdgeBetwennessCluster<String, String> autoCluster = new AutoEdgeBetwennessCluster<String, String>(
@@ -51,12 +52,16 @@ public class AutoEBClusterDemo {
 	}
 	
 	public static void main(String[] args) throws Exception{
-		//String sliceId = args[0];
+		String sliceId = args[0];
 		Scanner scanner = new Scanner(System.in);
 		scanner.nextLine();
 		AutoEBClusterDemo demo = new AutoEBClusterDemo();
-		demo.testCase("0001", false, true);
-		demo.testCase("0002", false, true);
-		demo.testCase("0003", false, true);
+		demo.testCase(sliceId, false, true);
+//		demo.testCase("001", false, true);
+		
+//		demo.testCase("0001", false, true);
+//		demo.testCase("0002", false, true);
+//		demo.testCase("0003", false, true);
+		
 	}
 }
