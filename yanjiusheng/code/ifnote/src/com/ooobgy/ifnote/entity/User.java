@@ -7,10 +7,15 @@ package com.ooobgy.ifnote.entity;
  * @Email frogcherry@gmail.com
  */
 public class User {
+	/** PK */
 	private Integer id;
+	/** 用户名 */
 	private String userName;
+	/** 密码 */
 	private String password;
+	/** email */
 	private String email;
+	/** 电话号码 */
 	private String phoneNum;
 	
 	public Integer getId() {
