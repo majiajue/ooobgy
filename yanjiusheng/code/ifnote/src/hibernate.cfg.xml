@@ -20,16 +20,16 @@
 		org.hibernate.dialect.MySQLDialect
 	</property>
 	<property name="show_sql">true</property>
-	<mapping resource="com/ooobgy/ifnote/entity/Inote_Cash.hbm.xml" />
-	<mapping resource="com/ooobgy/ifnote/entity/Inote_Deposit.hbm.xml" />
-	<mapping resource="com/ooobgy/ifnote/entity/Inote_Fund.hbm.xml" />
-	<mapping resource="com/ooobgy/ifnote/entity/Inote_Futures.hbm.xml" />
-	<mapping resource="com/ooobgy/ifnote/entity/Inote_Loan.hbm.xml" />
-	<mapping resource="com/ooobgy/ifnote/entity/Inote_Stock.hbm.xml" />
-	<mapping resource="com/ooobgy/ifnote/entity/St_Fund.hbm.xml" />
-	<mapping resource="com/ooobgy/ifnote/entity/St_Rate.hbm.xml" />
-	<mapping resource="com/ooobgy/ifnote/entity/St_Stock.hbm.xml" />
-	<mapping resource="com/ooobgy/ifnote/entity/User.hbm.xml" />
+	<mapping resource="com/ooobgy/ifnote/entity/hbm/Inote_Cash.hbm.xml" />
+	<mapping resource="com/ooobgy/ifnote/entity/hbm/Inote_Deposit.hbm.xml" />
+	<mapping resource="com/ooobgy/ifnote/entity/hbm/Inote_Fund.hbm.xml" />
+	<mapping resource="com/ooobgy/ifnote/entity/hbm/Inote_Futures.hbm.xml" />
+	<mapping resource="com/ooobgy/ifnote/entity/hbm/Inote_Loan.hbm.xml" />
+	<mapping resource="com/ooobgy/ifnote/entity/hbm/Inote_Stock.hbm.xml" />
+	<mapping resource="com/ooobgy/ifnote/entity/hbm/St_Fund.hbm.xml" />
+	<mapping resource="com/ooobgy/ifnote/entity/hbm/St_Rate.hbm.xml" />
+	<mapping resource="com/ooobgy/ifnote/entity/hbm/St_Stock.hbm.xml" />
+	<mapping resource="com/ooobgy/ifnote/entity/hbm/User.hbm.xml" />
 
 </session-factory>
 

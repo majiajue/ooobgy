@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
-<!-- Generated 2011-8-8 18:00:11 by Hibernate Tools 3.4.0.Beta1 -->
+<!-- Generated 2011-8-9 11:41:48 by Hibernate Tools 3.4.0.Beta1 -->
 <hibernate-mapping>
-    <class name="com.ooobgy.ifnote.entity.Inote_Futures" table="INOTE_FUTURES">
+    <class name="com.ooobgy.ifnote.entity.Inote_Loan" table="INOTE_LOAN">
         <id name="id" type="java.lang.Integer">
             <column name="ID" />
             <generator class="assigned" />
@@ -14,17 +14,26 @@
         <property name="user_id" type="java.lang.Integer">
             <column name="USER_ID" />
         </property>
-        <property name="name" type="java.lang.String">
-            <column name="NAME" />
-        </property>
-        <property name="price" type="java.lang.Double">
-            <column name="PRICE" />
+        <property name="type" type="java.lang.String">
+            <column name="TYPE" />
         </property>
         <property name="sum" type="java.lang.Double">
             <column name="SUM" />
         </property>
+        <property name="rate" type="java.lang.Double">
+            <column name="RATE" />
+        </property>
+        <property name="dep_time" type="java.lang.String">
+            <column name="DEP_TIME" />
+        </property>
+        <property name="bank_name" type="java.lang.String">
+            <column name="BANK_NAME" />
+        </property>
         <property name="comment" type="java.lang.String">
             <column name="COMMENT" />
+        </property>
+        <property name="link_id" type="java.lang.Integer">
+            <column name="LINK_ID" />
         </property>
     </class>
 </hibernate-mapping>
