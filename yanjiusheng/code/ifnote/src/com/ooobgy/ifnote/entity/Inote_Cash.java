@@ -1,6 +1,9 @@
 package com.ooobgy.ifnote.entity;
 
 import java.sql.Timestamp;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 
 /**
  * 用户现金流水账
@@ -8,8 +11,11 @@ import java.sql.Timestamp;
  * @created 2011-8-8
  * @Email frogcherry@gmail.com
  */
+@Entity
 public class Inote_Cash {
 	/** PK */
+	@Id
+	@GeneratedValue
 	private Integer id;
 	/** 记录时间 */
 	private Timestamp note_time;

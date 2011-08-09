@@ -1,13 +1,20 @@
 package com.ooobgy.ifnote.entity;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
 /**
  * 每日股票信息
  * @author frogcherry 周晓龙
  * @created 2011-8-8
  * @Email frogcherry@gmail.com
  */
+@Entity
 public class St_Stock {
 	/** PK */
+	@Id
+	@GeneratedValue
 	private Integer id;
 	/** 记录时间戳 */
 	private String timestamp;

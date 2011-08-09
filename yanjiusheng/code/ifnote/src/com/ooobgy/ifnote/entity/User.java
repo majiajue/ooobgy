@@ -1,13 +1,20 @@
 package com.ooobgy.ifnote.entity;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
 /**
  * User Bean: 表示普通用户的entity，含有基本用户信息
  * @author frogcherry 周晓龙
  * @created 2011-8-4
  * @Email frogcherry@gmail.com
  */
+@Entity
 public class User {
 	/** PK */
+	@Id
+	@GeneratedValue
 	private Integer id;
 	/** 用户名 */
 	private String userName;

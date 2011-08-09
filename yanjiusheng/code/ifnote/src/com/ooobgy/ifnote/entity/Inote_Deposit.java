@@ -1,6 +1,9 @@
 package com.ooobgy.ifnote.entity;
 
 import java.sql.Timestamp;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 
 /**
  * 用户存款记录
@@ -8,8 +11,11 @@ import java.sql.Timestamp;
  * @created 2011-8-8
  * @Email frogcherry@gmail.com
  */
+@Entity
 public class Inote_Deposit {
 	/** PK */
+	@Id
+	@GeneratedValue
 	private Integer id;
 	/** 记录时间 */
 	private Timestamp note_time;
@@ -27,6 +33,8 @@ public class Inote_Deposit {
 	private String bank_name;
 	/** 说明 */
 	private String comment;
+	/** 相关联的存取款记录id */
+	private Integer link_id;
 	
 	public Integer getId() {
 		return id;
@@ -81,5 +89,11 @@ public class Inote_Deposit {
 	}
 	public void setComment(String comment) {
 		this.comment = comment;
+	}
+	public Integer getLink_id() {
+		return link_id;
+	}
+	public void setLink_id(Integer linkId) {
+		link_id = linkId;
 	}
 }

@@ -1,13 +1,20 @@
 package com.ooobgy.ifnote.entity;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
 /**
  * 每日基金动态，各支基金的净值、状态等信息
  * @author frogcherry 周晓龙
  * @created 2011-8-8
  * @Email frogcherry@gmail.com
  */
+@Entity
 public class St_Fund {
 	/** PK */
+	@Id
+	@GeneratedValue
 	private Integer id;
 	/** 基金代码 */
 	private Integer code;
