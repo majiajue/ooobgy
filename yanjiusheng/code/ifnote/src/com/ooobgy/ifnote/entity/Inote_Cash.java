@@ -3,21 +3,21 @@ package com.ooobgy.ifnote.entity;
 import java.sql.Timestamp;
 
 /**
- * ÓÃ»§ÏÖ½ğÁ÷Ë®ÕË
- * @author frogcherry ÖÜÏşÁú
+ * ç”¨æˆ·ç°é‡‘æµæ°´è´¦
+ * @author frogcherry å‘¨æ™“é¾™
  * @created 2011-8-8
  * @Email frogcherry@gmail.com
  */
 public class Inote_Cash {
 	/** PK */
 	private Integer id;
-	/** ¼ÇÂ¼Ê±¼ä */
+	/** è®°å½•æ—¶é—´ */
 	private Timestamp note_time;
-	/** ¹ØÁªÓÃ»§ */
+	/** å…³è”ç”¨æˆ· */
 	private Integer user_id;
-	/** ÊÕÖ§ÕËµ¥ */
+	/** æ”¶æ”¯è´¦å• */
 	private Double account;
-	/** ËµÃ÷ */
+	/** è¯´æ˜ */
 	private String comment;
 	
 	public Integer getId() {

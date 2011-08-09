@@ -1,17 +1,17 @@
 package com.ooobgy.ifnote.entity;
 
 /**
- * ÒøĞĞÀûÂÊÊı¾İ
- * @author frogcherry ÖÜÏşÁú
+ * é“¶è¡Œåˆ©ç‡æ•°æ®
+ * @author frogcherry å‘¨æ™“é¾™
  * @created 2011-8-8
  * @Email frogcherry@gmail.com
  */
 public class St_Rate {
 	/** PK */
 	private Integer id;
-	/** Ãû³Ækey */
+	/** åç§°key */
 	private String name;
-	/** ÀûÂÊ */
+	/** åˆ©ç‡ */
 	private Double rate;
 	
 	public Integer getId() {

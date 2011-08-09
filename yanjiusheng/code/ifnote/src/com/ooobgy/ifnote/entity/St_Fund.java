@@ -1,31 +1,31 @@
 package com.ooobgy.ifnote.entity;
 
 /**
- * Ã¿ÈÕ»ù½ğ¶¯Ì¬£¬¸÷Ö§»ù½ğµÄ¾»Öµ¡¢×´Ì¬µÈĞÅÏ¢
- * @author frogcherry ÖÜÏşÁú
+ * æ¯æ—¥åŸºé‡‘åŠ¨æ€ï¼Œå„æ”¯åŸºé‡‘çš„å‡€å€¼ã€çŠ¶æ€ç­‰ä¿¡æ¯
+ * @author frogcherry å‘¨æ™“é¾™
  * @created 2011-8-8
  * @Email frogcherry@gmail.com
  */
 public class St_Fund {
 	/** PK */
 	private Integer id;
-	/** »ù½ğ´úÂë */
+	/** åŸºé‡‘ä»£ç  */
 	private Integer code;
-	/** »ù½ğÃû³Æ */
+	/** åŸºé‡‘åç§° */
 	private String name;
-	/** ¾»Öµ·¢²¼ÈÕ£¬¸ñÊ½yyyyMMdd */
+	/** å‡€å€¼å‘å¸ƒæ—¥ï¼Œæ ¼å¼yyyyMMdd */
 	private String timestamp;
-	/** µ¥Î»¾»Öµ */
+	/** å•ä½å‡€å€¼ */
 	private Double npv;
-	/** ÀÛ¼Æ¾»Öµ */
+	/** ç´¯è®¡å‡€å€¼ */
 	private Double acc_npv;
-	/** Ôö³¤Öµ */
+	/** å¢é•¿å€¼ */
 	private Double inc_npv;
-	/** Ôö³¤ÂÊ */
+	/** å¢é•¿ç‡ */
 	private Double inc_rate;
-	/** ¿É¹ºÂò */
+	/** å¯è´­ä¹° */
 	private boolean buyable;
-	/** ¿ÉÊê»Ø */
+	/** å¯èµå› */
 	private boolean sellable;
 	
 	public Integer getId() {

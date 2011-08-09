@@ -1,21 +1,21 @@
 package com.ooobgy.ifnote.entity;
 
 /**
- * Ã¿ÈÕ¹ÉÆ±ĞÅÏ¢
- * @author frogcherry ÖÜÏşÁú
+ * æ¯æ—¥è‚¡ç¥¨ä¿¡æ¯
+ * @author frogcherry å‘¨æ™“é¾™
  * @created 2011-8-8
  * @Email frogcherry@gmail.com
  */
 public class St_Stock {
 	/** PK */
 	private Integer id;
-	/** ¼ÇÂ¼Ê±¼ä´Á */
+	/** è®°å½•æ—¶é—´æˆ³ */
 	private String timestamp;
-	/** ¹ÉÆ±´úÂë */
+	/** è‚¡ç¥¨ä»£ç  */
 	private String code;
-	/** ¹ÉÆ±Ãû³Æ */
+	/** è‚¡ç¥¨åç§° */
 	private String name;
-	/** ¹ÉÆ±µ±Ç°ÊĞÖµ */
+	/** è‚¡ç¥¨å½“å‰å¸‚å€¼ */
 	private Double smv;
 	
 	public Integer getId() {

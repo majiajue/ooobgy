@@ -3,29 +3,29 @@ package com.ooobgy.ifnote.entity;
 import java.sql.Timestamp;
 
 /**
- * ÓÃ»§´æ¿î¼ÇÂ¼
- * @author frogcherry ÖÜÏşÁú
+ * ç”¨æˆ·å­˜æ¬¾è®°å½•
+ * @author frogcherry å‘¨æ™“é¾™
  * @created 2011-8-8
  * @Email frogcherry@gmail.com
  */
 public class Inote_Deposit {
 	/** PK */
 	private Integer id;
-	/** ¼ÇÂ¼Ê±¼ä */
+	/** è®°å½•æ—¶é—´ */
 	private Timestamp note_time;
-	/** ¹ØÁªÓÃ»§ */
+	/** å…³è”ç”¨æˆ· */
 	private Integer user_id;
-	/** ´æ¿îÀàĞÍ */
+	/** å­˜æ¬¾ç±»å‹ */
 	private String type;
-	/** ´æ¿î½ğ¶î,ÕıÖµ±íÊ¾´æÈë£¬¸ºÖµ±íÊ¾È¡³ö */
+	/** å­˜æ¬¾é‡‘é¢,æ­£å€¼è¡¨ç¤ºå­˜å…¥ï¼Œè´Ÿå€¼è¡¨ç¤ºå–å‡º */
 	private Double sum;
-	/** ´æ¿îÀûÂÊ */
+	/** å­˜æ¬¾åˆ©ç‡ */
 	private Double rate;
-	/** ´æ¿îÊ±¼ä */
+	/** å­˜æ¬¾æ—¶é—´ */
 	private String dep_time;
-	/** ´æ¿îÒøĞĞ */
+	/** å­˜æ¬¾é“¶è¡Œ */
 	private String bank_name;
-	/** ËµÃ÷ */
+	/** è¯´æ˜ */
 	private String comment;
 	
 	public Integer getId() {

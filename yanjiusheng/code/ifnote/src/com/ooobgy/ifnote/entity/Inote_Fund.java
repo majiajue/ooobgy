@@ -3,25 +3,25 @@ package com.ooobgy.ifnote.entity;
 import java.sql.Timestamp;
 
 /**
- * ÓÃ»§»ù½ğ½»Ò×¼ÇÂ¼
- * @author frogcherry ÖÜÏşÁú
+ * ç”¨æˆ·åŸºé‡‘äº¤æ˜“è®°å½•
+ * @author frogcherry å‘¨æ™“é¾™
  * @created 2011-8-8
  * @Email frogcherry@gmail.com
  */
 public class Inote_Fund {
 	/** PK */
 	private Integer id;
-	/** ¼ÇÂ¼Ê±¼ä */
+	/** è®°å½•æ—¶é—´ */
 	private Timestamp note_time;
-	/** ¹ØÁªÓÃ»§ */
+	/** å…³è”ç”¨æˆ· */
 	private Integer user_id;
-	/** »ù½ğ´úÂë */
+	/** åŸºé‡‘ä»£ç  */
 	private Integer fund_code;
-	/** ½»Ò×¹ÉÊı£ºÕıÖµ±íÊ¾¹ºÈë£¬¸ºÖµ±íÊ¾Êê»Ø */
+	/** äº¤æ˜“è‚¡æ•°ï¼šæ­£å€¼è¡¨ç¤ºè´­å…¥ï¼Œè´Ÿå€¼è¡¨ç¤ºèµå› */
 	private Integer count;
-	/** ½»Ò×Ê±¾»Öµ */
+	/** äº¤æ˜“æ—¶å‡€å€¼ */
 	private Double npv;
-	/** ËµÃ÷ */
+	/** è¯´æ˜ */
 	private String comment;
 	
 	public Integer getId() {

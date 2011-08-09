@@ -1,21 +1,21 @@
 package com.ooobgy.ifnote.entity;
 
 /**
- * User Bean: ±íÊ¾ÆÕÍ¨ÓÃ»§µÄentity£¬º¬ÓĞ»ù±¾ÓÃ»§ĞÅÏ¢
- * @author frogcherry ÖÜÏşÁú
+ * User Bean: è¡¨ç¤ºæ™®é€šç”¨æˆ·çš„entityï¼Œå«æœ‰åŸºæœ¬ç”¨æˆ·ä¿¡æ¯
+ * @author frogcherry å‘¨æ™“é¾™
  * @created 2011-8-4
  * @Email frogcherry@gmail.com
  */
 public class User {
 	/** PK */
 	private Integer id;
-	/** ÓÃ»§Ãû */
+	/** ç”¨æˆ·å */
 	private String userName;
-	/** ÃÜÂë */
+	/** å¯†ç  */
 	private String password;
 	/** email */
 	private String email;
-	/** µç»°ºÅÂë */
+	/** ç”µè¯å·ç  */
 	private String phoneNum;
 	
 	public Integer getId() {
