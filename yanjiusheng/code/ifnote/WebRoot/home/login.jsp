@@ -72,17 +72,12 @@ body {
 </table>
 </div>   
 </td></tr>
-<tr><td align="center">
-<font face="微软雅黑" size="2"><html:radio property="userType" value="student">学生</html:radio></font>
-		    <font size="2" face="微软雅黑"><html:radio property="userType" value="teacher">教师</html:radio></font>
-		   <font size="2" face="微软雅黑"> <html:radio property="userType" value="admin" >管理员</html:radio>
-		    <html:errors property="userType"/>
-</td></tr>
+
 <tr><td>
 <table width="100%"  align="center">
 <tr>
 <td align="center">
-  <a><img src="/examOnline/images/login.gif" width="62" height="22" alt="登录" style="cursor:hand;" onClick="javascript:document.loginForm.submit();">
+  <a><img src="/ifnote/images/login.gif" width="62" height="22" alt="登录" style="cursor:hand;" onClick="javascript:document.loginForm.submit();">
   </a>
   </td>
   </tr>
