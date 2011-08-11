@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.5" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee   http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+   <filter>
+  <filter-name>characterencodingfilter</filter-name>
+  <filter-class>com.ooobgy.ifnote.filters.CharacterEncodingFilter</filter-class>
+ </filter>
+ <filter-mapping>
+  <filter-name>characterencodingfilter</filter-name>
+  <url-pattern>/*</url-pattern>
+ </filter-mapping>
   <servlet>
     <servlet-name>action</servlet-name>
     <servlet-class>org.apache.struts.action.ActionServlet</servlet-class>
@@ -17,12 +25,23 @@
     </init-param>
     <load-on-startup>0</load-on-startup>
   </servlet>
+   <servlet>
+  <description>make radom code</description>
+  <display-name>RandomCode</display-name>
+  <servlet-name>ConfirmationCode</servlet-name>
+  <servlet-class>com.ooobgy.util.ConfirmationCode.ConfirmationCodeServlet</servlet-class>
+  <load-on-startup>0</load-on-startup>
+ </servlet>
   <servlet-mapping>
     <servlet-name>action</servlet-name>
     <url-pattern>*.do</url-pattern>
   </servlet-mapping>
+   <servlet-mapping>
+  <servlet-name>ConfirmationCode</servlet-name>
+  <url-pattern>*.ConfirmationCode</url-pattern>
+ </servlet-mapping>
   <welcome-file-list>
-    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>home/home.jsp</welcome-file>
   </welcome-file-list>
 </web-app>
 
