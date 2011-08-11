@@ -27,10 +27,10 @@
             <column name="DEP_TIME" />
         </property>
         <property name="bank_name" type="java.lang.String">
-            <column name="BANK_NAME" />
+            <column name="BANK_NAME"  sql-type="Text"/>
         </property>
         <property name="comment" type="java.lang.String">
-            <column name="COMMENT" />
+            <column name="COMMENT"  sql-type="Text"/>
         </property>
         <property name="link_id" type="java.lang.Integer">
             <column name="LINK_ID" />

@@ -24,7 +24,7 @@
             <column name="NPV" />
         </property>
         <property name="comment" type="java.lang.String">
-            <column name="COMMENT" />
+            <column name="COMMENT" sql-type="Text"/>
         </property>
     </class>
 </hibernate-mapping>
