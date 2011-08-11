@@ -1,9 +1,3 @@
-/**
- * @Author 周晓龙   frogcherry
- * @Email frogcherry@gmail.com
- * @CreateDate 2010-6-10
- */
-
 package com.ooobgy.ifnote.dbctrler.daoimpl;
 
 import java.io.Serializable;
@@ -16,7 +10,11 @@ import org.hibernate.Transaction;
 
 import com.ooobgy.ifnote.dbctrler.HibernateSessionFactory;
 import com.ooobgy.ifnote.dbctrler.dao.TDataDao;
-
+/**
+ * @Author 周晓龙   frogcherry
+ * @Email frogcherry@gmail.com
+ * @CreateDate 2011-8-9
+ */
 public abstract class TDataDaoImpl<T,K> implements TDataDao<T,K> {
 
 	public void save(T object) {
@@ -188,4 +186,10 @@ public abstract class TDataDaoImpl<T,K> implements TDataDao<T,K> {
 		
 		return removeLines;
 	}
+
+	protected List<T> findWithCmd(Class<?> impclass, String cmd) {
+		return findAll(impclass, cmd);
+	}
+	
+	
 }
