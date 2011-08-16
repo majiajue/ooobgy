@@ -86,7 +86,7 @@ body {
 </logic:notPresent>
 
 
-<tiles:insert page='/component/adminInfo.jsp'></tiles:insert>
+<tiles:insert page='/component/userInfo.jsp'></tiles:insert>
     </body>
 </html>
 
