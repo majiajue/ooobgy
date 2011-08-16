@@ -8,5 +8,5 @@ import com.ooobgy.ifnote.entity.User;
  * @CreateDate 2011-8-9
  */
 public interface UserDao extends TDataDao<User, Integer> {
-
+	public User findWithUserName(String username);
 }

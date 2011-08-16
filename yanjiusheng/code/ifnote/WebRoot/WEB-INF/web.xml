@@ -29,7 +29,7 @@
   <description>make radom code</description>
   <display-name>RandomCode</display-name>
   <servlet-name>ConfirmationCode</servlet-name>
-  <servlet-class>com.ooobgy.util.ConfirmationCode.ConfirmationCodeServlet</servlet-class>
+  <servlet-class>com.ooobgy.util.confirmcode.ConfirmationCodeServlet</servlet-class>
   <load-on-startup>0</load-on-startup>
  </servlet>
   <servlet-mapping>

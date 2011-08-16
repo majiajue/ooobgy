@@ -28,4 +28,13 @@ public class UserDaoImpl extends TDataDaoImpl<User, Integer> implements UserDao{
 		return findWithCmd(User.class, cmd);
 	}
 
+	public User findWithUserName(String username) {
+		List<User> list = findWithCmd(" p where p.userName=\'" + username +"\'");
+		if (list.size()>0) {
+			return list.get(0);
+		} else {
+			return null;
+		}
+	}
+
 }

@@ -9,7 +9,11 @@
   </form-beans>
 
   <global-exceptions />
-  <global-forwards />
+  <global-forwards >
+    <forward name="userinfo" path="/component/userInfo.jsp" />
+
+  </global-forwards>
+
   <action-mappings >
     <action
       attribute="loginForm"

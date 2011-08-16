@@ -34,7 +34,7 @@ public class LoginAction extends Action {
 	 */
 	public ActionForward execute(ActionMapping mapping, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response) {
-		LoginForm loginForm = (LoginForm) form;// TODO Auto-generated method stub
-		return null;
+		//LoginForm loginForm = (LoginForm) form;// TODO Auto-generated method stub
+		return mapping.findForward("userinfo");
 	}
 }
