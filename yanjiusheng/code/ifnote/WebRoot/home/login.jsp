@@ -33,16 +33,12 @@ body {
 	<div id="pic" width = "340" height = "300"><div>
 	<div><width = 260><font color="#0000cc"><em><font face="华文行楷" size="5"><center></center></font></em></font></width></div>
 	<%
-		String adminKey = SecretKey.ADMIN_KEY;
-		String studentKey = SecretKey.STUDENT_KEY;
-		String teacherKey = SecretKey.TEACHER_KEY;
+		String userKey = SecretKey.USER_KEY;
 	%>
 	
 	<br />
 	 <font color="#0000cc"><font face="华文行楷" size="5"><center>用户登录</center></font></font>
-	 <logic:notPresent name="<%=adminKey %>" scope="session">
-	<logic:notPresent name="<%=studentKey %>" scope="session">
-	<logic:notPresent name="<%=teacherKey %>" scope="session">
+	 <logic:notPresent name="<%=userKey %>" scope="session">
 	
     <html:form action="/login" styleId="loginForm">
 <table width="100%" >
@@ -72,7 +68,6 @@ body {
 </table>
 </div>   
 </td></tr>
-
 <tr><td>
 <table width="100%"  align="center">
 <tr>
@@ -89,13 +84,9 @@ body {
 </table>
 </html:form>
 </logic:notPresent>
-	</logic:notPresent>
-	</logic:notPresent>
 
 
 <tiles:insert page='/component/adminInfo.jsp'></tiles:insert>
-<tiles:insert page='/component/studentInfo.jsp'></tiles:insert>
-<tiles:insert page='/component/teacherInfo.jsp'></tiles:insert>
     </body>
 </html>
 
