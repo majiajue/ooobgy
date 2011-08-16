@@ -6,7 +6,7 @@
     <class name="com.ooobgy.ifnote.entity.St_Stock" table="ST_STOCK">
         <id name="id" type="java.lang.Integer">
             <column name="ID" />
-            <generator class="assigned" />
+            <generator class="native" />
         </id>
         <property name="timestamp" type="java.lang.String">
             <column name="TIMESTAMP" />

@@ -8,7 +8,7 @@
 <%@ taglib uri="http://struts.apache.org/tags-nested" prefix="nested" %>
 <html:html lang="true">
 <head>
-<title>ooobgy examOnline</title>
+<title>ooobgy ifnote</title>
 <SCRIPT LANGUAGE=javascript>
 	var munehided = false;
 	function loadResize(){

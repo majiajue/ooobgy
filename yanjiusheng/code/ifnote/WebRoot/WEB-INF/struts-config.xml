@@ -5,12 +5,14 @@
   <data-sources />
   <form-beans >
     <form-bean name="loginForm" type="com.ooobgy.ifnote.struts.form.LoginForm" />
+    <form-bean name="regForm" type="com.ooobgy.ifnote.struts.form.RegForm" />
 
   </form-beans>
 
   <global-exceptions />
   <global-forwards >
     <forward name="userinfo" path="/component/userInfo.jsp" />
+    <forward name="success" path="/success.jsp" />
 
   </global-forwards>
 
@@ -22,6 +24,15 @@
       path="/login"
       scope="request"
       type="com.ooobgy.ifnote.struts.action.LoginAction">
+      <set-property property="cancellable" value="true" />
+    </action>
+    <action
+      attribute="regForm"
+      input="/home/reg.jsp"
+      name="regForm"
+      path="/reg"
+      scope="request"
+      type="com.ooobgy.ifnote.struts.action.RegAction">
       <set-property property="cancellable" value="true" />
     </action>
     

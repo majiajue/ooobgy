@@ -6,7 +6,7 @@
  <class name="com.ooobgy.ifnote.entity.Inote_Cash" table="INOTE_CASH">
   <id name="id" type="java.lang.Integer">
    <column name="ID"/>
-   <generator class="assigned"/>
+   <generator class="native"/>
   </id>
   <property generated="never" lazy="false" name="note_time" type="java.sql.Timestamp">
    <column name="NOTE_TIME"/>

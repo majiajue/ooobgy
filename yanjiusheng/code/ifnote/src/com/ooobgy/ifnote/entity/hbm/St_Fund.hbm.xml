@@ -6,7 +6,7 @@
     <class name="com.ooobgy.ifnote.entity.St_Fund" table="ST_FUND">
         <id name="id" type="java.lang.Integer">
             <column name="ID" />
-            <generator class="assigned" />
+            <generator class="native" />
         </id>
         <property name="code" type="java.lang.Integer">
             <column name="CODE" />

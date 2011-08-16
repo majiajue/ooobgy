@@ -11,5 +11,8 @@ public class UserDaoTest extends TestCase{
 		UserDao userDao = new UserDaoImpl();
 		User user = userDao.findWithUserName("ooobgy");
 		userDao.findWithUserName("ooodabgy");
+		User su = new User();
+		su.setUserName("154684");
+		userDao.save(su);
 	}
 }

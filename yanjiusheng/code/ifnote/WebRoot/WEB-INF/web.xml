@@ -32,6 +32,10 @@
   <servlet-class>com.ooobgy.util.confirmcode.ConfirmationCodeServlet</servlet-class>
   <load-on-startup>0</load-on-startup>
  </servlet>
+  <servlet>
+  <servlet-name>logoutserver</servlet-name>
+  <servlet-class>com.ooobgy.ifnote.utilservlet.LogoutServlet</servlet-class>
+ </servlet>
   <servlet-mapping>
     <servlet-name>action</servlet-name>
     <url-pattern>*.do</url-pattern>
@@ -39,6 +43,10 @@
    <servlet-mapping>
   <servlet-name>ConfirmationCode</servlet-name>
   <url-pattern>*.ConfirmationCode</url-pattern>
+ </servlet-mapping>
+  <servlet-mapping>
+  <servlet-name>logoutserver</servlet-name>
+  <url-pattern>*.logout</url-pattern>
  </servlet-mapping>
   <welcome-file-list>
     <welcome-file>home/home.jsp</welcome-file>
