@@ -6,6 +6,7 @@
   <form-beans >
     <form-bean name="loginForm" type="com.ooobgy.ifnote.struts.form.LoginForm" />
     <form-bean name="regForm" type="com.ooobgy.ifnote.struts.form.RegForm" />
+    <form-bean name="noteCashForm" type="com.ooobgy.ifnote.struts.form.NoteCashForm" />
 
   </form-beans>
 
@@ -33,6 +34,15 @@
       path="/reg"
       scope="request"
       type="com.ooobgy.ifnote.struts.action.RegAction">
+      <set-property property="cancellable" value="true" />
+    </action>
+    <action
+      attribute="noteCashForm"
+      input="/inote/noteCash.jsp"
+      name="noteCashForm"
+      path="/noteCash"
+      scope="request"
+      type="com.ooobgy.ifnote.struts.action.NoteCashAction">
       <set-property property="cancellable" value="true" />
     </action>
     
