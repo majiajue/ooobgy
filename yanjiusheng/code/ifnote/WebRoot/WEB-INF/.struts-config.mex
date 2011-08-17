@@ -4,37 +4,62 @@
   <StrutsActivity path="/reg.do" location="650,150" dimension="292,84" />
   <StrutsActivity path="userinfo;6" location="165,180" dimension="190,72" />
   <StrutsActivity path="success;6" location="50,350" dimension="118,72" />
-  <StrutsActivity path="/form/login.jsp" location="350,50" dimension="130,48" />
   <StrutsActivity path="/home/reg.jsp" location="645,300" dimension="118,48" />
   <StrutsActivity path="/component/userInfo.jsp" location="360,120" dimension="178,48" />
   <StrutsActivity path="/success.jsp" location="240,345" dimension="112,48" />
   <StrutsActivity path="/component/userInfo.jsp/userInfo.jsp" location="465,210" dimension="150,100" />
   <StrutsActivity path="/noteCash.do" location="950,350" dimension="322,84" />
   <StrutsActivity path="/inote/noteCash.jsp" location="350,450" dimension="154,48" />
+  <StrutsActivity path="/home/login.jsp" location="650,450" dimension="130,48" />
+  <StrutsActivity path="/inote/noteDeposit.jsp" location="650,550" dimension="172,48" />
+  <StrutsActivity path="/form/login.jsp" location="350,50" dimension="130,48" />
+  <StrutsActivity path="/noteFund.do" location="50,550" dimension="322,84" />
+  <StrutsActivity path="/inote/noteFund.jsp" location="950,550" dimension="154,48" />
   <StrutsTransition id="success;6,null,/success.jsp,1" routingType="0">
     <AutomaticBendpoints>
       <AbsolutePoint location="168,369" />
       <AbsolutePoint location="240,369" />
     </AutomaticBendpoints>
   </StrutsTransition>
+  <StrutsTransition id="/home/login.jsp,null,/login.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="650,474" />
+      <AbsolutePoint location="630,474" />
+      <AbsolutePoint location="630,95" />
+      <AbsolutePoint location="285,95" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
   <StrutsTransition id="/inote/noteCash.jsp,null,/noteCash.do,2" routingType="0">
     <AutomaticBendpoints>
-      <AbsolutePoint location="427,450" />
-      <AbsolutePoint location="427,378" />
+      <AbsolutePoint location="419,450" />
+      <AbsolutePoint location="419,378" />
       <AbsolutePoint location="950,378" />
     </AutomaticBendpoints>
   </StrutsTransition>
   <StrutsTransition id="userinfo;6,null,/component/userInfo.jsp,1" routingType="0">
     <AutomaticBendpoints>
-      <AbsolutePoint location="355,216" />
-      <AbsolutePoint location="375,216" />
-      <AbsolutePoint location="375,168" />
+      <AbsolutePoint location="355,225" />
+      <AbsolutePoint location="449,225" />
+      <AbsolutePoint location="449,168" />
     </AutomaticBendpoints>
   </StrutsTransition>
   <StrutsTransition id="/form/login.jsp,null,/login.do,2" routingType="0">
     <AutomaticBendpoints>
       <AbsolutePoint location="350,74" />
       <AbsolutePoint location="285,74" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/inote/noteFund.jsp,null,/noteFund.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1027,598" />
+      <AbsolutePoint location="1027,613" />
+      <AbsolutePoint location="372,613" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/inote/noteDeposit.jsp,null,/noteDeposit.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="650,574" />
+      <AbsolutePoint location="390,574" />
     </AutomaticBendpoints>
   </StrutsTransition>
   <StrutsTransition id="/home/reg.jsp,null,/reg.do,2" routingType="0">

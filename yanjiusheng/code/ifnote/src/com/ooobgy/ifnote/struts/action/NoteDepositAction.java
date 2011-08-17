@@ -59,7 +59,11 @@ public class NoteDepositAction extends Action {
 		Calendar cal = Calendar.getInstance();
 		inoteDeposit.setNote_time(new Timestamp(cal.getTimeInMillis()));
 		Integer link_id = (Integer) session.getAttribute("link_id");
-		inoteDeposit.setLink_id(link_id);
+		if (link_id == null) {
+			inoteDeposit.setLink_id(new Integer(-1));
+		} else {
+			inoteDeposit.setLink_id(link_id);
+		}
 		inoteDeposit.setBank_name(noteDepositForm.getBank_name());
 		inoteDeposit.setComment(noteDepositForm.getComment());
 		inoteDeposit.setDep_time(noteDepositForm.getDep_time());
