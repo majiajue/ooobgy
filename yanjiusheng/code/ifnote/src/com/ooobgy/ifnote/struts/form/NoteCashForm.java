@@ -45,8 +45,8 @@ public class NoteCashForm extends ActionForm {
 		ActionErrors errors = new ActionErrors();
 		try {
 			Double.parseDouble(account);
-		} catch (Exception e) {
-			ActionMessage actionMessage = new ActionMessage("cash.account");
+		} catch (Throwable e) {
+			ActionMessage actionMessage = new ActionMessage("error.account");
 			errors.add("account", actionMessage);
 			return errors;
 		}

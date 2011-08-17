@@ -39,7 +39,7 @@ public class NoteCashAction extends Action {
 		HttpSession session = request.getSession();
 		Inote_Cash inoteCash = (Inote_Cash)session.getAttribute("inote_cash");
 		//修改逻辑
-		if (inoteCash == null) {
+		if (inoteCash == null) {//新增逻辑
 			inoteCash = new Inote_Cash();
 		}
 		
@@ -52,8 +52,12 @@ public class NoteCashAction extends Action {
 		inoteCash.setNote_time(new Timestamp(cal.getTimeInMillis()));
 		
 		Inote_CashDao dao = new Inote_CashDaoImpl();
-		dao.save(inoteCash);
-		
+		if (inoteCash.getId() == null) {
+			dao.save(inoteCash);
+		} else {
+			dao.update(inoteCash);
+		}
+				
 		return mapping.findForward("success");
 	}
 }
