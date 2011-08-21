@@ -4,19 +4,21 @@
   <StrutsActivity path="/reg.do" location="650,150" dimension="292,84" />
   <StrutsActivity path="/noteCash.do" location="950,350" dimension="322,84" />
   <StrutsActivity path="/noteFund.do" location="50,550" dimension="322,84" />
+  <StrutsActivity path="/noteFutures.do" location="650,650" dimension="340,84" />
   <StrutsActivity path="userinfo;6" location="165,180" dimension="190,72" />
   <StrutsActivity path="success;6" location="50,350" dimension="118,72" />
   <StrutsActivity path="/form/login.jsp" location="350,50" dimension="130,48" />
   <StrutsActivity path="/home/reg.jsp" location="645,300" dimension="118,48" />
   <StrutsActivity path="/inote/noteCash.jsp" location="350,450" dimension="154,48" />
   <StrutsActivity path="/inote/noteFund.jsp" location="950,550" dimension="154,48" />
+  <StrutsActivity path="/inote/noteFutures.jsp" location="50,750" dimension="172,48" />
   <StrutsActivity path="/component/userInfo.jsp" location="360,120" dimension="178,48" />
   <StrutsActivity path="/success.jsp" location="240,345" dimension="112,48" />
   <StrutsActivity path="/component/userInfo.jsp/userInfo.jsp" location="465,210" dimension="150,100" />
   <StrutsActivity path="/home/login.jsp" location="650,450" dimension="130,48" />
   <StrutsActivity path="/inote/noteDeposit.jsp" location="650,550" dimension="172,48" />
-  <StrutsActivity path="/noteFutures.do" location="650,650" dimension="340,84" />
-  <StrutsActivity path="/inote/noteFutures.jsp" location="50,750" dimension="172,48" />
+  <StrutsActivity path="/noteLoan.do" location="50,850" dimension="321,104" />
+  <StrutsActivity path="/inote/noteLoan.jsp" location="650,850" dimension="145,53" />
   <StrutsTransition id="/inote/noteFutures.jsp,null,/noteFutures.do,2" routingType="0">
     <AutomaticBendpoints>
       <AbsolutePoint location="136,750" />
@@ -55,6 +57,12 @@
       <AbsolutePoint location="1027,598" />
       <AbsolutePoint location="1027,613" />
       <AbsolutePoint location="372,613" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/inote/noteLoan.jsp,null,/noteLoan.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="650,876" />
+      <AbsolutePoint location="371,876" />
     </AutomaticBendpoints>
   </StrutsTransition>
   <StrutsTransition id="/home/reg.jsp,null,/reg.do,2" routingType="0">

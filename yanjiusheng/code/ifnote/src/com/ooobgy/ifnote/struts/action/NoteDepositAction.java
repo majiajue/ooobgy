@@ -70,6 +70,7 @@ public class NoteDepositAction extends Action {
 		inoteDeposit.setRate(Double.parseDouble(noteDepositForm.getRate()));
 		inoteDeposit.setSum(Double.parseDouble(noteDepositForm.getSum()));
 		inoteDeposit.setType(noteDepositForm.getType());
+		inoteDeposit.setLink_id(-1);
 		
 		Inote_DepositDao dao = new Inote_DepositDaoImpl();
 		if (inoteDeposit.getId() == null) {
