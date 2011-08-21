@@ -98,7 +98,7 @@ public class NoteCashForm extends ActionForm {
 		Inote_CashDao inoteCashDao = new Inote_CashDaoImpl();
 		Inote_Cash inote = inoteCashDao.findWithId(id);
 		
-		if (inote.getId() == null) {
+		if (inote==null || inote.getId() == null) {
 			return null;
 		} else {
 			return inote;

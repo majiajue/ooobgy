@@ -142,7 +142,7 @@ public class NoteDepositForm extends ActionForm {
 		Inote_DepositDao dao = new Inote_DepositDaoImpl();
 		Inote_Deposit inote = dao.findWithId(id);
 		
-		if (inote.getId() == null) {
+		if (inote==null || inote.getId() == null) {
 			return null;
 		} else {
 			return inote;

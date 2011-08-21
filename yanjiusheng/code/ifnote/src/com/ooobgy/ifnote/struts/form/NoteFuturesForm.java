@@ -5,9 +5,19 @@
 package com.ooobgy.ifnote.struts.form;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.apache.struts.action.ActionErrors;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionMapping;
+import org.apache.struts.action.ActionMessage;
+
+import com.ooobgy.ifnote.constants.SecretKey;
+import com.ooobgy.ifnote.dbctrler.dao.Inote_FuturesDao;
+import com.ooobgy.ifnote.dbctrler.daoimpl.Inote_FuturesDaoImpl;
+import com.ooobgy.ifnote.entity.Inote_Fund;
+import com.ooobgy.ifnote.entity.Inote_Futures;
+import com.ooobgy.ifnote.entity.User;
 
 /** 
  * MyEclipse Struts
@@ -20,6 +30,11 @@ public class NoteFuturesForm extends ActionForm {
 	/*
 	 * Generated fields
 	 */
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -2267943193131851232L;
 
 	/** price property */
 	private String price;
@@ -45,8 +60,29 @@ public class NoteFuturesForm extends ActionForm {
 	 */
 	public ActionErrors validate(ActionMapping mapping,
 			HttpServletRequest request) {
-		// TODO Auto-generated method stub
-		return null;
+		ActionErrors errors = new ActionErrors();
+		
+		try {
+			if(Double.parseDouble(sum) < 0){
+				throw new IllegalArgumentException();
+			}
+		} catch (Throwable e) {
+			ActionMessage actionMessage = new ActionMessage("error.sum");
+			errors.add("sum", actionMessage);
+			return errors;
+		}
+		
+		try {
+			if(Double.parseDouble(price) < 0){
+				throw new IllegalArgumentException();
+			}
+		} catch (Throwable e) {
+			ActionMessage actionMessage = new ActionMessage("error.price");
+			errors.add("price", actionMessage);
+			return errors;
+		}
+		
+		return errors;
 	}
 
 	/** 
@@ -55,7 +91,58 @@ public class NoteFuturesForm extends ActionForm {
 	 * @param request
 	 */
 	public void reset(ActionMapping mapping, HttpServletRequest request) {
+		String idStr = (String) request.getParameter("nid");
+		if (idStr != null && idStr.length() > 0) {
+			try {
+				Integer id = Integer.parseInt(idStr);
+				Inote_Futures inote = initInote(id);
+				HttpSession session = request.getSession();
+				User user = (User)session.getAttribute(SecretKey.USER_KEY);
+				if (user != null && inote != null) {
+					if (user.getId() == inote.getUser_id()) {
+						this.comment = inote.getComment();
+						this.name = inote.getName();
+						this.sum = inote.getSum().toString();
+						this.price = inote.getPrice().toString();
+						session.setAttribute("inote_futures", inote);
+						return;
+					} else {
+						initBlankInote();
+					}
+				}
+				initBlankInote();
+				
+				return;
+			} catch (Throwable e) {
+				//Do nothing,转入初始化空白Bean的操作
+			}
+		}
+		
+		initBlankInote();
+	}
+
+	/**
+	 * @param id
+	 * @return
+	 */
+	private Inote_Futures initInote(Integer id) {
+		Inote_FuturesDao dao = new Inote_FuturesDaoImpl();
+		Inote_Futures inote = dao.findWithId(id);
+		
+		if (inote==null || inote.getId() == null) {
+			return null;
+		} else {
+			return inote;
+		}
+		
+	}
+
+	/**
+	 * 
+	 */
+	private void initBlankInote() {
 		// TODO Auto-generated method stub
+		
 	}
 
 	/** 

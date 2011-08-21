@@ -136,7 +136,7 @@ public class NoteFundForm extends ActionForm {
 		Inote_FundDao dao = new Inote_FundDaoImpl();
 		Inote_Fund inote = dao.findWithId(id);
 		
-		if (inote.getId() == null) {
+		if (inote==null || inote.getId() == null) {
 			return null;
 		} else {
 			return inote;

@@ -4,12 +4,23 @@
  */
 package com.ooobgy.ifnote.struts.action;
 
+import java.sql.Timestamp;
+import java.util.Calendar;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
 import org.apache.struts.action.Action;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
+
+import com.ooobgy.ifnote.constants.SecretKey;
+import com.ooobgy.ifnote.dbctrler.dao.Inote_FuturesDao;
+import com.ooobgy.ifnote.dbctrler.daoimpl.Inote_FuturesDaoImpl;
+import com.ooobgy.ifnote.entity.Inote_Futures;
+import com.ooobgy.ifnote.entity.User;
 import com.ooobgy.ifnote.struts.form.NoteFuturesForm;
 
 /** 
@@ -35,6 +46,33 @@ public class NoteFuturesAction extends Action {
 	public ActionForward execute(ActionMapping mapping, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response) {
 		NoteFuturesForm noteFuturesForm = (NoteFuturesForm) form;// TODO Auto-generated method stub
-		return null;
+		HttpSession session = request.getSession();
+		
+		//修改逻辑
+		Inote_Futures inote = (Inote_Futures) session.getAttribute("inote_futures");
+		//新增逻辑
+		if (inote == null) {
+			inote = new Inote_Futures();
+		}
+		
+		User user = (User) session.getAttribute(SecretKey.USER_KEY);
+		
+		Calendar cal = Calendar.getInstance();
+		Timestamp note_time = new Timestamp(cal.getTimeInMillis());
+		inote.setUser_id(user.getId());
+		inote.setNote_time(note_time);
+		inote.setComment(noteFuturesForm.getComment());
+		inote.setName(noteFuturesForm.getName());
+		inote.setPrice(Double.parseDouble(noteFuturesForm.getPrice()));
+		inote.setSum(Double.parseDouble(noteFuturesForm.getSum()));
+		
+		Inote_FuturesDao dao = new Inote_FuturesDaoImpl();
+		if (inote.getId() == null) {
+			dao.save(inote);
+		} else {
+			dao.update(inote);
+		}
+		
+		return mapping.findForward("success");
 	}
 }

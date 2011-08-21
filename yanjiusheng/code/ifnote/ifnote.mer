@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ERDiagram version="1.1">
+  <Connection session="mysql" database="ifnote" />
+  <Drawing gridVisible="false" snapOn="false" fastRouting="false" labelsVisible="true" />
+  <Tables>
+    <Table name="inote_cash">
+      <Drawing expanded="true" location="513,490" dimensions="205,130" />
+      <Columns>
+        <Column name="ID" primary_key="true" foreign_key="false" required="true" unique="true">
+          <Data type="INT" size="10" />
+        </Column>
+        <Column name="NOTE_TIME" primary_key="false" foreign_key="false" required="false" unique="false">
+          <Data type="DATETIME" size="19" />
+        </Column>
+        <Column name="USER_ID" primary_key="false" foreign_key="false" required="false" unique="false">
+          <Data type="INT" size="10" />
+        </Column>
+        <Column name="ACCOUNT" primary_key="false" foreign_key="false" required="false" unique="false">
+          <Data type="DOUBLE" size="22" />
+        </Column>
+        <Column name="COMMENT" primary_key="false" foreign_key="false" required="false" unique="false">
+          <Data type="TEXT" size="65535" />
+        </Column>
+      </Columns>
+    </Table>
+    <Table name="inote_deposit">
+      <Drawing expanded="true" location="0,0" dimensions="215,230" />
+      <Columns>
+        <Column name="ID" primary_key="true" foreign_key="false" required="true" unique="true">
+          <Data type="INT" size="10" />
+        </Column>
+        <Column name="NOTE_TIME" primary_key="false" foreign_key="false" required="false" unique="false">
+          <Data type="DATETIME" size="19" />
+        </Column>
+        <Column name="USER_ID" primary_key="false" foreign_key="false" required="false" unique="false">
+          <Data type="INT" size="10" />
+        </Column>
+        <Column name="TYPE" primary_key="false" foreign_key="false" required="false" unique="false">
+          <Data type="VARCHAR" size="255" />
+        </Column>
+        <Column name="SUM" primary_key="false" foreign_key="false" required="false" unique="false">
+          <Data type="DOUBLE" size="22" />
+        </Column>
+        <Column name="RATE" primary_key="false" foreign_key="false" required="false" unique="false">
+          <Data type="DOUBLE" size="22" />
+        </Column>
+        <Column name="DEP_TIME" primary_key="false" foreign_key="false" required="false" unique="false">
+          <Data type="VARCHAR" size="255" />
+        </Column>
+        <Column name="BANK_NAME" primary_key="false" foreign_key="false" required="false" unique="false">
+          <Data type="TEXT" size="65535" />
+        </Column>
+        <Column name="COMMENT" primary_key="false" foreign_key="false" required="false" unique="false">
+          <Data type="TEXT" size="65535" />
+        </Column>
+        <Column name="LINK_ID" primary_key="false" foreign_key="false" required="false" unique="false">
+          <Data type="INT" size="10" />
+        </Column>
+      </Columns>
+    </Table>
+    <Table name="inote_fund">
+      <Drawing expanded="true" location="260,275" dimensions="209,170" />
+      <Columns>
+        <Column name="ID" primary_key="true" foreign_key="false" required="true" unique="true">
+          <Data type="INT" size="10" />
+        </Column>
+        <Column name="NOTE_TIME" primary_key="false" foreign_key="false" required="false" unique="false">
+          <Data type="DATETIME" size="19" />
+        </Column>
+        <Column name="USER_ID" primary_key="false" foreign_key="false" required="false" unique="false">
+          <Data type="INT" size="10" />
+        </Column>
+        <Column name="FUND_CODE" primary_key="false" foreign_key="false" required="false" unique="false">
+          <Data type="INT" size="10" />
+        </Column>
+        <Column name="COUNT" primary_key="false" foreign_key="false" required="false" unique="false">
+          <Data type="INT" size="10" />
+        </Column>
+        <Column name="NPV" primary_key="false" foreign_key="false" required="false" unique="false">
+          <Data type="DOUBLE" size="22" />
+        </Column>
+        <Column name="COMMENT" primary_key="false" foreign_key="false" required="false" unique="false">
+          <Data type="TEXT" size="65535" />
+        </Column>
+      </Columns>
+    </Table>
+    <Table name="inote_futures">
+      <Drawing expanded="true" location="514,275" dimensions="208,170" />
+      <Columns>
+        <Column name="ID" primary_key="true" foreign_key="false" required="true" unique="true">
+          <Data type="INT" size="10" />
+        </Column>
+        <Column name="NOTE_TIME" primary_key="false" foreign_key="false" required="false" unique="false">
+          <Data type="DATETIME" size="19" />
+        </Column>
+        <Column name="USER_ID" primary_key="false" foreign_key="false" required="false" unique="false">
+          <Data type="INT" size="10" />
+        </Column>
+        <Column name="NAME" primary_key="false" foreign_key="false" required="false" unique="false">
+          <Data type="VARCHAR" size="255" />
+        </Column>
+        <Column name="PRICE" primary_key="false" foreign_key="false" required="false" unique="false">
+          <Data type="DOUBLE" size="22" />
+        </Column>
+        <Column name="SUM" primary_key="false" foreign_key="false" required="false" unique="false">
+          <Data type="DOUBLE" size="22" />
+        </Column>
+        <Column name="COMMENT" primary_key="false" foreign_key="false" required="false" unique="false">
+          <Data type="TEXT" size="65535" />
+        </Column>
+      </Columns>
+    </Table>
+    <Table name="inote_loan">
+      <Drawing expanded="true" location="260,0" dimensions="215,230" />
+      <Columns>
+        <Column name="ID" primary_key="true" foreign_key="false" required="true" unique="true">
+          <Data type="INT" size="10" />
+        </Column>
+        <Column name="NOTE_TIME" primary_key="false" foreign_key="false" required="false" unique="false">
+          <Data type="DATETIME" size="19" />
+        </Column>
+        <Column name="USER_ID" primary_key="false" foreign_key="false" required="false" unique="false">
+          <Data type="INT" size="10" />
+        </Column>
+        <Column name="TYPE" primary_key="false" foreign_key="false" required="false" unique="false">
+          <Data type="VARCHAR" size="255" />
+        </Column>
+        <Column name="SUM" primary_key="false" foreign_key="false" required="false" unique="false">
+          <Data type="DOUBLE" size="22" />
+        </Column>
+        <Column name="RATE" primary_key="false" foreign_key="false" required="false" unique="false">
+          <Data type="DOUBLE" size="22" />
+        </Column>
+        <Column name="DEP_TIME" primary_key="false" foreign_key="false" required="false" unique="false">
+          <Data type="VARCHAR" size="255" />
+        </Column>
+        <Column name="BANK_NAME" primary_key="false" foreign_key="false" required="false" unique="false">
+          <Data type="TEXT" size="65535" />
+        </Column>
+        <Column name="COMMENT" primary_key="false" foreign_key="false" required="false" unique="false">
+          <Data type="TEXT" size="65535" />
+        </Column>
+        <Column name="LINK_ID" primary_key="false" foreign_key="false" required="false" unique="false">
+          <Data type="INT" size="10" />
+        </Column>
+      </Columns>
+    </Table>
+    <Table name="inote_stock">
+      <Drawing expanded="true" location="0,275" dimensions="215,170" />
+      <Columns>
+        <Column name="ID" primary_key="true" foreign_key="false" required="true" unique="true">
+          <Data type="INT" size="10" />
+        </Column>
+        <Column name="NOTE_TIME" primary_key="false" foreign_key="false" required="false" unique="false">
+          <Data type="DATETIME" size="19" />
+        </Column>
+        <Column name="USER_ID" primary_key="false" foreign_key="false" required="false" unique="false">
+          <Data type="INT" size="10" />
+        </Column>
+        <Column name="STOCK_CODE" primary_key="false" foreign_key="false" required="false" unique="false">
+          <Data type="INT" size="10" />
+        </Column>
+        <Column name="COUNT" primary_key="false" foreign_key="false" required="false" unique="false">
+          <Data type="INT" size="10" />
+        </Column>
+        <Column name="SMV" primary_key="false" foreign_key="false" required="false" unique="false">
+          <Data type="DOUBLE" size="22" />
+        </Column>
+        <Column name="COMMENT" primary_key="false" foreign_key="false" required="false" unique="false">
+          <Data type="TEXT" size="65535" />
+        </Column>
+      </Columns>
+    </Table>
+    <Table name="st_fund">
+      <Drawing expanded="true" location="520,0" dimensions="210,230" />
+      <Columns>
+        <Column name="ID" primary_key="true" foreign_key="false" required="true" unique="true">
+          <Data type="INT" size="10" />
+        </Column>
+        <Column name="CODE" primary_key="false" foreign_key="false" required="false" unique="false">
+          <Data type="INT" size="10" />
+        </Column>
+        <Column name="NAME" primary_key="false" foreign_key="false" required="false" unique="false">
+          <Data type="VARCHAR" size="255" />
+        </Column>
+        <Column name="TIMESTAMP" primary_key="false" foreign_key="false" required="false" unique="false">
+          <Data type="VARCHAR" size="255" />
+        </Column>
+        <Column name="NPV" primary_key="false" foreign_key="false" required="false" unique="false">
+          <Data type="DOUBLE" size="22" />
+        </Column>
+        <Column name="ACC_NPV" primary_key="false" foreign_key="false" required="false" unique="false">
+          <Data type="DOUBLE" size="22" />
+        </Column>
+        <Column name="INC_NPV" primary_key="false" foreign_key="false" required="false" unique="false">
+          <Data type="DOUBLE" size="22" />
+        </Column>
+        <Column name="INC_RATE" primary_key="false" foreign_key="false" required="false" unique="false">
+          <Data type="DOUBLE" size="22" />
+        </Column>
+        <Column name="BUYABLE" primary_key="false" foreign_key="false" required="false" unique="false">
+          <Data type="BIT" size="1" />
+        </Column>
+        <Column name="SELLABLE" primary_key="false" foreign_key="false" required="false" unique="false">
+          <Data type="BIT" size="1" />
+        </Column>
+      </Columns>
+    </Table>
+    <Table name="st_rate">
+      <Drawing expanded="true" location="0,665" dimensions="176,90" />
+      <Columns>
+        <Column name="ID" primary_key="true" foreign_key="false" required="true" unique="true">
+          <Data type="INT" size="10" />
+        </Column>
+        <Column name="NAME" primary_key="false" foreign_key="false" required="false" unique="false">
+          <Data type="VARCHAR" size="255" />
+        </Column>
+        <Column name="RATE" primary_key="false" foreign_key="false" required="false" unique="false">
+          <Data type="DOUBLE" size="22" />
+        </Column>
+      </Columns>
+    </Table>
+    <Table name="st_stock">
+      <Drawing expanded="true" location="258,490" dimensions="210,130" />
+      <Columns>
+        <Column name="ID" primary_key="true" foreign_key="false" required="true" unique="true">
+          <Data type="INT" size="10" />
+        </Column>
+        <Column name="TIMESTAMP" primary_key="false" foreign_key="false" required="false" unique="false">
+          <Data type="VARCHAR" size="255" />
+        </Column>
+        <Column name="CODE" primary_key="false" foreign_key="false" required="false" unique="false">
+          <Data type="VARCHAR" size="255" />
+        </Column>
+        <Column name="NAME" primary_key="false" foreign_key="false" required="false" unique="false">
+          <Data type="VARCHAR" size="255" />
+        </Column>
+        <Column name="SMV" primary_key="false" foreign_key="false" required="false" unique="false">
+          <Data type="DOUBLE" size="22" />
+        </Column>
+      </Columns>
+    </Table>
+    <Table name="user">
+      <Drawing expanded="true" location="0,490" dimensions="213,130" />
+      <Columns>
+        <Column name="ID" primary_key="true" foreign_key="false" required="true" unique="true">
+          <Data type="INT" size="10" />
+        </Column>
+        <Column name="USERNAME" primary_key="false" foreign_key="false" required="false" unique="false">
+          <Data type="VARCHAR" size="255" />
+        </Column>
+        <Column name="PASSWORD" primary_key="false" foreign_key="false" required="false" unique="false">
+          <Data type="VARCHAR" size="255" />
+        </Column>
+        <Column name="EMAIL" primary_key="false" foreign_key="false" required="false" unique="false">
+          <Data type="VARCHAR" size="255" />
+        </Column>
+        <Column name="PHONENUM" primary_key="false" foreign_key="false" required="false" unique="false">
+          <Data type="VARCHAR" size="255" />
+        </Column>
+      </Columns>
+    </Table>
+  </Tables>
+  <Relationships />
+</ERDiagram>
+
