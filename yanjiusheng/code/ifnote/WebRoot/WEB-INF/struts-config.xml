@@ -10,6 +10,7 @@
     <form-bean name="noteFundForm" type="com.ooobgy.ifnote.struts.form.NoteFundForm" />
     <form-bean name="noteFuturesForm" type="com.ooobgy.ifnote.struts.form.NoteFuturesForm" />
     <form-bean name="noteLoanForm" type="com.ooobgy.ifnote.struts.form.NoteLoanForm" />
+    <form-bean name="noteStockForm" type="com.ooobgy.ifnote.struts.form.NoteStockForm" />
 
   </form-beans>
 
@@ -73,6 +74,15 @@
       path="/noteLoan"
       scope="request"
       type="com.ooobgy.ifnote.struts.action.NoteLoanAction">
+      <set-property property="cancellable" value="true" />
+    </action>
+    <action
+      attribute="noteStockForm"
+      input="/inote/noteStock.jsp"
+      name="noteStockForm"
+      path="/noteStock"
+      scope="request"
+      type="com.ooobgy.ifnote.struts.action.NoteStockAction">
       <set-property property="cancellable" value="true" />
     </action>
     

@@ -13,19 +13,19 @@ import org.apache.struts.action.ActionMapping;
 import org.apache.struts.action.ActionMessage;
 
 import com.ooobgy.ifnote.constants.SecretKey;
-import com.ooobgy.ifnote.dbctrler.dao.Inote_FundDao;
-import com.ooobgy.ifnote.dbctrler.daoimpl.Inote_FundDaoImpl;
-import com.ooobgy.ifnote.entity.Inote_Fund;
+import com.ooobgy.ifnote.dbctrler.dao.Inote_StockDao;
+import com.ooobgy.ifnote.dbctrler.daoimpl.Inote_StockDaoImpl;
+import com.ooobgy.ifnote.entity.Inote_Stock;
 import com.ooobgy.ifnote.entity.User;
 
 /** 
  * MyEclipse Struts
- * Creation date: 08-17-2011
+ * Creation date: 08-21-2011
  * 
  * XDoclet definition:
- * @struts.form name="noteFundForm"
+ * @struts.form name="noteStockForm"
  */
-public class NoteFundForm extends ActionForm {
+public class NoteStockForm extends ActionForm {
 	/*
 	 * Generated fields
 	 */
@@ -33,16 +33,16 @@ public class NoteFundForm extends ActionForm {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = -7140554928646826357L;
-
-	/** fund_code property */
-	private String fund_code;
+	private static final long serialVersionUID = -9142414342281714164L;
 
 	/** count property */
 	private String count;
 
-	/** npv property */
-	private String npv;
+	/** smv property */
+	private String smv;
+
+	/** stock_code property */
+	private String stock_code;
 
 	/** comment property */
 	private String comment;
@@ -72,24 +72,25 @@ public class NoteFundForm extends ActionForm {
 		}
 		
 		try {
-			if(Double.parseDouble(npv) < 0){
+			if(Double.parseDouble(smv) < 0){
 				throw new IllegalArgumentException();
 			}
 		} catch (Throwable e) {
 			ActionMessage actionMessage = new ActionMessage("error.npv");
-			errors.add("npv", actionMessage);
+			errors.add("smv", actionMessage);
 			return errors;
 		}
 		
 		try {
-			if(Integer.parseInt(fund_code) < 0){
+			if(Integer.parseInt(stock_code) < 0){
 				throw new IllegalArgumentException();
 			}
 		} catch (Throwable e) {
-			ActionMessage actionMessage = new ActionMessage("error.fund_code");
-			errors.add("fund_code", actionMessage);
+			ActionMessage actionMessage = new ActionMessage("error.code");
+			errors.add("stock_code", actionMessage);
 			return errors;
 		}
+		
 		return errors;
 	}
 
@@ -103,16 +104,16 @@ public class NoteFundForm extends ActionForm {
 		if (idStr != null && idStr.length() > 0) {
 			try {
 				Integer id = Integer.parseInt(idStr);
-				Inote_Fund inote = initInote(id);
+				Inote_Stock inote = initInote(id);
 				HttpSession session = request.getSession();
 				User user = (User)session.getAttribute(SecretKey.USER_KEY);
 				if (user != null && inote != null) {
 					if (user.getId() == inote.getUser_id()) {
 						this.comment = inote.getComment();
 						this.count = inote.getCount().toString();
-						this.fund_code = inote.getFund_code().toString();
-						this.npv = inote.getNpv().toString();
-						session.setAttribute("inote_fund", inote);
+						this.smv = inote.getSmv().toString();
+						this.stock_code = inote.getStock_code().toString();
+						session.setAttribute("inote_stock", inote);
 						return;
 					} else {
 						initBlankInote();
@@ -129,10 +130,13 @@ public class NoteFundForm extends ActionForm {
 		initBlankInote();
 	}
 
-	private Inote_Fund initInote(Integer id) {
-		Inote_FundDao dao = new Inote_FundDaoImpl();
-		Inote_Fund inote = dao.findWithId(id);
-		
+	/**
+	 * @param id
+	 * @return
+	 */
+	private Inote_Stock initInote(Integer id) {
+		Inote_StockDao dao = new Inote_StockDaoImpl();
+		Inote_Stock inote = dao.findWithId(id);
 		if (inote==null || inote.getId() == null) {
 			return null;
 		} else {
@@ -140,28 +144,14 @@ public class NoteFundForm extends ActionForm {
 		}
 	}
 
+	/**
+	 * 
+	 */
 	private void initBlankInote() {
 		this.comment = "";
 		this.count = "0";
-		this.fund_code = "";
-		this.npv = "1.0";
-		
-	}
-
-	/** 
-	 * Returns the fund_code.
-	 * @return String
-	 */
-	public String getFund_code() {
-		return fund_code;
-	}
-
-	/** 
-	 * Set the fund_code.
-	 * @param fund_code The fund_code to set
-	 */
-	public void setFund_code(String fund_code) {
-		this.fund_code = fund_code;
+		this.smv = "1.0";
+		this.stock_code = "";
 	}
 
 	/** 
@@ -181,19 +171,35 @@ public class NoteFundForm extends ActionForm {
 	}
 
 	/** 
-	 * Returns the npv.
+	 * Returns the smv.
 	 * @return String
 	 */
-	public String getNpv() {
-		return npv;
+	public String getSmv() {
+		return smv;
 	}
 
 	/** 
-	 * Set the npv.
-	 * @param npv The npv to set
+	 * Set the smv.
+	 * @param smv The smv to set
 	 */
-	public void setNpv(String npv) {
-		this.npv = npv;
+	public void setSmv(String smv) {
+		this.smv = smv;
+	}
+
+	/** 
+	 * Returns the stock_code.
+	 * @return String
+	 */
+	public String getStock_code() {
+		return stock_code;
+	}
+
+	/** 
+	 * Set the stock_code.
+	 * @param stock_code The stock_code to set
+	 */
+	public void setStock_code(String stock_code) {
+		this.stock_code = stock_code;
 	}
 
 	/** 
