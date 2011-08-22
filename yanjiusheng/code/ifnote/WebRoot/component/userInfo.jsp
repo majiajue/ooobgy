@@ -8,7 +8,7 @@
 <%@ taglib uri="http://struts.apache.org/tags-nested" prefix="nested" %>
 <html:html lang="true">
 <head>
-<title>管理员信息页面</title>
+<title>用户信息页面</title>
 <html:base/>
 </head>
 <body>
@@ -38,7 +38,7 @@
     <td><div align="center">
       <table width="100%" border="0">
         <tr>
-          <td><div align="right"><a href="/ifnote/userhome/userhome.jsp"  target="_parent">
+          <td><div align="right"><a href="/ifnote/user/userIndex.jsp"  target="_parent">
             <img src="/ifnote/images/sysuser.gif" width="130" height="32" alt="进入管理系统" border="0">
           </a></div></td>
           <td>

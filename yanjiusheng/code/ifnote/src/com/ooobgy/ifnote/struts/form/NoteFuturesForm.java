@@ -15,7 +15,6 @@ import org.apache.struts.action.ActionMessage;
 import com.ooobgy.ifnote.constants.SecretKey;
 import com.ooobgy.ifnote.dbctrler.dao.Inote_FuturesDao;
 import com.ooobgy.ifnote.dbctrler.daoimpl.Inote_FuturesDaoImpl;
-import com.ooobgy.ifnote.entity.Inote_Fund;
 import com.ooobgy.ifnote.entity.Inote_Futures;
 import com.ooobgy.ifnote.entity.User;
 
@@ -141,8 +140,10 @@ public class NoteFuturesForm extends ActionForm {
 	 * 
 	 */
 	private void initBlankInote() {
-		// TODO Auto-generated method stub
-		
+		this.comment ="";
+		this.name = "";
+		this.sum = "";
+		this.price = "";
 	}
 
 	/** 
