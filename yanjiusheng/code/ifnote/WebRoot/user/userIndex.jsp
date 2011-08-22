@@ -14,7 +14,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
     <base href="<%=basePath%>">
     
-    <title>管理员管理页面</title>
+    <title>ifnote用户理财中心</title>
     
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
@@ -79,7 +79,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <bean:define id="user" name="<%=userKey %>" scope="session" type="com.ooobgy.ifnote.entity.User"></bean:define>
 <logic:notEmpty name="user">
   <div align="center"> 
-    <font size="5" face="微软雅黑">管理网站</font><br> 
+    <font size="5" face="微软雅黑">ifnote 用户理财中心</font><br> 
   </div>
   <hr width="100%" size="2">
   <table width="100%" border="0" id="admintable">
@@ -88,8 +88,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     	<iframe width="100%" frameborder="0" src="user/navigation.jsp" name="menu" id="menu" onload="reSize();"></iframe>
     </td>
   
-    <td id="mtool" bgcolor="#FFFFCC" onclick="showmenu();" onMouseOver="this.style.backgroundColor='#FFCCFF';" 
-onmouseout="this.style.backgroundColor='#FFFFCC';"><img id="menuimg" align="middle" src="back/admin/images/hidden.png"/></td>
+    <td id="mtool" style="cursor:hand;" bgcolor="#FFFFCC" onclick="showmenu();" onMouseOver="this.style.backgroundColor='#FFCCFF';" 
+onmouseout="this.style.backgroundColor='#FFFFCC';"><img id="menuimg" align="middle" src="images/hidden.png"/></td>
    
     <td id="showspan" width="85%">
     	<iframe width="100%" frameborder="0" src="user/summary.jsp" name="show" id="show" onload="reSize();"></iframe>

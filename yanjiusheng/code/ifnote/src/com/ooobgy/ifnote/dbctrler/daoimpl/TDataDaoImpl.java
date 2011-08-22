@@ -1,6 +1,7 @@
 package com.ooobgy.ifnote.dbctrler.daoimpl;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,6 +17,7 @@ import com.ooobgy.ifnote.dbctrler.dao.TDataDao;
  * @CreateDate 2011-8-9
  */
 public abstract class TDataDaoImpl<T,K> implements TDataDao<T,K> {
+	protected static final SimpleDateFormat timeFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
 	public void save(T object) {
 		// 开启会话

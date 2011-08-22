@@ -72,14 +72,18 @@ a:active {
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8"></head>
   
   <body>
+  <table width="100%" border="0">
+  <tr>
+  <td>
   <bean:define id="user" name="<%=userKey %>" scope="session" type="com.ooobgy.ifnote.entity.User"></bean:define>
-  <p>(&nbsp;  
+  <p>&nbsp;  
   欢迎您！<font color="#CC3399"><bean:write name="user" property="userName"/></font></p>
   <div>ID:&nbsp;<font color="#330066"><bean:write name="user" property="id"/></font></div>
   <div>Email:&nbsp;<font color="#330066"><bean:write name="user" property="email"/></font></div>
   <div>手机:&nbsp;<font color="#330066"><bean:write name="user" property="phoneNum"/></font></div>
   <hr>
-        
+      </td>
+      </tr>  
    <tr>
     <td align="left" style="cursor:hand;" bgcolor="#FF9CFF"
     	onMouseOver="this.style.backgroundColor='#CC3399';" 
