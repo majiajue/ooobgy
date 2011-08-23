@@ -12,6 +12,12 @@
     <form-bean name="noteLoanForm" type="com.ooobgy.ifnote.struts.form.NoteLoanForm" />
     <form-bean name="noteStockForm" type="com.ooobgy.ifnote.struts.form.NoteStockForm" />
     <form-bean name="cashListForm" type="com.ooobgy.ifnote.struts.form.CashListForm" />
+    <form-bean name="delNoteForm" type="com.ooobgy.ifnote.struts.form.DelNoteForm" />
+    <form-bean name="depositListForm" type="com.ooobgy.ifnote.struts.form.DepositListForm" />
+    <form-bean name="fundListForm" type="com.ooobgy.ifnote.struts.form.FundListForm" />
+    <form-bean name="futuresListForm" type="com.ooobgy.ifnote.struts.form.FuturesListForm" />
+    <form-bean name="loanListForm" type="com.ooobgy.ifnote.struts.form.LoanListForm" />
+    <form-bean name="stockListForm" type="com.ooobgy.ifnote.struts.form.StockListForm" />
 
   </form-beans>
 
@@ -20,6 +26,8 @@
     <forward name="userinfo" path="/component/userInfo.jsp" />
     <forward name="success" path="/success.jsp" />
 	<forward name="cashList" path="/user/cashList.jsp" />
+    <forward name="delok" path="/component/delok.jsp" />
+    <forward name="error" path="/error/error.html" />
   </global-forwards>
 
   <action-mappings >
@@ -94,6 +102,60 @@
       scope="request"
       type="com.ooobgy.ifnote.struts.action.CashListAction">
       
+      <set-property property="cancellable" value="true" />
+    </action>
+    <action
+      attribute="delNoteForm"
+      input="/component/delok.jsp"
+      name="delNoteForm"
+      path="/delNote"
+      scope="request"
+      type="com.ooobgy.ifnote.struts.action.DelNoteAction">
+      <set-property property="cancellable" value="true" />
+    </action>
+    <action
+      attribute="depositListForm"
+      input="/user/depositList.jsp"
+      name="depositListForm"
+      path="/depositList"
+      scope="request"
+      type="com.ooobgy.ifnote.struts.action.DepositListAction">
+      <set-property property="cancellable" value="true" />
+    </action>
+    <action
+      attribute="fundListForm"
+      input="/user/fundList.jsp"
+      name="fundListForm"
+      path="/fundList"
+      scope="request"
+      type="com.ooobgy.ifnote.struts.action.FundListAction">
+      <set-property property="cancellable" value="true" />
+    </action>
+    <action
+      attribute="futuresListForm"
+      input="/user/futuresList.jsp"
+      name="futuresListForm"
+      path="/futuresList"
+      scope="request"
+      type="com.ooobgy.ifnote.struts.action.FuturesListAction">
+      <set-property property="cancellable" value="true" />
+    </action>
+    <action
+      attribute="loanListForm"
+      input="/user/loanList.jsp"
+      name="loanListForm"
+      path="/loanList"
+      scope="request"
+      type="com.ooobgy.ifnote.struts.action.LoanListAction">
+      <set-property property="cancellable" value="true" />
+    </action>
+    <action
+      attribute="stockListForm"
+      input="/user/stockList.jsp"
+      name="stockListForm"
+      path="/stockList"
+      scope="request"
+      type="com.ooobgy.ifnote.struts.action.StockListAction">
       <set-property property="cancellable" value="true" />
     </action>
     

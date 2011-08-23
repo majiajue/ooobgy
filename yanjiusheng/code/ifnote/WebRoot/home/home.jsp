@@ -59,7 +59,7 @@ body {
   <!--
   	logo = flownew.jpg
   -->
-    <td width="75%" height="320"><font face="Times New Roman"><img height="320" width="916" src="/ifnote/images/flownew.jpg" alt="考试中心"></font></td>
+    <td width="75%" height="320"><font face="Times New Roman"><img height="320" width="916" src="/ifnote/images/flownew.jpg" alt="ifnote"></font></td>
     <td width="25%">
 		<font face="Times New Roman"><iframe align="left" width="315" height="320" frameborder="0" src="/ifnote/home/login.jsp" name="logframe" id="logframe" onload="resize();"> 
 		</iframe><br></font>

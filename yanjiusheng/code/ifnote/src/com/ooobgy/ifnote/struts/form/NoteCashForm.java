@@ -61,18 +61,23 @@ public class NoteCashForm extends ActionForm {
 	 * @param request
 	 */
 	public void reset(ActionMapping mapping, HttpServletRequest request) {
-		String idStr = (String) request.getAttribute("cid");
+		String idStr = (String) request.getParameter("nid");
+		System.out.println("###############nid=" + idStr);
 		if (idStr != null && idStr.length() > 0) {
 			try {
 				Integer id = Integer.parseInt(idStr);
 				Inote_Cash inote = initInote(id);
+				
 				HttpSession session = request.getSession();
 				User user = (User)session.getAttribute(SecretKey.USER_KEY);
+				
 				if (user != null && inote != null) {
-					if (user.getId() == inote.getUser_id()) {
+					//System.out.println("####"+ (user.getId().equals(inote.getUser_id())));
+					if (user.getId().equals(inote.getUser_id())) {
 						this.account = inote.getAccount().toString();
 						this.comment = inote.getComment();
 						session.setAttribute("inote_cash", inote);
+//						System.out.println("####"+ comment);
 						return;
 					} else {
 						initBlankInote();

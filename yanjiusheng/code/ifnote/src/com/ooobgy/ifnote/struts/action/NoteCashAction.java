@@ -58,6 +58,6 @@ public class NoteCashAction extends Action {
 			dao.update(inoteCash);
 		}
 				
-		return mapping.findForward("success");
+		return mapping.findForward("cashList");
 	}
 }

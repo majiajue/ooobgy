@@ -6,7 +6,7 @@
 <%@ taglib uri="http://struts.apache.org/tags-nested" prefix="nested" %>
 <html> 
 	<head>
-		<title>JSP for CashListForm form</title>
+		<title>JSP for depositListForm form</title>
     <style type="text/css">
 <!--
 td {
@@ -25,9 +25,9 @@ td {
     </style>
 	</head>
 	<body>
-		<html:form action="/cashList" styleId="cashListForm">
+		<html:form action="/depositList" styleId="depositListForm">
 		<script language="javascript" type="text/javascript" src="/ifnote/util/dater/My97DatePicker/WdatePicker.js"></script>
-			<p align="center"><img src="/ifnote/images/title_cash.png" width="464" height="131" alt="现金交易管理"></p>
+			<p align="center"><img src="/ifnote/images/title_dep.png" width="464" height="131" alt="存款交易管理"></p>
 			<hr>
 			<table width="100%" border="0">
 			  <tr>
@@ -41,8 +41,8 @@ td {
 			        <td width="180">
                     	<input id="endTime" name="endTime" class="Wdate" type="text" value='<nested:write property="endTime"/>' onFocus="WdatePicker({isShowClear:false,readOnly:true,dateFmt:'yyyy-MM-dd HH:mm:ss',minDate:'#F{$dp.$D(\'startTime\')}'})"/>
                     </td>
-			        <td><img src="/ifnote/images/query.png" width="113" height="36" alt="查询" style="cursor:hand;" onClick="javascript:document.cashListForm.submit();"></td>
-                    <td align="right"><img src="/ifnote/images/add_ico.jpg" width="113" height="36" alt="新增" style="cursor:hand;" onClick="window.location.href('/ifnote/inote/noteCash.jsp')"></td>
+			        <td><img src="/ifnote/images/query.png" width="113" height="36" alt="查询" style="cursor:hand;" onClick="javascript:document.depositListForm.submit();"></td>
+                    <td align="right"><img src="/ifnote/images/add_ico.jpg" width="113" height="36" alt="新增" style="cursor:hand;" onClick="window.location.href('/ifnote/inote/notedeposit.jsp')"></td>
 		          </tr>
 		        </table></td>
 		      </tr>
@@ -55,15 +55,15 @@ td {
 			        <td width="40">修改</td>
 			        <td width="40">删除</td>
 		          </tr>
-		          <bean:define id="inote_Cashs" name="cashListForm" property="inote_Cashs" type="java.util.List"></bean:define>			     
-			     <logic:iterate id="inote" name="inote_Cashs" type="com.ooobgy.ifnote.entity.Inote_Cash" >
+		          <bean:define id="inote_Deposits" name="depositListForm" property="inote_Deposits" type="java.util.List"></bean:define>			     
+			     <logic:iterate id="inote" name="inote_deposits" type="com.ooobgy.ifnote.entity.Inote_Deposit" >
 				<tr>
 				<td><bean:write name="inote" property="note_time" /></td>
 				<td><bean:write name="inote" property="account" /></td>
 				<td><bean:write name="inote" property="comment" /></td>
 				<td>
                     	<img src="/ifnote/images/edit.gif" width="16" height="16" alt="修改" style="cursor:hand;" 
-                    	onClick="window.location.href('/ifnote/inote/noteCash.jsp?nid=<bean:write name="inote" property="id"/>')"/>
+                    	onClick="window.location.href('/ifnote/inote/noteDeposit.jsp?nid=<bean:write name="inote" property="id"/>')"/>
                     </td>
                     <td>
                     	<img src="/ifnote/images/del.gif" width="16" height="16" alt="删除" style="cursor:hand;" 
@@ -83,7 +83,7 @@ td {
 				var conf = confirm("您真的要删除这条记录吗?");
 				if   (!conf)   return;
 				else{
-					var link = '/ifnote/component/delok.jsp?type=cash&nid=' + nid;
+					var link = '/ifnote/component/delok.jsp?type=deposit&nid=' + nid;
 					window.location.href(link);
 					
 				}
