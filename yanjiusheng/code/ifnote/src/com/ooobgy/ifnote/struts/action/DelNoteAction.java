@@ -12,8 +12,23 @@ import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
 import com.ooobgy.ifnote.dbctrler.dao.Inote_CashDao;
+import com.ooobgy.ifnote.dbctrler.dao.Inote_DepositDao;
+import com.ooobgy.ifnote.dbctrler.dao.Inote_FundDao;
+import com.ooobgy.ifnote.dbctrler.dao.Inote_FuturesDao;
+import com.ooobgy.ifnote.dbctrler.dao.Inote_LoanDao;
+import com.ooobgy.ifnote.dbctrler.dao.Inote_StockDao;
 import com.ooobgy.ifnote.dbctrler.daoimpl.Inote_CashDaoImpl;
+import com.ooobgy.ifnote.dbctrler.daoimpl.Inote_DepositDaoImpl;
+import com.ooobgy.ifnote.dbctrler.daoimpl.Inote_FundDaoImpl;
+import com.ooobgy.ifnote.dbctrler.daoimpl.Inote_FuturesDaoImpl;
+import com.ooobgy.ifnote.dbctrler.daoimpl.Inote_LoanDaoImpl;
+import com.ooobgy.ifnote.dbctrler.daoimpl.Inote_StockDaoImpl;
 import com.ooobgy.ifnote.entity.Inote_Cash;
+import com.ooobgy.ifnote.entity.Inote_Deposit;
+import com.ooobgy.ifnote.entity.Inote_Fund;
+import com.ooobgy.ifnote.entity.Inote_Futures;
+import com.ooobgy.ifnote.entity.Inote_Loan;
+import com.ooobgy.ifnote.entity.Inote_Stock;
 import com.ooobgy.ifnote.struts.form.DelNoteForm;
 
 /** 
@@ -56,8 +71,31 @@ public class DelNoteAction extends Action {
 			Inote_Cash inote = dao.findWithId(nid);
 			dao.delete(inote);
 			return mapping.findForward("cashList");
-		} else {
-
+		} else if (type.equals("deposit")) {
+			Inote_DepositDao dao = new Inote_DepositDaoImpl();
+			Inote_Deposit inote = dao.findWithId(nid);
+			dao.delete(inote);
+			return mapping.findForward("depositList");
+		} else if (type.equals("fund")) {
+			Inote_FundDao dao = new Inote_FundDaoImpl();
+			Inote_Fund inote = dao.findWithId(nid);
+			dao.delete(inote);
+			return mapping.findForward("fundList");
+		} else if (type.equals("futures")) {
+			Inote_FuturesDao dao = new Inote_FuturesDaoImpl();
+			Inote_Futures inote = dao.findWithId(nid);
+			dao.delete(inote);
+			return mapping.findForward("futuresList");
+		} else if (type.equals("loan")) {
+			Inote_LoanDao dao = new Inote_LoanDaoImpl();
+			Inote_Loan inote = dao.findWithId(nid);
+			dao.delete(inote);
+			return mapping.findForward("loanList");
+		} else if (type.equals("stock")) {
+			Inote_StockDao dao = new Inote_StockDaoImpl();
+			Inote_Stock inote = dao.findWithId(nid);
+			dao.delete(inote);
+			return mapping.findForward("stockList");
 		}
 		
 		

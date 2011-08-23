@@ -18,6 +18,7 @@
     <form-bean name="futuresListForm" type="com.ooobgy.ifnote.struts.form.FuturesListForm" />
     <form-bean name="loanListForm" type="com.ooobgy.ifnote.struts.form.LoanListForm" />
     <form-bean name="stockListForm" type="com.ooobgy.ifnote.struts.form.StockListForm" />
+    <form-bean name="noteDepositForm" type="com.ooobgy.ifnote.struts.form.NoteDepositForm" />
 
   </form-beans>
 
@@ -26,6 +27,11 @@
     <forward name="userinfo" path="/component/userInfo.jsp" />
     <forward name="success" path="/success.jsp" />
 	<forward name="cashList" path="/user/cashList.jsp" />
+	<forward name="depositList" path="/user/depositList.jsp" />
+	<forward name="fundList" path="/user/fundList.jsp" />
+	<forward name="futuresList" path="/user/futuresList.jsp" />
+	<forward name="loanList" path="/user/loanList.jsp" />
+	<forward name="stockList" path="/user/stockList.jsp" />
     <forward name="delok" path="/component/delok.jsp" />
     <forward name="error" path="/error/error.html" />
   </global-forwards>
@@ -156,6 +162,15 @@
       path="/stockList"
       scope="request"
       type="com.ooobgy.ifnote.struts.action.StockListAction">
+      <set-property property="cancellable" value="true" />
+    </action>
+    <action
+      attribute="noteDepositForm"
+      input="/inote/noteDeposit.jsp"
+      name="noteDepositForm"
+      path="/noteDeposit"
+      scope="request"
+      type="com.ooobgy.ifnote.struts.action.NoteDepositAction">
       <set-property property="cancellable" value="true" />
     </action>
     

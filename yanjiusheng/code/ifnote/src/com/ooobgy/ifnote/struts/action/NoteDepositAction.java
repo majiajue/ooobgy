@@ -79,6 +79,6 @@ public class NoteDepositAction extends Action {
 			dao.update(inoteDeposit);
 		}
 		
-		return mapping.findForward("success");
+		return mapping.findForward("depositList");
 	}
 }

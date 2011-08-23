@@ -107,7 +107,7 @@ public class NoteFundForm extends ActionForm {
 				HttpSession session = request.getSession();
 				User user = (User)session.getAttribute(SecretKey.USER_KEY);
 				if (user != null && inote != null) {
-					if (user.getId() == inote.getUser_id()) {
+					if (user.getId().equals(inote.getUser_id())) {
 						this.comment = inote.getComment();
 						this.count = inote.getCount().toString();
 						this.fund_code = inote.getFund_code().toString();
