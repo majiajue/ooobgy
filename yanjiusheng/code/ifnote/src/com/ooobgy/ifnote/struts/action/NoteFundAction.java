@@ -71,6 +71,7 @@ public class NoteFundAction extends Action {
 			dao.update(inote);
 		}
 		
-		return mapping.findForward("success");
+		session.removeAttribute("inote_fund");
+		return mapping.findForward("fundList");
 	}
 }

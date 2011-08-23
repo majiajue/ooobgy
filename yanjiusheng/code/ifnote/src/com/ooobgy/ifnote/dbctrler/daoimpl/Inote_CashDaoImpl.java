@@ -37,7 +37,7 @@ public class Inote_CashDaoImpl extends TDataDaoImpl<Inote_Cash, Integer>
 	 * @see com.ooobgy.ifnote.dbctrler.dao.Inote_CashDao#findAllWithUid(java.lang.Integer)
 	 */
 	public List<Inote_Cash> findAllWithUid(Integer userId) {
-		String cmd = " p where p.user_id=" + userId;
+		String cmd = " p where p.user_id=" + userId + " order by note_time desc";
 		return findWithCmd(cmd);
 	}
 
@@ -51,7 +51,7 @@ public class Inote_CashDaoImpl extends TDataDaoImpl<Inote_Cash, Integer>
 			Timestamp startTime, Timestamp endTime) {
 		String cmd = " p where p.user_id=" + userId + " and note_time>='"
 				+ timeFormat.format(new Date(startTime.getTime())) + "' and note_time<='" + 
-						timeFormat.format(new Date(endTime.getTime()))+"'";
+						timeFormat.format(new Date(endTime.getTime()))+"'" + " order by note_time desc";
 		return findWithCmd(cmd);
 	}
 

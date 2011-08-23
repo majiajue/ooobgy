@@ -50,16 +50,20 @@ td {
 			    <td><table width="400" border="1" class="diantable">
 			      <tr>
 			        <td width="180">记录时间</td>
-			        <td width="100">金额</td>
-			        <td width="400">说明</td>
+			        <td width="120">名称</td>
+			        <td width="80">购入单价</td>
+			        <td width="80">购入数量</td>
+			        <td width="300">说明</td>
 			        <td width="40">修改</td>
 			        <td width="40">删除</td>
 		          </tr>
-		          <bean:define id="inote_Futuress" name="FuturesListForm" property="inote_Futuress" type="java.util.List"></bean:define>			     
+		          <bean:define id="inote_Futures" name="futuresListForm" property="inote_Futures" type="java.util.List"></bean:define>			     
 			     <logic:iterate id="inote" name="inote_Futures" type="com.ooobgy.ifnote.entity.Inote_Futures" >
 				<tr>
 				<td><bean:write name="inote" property="note_time" /></td>
-				<td><bean:write name="inote" property="account" /></td>
+				<td><bean:write name="inote" property="name" /></td>
+				<td><bean:write name="inote" property="price" /></td>
+				<td><bean:write name="inote" property="sum" /></td>
 				<td><bean:write name="inote" property="comment" /></td>
 				<td>
                     	<img src="/ifnote/images/edit.gif" width="16" height="16" alt="修改" style="cursor:hand;" 

@@ -79,6 +79,9 @@ public class NoteDepositAction extends Action {
 			dao.update(inoteDeposit);
 		}
 		
+		session.removeAttribute("inote_deposit");
+		session.removeAttribute("link_id");
+		
 		return mapping.findForward("depositList");
 	}
 }

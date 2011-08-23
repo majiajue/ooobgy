@@ -49,9 +49,12 @@ td {
 			  <tr>
 			    <td><table width="400" border="1" class="diantable">
 			      <tr>
-			        <td width="180">记录时间</td>
+			        <td width="170">记录时间</td>
 			        <td width="100">金额</td>
-			        <td width="400">说明</td>
+			        <td width="80">类型</td>
+			        <td width="60">年利率</td>
+			        <td width="160">银行</td>
+			        <td width="300">说明</td>
 			        <td width="40">修改</td>
 			        <td width="40">删除</td>
 		          </tr>
@@ -59,7 +62,10 @@ td {
 			     <logic:iterate id="inote" name="inote_Loans" type="com.ooobgy.ifnote.entity.Inote_Loan" >
 				<tr>
 				<td><bean:write name="inote" property="note_time" /></td>
-				<td><bean:write name="inote" property="account" /></td>
+				<td><bean:write name="inote" property="sum" /></td>
+				<td><bean:write name="inote" property="type" /></td>
+				<td><bean:write name="inote" property="rate" /></td>
+				<td><bean:write name="inote" property="bank_name" /></td>
 				<td><bean:write name="inote" property="comment" /></td>
 				<td>
                     	<img src="/ifnote/images/edit.gif" width="16" height="16" alt="修改" style="cursor:hand;" 

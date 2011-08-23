@@ -50,8 +50,11 @@ td {
 			    <td><table width="400" border="1" class="diantable">
 			      <tr>
 			        <td width="180">记录时间</td>
-			        <td width="100">金额</td>
-			        <td width="400">说明</td>
+			        <td width="80">基金代码</td>
+			        <td width="100">基金名称</td>
+			        <td width="60">购入净值</td>
+			        <td width="60">购入股数</td>
+			        <td width="250">说明</td>
 			        <td width="40">修改</td>
 			        <td width="40">删除</td>
 		          </tr>
@@ -59,7 +62,10 @@ td {
 			     <logic:iterate id="inote" name="inote_Funds" type="com.ooobgy.ifnote.entity.Inote_Fund" >
 				<tr>
 				<td><bean:write name="inote" property="note_time" /></td>
-				<td><bean:write name="inote" property="account" /></td>
+				<td><bean:write name="inote" property="fund_code" /></td>
+				<td><bean:write name="inote" property="fund_code" /></td>
+				<td><bean:write name="inote" property="npv" /></td>
+				<td><bean:write name="inote" property="count" /></td>
 				<td><bean:write name="inote" property="comment" /></td>
 				<td>
                     	<img src="/ifnote/images/edit.gif" width="16" height="16" alt="修改" style="cursor:hand;" 

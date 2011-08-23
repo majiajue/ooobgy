@@ -19,6 +19,7 @@
     <form-bean name="loanListForm" type="com.ooobgy.ifnote.struts.form.LoanListForm" />
     <form-bean name="stockListForm" type="com.ooobgy.ifnote.struts.form.StockListForm" />
     <form-bean name="noteDepositForm" type="com.ooobgy.ifnote.struts.form.NoteDepositForm" />
+    <form-bean name="summaryForm" type="com.ooobgy.ifnote.struts.form.SummaryForm" />
 
   </form-beans>
 
@@ -171,6 +172,15 @@
       path="/noteDeposit"
       scope="request"
       type="com.ooobgy.ifnote.struts.action.NoteDepositAction">
+      <set-property property="cancellable" value="true" />
+    </action>
+    <action
+      attribute="summaryForm"
+      input="/user/summary.jsp"
+      name="summaryForm"
+      path="/summary"
+      scope="request"
+      type="com.ooobgy.ifnote.struts.action.SummaryAction">
       <set-property property="cancellable" value="true" />
     </action>
     

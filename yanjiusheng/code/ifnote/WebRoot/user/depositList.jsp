@@ -52,6 +52,7 @@ td {
 			        <td width="170">记录时间</td>
 			        <td width="100">金额</td>
 			        <td width="80">类型</td>
+			        <td width="60">年利率</td>
 			        <td width="160">银行</td>
 			        <td width="300">说明</td>
 			        <td width="40">修改</td>
@@ -63,6 +64,7 @@ td {
 				<td><bean:write name="inote" property="note_time" /></td>
 				<td><bean:write name="inote" property="sum" /></td>
 				<td><bean:write name="inote" property="type" /></td>
+				<td><bean:write name="inote" property="rate" /></td>
 				<td><bean:write name="inote" property="bank_name" /></td>
 				<td><bean:write name="inote" property="comment" /></td>
 				<td>

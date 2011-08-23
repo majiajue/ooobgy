@@ -44,7 +44,9 @@
   <StrutsActivity path="futuresList;6" location="50,1750" dimension="157,87" />
   <StrutsActivity path="loanList;6" location="350,1850" dimension="142,87" />
   <StrutsActivity path="stockList;6" location="650,1850" dimension="148,87" />
-  <StrutsActivity path="/noteDeposit.do" />
+  <StrutsActivity path="/noteDeposit.do" location="950,1850" dimension="338,104" />
+  <StrutsActivity path="/summary.do" location="1550,1850" dimension="318,104" />
+  <StrutsActivity path="/user/summary.jsp" location="50,1950" dimension="140,53" />
   <StrutsTransition id="/user/cashList.jsp,null,/cashList.do,2" routingType="0">
     <AutomaticBendpoints>
       <AbsolutePoint location="986,1103" />
@@ -68,8 +70,11 @@
   </StrutsTransition>
   <StrutsTransition id="/inote/noteDeposit.jsp,null,/noteDeposit.do,2" routingType="0">
     <AutomaticBendpoints>
-      <AbsolutePoint location="736,574" />
-      <AbsolutePoint location="0,0" />
+      <AbsolutePoint location="650,574" />
+      <AbsolutePoint location="447,574" />
+      <AbsolutePoint location="447,1029" />
+      <AbsolutePoint location="1112,1029" />
+      <AbsolutePoint location="1112,1850" />
     </AutomaticBendpoints>
   </StrutsTransition>
   <StrutsTransition id="/user/depositList.jsp,null,/depositList.do,2" routingType="0">
@@ -130,6 +135,13 @@
       <AbsolutePoint location="-100,835" />
       <AbsolutePoint location="-100,1287" />
       <AbsolutePoint location="350,1287" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/user/summary.jsp,null,/summary.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="190,1976" />
+      <AbsolutePoint location="1709,1976" />
+      <AbsolutePoint location="1709,1954" />
     </AutomaticBendpoints>
   </StrutsTransition>
   <StrutsTransition id="/home/login.jsp,null,/login.do,2" routingType="0">
@@ -201,8 +213,9 @@
   </StrutsTransition>
   <StrutsTransition id="stockList;6,null,/user/stockList.jsp,1" routingType="0">
     <AutomaticBendpoints>
-      <AbsolutePoint location="798,1893" />
-      <AbsolutePoint location="1018,1893" />
+      <AbsolutePoint location="724,1850" />
+      <AbsolutePoint location="724,1799" />
+      <AbsolutePoint location="1018,1799" />
       <AbsolutePoint location="1018,1703" />
     </AutomaticBendpoints>
   </StrutsTransition>

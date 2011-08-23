@@ -39,7 +39,7 @@ public class Inote_FundDaoImpl extends TDataDaoImpl<Inote_Fund, Integer>
 	 * .Integer)
 	 */
 	public List<Inote_Fund> findAllWithUid(Integer userId) {
-		String cmd = " p where p.user_id=" + userId;
+		String cmd = " p where p.user_id=" + userId + " order by note_time desc";
 		return findWithCmd(cmd);
 	}
 
@@ -55,7 +55,8 @@ public class Inote_FundDaoImpl extends TDataDaoImpl<Inote_Fund, Integer>
 		String cmd = " p where p.user_id=" + userId + " and note_time>='"
 				+ timeFormat.format(new Date(startTime.getTime()))
 				+ "' and note_time<='"
-				+ timeFormat.format(new Date(endTime.getTime())) + "'";
+				+ timeFormat.format(new Date(endTime.getTime())) + "'"
+				+ " order by note_time desc";
 		return findWithCmd(cmd);
 	}
 

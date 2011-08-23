@@ -72,6 +72,7 @@ public class NoteStockAction extends Action {
 			dao.update(inote);
 		}
 		
-		return mapping.findForward("success");
+		session.removeAttribute("inote_stock");
+		return mapping.findForward("stockList");
 	}
 }

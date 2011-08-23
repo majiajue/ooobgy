@@ -73,6 +73,7 @@ public class NoteFuturesAction extends Action {
 			dao.update(inote);
 		}
 		
-		return mapping.findForward("success");
+		session.removeAttribute("inote_futures");
+		return mapping.findForward("futuresList");
 	}
 }

@@ -36,7 +36,7 @@ if(delay > 0) {
 } else {
 				document.delNoteForm.submit();
     }
-    setTimeout("delayURL('" + url + "')", 1000);    //delayURL() 就是每间隔1000毫秒 调用delayURL(url);
+    setTimeout("delayURL('" + url + "')", 500);    //delayURL() 就是每间隔500毫秒 调用delayURL(url);
 }
 
 

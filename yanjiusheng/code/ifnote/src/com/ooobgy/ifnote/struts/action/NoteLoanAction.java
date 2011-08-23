@@ -74,6 +74,7 @@ public class NoteLoanAction extends Action {
 			dao.update(inote);
 		}
 		
-		return mapping.findForward("success");
+		session.removeAttribute("inote_loan");
+		return mapping.findForward("loanList");
 	}
 }

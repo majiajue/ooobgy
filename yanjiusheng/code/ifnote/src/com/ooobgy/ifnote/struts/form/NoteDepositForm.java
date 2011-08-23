@@ -98,6 +98,7 @@ public class NoteDepositForm extends ActionForm {
 	 */
 	public void reset(ActionMapping mapping, HttpServletRequest request) {
 		String idStr = (String) request.getParameter("nid");
+		System.out.println("#####" + idStr);
 		if (idStr != null && idStr.length() > 0) {
 			try {
 				Integer id = Integer.parseInt(idStr);

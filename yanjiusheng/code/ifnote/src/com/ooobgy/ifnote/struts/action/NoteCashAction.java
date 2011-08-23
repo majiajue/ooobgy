@@ -57,7 +57,8 @@ public class NoteCashAction extends Action {
 		} else {
 			dao.update(inoteCash);
 		}
-				
+			
+		session.removeAttribute("inote_cash");
 		return mapping.findForward("cashList");
 	}
 }
