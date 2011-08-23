@@ -4,10 +4,22 @@
  */
 package com.ooobgy.ifnote.struts.form;
 
+import java.sql.Timestamp;
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.apache.struts.action.ActionErrors;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionMapping;
+import org.apache.struts.action.ActionMessage;
+
+import com.ooobgy.ifnote.constants.SecretKey;
+import com.ooobgy.ifnote.dbctrler.dao.Inote_StockDao;
+import com.ooobgy.ifnote.dbctrler.daoimpl.Inote_StockDaoImpl;
+import com.ooobgy.ifnote.entity.Inote_Stock;
+import com.ooobgy.ifnote.entity.User;
 
 /** 
  * MyEclipse Struts
@@ -21,11 +33,18 @@ public class StockListForm extends ActionForm {
 	 * Generated fields
 	 */
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -4760366013569172210L;
+
 	/** startTime property */
 	private String startTime;
 
 	/** endTime property */
 	private String endTime;
+	
+	private List<Inote_Stock> inote_Stocks;
 
 	/*
 	 * Generated Methods
@@ -39,8 +58,13 @@ public class StockListForm extends ActionForm {
 	 */
 	public ActionErrors validate(ActionMapping mapping,
 			HttpServletRequest request) {
-		// TODO Auto-generated method stub
-		return null;
+		ActionErrors errors = new ActionErrors();
+		ActionMessage actionMessage = new ActionMessage("list");
+		errors.add("list", actionMessage);
+		
+		reset(mapping, request);
+		
+		return errors;
 	}
 
 	/** 
@@ -49,7 +73,20 @@ public class StockListForm extends ActionForm {
 	 * @param request
 	 */
 	public void reset(ActionMapping mapping, HttpServletRequest request) {
-		// TODO Auto-generated method stub
+		HttpSession session = request.getSession();
+		User user = (User) session.getAttribute(SecretKey.USER_KEY);
+		Inote_StockDao dao = new Inote_StockDaoImpl();
+		if (startTime != null && endTime != null
+				&& startTime.length() > 1 && endTime.length() > 1) {
+			inote_Stocks = dao.findAllWithUidTime(user.getId(), Timestamp
+					.valueOf(startTime), Timestamp.valueOf(endTime));
+		} else {
+			inote_Stocks = dao.findAllWithUid(user.getId());
+			startTime = "";
+			endTime = "";
+		}
+		
+		super.reset(mapping, request);
 	}
 
 	/** 
@@ -82,5 +119,19 @@ public class StockListForm extends ActionForm {
 	 */
 	public void setEndTime(String endTime) {
 		this.endTime = endTime;
+	}
+
+	/**
+	 * @return the inote_Stocks
+	 */
+	public List<Inote_Stock> getInote_Stocks() {
+		return inote_Stocks;
+	}
+
+	/**
+	 * @param inoteStocks the inote_Stocks to set
+	 */
+	public void setInote_Stocks(List<Inote_Stock> inoteStocks) {
+		inote_Stocks = inoteStocks;
 	}
 }

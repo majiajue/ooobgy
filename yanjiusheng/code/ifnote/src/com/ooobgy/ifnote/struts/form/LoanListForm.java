@@ -4,10 +4,22 @@
  */
 package com.ooobgy.ifnote.struts.form;
 
+import java.sql.Timestamp;
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.apache.struts.action.ActionErrors;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionMapping;
+import org.apache.struts.action.ActionMessage;
+
+import com.ooobgy.ifnote.constants.SecretKey;
+import com.ooobgy.ifnote.dbctrler.dao.Inote_LoanDao;
+import com.ooobgy.ifnote.dbctrler.daoimpl.Inote_LoanDaoImpl;
+import com.ooobgy.ifnote.entity.Inote_Loan;
+import com.ooobgy.ifnote.entity.User;
 
 /** 
  * MyEclipse Struts
@@ -21,11 +33,17 @@ public class LoanListForm extends ActionForm {
 	 * Generated fields
 	 */
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -2729596202026102435L;
 	/** startTime property */
 	private String startTime;
 
 	/** endTime property */
 	private String endTime;
+	
+	private List<Inote_Loan> inote_Loans;
 
 	/*
 	 * Generated Methods
@@ -39,8 +57,13 @@ public class LoanListForm extends ActionForm {
 	 */
 	public ActionErrors validate(ActionMapping mapping,
 			HttpServletRequest request) {
-		// TODO Auto-generated method stub
-		return null;
+		ActionErrors errors = new ActionErrors();
+		ActionMessage actionMessage = new ActionMessage("list");
+		errors.add("list", actionMessage);
+		
+		reset(mapping, request);
+		
+		return errors;
 	}
 
 	/** 
@@ -49,7 +72,20 @@ public class LoanListForm extends ActionForm {
 	 * @param request
 	 */
 	public void reset(ActionMapping mapping, HttpServletRequest request) {
-		// TODO Auto-generated method stub
+		HttpSession session = request.getSession();
+		User user = (User) session.getAttribute(SecretKey.USER_KEY);
+		Inote_LoanDao dao = new Inote_LoanDaoImpl();
+		if (startTime != null && endTime != null
+				&& startTime.length() > 1 && endTime.length() > 1) {
+			inote_Loans = dao.findAllWithUidTime(user.getId(), Timestamp
+					.valueOf(startTime), Timestamp.valueOf(endTime));
+		} else {
+			inote_Loans = dao.findAllWithUid(user.getId());
+			startTime = "";
+			endTime = "";
+		}
+		
+		super.reset(mapping, request);
 	}
 
 	/** 
@@ -82,5 +118,19 @@ public class LoanListForm extends ActionForm {
 	 */
 	public void setEndTime(String endTime) {
 		this.endTime = endTime;
+	}
+
+	/**
+	 * @return the inote_Loans
+	 */
+	public List<Inote_Loan> getInote_Loans() {
+		return inote_Loans;
+	}
+
+	/**
+	 * @param inoteLoans the inote_Loans to set
+	 */
+	public void setInote_Loans(List<Inote_Loan> inoteLoans) {
+		inote_Loans = inoteLoans;
 	}
 }

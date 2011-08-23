@@ -4,10 +4,22 @@
  */
 package com.ooobgy.ifnote.struts.form;
 
+import java.sql.Timestamp;
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.apache.struts.action.ActionErrors;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionMapping;
+import org.apache.struts.action.ActionMessage;
+
+import com.ooobgy.ifnote.constants.SecretKey;
+import com.ooobgy.ifnote.dbctrler.dao.Inote_FundDao;
+import com.ooobgy.ifnote.dbctrler.daoimpl.Inote_FundDaoImpl;
+import com.ooobgy.ifnote.entity.Inote_Fund;
+import com.ooobgy.ifnote.entity.User;
 
 /** 
  * MyEclipse Struts
@@ -21,11 +33,18 @@ public class FundListForm extends ActionForm {
 	 * Generated fields
 	 */
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -8284470232441546308L;
+
 	/** startTime property */
 	private String startTime;
 
 	/** endTime property */
 	private String endTime;
+	
+	private List<Inote_Fund> inote_Funds;
 
 	/*
 	 * Generated Methods
@@ -39,8 +58,13 @@ public class FundListForm extends ActionForm {
 	 */
 	public ActionErrors validate(ActionMapping mapping,
 			HttpServletRequest request) {
-		// TODO Auto-generated method stub
-		return null;
+		ActionErrors errors = new ActionErrors();
+		ActionMessage actionMessage = new ActionMessage("list");
+		errors.add("list", actionMessage);
+		
+		reset(mapping, request);
+		
+		return errors;
 	}
 
 	/** 
@@ -49,7 +73,20 @@ public class FundListForm extends ActionForm {
 	 * @param request
 	 */
 	public void reset(ActionMapping mapping, HttpServletRequest request) {
-		// TODO Auto-generated method stub
+		HttpSession session = request.getSession();
+		User user = (User) session.getAttribute(SecretKey.USER_KEY);
+		Inote_FundDao dao = new Inote_FundDaoImpl();
+		if (startTime != null && endTime != null
+				&& startTime.length() > 1 && endTime.length() > 1) {
+			inote_Funds = dao.findAllWithUidTime(user.getId(), Timestamp
+					.valueOf(startTime), Timestamp.valueOf(endTime));
+		} else {
+			inote_Funds = dao.findAllWithUid(user.getId());
+			startTime = "";
+			endTime = "";
+		}
+		
+		super.reset(mapping, request);
 	}
 
 	/** 
@@ -82,5 +119,19 @@ public class FundListForm extends ActionForm {
 	 */
 	public void setEndTime(String endTime) {
 		this.endTime = endTime;
+	}
+
+	/**
+	 * @return the inote_Funds
+	 */
+	public List<Inote_Fund> getInote_Funds() {
+		return inote_Funds;
+	}
+
+	/**
+	 * @param inoteFunds the inote_Funds to set
+	 */
+	public void setInote_Funds(List<Inote_Fund> inoteFunds) {
+		inote_Funds = inoteFunds;
 	}
 }

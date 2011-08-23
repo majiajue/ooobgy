@@ -74,9 +74,6 @@ public class CashListForm extends ActionForm {
 	public void reset(ActionMapping mapping, HttpServletRequest request) {
 		HttpSession session = request.getSession();
 		User user = (User) session.getAttribute(SecretKey.USER_KEY);
-//		startTime = (String) session.getAttribute("list_startTime");
-//		endTime = (String) session.getAttribute("list_endTime");
-		System.out.println("start:" + startTime);
 		Inote_CashDao dao = new Inote_CashDaoImpl();
 		if (startTime != null && endTime != null
 				&& startTime.length() > 1 && endTime.length() > 1) {
@@ -87,8 +84,6 @@ public class CashListForm extends ActionForm {
 			startTime = "";
 			endTime = "";
 		}
-		session.removeAttribute("list_startTime");
-		session.removeAttribute("list_endTime");
 		
 		super.reset(mapping, request);
 	}
