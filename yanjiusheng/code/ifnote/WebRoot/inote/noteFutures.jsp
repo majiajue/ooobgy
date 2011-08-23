@@ -12,6 +12,7 @@
 			name : <html:text property="name"/><html:errors property="name"/><br/>
 			sum : <html:text property="sum"/><html:errors property="sum"/><br/>
 			comment : <html:textarea property="comment"/><html:errors property="comment"/><br/>
+			now_price : <html:text property="now_price"/><html:errors property="now_price"/><br/>
 			<html:submit/><html:cancel/>
 		</html:form>
 	</body>

@@ -45,7 +45,7 @@ public class NoteFuturesAction extends Action {
 	 */
 	public ActionForward execute(ActionMapping mapping, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response) {
-		NoteFuturesForm noteFuturesForm = (NoteFuturesForm) form;// TODO Auto-generated method stub
+		NoteFuturesForm noteFuturesForm = (NoteFuturesForm) form;
 		HttpSession session = request.getSession();
 		
 		//修改逻辑
@@ -64,6 +64,7 @@ public class NoteFuturesAction extends Action {
 		inote.setComment(noteFuturesForm.getComment());
 		inote.setName(noteFuturesForm.getName());
 		inote.setPrice(Double.parseDouble(noteFuturesForm.getPrice()));
+		inote.setNow_price(Double.parseDouble(noteFuturesForm.getNow_price()));
 		inote.setSum(Double.parseDouble(noteFuturesForm.getSum()));
 		
 		Inote_FuturesDao dao = new Inote_FuturesDaoImpl();

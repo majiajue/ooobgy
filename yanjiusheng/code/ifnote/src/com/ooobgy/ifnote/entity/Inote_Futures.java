@@ -29,6 +29,8 @@ public class Inote_Futures {
 	private Double sum;
 	/** 说明 */
 	private String comment;
+	/** 当前单价 */
+	private Double now_price;
 	
 	public Integer getId() {
 		return id;
@@ -71,6 +73,18 @@ public class Inote_Futures {
 	}
 	public void setComment(String comment) {
 		this.comment = comment;
+	}
+	/**
+	 * @return the now_price
+	 */
+	public Double getNow_price() {
+		return now_price;
+	}
+	/**
+	 * @param nowPrice the now_price to set
+	 */
+	public void setNow_price(Double nowPrice) {
+		now_price = nowPrice;
 	}
 	
 	

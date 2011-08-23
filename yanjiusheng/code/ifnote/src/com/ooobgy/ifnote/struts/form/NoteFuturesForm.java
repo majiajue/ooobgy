@@ -46,6 +46,8 @@ public class NoteFuturesForm extends ActionForm {
 
 	/** comment property */
 	private String comment;
+	
+	private String now_price;
 
 	/*
 	 * Generated Methods
@@ -81,6 +83,16 @@ public class NoteFuturesForm extends ActionForm {
 			return errors;
 		}
 		
+		try {
+			if(Double.parseDouble(price) < 0){
+				throw new IllegalArgumentException();
+			}
+		} catch (Throwable e) {
+			ActionMessage actionMessage = new ActionMessage("error.now_price");
+			errors.add("now_price", actionMessage);
+			return errors;
+		}
+		
 		return errors;
 	}
 
@@ -103,6 +115,7 @@ public class NoteFuturesForm extends ActionForm {
 						this.name = inote.getName();
 						this.sum = inote.getSum().toString();
 						this.price = inote.getPrice().toString();
+						this.now_price = inote.getNow_price().toString();
 						session.setAttribute("inote_futures", inote);
 						return;
 					} else {
@@ -144,6 +157,7 @@ public class NoteFuturesForm extends ActionForm {
 		this.name = "";
 		this.sum = "";
 		this.price = "";
+		this.now_price = "";
 	}
 
 	/** 
@@ -208,5 +222,19 @@ public class NoteFuturesForm extends ActionForm {
 	 */
 	public void setComment(String comment) {
 		this.comment = comment;
+	}
+
+	/**
+	 * @return the now_price
+	 */
+	public String getNow_price() {
+		return now_price;
+	}
+
+	/**
+	 * @param nowPrice the now_price to set
+	 */
+	public void setNow_price(String nowPrice) {
+		now_price = nowPrice;
 	}
 }
