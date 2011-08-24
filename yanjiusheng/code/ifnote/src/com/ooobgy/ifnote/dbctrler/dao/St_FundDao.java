@@ -8,5 +8,5 @@ import com.ooobgy.ifnote.entity.St_Fund;
  * @CreateDate 2011-8-9
  */
 public interface St_FundDao extends TDataDao<St_Fund, Integer> {
-
+	public St_Fund findWithCode(Integer code);
 }

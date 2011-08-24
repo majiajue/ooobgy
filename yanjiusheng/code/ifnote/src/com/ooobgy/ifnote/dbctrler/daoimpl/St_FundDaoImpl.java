@@ -28,4 +28,17 @@ public class St_FundDaoImpl extends TDataDaoImpl<St_Fund, Integer> implements St
 		return findWithCmd(St_Fund.class, cmd);
 	}
 
+	/**
+	 * @see com.ooobgy.ifnote.dbctrler.dao.St_FundDao#findWithCode(java.lang.Integer)
+	 */
+	public St_Fund findWithCode(Integer code) {
+		String cmd = " p where p.code=" + code + " order by timestamp desc";
+		List<St_Fund> sts = findWithCmd(cmd);
+		if (sts.size() < 1) {
+			return null;
+		} else {
+			return sts.get(0);
+		}
+	}
+
 }

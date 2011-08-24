@@ -8,5 +8,5 @@ import com.ooobgy.ifnote.entity.St_Stock;
  * @CreateDate 2011-8-9
  */
 public interface St_StockDao extends TDataDao<St_Stock, Integer> {
-
+	public St_Stock findWithCode(String code);
 }

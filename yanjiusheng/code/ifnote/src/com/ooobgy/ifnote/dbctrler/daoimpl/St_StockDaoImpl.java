@@ -28,4 +28,17 @@ public class St_StockDaoImpl extends TDataDaoImpl<St_Stock, Integer> implements 
 		return findWithCmd(St_Stock.class, cmd);
 	}
 
+	/**
+	 * @see com.ooobgy.ifnote.dbctrler.dao.St_StockDao#findWithCode(java.lang.String)
+	 */
+	public St_Stock findWithCode(String code) {
+		String cmd = " p where p.code=" + code + " order by timestamp desc";
+		List<St_Stock> sts = findWithCmd(cmd);
+		if (sts.size() < 1) {
+			return null;
+		} else {
+			return sts.get(0);
+		}
+	}
+
 }
