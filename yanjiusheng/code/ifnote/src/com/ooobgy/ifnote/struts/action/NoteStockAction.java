@@ -63,7 +63,7 @@ public class NoteStockAction extends Action {
 		inote.setComment(noteStockForm.getComment());
 		inote.setCount(Integer.parseInt(noteStockForm.getCount()));
 		inote.setSmv(Double.parseDouble(noteStockForm.getSmv()));
-		inote.setStock_code(Integer.parseInt(noteStockForm.getStock_code()));
+		inote.setStock_code(noteStockForm.getStock_code());
 		
 		Inote_StockDao dao = new Inote_StockDaoImpl();
 		if (inote.getId() == null) {

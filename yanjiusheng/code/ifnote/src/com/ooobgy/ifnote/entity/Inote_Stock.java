@@ -22,7 +22,7 @@ public class Inote_Stock {
 	/** 关联用户 */
 	private Integer user_id;
 	/** 股票代码 */
-	private Integer stock_code;
+	private String stock_code;
 	/** 交易股数：正值表示购入，负值表示赎回 */
 	private Integer count;
 	/** 交易时股票市值*/
@@ -48,10 +48,10 @@ public class Inote_Stock {
 	public void setUser_id(Integer userId) {
 		user_id = userId;
 	}
-	public Integer getStock_code() {
+	public String getStock_code() {
 		return stock_code;
 	}
-	public void setStock_code(Integer stockCode) {
+	public void setStock_code(String stockCode) {
 		stock_code = stockCode;
 	}
 	public Integer getCount() {

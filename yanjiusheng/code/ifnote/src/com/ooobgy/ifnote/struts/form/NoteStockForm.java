@@ -81,16 +81,6 @@ public class NoteStockForm extends ActionForm {
 			return errors;
 		}
 		
-		try {
-			if(Integer.parseInt(stock_code) < 0){
-				throw new IllegalArgumentException();
-			}
-		} catch (Throwable e) {
-			ActionMessage actionMessage = new ActionMessage("error.code");
-			errors.add("stock_code", actionMessage);
-			return errors;
-		}
-		
 		return errors;
 	}
 
