@@ -15,8 +15,24 @@ import org.apache.struts.action.ActionMapping;
 import org.apache.struts.action.ActionMessage;
 
 import com.ooobgy.ifnote.constants.SecretKey;
+import com.ooobgy.ifnote.dbctrler.dao.Inote_CashDao;
+import com.ooobgy.ifnote.dbctrler.dao.Inote_DepositDao;
+import com.ooobgy.ifnote.dbctrler.dao.Inote_FundDao;
+import com.ooobgy.ifnote.dbctrler.dao.Inote_FuturesDao;
+import com.ooobgy.ifnote.dbctrler.dao.Inote_LoanDao;
 import com.ooobgy.ifnote.dbctrler.dao.Inote_StockDao;
+import com.ooobgy.ifnote.dbctrler.daoimpl.Inote_CashDaoImpl;
+import com.ooobgy.ifnote.dbctrler.daoimpl.Inote_DepositDaoImpl;
+import com.ooobgy.ifnote.dbctrler.daoimpl.Inote_FundDaoImpl;
+import com.ooobgy.ifnote.dbctrler.daoimpl.Inote_FuturesDaoImpl;
+import com.ooobgy.ifnote.dbctrler.daoimpl.Inote_LoanDaoImpl;
 import com.ooobgy.ifnote.dbctrler.daoimpl.Inote_StockDaoImpl;
+import com.ooobgy.ifnote.dispbeans.Disp_Cash;
+import com.ooobgy.ifnote.dispbeans.Disp_Deposit;
+import com.ooobgy.ifnote.dispbeans.Disp_Fund;
+import com.ooobgy.ifnote.dispbeans.Disp_Futures;
+import com.ooobgy.ifnote.dispbeans.Disp_Loan;
+import com.ooobgy.ifnote.dispbeans.Disp_Stock;
 import com.ooobgy.ifnote.entity.Inote_Cash;
 import com.ooobgy.ifnote.entity.Inote_Deposit;
 import com.ooobgy.ifnote.entity.Inote_Fund;
@@ -38,21 +54,21 @@ public class SummaryForm extends ActionForm {
 	 */
 	private static final long serialVersionUID = 6326747524547499827L;
 
-	private List<Inote_Cash> inote_Cashs;
+	private List<Disp_Cash> disp_Cashs;
 	private Double sum_cash;
-	private List<Inote_Deposit> inote_Deposits;
+	private List<Disp_Deposit> disp_Deposits;
 	private Double sum_deposit;
 	private Double earn_deposit;
-	private List<Inote_Fund> inote_Funds;
+	private List<Disp_Fund> disp_Funds;
 	private Double sum_fund;
 	private Double earn_fund;
-	private List<Inote_Futures> inote_Futures;
+	private List<Disp_Futures> disp_Futures;
 	private Double sum_futures;
 	private Double earn_futures;
-	private List<Inote_Loan> inote_Loans;
+	private List<Disp_Loan> disp_Loans;
 	private Double sum_loan;
 	private Double earn_loan;
-	private List<Inote_Stock> inote_Stocks;
+	private List<Disp_Stock> disp_Stocks;
 	private Double sum_stock;
 	private Double earn_stock;
 	
@@ -127,10 +143,13 @@ public class SummaryForm extends ActionForm {
 		List<Inote_Stock> inotes = dao.findAllWithUid(userId);
 		int i = 0;
 		for (Inote_Stock inote : inotes) {
+			Disp_Stock dispStock = new Disp_Stock(inote);
+			dispStock.init();
 			if (i < 5) {//打印最新5条
-				this.inote_Stocks.add(inote);
+				this.disp_Stocks.add(dispStock);
 			}
-			
+			this.earn_stock += dispStock.getProfit();
+			this.sum_stock += dispStock.getAsset();
 			
 			i++;
 		}
@@ -140,7 +159,23 @@ public class SummaryForm extends ActionForm {
 	 * 
 	 */
 	private void initLoan() {
-		// TODO Auto-generated method stub
+		this.earn_loan = 0.0;
+		this.sum_loan = 0.0;
+		
+		Inote_LoanDao dao = new Inote_LoanDaoImpl();
+		List<Inote_Loan> inotes = dao.findAllWithUid(userId);
+		int i = 0;
+		for (Inote_Loan inote : inotes) {
+			Disp_Loan dispLoan = new Disp_Loan(inote);
+			dispLoan.init();
+			if (i < 5) {
+				this.disp_Loans.add(dispLoan);
+			}
+			this.earn_loan += dispLoan.getProfit();
+			this.sum_loan += dispLoan.getAsset();
+			
+			i++;
+		}
 		
 	}
 
@@ -148,15 +183,46 @@ public class SummaryForm extends ActionForm {
 	 * 
 	 */
 	private void initFutures() {
-		// TODO Auto-generated method stub
+		this.earn_futures = 0.0;
+		this.sum_futures = 0.0;
 		
+		Inote_FuturesDao dao = new Inote_FuturesDaoImpl();
+		List<Inote_Futures> inotes = dao.findAllWithUid(userId);
+		int i = 0;
+		for (Inote_Futures inote : inotes) {
+			Disp_Futures dispFutures = new Disp_Futures(inote);
+			dispFutures.init();
+			if (i < 5) {
+				this.disp_Futures.add(dispFutures);
+			}
+			this.earn_futures += dispFutures.getProfit();
+			this.sum_futures += dispFutures.getProfit();
+			
+			i++;
+		}
 	}
 
 	/**
 	 * 
 	 */
 	private void initFund() {
-		// TODO Auto-generated method stub
+		this.earn_fund = 0.0;
+		this.sum_fund = 0.0;
+		
+		Inote_FundDao dao = new Inote_FundDaoImpl();
+		List<Inote_Fund> inotes = dao.findAllWithUid(userId);
+		int i = 0;
+		for (Inote_Fund inote : inotes) {
+			Disp_Fund dispFund = new Disp_Fund(inote);
+			dispFund.init();
+			if (i < 5) {
+				this.disp_Funds.add(dispFund);
+			}
+			this.earn_fund += dispFund.getProfit();
+			this.sum_fund += dispFund.getAsset();
+			
+			i++;
+		}
 		
 	}
 
@@ -164,7 +230,23 @@ public class SummaryForm extends ActionForm {
 	 * 
 	 */
 	private void initDeposit() {
-		// TODO Auto-generated method stub
+		this.earn_deposit = 0.0;
+		this.sum_deposit = 0.0;
+		
+		Inote_DepositDao dao = new Inote_DepositDaoImpl();
+		List<Inote_Deposit> inotes = dao.findAllWithUid(userId);
+		int i = 0;
+		for (Inote_Deposit inote : inotes) {
+			Disp_Deposit dispDeposit = new Disp_Deposit(inote);
+			dispDeposit.init();
+			if (i < 5) {
+				this.disp_Deposits.add(dispDeposit);
+			}
+			this.earn_deposit += dispDeposit.getProfit();
+			this.sum_deposit += dispDeposit.getAsset();
+			
+			i++;
+		}
 		
 	}
 
@@ -172,92 +254,36 @@ public class SummaryForm extends ActionForm {
 	 * 
 	 */
 	private void initCash() {
-		// TODO Auto-generated method stub
+		this.sum_cash = 0.0;
+		
+		Inote_CashDao dao = new Inote_CashDaoImpl();
+		List<Inote_Cash> inotes = dao.findAllWithUid(userId);
+		int i = 0;
+		for (Inote_Cash inote : inotes) {
+			Disp_Cash dispCash = new Disp_Cash(inote);
+			dispCash.init();
+			if (i < 5) {
+				this.disp_Cashs.add(dispCash);
+			}
+			this.sum_cash += dispCash.getAccount();
+			
+			i++;
+		}
 		
 	}
 
 	/**
-	 * @return the inote_Cashs
+	 * @return the disp_Cashs
 	 */
-	public List<Inote_Cash> getInote_Cashs() {
-		return inote_Cashs;
+	public List<Disp_Cash> getDisp_Cashs() {
+		return disp_Cashs;
 	}
 
 	/**
-	 * @param inoteCashs the inote_Cashs to set
+	 * @param dispCashs the disp_Cashs to set
 	 */
-	public void setInote_Cashs(List<Inote_Cash> inoteCashs) {
-		inote_Cashs = inoteCashs;
-	}
-
-	/**
-	 * @return the inote_Deposits
-	 */
-	public List<Inote_Deposit> getInote_Deposits() {
-		return inote_Deposits;
-	}
-
-	/**
-	 * @param inoteDeposits the inote_Deposits to set
-	 */
-	public void setInote_Deposits(List<Inote_Deposit> inoteDeposits) {
-		inote_Deposits = inoteDeposits;
-	}
-
-	/**
-	 * @return the inote_Funds
-	 */
-	public List<Inote_Fund> getInote_Funds() {
-		return inote_Funds;
-	}
-
-	/**
-	 * @param inoteFunds the inote_Funds to set
-	 */
-	public void setInote_Funds(List<Inote_Fund> inoteFunds) {
-		inote_Funds = inoteFunds;
-	}
-
-	/**
-	 * @return the inote_Futures
-	 */
-	public List<Inote_Futures> getInote_Futures() {
-		return inote_Futures;
-	}
-
-	/**
-	 * @param inoteFutures the inote_Futures to set
-	 */
-	public void setInote_Futures(List<Inote_Futures> inoteFutures) {
-		inote_Futures = inoteFutures;
-	}
-
-	/**
-	 * @return the inote_Loans
-	 */
-	public List<Inote_Loan> getInote_Loans() {
-		return inote_Loans;
-	}
-
-	/**
-	 * @param inoteLoans the inote_Loans to set
-	 */
-	public void setInote_Loans(List<Inote_Loan> inoteLoans) {
-		inote_Loans = inoteLoans;
-	}
-
-	/**
-	 * @return the inote_Stocks
-	 */
-	public List<Inote_Stock> getInote_Stocks() {
-		return inote_Stocks;
-	}
-
-	/**
-	 * @param inoteStocks the inote_Stocks to set
-	 */
-	public void setInote_Stocks(List<Inote_Stock> inoteStocks) {
-		inote_Stocks = inoteStocks;
+	public void setDisp_Cashs(List<Disp_Cash> dispCashs) {
+		disp_Cashs = dispCashs;
 	}
 
 	/**
@@ -272,6 +298,20 @@ public class SummaryForm extends ActionForm {
 	 */
 	public void setSum_cash(Double sumCash) {
 		sum_cash = sumCash;
+	}
+
+	/**
+	 * @return the disp_Deposits
+	 */
+	public List<Disp_Deposit> getDisp_Deposits() {
+		return disp_Deposits;
+	}
+
+	/**
+	 * @param dispDeposits the disp_Deposits to set
+	 */
+	public void setDisp_Deposits(List<Disp_Deposit> dispDeposits) {
+		disp_Deposits = dispDeposits;
 	}
 
 	/**
@@ -303,6 +343,20 @@ public class SummaryForm extends ActionForm {
 	}
 
 	/**
+	 * @return the disp_Funds
+	 */
+	public List<Disp_Fund> getDisp_Funds() {
+		return disp_Funds;
+	}
+
+	/**
+	 * @param dispFunds the disp_Funds to set
+	 */
+	public void setDisp_Funds(List<Disp_Fund> dispFunds) {
+		disp_Funds = dispFunds;
+	}
+
+	/**
 	 * @return the sum_fund
 	 */
 	public Double getSum_fund() {
@@ -328,6 +382,20 @@ public class SummaryForm extends ActionForm {
 	 */
 	public void setEarn_fund(Double earnFund) {
 		earn_fund = earnFund;
+	}
+
+	/**
+	 * @return the disp_Futures
+	 */
+	public List<Disp_Futures> getDisp_Futures() {
+		return disp_Futures;
+	}
+
+	/**
+	 * @param dispFutures the disp_Futures to set
+	 */
+	public void setDisp_Futures(List<Disp_Futures> dispFutures) {
+		disp_Futures = dispFutures;
 	}
 
 	/**
@@ -359,6 +427,20 @@ public class SummaryForm extends ActionForm {
 	}
 
 	/**
+	 * @return the disp_Loans
+	 */
+	public List<Disp_Loan> getDisp_Loans() {
+		return disp_Loans;
+	}
+
+	/**
+	 * @param dispLoans the disp_Loans to set
+	 */
+	public void setDisp_Loans(List<Disp_Loan> dispLoans) {
+		disp_Loans = dispLoans;
+	}
+
+	/**
 	 * @return the sum_loan
 	 */
 	public Double getSum_loan() {
@@ -384,6 +466,20 @@ public class SummaryForm extends ActionForm {
 	 */
 	public void setEarn_loan(Double earnLoan) {
 		earn_loan = earnLoan;
+	}
+
+	/**
+	 * @return the disp_Stocks
+	 */
+	public List<Disp_Stock> getDisp_Stocks() {
+		return disp_Stocks;
+	}
+
+	/**
+	 * @param dispStocks the disp_Stocks to set
+	 */
+	public void setDisp_Stocks(List<Disp_Stock> dispStocks) {
+		disp_Stocks = dispStocks;
 	}
 
 	/**
