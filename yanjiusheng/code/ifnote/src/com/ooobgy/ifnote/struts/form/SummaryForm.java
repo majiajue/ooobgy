@@ -77,6 +77,9 @@ public class SummaryForm extends ActionForm {
 
 	private Integer userId;
 	
+	private String sumPieData;
+	private String earnPieData;
+	
 	/** 
 	 * Method validate
 	 * @param mapping
@@ -106,6 +109,32 @@ public class SummaryForm extends ActionForm {
 		
 		init();
 		summary();
+		makePieData();
+	}
+
+	/**
+	 * 计算图表数据
+	 */
+	private void makePieData() {
+		StringBuilder sumSb = new StringBuilder();
+		sumSb.append("现金_").append(this.sum_cash);
+		sumSb.append("-");
+		sumSb.append("存款_").append(this.sum_deposit);
+		sumSb.append("-");
+		sumSb.append("基金_").append(this.sum_fund);
+		sumSb.append("-");
+		sumSb.append("股票_").append(this.sum_stock);
+		sumSb.append("-");
+		sumSb.append("期货_").append(this.sum_futures);
+		
+		StringBuilder earnSb = new StringBuilder();
+		earnSb.append("存款_").append(this.earn_deposit);
+		earnSb.append("-");
+		earnSb.append("基金_").append(this.earn_fund);
+		earnSb.append("-");
+		earnSb.append("股票_").append(this.earn_stock);
+		earnSb.append("-");
+		earnSb.append("期货_").append(this.earn_futures);
 	}
 
 	/**
@@ -550,5 +579,33 @@ public class SummaryForm extends ActionForm {
 	 */
 	public void setUserId(Integer userId) {
 		this.userId = userId;
+	}
+
+	/**
+	 * @return the sumPieData
+	 */
+	public String getSumPieData() {
+		return sumPieData;
+	}
+
+	/**
+	 * @param sumPieData the sumPieData to set
+	 */
+	public void setSumPieData(String sumPieData) {
+		this.sumPieData = sumPieData;
+	}
+
+	/**
+	 * @return the earnPieData
+	 */
+	public String getEarnPieData() {
+		return earnPieData;
+	}
+
+	/**
+	 * @param earnPieData the earnPieData to set
+	 */
+	public void setEarnPieData(String earnPieData) {
+		this.earnPieData = earnPieData;
 	}
 }

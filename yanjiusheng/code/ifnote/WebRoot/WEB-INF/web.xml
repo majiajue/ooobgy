@@ -33,6 +33,13 @@
   <servlet-class>com.ooobgy.util.confirmcode.ConfirmationCodeServlet</servlet-class>
   <load-on-startup>0</load-on-startup>
  </servlet>
+  <servlet>
+  <description>make pie chart</description>
+  <display-name>PieChart</display-name>
+  <servlet-name>PieChart</servlet-name>
+  <servlet-class>com.ooobgy.util.confirmcode.PieChartServlet</servlet-class>
+  <load-on-startup>0</load-on-startup>
+ </servlet>
  <servlet>
   <servlet-name>logoutserver</servlet-name>
   <servlet-class>com.ooobgy.ifnote.utilservlet.LogoutServlet</servlet-class>
@@ -44,6 +51,10 @@
  <servlet-mapping>
   <servlet-name>ConfirmationCode</servlet-name>
   <url-pattern>*.ConfirmationCode</url-pattern>
+ </servlet-mapping>
+  <servlet-mapping>
+  <servlet-name>PieChart</servlet-name>
+  <url-pattern>*.PieChart</url-pattern>
  </servlet-mapping>
  <servlet-mapping>
   <servlet-name>logoutserver</servlet-name>
