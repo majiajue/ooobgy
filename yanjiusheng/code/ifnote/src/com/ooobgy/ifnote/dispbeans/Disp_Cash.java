@@ -7,6 +7,7 @@
 package com.ooobgy.ifnote.dispbeans;
 
 import com.ooobgy.ifnote.entity.Inote_Cash;
+import com.ooobgy.util.NumberTool;
 
 public class Disp_Cash extends Inote_Cash {
 	/**
@@ -21,6 +22,14 @@ public class Disp_Cash extends Inote_Cash {
 	}
 	
 	public void init(){
-		//do nothing
+		randDouble();
+	}
+
+	/**
+	 * 
+	 */
+	private void randDouble() {
+		setAccount(NumberTool.roundDouble2(getAccount()));
+		
 	}
 }

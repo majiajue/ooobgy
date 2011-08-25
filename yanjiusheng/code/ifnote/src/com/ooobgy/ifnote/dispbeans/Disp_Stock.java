@@ -10,6 +10,7 @@ import com.ooobgy.ifnote.dbctrler.dao.St_StockDao;
 import com.ooobgy.ifnote.dbctrler.daoimpl.St_StockDaoImpl;
 import com.ooobgy.ifnote.entity.Inote_Stock;
 import com.ooobgy.ifnote.entity.St_Stock;
+import com.ooobgy.util.NumberTool;
 
 public class Disp_Stock extends Inote_Stock {
 	private static final String DEF_NAME = "未定义";
@@ -28,7 +29,7 @@ public class Disp_Stock extends Inote_Stock {
 		super.setUser_id(inote.getUser_id());
 		super.setStock_code(inote.getStock_code());
 		super.setCount(inote.getCount());
-		super.setSmv(inote.getSmv());
+		super.setSmv(NumberTool.roundDouble2(inote.getSmv()));
 		super.setComment(inote.getComment());
 	}
 
@@ -37,10 +38,10 @@ public class Disp_Stock extends Inote_Stock {
 		St_Stock stStock = dao.findWithCode(getStock_code());
 		if (stStock == null) {//未定义内容
 			this.name = DEF_NAME;
-			this.now_smv = this.getSmv();
+			this.now_smv = NumberTool.roundDouble2(this.getSmv());
 		} else {
 			this.name = stStock.getName();
-			this.now_smv = stStock.getSmv();
+			this.now_smv = NumberTool.roundDouble2(stStock.getSmv());
 		}
 		
 		countAsset();
@@ -50,8 +51,8 @@ public class Disp_Stock extends Inote_Stock {
 	 * 
 	 */
 	private void countAsset() {
-		this.profit = getCount() * (getNow_smv() - getSmv());
-		this.asset = getCount() * getNow_smv();
+		this.profit = NumberTool.roundDouble2(getCount() * (getNow_smv() - getSmv()));
+		this.asset = NumberTool.roundDouble2(getCount() * getNow_smv());
 	}
 
 	/**

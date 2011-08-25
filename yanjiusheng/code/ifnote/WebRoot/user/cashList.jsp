@@ -47,7 +47,7 @@ td {
 		        </table></td>
 		      </tr>
 			  <tr>
-			    <td><table width="400" border="1" class="diantable">
+			    <td><table border="1" class="diantable">
 			      <tr>
 			        <td width="180">记录时间</td>
 			        <td width="100">金额</td>

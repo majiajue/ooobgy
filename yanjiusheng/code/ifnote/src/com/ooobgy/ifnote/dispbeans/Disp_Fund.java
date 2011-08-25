@@ -10,6 +10,7 @@ import com.ooobgy.ifnote.dbctrler.dao.St_FundDao;
 import com.ooobgy.ifnote.dbctrler.daoimpl.St_FundDaoImpl;
 import com.ooobgy.ifnote.entity.Inote_Fund;
 import com.ooobgy.ifnote.entity.St_Fund;
+import com.ooobgy.util.NumberTool;
 
 public class Disp_Fund extends Inote_Fund {
 	private static final String DEF_NAME = "未定义";
@@ -25,7 +26,7 @@ public class Disp_Fund extends Inote_Fund {
 		super.setUser_id(inote.getUser_id());
 		super.setFund_code(inote.getFund_code());
 		super.setCount(inote.getCount());
-		super.setNpv(inote.getNpv());
+		super.setNpv(NumberTool.roundDouble2(inote.getNpv()));
 		super.setComment(inote.getComment());
 	}
 
@@ -34,10 +35,10 @@ public class Disp_Fund extends Inote_Fund {
 		St_Fund stFund = dao.findWithCode(getFund_code());
 		if (stFund == null) {//未定义内容
 			this.name = DEF_NAME;
-			this.now_npv = this.getNpv();
+			this.now_npv = NumberTool.roundDouble2(this.getNpv());
 		} else {
 			this.name = stFund.getName();
-			this.now_npv = stFund.getNpv();
+			this.now_npv = NumberTool.roundDouble2(stFund.getNpv());
 		}
 		
 		countAsset();
@@ -47,8 +48,8 @@ public class Disp_Fund extends Inote_Fund {
 	 * 
 	 */
 	private void countAsset() {
-		this.profit = getCount() * (getNow_npv() - getNpv());
-		this.asset = getCount() * getNow_npv();
+		this.profit = NumberTool.roundDouble2(getCount() * (getNow_npv() - getNpv()));
+		this.asset = NumberTool.roundDouble2(getCount() * getNow_npv());
 	}
 
 	/**

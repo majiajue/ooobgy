@@ -7,6 +7,7 @@
 package com.ooobgy.ifnote.dispbeans;
 
 import com.ooobgy.ifnote.entity.Inote_Deposit;
+import com.ooobgy.util.NumberTool;
 
 public class Disp_Deposit extends Inote_Deposit {
 	private Double asset;
@@ -17,8 +18,8 @@ public class Disp_Deposit extends Inote_Deposit {
 		super.setNote_time(inote.getNote_time());
 		super.setUser_id(inote.getUser_id());
 		super.setType(inote.getType());
-		super.setSum(inote.getSum());
-		super.setRate(inote.getRate());
+		super.setSum(NumberTool.roundDouble2(inote.getSum()));
+		super.setRate(NumberTool.roundDouble2(inote.getRate()));
 		super.setDep_time(inote.getDep_time());
 		super.setBank_name(inote.getBank_name());
 		super.setComment(inote.getComment());
@@ -26,8 +27,8 @@ public class Disp_Deposit extends Inote_Deposit {
 	}
 	
 	public void init(){
-		this.profit = getSum() * getRate() / 100;
-		this.asset = getSum() + this.profit;
+		this.profit = NumberTool.roundDouble2(getSum() * getRate() / 100);
+		this.asset = NumberTool.roundDouble2(getSum() + this.profit);
 	}
 
 	/**

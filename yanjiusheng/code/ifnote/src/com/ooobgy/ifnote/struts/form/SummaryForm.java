@@ -4,6 +4,9 @@
  */
 package com.ooobgy.ifnote.struts.form;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -40,12 +43,13 @@ import com.ooobgy.ifnote.entity.Inote_Futures;
 import com.ooobgy.ifnote.entity.Inote_Loan;
 import com.ooobgy.ifnote.entity.Inote_Stock;
 import com.ooobgy.ifnote.entity.User;
+import com.ooobgy.util.NumberTool;
 
-/** 
- * MyEclipse Struts
- * Creation date: 08-23-2011
+/**
+ * MyEclipse Struts Creation date: 08-23-2011
  * 
  * XDoclet definition:
+ * 
  * @struts.form name="summaryForm"
  */
 public class SummaryForm extends ActionForm {
@@ -71,17 +75,21 @@ public class SummaryForm extends ActionForm {
 	private List<Disp_Stock> disp_Stocks;
 	private Double sum_stock;
 	private Double earn_stock;
-	
 	private Double sum_total;
 	private Double earn_total;
 
 	private Integer userId;
-	
+
+	private String sumPieTitle;
 	private String sumPieData;
+	private String earnPieTitle;
 	private String earnPieData;
-	
-	/** 
+	private String ratePieTitle;
+	private String ratePieData;
+
+	/**
 	 * Method validate
+	 * 
 	 * @param mapping
 	 * @param request
 	 * @return ActionErrors
@@ -91,14 +99,15 @@ public class SummaryForm extends ActionForm {
 		ActionErrors errors = new ActionErrors();
 		ActionMessage actionMessage = new ActionMessage("list");
 		errors.add("list", actionMessage);
-		
+
 		reset(mapping, request);
-		
+
 		return errors;
 	}
 
-	/** 
+	/**
 	 * Method reset
+	 * 
 	 * @param mapping
 	 * @param request
 	 */
@@ -106,16 +115,95 @@ public class SummaryForm extends ActionForm {
 		HttpSession session = request.getSession();
 		User user = (User) session.getAttribute(SecretKey.USER_KEY);
 		this.userId = user.getId();
-		
+
 		init();
 		summary();
+		roundDoubles();
 		makePieData();
+	}
+
+	/**
+	 * 显示的时候保留两位小数
+	 */
+	private void roundDoubles() {
+		sum_cash = NumberTool.roundDouble2(sum_cash);
+		sum_deposit = NumberTool.roundDouble2(sum_deposit);
+		earn_deposit = NumberTool.roundDouble2(earn_deposit);
+		sum_fund = NumberTool.roundDouble2(sum_fund);
+		earn_fund = NumberTool.roundDouble2(earn_fund);
+		sum_futures = NumberTool.roundDouble2(sum_futures);
+		earn_futures = NumberTool.roundDouble2(earn_futures);
+		sum_loan = NumberTool.roundDouble2(sum_loan*(-1));
+		earn_loan = NumberTool.roundDouble2(earn_loan*(-1));
+		sum_stock = NumberTool.roundDouble2(sum_stock);
+		earn_stock = NumberTool.roundDouble2(earn_stock);
+		sum_total = NumberTool.roundDouble2(sum_total);
+		earn_total = NumberTool.roundDouble2(earn_total);
 	}
 
 	/**
 	 * 计算图表数据
 	 */
 	private void makePieData() {
+		makeSumPie();
+		makeEarnPie();
+	}
+
+	/**
+	 * 
+	 */
+	private void makeEarnPie() {
+		//防止负数溢出
+		Double earnDeposit = this.earn_deposit;
+		Double min = earnDeposit;
+		Double earnFund = this.earn_fund;
+		min = min < earnFund ? min : earnFund;
+		Double earnStock = this.earn_stock;
+		min = min < earnStock ? min : earnStock;
+		Double earnFutures = this.earn_futures;
+		min = min < earnFutures ? min : earnFutures;
+		Double earnLoan = this.earn_loan;
+		min = min < earnLoan ? min : earnLoan;
+		
+		if (min < 0) {
+			min = min * (-1);
+			earnDeposit = NumberTool.roundDouble2(earnDeposit + min);
+			earnFund = NumberTool.roundDouble2(earnFund + min);
+			earnStock = NumberTool.roundDouble2(earnStock + min);
+			earnFutures = NumberTool.roundDouble2(earnFutures + min);
+		}
+
+		StringBuilder earnSb = new StringBuilder();
+		earnSb.append("存款_").append(earnDeposit);
+		earnSb.append("-");
+		earnSb.append("基金_").append(earnFund);
+		earnSb.append("-");
+		earnSb.append("股票_").append(earnStock);
+		earnSb.append("-");
+		earnSb.append("期货_").append(earnFutures);
+		earnSb.append("-");
+		earnSb.append("贷款_").append(earnLoan);
+		
+		String earnString = earnSb.toString();
+		String earnTitle = "盈亏构成";
+		try {
+			earnString = URLEncoder.encode(earnString, "utf-8");
+			earnString = URLEncoder.encode(earnString, "utf-8");
+			earnTitle = URLEncoder.encode(earnTitle, "utf-8");
+			earnTitle = URLEncoder.encode(earnTitle, "utf-8");
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+			this.earnPieData = earnSb.toString();
+			this.earnPieTitle = "Your Structure of Profit";
+		}
+		this.earnPieData = earnString;
+		this.earnPieTitle = earnTitle;
+	}
+
+	/**
+	 * @return
+	 */
+	private void makeSumPie() {
 		StringBuilder sumSb = new StringBuilder();
 		sumSb.append("现金_").append(this.sum_cash);
 		sumSb.append("-");
@@ -126,33 +214,37 @@ public class SummaryForm extends ActionForm {
 		sumSb.append("股票_").append(this.sum_stock);
 		sumSb.append("-");
 		sumSb.append("期货_").append(this.sum_futures);
-		
-		StringBuilder earnSb = new StringBuilder();
-		earnSb.append("存款_").append(this.earn_deposit);
-		earnSb.append("-");
-		earnSb.append("基金_").append(this.earn_fund);
-		earnSb.append("-");
-		earnSb.append("股票_").append(this.earn_stock);
-		earnSb.append("-");
-		earnSb.append("期货_").append(this.earn_futures);
+		String sumString = sumSb.toString();
+		String sumTile = "资产构成";
+		try {
+			sumString = URLEncoder.encode(sumString, "utf-8");
+			sumString = URLEncoder.encode(sumString, "utf-8");
+			sumTile = URLEncoder.encode(sumTile, "utf-8");
+			sumTile = URLEncoder.encode(sumTile, "utf-8");
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+			this.sumPieData = sumSb.toString();
+			this.sumPieTitle = "Your Structure of Assets";
+		}
+		this.sumPieData = sumString;
+		this.sumPieTitle = sumTile;
 	}
 
 	/**
 	 * 
 	 */
 	private void summary() {
-		this.sum_total = this.sum_cash + this.sum_deposit
-							+ this.sum_fund + this.sum_futures
-							+ this.sum_loan + this.sum_stock;
+		this.sum_total = this.sum_cash + this.sum_deposit + this.sum_fund
+				+ this.sum_futures + this.sum_loan + this.sum_stock;
 		this.earn_total = this.earn_deposit + this.earn_fund
-							+ this.earn_futures + this.earn_loan
-							+ this.earn_stock;
+				+ this.earn_futures + this.earn_loan + this.earn_stock;
 	}
 
 	/**
 	 * 
 	 */
 	private void init() {
+		initLists();
 		initCash();
 		initDeposit();
 		initFund();
@@ -164,22 +256,34 @@ public class SummaryForm extends ActionForm {
 	/**
 	 * 
 	 */
+	private void initLists() {
+		this.disp_Cashs = new ArrayList<Disp_Cash>();
+		this.disp_Deposits = new ArrayList<Disp_Deposit>();
+		this.disp_Funds = new ArrayList<Disp_Fund>();
+		this.disp_Futures = new ArrayList<Disp_Futures>();
+		this.disp_Loans = new ArrayList<Disp_Loan>();
+		this.disp_Stocks = new ArrayList<Disp_Stock>();
+	}
+
+	/**
+	 * 
+	 */
 	private void initStock() {
 		this.earn_stock = 0.0;
 		this.sum_stock = 0.0;
-		
+
 		Inote_StockDao dao = new Inote_StockDaoImpl();
 		List<Inote_Stock> inotes = dao.findAllWithUid(userId);
 		int i = 0;
 		for (Inote_Stock inote : inotes) {
 			Disp_Stock dispStock = new Disp_Stock(inote);
 			dispStock.init();
-			if (i < 5) {//打印最新5条
+			if (i < 5) {// 打印最新5条
 				this.disp_Stocks.add(dispStock);
 			}
 			this.earn_stock += dispStock.getProfit();
 			this.sum_stock += dispStock.getAsset();
-			
+
 			i++;
 		}
 	}
@@ -190,7 +294,7 @@ public class SummaryForm extends ActionForm {
 	private void initLoan() {
 		this.earn_loan = 0.0;
 		this.sum_loan = 0.0;
-		
+
 		Inote_LoanDao dao = new Inote_LoanDaoImpl();
 		List<Inote_Loan> inotes = dao.findAllWithUid(userId);
 		int i = 0;
@@ -202,10 +306,10 @@ public class SummaryForm extends ActionForm {
 			}
 			this.earn_loan += dispLoan.getProfit();
 			this.sum_loan += dispLoan.getAsset();
-			
+
 			i++;
 		}
-		
+
 	}
 
 	/**
@@ -214,7 +318,7 @@ public class SummaryForm extends ActionForm {
 	private void initFutures() {
 		this.earn_futures = 0.0;
 		this.sum_futures = 0.0;
-		
+
 		Inote_FuturesDao dao = new Inote_FuturesDaoImpl();
 		List<Inote_Futures> inotes = dao.findAllWithUid(userId);
 		int i = 0;
@@ -226,7 +330,7 @@ public class SummaryForm extends ActionForm {
 			}
 			this.earn_futures += dispFutures.getProfit();
 			this.sum_futures += dispFutures.getProfit();
-			
+
 			i++;
 		}
 	}
@@ -237,7 +341,7 @@ public class SummaryForm extends ActionForm {
 	private void initFund() {
 		this.earn_fund = 0.0;
 		this.sum_fund = 0.0;
-		
+
 		Inote_FundDao dao = new Inote_FundDaoImpl();
 		List<Inote_Fund> inotes = dao.findAllWithUid(userId);
 		int i = 0;
@@ -249,10 +353,10 @@ public class SummaryForm extends ActionForm {
 			}
 			this.earn_fund += dispFund.getProfit();
 			this.sum_fund += dispFund.getAsset();
-			
+
 			i++;
 		}
-		
+
 	}
 
 	/**
@@ -261,7 +365,7 @@ public class SummaryForm extends ActionForm {
 	private void initDeposit() {
 		this.earn_deposit = 0.0;
 		this.sum_deposit = 0.0;
-		
+
 		Inote_DepositDao dao = new Inote_DepositDaoImpl();
 		List<Inote_Deposit> inotes = dao.findAllWithUid(userId);
 		int i = 0;
@@ -273,10 +377,10 @@ public class SummaryForm extends ActionForm {
 			}
 			this.earn_deposit += dispDeposit.getProfit();
 			this.sum_deposit += dispDeposit.getAsset();
-			
+
 			i++;
 		}
-		
+
 	}
 
 	/**
@@ -284,7 +388,7 @@ public class SummaryForm extends ActionForm {
 	 */
 	private void initCash() {
 		this.sum_cash = 0.0;
-		
+
 		Inote_CashDao dao = new Inote_CashDaoImpl();
 		List<Inote_Cash> inotes = dao.findAllWithUid(userId);
 		int i = 0;
@@ -295,10 +399,10 @@ public class SummaryForm extends ActionForm {
 				this.disp_Cashs.add(dispCash);
 			}
 			this.sum_cash += dispCash.getAccount();
-			
+
 			i++;
 		}
-		
+
 	}
 
 	/**
@@ -309,7 +413,8 @@ public class SummaryForm extends ActionForm {
 	}
 
 	/**
-	 * @param dispCashs the disp_Cashs to set
+	 * @param dispCashs
+	 *            the disp_Cashs to set
 	 */
 	public void setDisp_Cashs(List<Disp_Cash> dispCashs) {
 		disp_Cashs = dispCashs;
@@ -323,7 +428,8 @@ public class SummaryForm extends ActionForm {
 	}
 
 	/**
-	 * @param sumCash the sum_cash to set
+	 * @param sumCash
+	 *            the sum_cash to set
 	 */
 	public void setSum_cash(Double sumCash) {
 		sum_cash = sumCash;
@@ -337,7 +443,8 @@ public class SummaryForm extends ActionForm {
 	}
 
 	/**
-	 * @param dispDeposits the disp_Deposits to set
+	 * @param dispDeposits
+	 *            the disp_Deposits to set
 	 */
 	public void setDisp_Deposits(List<Disp_Deposit> dispDeposits) {
 		disp_Deposits = dispDeposits;
@@ -351,7 +458,8 @@ public class SummaryForm extends ActionForm {
 	}
 
 	/**
-	 * @param sumDeposit the sum_deposit to set
+	 * @param sumDeposit
+	 *            the sum_deposit to set
 	 */
 	public void setSum_deposit(Double sumDeposit) {
 		sum_deposit = sumDeposit;
@@ -365,7 +473,8 @@ public class SummaryForm extends ActionForm {
 	}
 
 	/**
-	 * @param earnDeposit the earn_deposit to set
+	 * @param earnDeposit
+	 *            the earn_deposit to set
 	 */
 	public void setEarn_deposit(Double earnDeposit) {
 		earn_deposit = earnDeposit;
@@ -379,7 +488,8 @@ public class SummaryForm extends ActionForm {
 	}
 
 	/**
-	 * @param dispFunds the disp_Funds to set
+	 * @param dispFunds
+	 *            the disp_Funds to set
 	 */
 	public void setDisp_Funds(List<Disp_Fund> dispFunds) {
 		disp_Funds = dispFunds;
@@ -393,7 +503,8 @@ public class SummaryForm extends ActionForm {
 	}
 
 	/**
-	 * @param sumFund the sum_fund to set
+	 * @param sumFund
+	 *            the sum_fund to set
 	 */
 	public void setSum_fund(Double sumFund) {
 		sum_fund = sumFund;
@@ -407,7 +518,8 @@ public class SummaryForm extends ActionForm {
 	}
 
 	/**
-	 * @param earnFund the earn_fund to set
+	 * @param earnFund
+	 *            the earn_fund to set
 	 */
 	public void setEarn_fund(Double earnFund) {
 		earn_fund = earnFund;
@@ -421,7 +533,8 @@ public class SummaryForm extends ActionForm {
 	}
 
 	/**
-	 * @param dispFutures the disp_Futures to set
+	 * @param dispFutures
+	 *            the disp_Futures to set
 	 */
 	public void setDisp_Futures(List<Disp_Futures> dispFutures) {
 		disp_Futures = dispFutures;
@@ -435,7 +548,8 @@ public class SummaryForm extends ActionForm {
 	}
 
 	/**
-	 * @param sumFutures the sum_futures to set
+	 * @param sumFutures
+	 *            the sum_futures to set
 	 */
 	public void setSum_futures(Double sumFutures) {
 		sum_futures = sumFutures;
@@ -449,7 +563,8 @@ public class SummaryForm extends ActionForm {
 	}
 
 	/**
-	 * @param earnFutures the earn_futures to set
+	 * @param earnFutures
+	 *            the earn_futures to set
 	 */
 	public void setEarn_futures(Double earnFutures) {
 		earn_futures = earnFutures;
@@ -463,7 +578,8 @@ public class SummaryForm extends ActionForm {
 	}
 
 	/**
-	 * @param dispLoans the disp_Loans to set
+	 * @param dispLoans
+	 *            the disp_Loans to set
 	 */
 	public void setDisp_Loans(List<Disp_Loan> dispLoans) {
 		disp_Loans = dispLoans;
@@ -477,7 +593,8 @@ public class SummaryForm extends ActionForm {
 	}
 
 	/**
-	 * @param sumLoan the sum_loan to set
+	 * @param sumLoan
+	 *            the sum_loan to set
 	 */
 	public void setSum_loan(Double sumLoan) {
 		sum_loan = sumLoan;
@@ -491,7 +608,8 @@ public class SummaryForm extends ActionForm {
 	}
 
 	/**
-	 * @param earnLoan the earn_loan to set
+	 * @param earnLoan
+	 *            the earn_loan to set
 	 */
 	public void setEarn_loan(Double earnLoan) {
 		earn_loan = earnLoan;
@@ -505,7 +623,8 @@ public class SummaryForm extends ActionForm {
 	}
 
 	/**
-	 * @param dispStocks the disp_Stocks to set
+	 * @param dispStocks
+	 *            the disp_Stocks to set
 	 */
 	public void setDisp_Stocks(List<Disp_Stock> dispStocks) {
 		disp_Stocks = dispStocks;
@@ -519,7 +638,8 @@ public class SummaryForm extends ActionForm {
 	}
 
 	/**
-	 * @param sumStock the sum_stock to set
+	 * @param sumStock
+	 *            the sum_stock to set
 	 */
 	public void setSum_stock(Double sumStock) {
 		sum_stock = sumStock;
@@ -533,7 +653,8 @@ public class SummaryForm extends ActionForm {
 	}
 
 	/**
-	 * @param earnStock the earn_stock to set
+	 * @param earnStock
+	 *            the earn_stock to set
 	 */
 	public void setEarn_stock(Double earnStock) {
 		earn_stock = earnStock;
@@ -547,7 +668,8 @@ public class SummaryForm extends ActionForm {
 	}
 
 	/**
-	 * @param sumTotal the sum_total to set
+	 * @param sumTotal
+	 *            the sum_total to set
 	 */
 	public void setSum_total(Double sumTotal) {
 		sum_total = sumTotal;
@@ -561,7 +683,8 @@ public class SummaryForm extends ActionForm {
 	}
 
 	/**
-	 * @param earnTotal the earn_total to set
+	 * @param earnTotal
+	 *            the earn_total to set
 	 */
 	public void setEarn_total(Double earnTotal) {
 		earn_total = earnTotal;
@@ -575,7 +698,8 @@ public class SummaryForm extends ActionForm {
 	}
 
 	/**
-	 * @param userId the userId to set
+	 * @param userId
+	 *            the userId to set
 	 */
 	public void setUserId(Integer userId) {
 		this.userId = userId;
@@ -589,7 +713,8 @@ public class SummaryForm extends ActionForm {
 	}
 
 	/**
-	 * @param sumPieData the sumPieData to set
+	 * @param sumPieData
+	 *            the sumPieData to set
 	 */
 	public void setSumPieData(String sumPieData) {
 		this.sumPieData = sumPieData;
@@ -603,9 +728,66 @@ public class SummaryForm extends ActionForm {
 	}
 
 	/**
-	 * @param earnPieData the earnPieData to set
+	 * @param earnPieData
+	 *            the earnPieData to set
 	 */
 	public void setEarnPieData(String earnPieData) {
 		this.earnPieData = earnPieData;
+	}
+
+	/**
+	 * @return the sumPieTitle
+	 */
+	public String getSumPieTitle() {
+		return sumPieTitle;
+	}
+
+	/**
+	 * @param sumPieTitle the sumPieTitle to set
+	 */
+	public void setSumPieTitle(String sumPieTitle) {
+		this.sumPieTitle = sumPieTitle;
+	}
+
+	/**
+	 * @return the earnPieTitle
+	 */
+	public String getEarnPieTitle() {
+		return earnPieTitle;
+	}
+
+	/**
+	 * @param earnPieTitle the earnPieTitle to set
+	 */
+	public void setEarnPieTitle(String earnPieTitle) {
+		this.earnPieTitle = earnPieTitle;
+	}
+
+	/**
+	 * @return the ratePieTitle
+	 */
+	public String getRatePieTitle() {
+		return ratePieTitle;
+	}
+
+	/**
+	 * @param ratePieTitle the ratePieTitle to set
+	 */
+	public void setRatePieTitle(String ratePieTitle) {
+		this.ratePieTitle = ratePieTitle;
+	}
+
+	/**
+	 * @return the ratePieData
+	 */
+	public String getRatePieData() {
+		return ratePieData;
+	}
+
+	/**
+	 * @param ratePieData the ratePieData to set
+	 */
+	public void setRatePieData(String ratePieData) {
+		this.ratePieData = ratePieData;
 	}
 }

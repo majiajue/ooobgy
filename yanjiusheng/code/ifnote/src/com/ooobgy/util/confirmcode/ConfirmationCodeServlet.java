@@ -119,7 +119,7 @@ public class ConfirmationCodeServlet extends HttpServlet {
 			// g.setColor(new Color(red,green,blue));
 			// 生成随机颜色(因为是做前景，所以偏深)
 			g.setColor(getRandColor(1, 100));
-			g.drawString(strRand, 13 * i + 6, 28);
+			g.drawString(strRand, 13 * i + 6, 24);
 
 			// 将产生的四个随机数组合在一起。
 			randomCode.append(strRand);

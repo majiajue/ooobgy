@@ -7,6 +7,7 @@
 package com.ooobgy.ifnote.dispbeans;
 
 import com.ooobgy.ifnote.entity.Inote_Futures;
+import com.ooobgy.util.NumberTool;
 
 public class Disp_Futures extends Inote_Futures {
 	private Double asset;
@@ -17,17 +18,18 @@ public class Disp_Futures extends Inote_Futures {
 		super.setNote_time(inote.getNote_time());
 		super.setUser_id(inote.getUser_id());
 		super.setName(inote.getName());
-		super.setPrice(inote.getPrice());
-		super.setSum(inote.getSum());
+		super.setPrice(NumberTool.roundDouble2(inote.getPrice()));
+		super.setSum(NumberTool.roundDouble2(inote.getSum()));
 		super.setComment(inote.getComment());
-		super.setNow_price(inote.getNow_price());
+		super.setNow_price(NumberTool.roundDouble2(inote.getNow_price()));
 	}
 
-	public void init(){
-		this.asset = getSum() * getNow_price();
-		this.profit = getSum() * (getNow_price() - getPrice());
+	public void init() {
+		this.asset = NumberTool.roundDouble2(getSum() * getNow_price());
+		this.profit = NumberTool.roundDouble2(getSum()
+				* (getNow_price() - getPrice()));
 	}
-	
+
 	/**
 	 * @return the asset
 	 */
@@ -36,7 +38,8 @@ public class Disp_Futures extends Inote_Futures {
 	}
 
 	/**
-	 * @param asset the asset to set
+	 * @param asset
+	 *            the asset to set
 	 */
 	public void setAsset(Double asset) {
 		this.asset = asset;
@@ -50,10 +53,11 @@ public class Disp_Futures extends Inote_Futures {
 	}
 
 	/**
-	 * @param profit the profit to set
+	 * @param profit
+	 *            the profit to set
 	 */
 	public void setProfit(Double profit) {
 		this.profit = profit;
 	}
-	
+
 }

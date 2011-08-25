@@ -47,25 +47,31 @@ td {
 		        </table></td>
 		      </tr>
 			  <tr>
-			    <td><table width="400" border="1" class="diantable">
+			    <td><table border="1" class="diantable">
 			      <tr>
-			        <td width="180">记录时间</td>
+			        <td width="160">记录时间</td>
 			        <td width="80">基金代码</td>
 			        <td width="100">基金名称</td>
 			        <td width="60">购入净值</td>
+                    <td width="60">当前净值</td>
 			        <td width="60">购入股数</td>
-			        <td width="250">说明</td>
+                    <td width="100">投资额</td>
+                    <td width="100">盈亏</td>
+			        <td width="200">说明</td>
 			        <td width="40">修改</td>
 			        <td width="40">删除</td>
 		          </tr>
-		          <bean:define id="inote_Funds" name="fundListForm" property="inote_Funds" type="java.util.List"></bean:define>			     
-			     <logic:iterate id="inote" name="inote_Funds" type="com.ooobgy.ifnote.entity.Inote_Fund" >
+		          <bean:define id="disp_Funds" name="fundListForm" property="disp_Funds" type="java.util.List"></bean:define>			     
+			     <logic:iterate id="inote" name="disp_Funds" type="com.ooobgy.ifnote.dispbeans.Disp_Fund" >
 				<tr>
 				<td><bean:write name="inote" property="note_time" /></td>
 				<td><bean:write name="inote" property="fund_code" /></td>
-				<td><bean:write name="inote" property="fund_code" /></td>
+				<td><bean:write name="inote" property="name" /></td>
 				<td><bean:write name="inote" property="npv" /></td>
+                <td><bean:write name="inote" property="now_npv" /></td>
 				<td><bean:write name="inote" property="count" /></td>
+                <td><bean:write name="inote" property="asset" /></td>
+				<td><bean:write name="inote" property="profit" /></td>
 				<td><bean:write name="inote" property="comment" /></td>
 				<td>
                     	<img src="/ifnote/images/edit.gif" width="16" height="16" alt="修改" style="cursor:hand;" 
