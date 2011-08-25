@@ -3,15 +3,16 @@ list页初步完成   done
 dao设置排序  done
 包装盈亏类 done
 汇总页 done
-注册页面
-修改页体验优化:收入、支出;美化
-个人管理
+注册页面done 
+修改页体验优化:收入、支出;美化 done
+个人管理done
 list体验优化,导入一份净值表  done
 如果使用净值表计算盈亏，则list和summary页都要调整  done
-list页显示汇总图和top5
-文档
-反向关联
+反向关联never
 期货逻辑增加用户定义当前单价,以得出盈亏  done
 通知系统
+list页显示汇总图和top5
+文档
+
 
 

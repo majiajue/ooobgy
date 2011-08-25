@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+ <class name="com.loquat.datavo.SimpleAdmin" table="SimpleAdmin">
+  <id name="adminId" type="integer">
+   <column name="adminId" sql-type="INTEGER"/>
+   <generator class="native"/>
+  </id>
+  <property name="userId" type="string">
+   <column name="userId" sql-type="VARCHAR(45)" unique="true"/>
+  </property>
+  <property generated="never" lazy="false" name="name" type="string">
+   <column name="name" sql-type="VARCHAR(20)"/>
+  </property>
+  <property generated="never" lazy="false" name="gender" type="boolean">
+   <column name="gender" sql-type="BOOLEAN"/>
+  </property>
+  <property generated="never" lazy="false" name="age" type="integer">
+   <column name="age" sql-type="INTEGER"/>
+  </property>
+  <property generated="never" lazy="false" name="password" type="string">
+   <column name="password" sql-type="VARCHAR(50)"/>
+  </property>
+  <set cascade="all" lazy="true" name="notices" outer-join="false" table="NoticeAdmin">
+   <key column="SimpleAdminId"/>
+   <one-to-many class="com.loquat.datavo.NoticeAdmin" not-found="ignore"/>
+  </set>
+ </class>
+</hibernate-mapping>
