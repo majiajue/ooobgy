@@ -2,11 +2,14 @@ package com.ooobgy.ifnote.struts.action;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
 import org.apache.struts.action.Action;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
+import com.ooobgy.ifnote.constants.SecretKey;
 import com.ooobgy.ifnote.dbctrler.dao.UserDao;
 import com.ooobgy.ifnote.dbctrler.daoimpl.UserDaoImpl;
 import com.ooobgy.ifnote.entity.User;
@@ -40,6 +43,9 @@ public class RegAction extends Action {
 		user.setPassword(regForm.getPsw());
 		userDao.save(user);
 		
-		return mapping.findForward("success");
+		HttpSession session = request.getSession();
+		session.setAttribute(SecretKey.USER_KEY, user);
+		
+		return mapping.findForward("userinfo");
 	}
 }

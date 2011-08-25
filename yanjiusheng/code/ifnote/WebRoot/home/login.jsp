@@ -72,8 +72,16 @@ body {
 <table width="100%"  align="center">
 <tr>
 <td align="center">
-  <a><img src="/ifnote/images/login.gif" width="62" height="22" alt="登录" style="cursor:hand;" onClick="javascript:document.loginForm.submit();">
-  </a>
+<table width="100%" border="0">
+  <tr>
+    <td align="right"><a><img src="/ifnote/images/login_ico.png"  alt="登录" style="cursor:hand;" onClick="javascript:document.loginForm.submit();">
+  </a>&nbsp;&nbsp;</td>
+    <td align="left">&nbsp;&nbsp;<a><img src="/ifnote/images/reg_ico.png"  alt="注册" style="cursor:hand;" onClick="window.location.href('/ifnote/home/reg.jsp')">
+  </a></td>
+  </tr>
+</table>
+
+  
   </td>
   </tr>
   </table>

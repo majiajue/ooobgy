@@ -7,13 +7,49 @@
 		<title>JSP for NoteFundForm form</title>
 	</head>
 	<body>
-		<html:form action="/noteFund">
-			fund_code : <html:text property="fund_code"/><html:errors property="fund_code"/><br/>
-			count : <html:text property="count"/><html:errors property="count"/><br/>
-			npv : <html:text property="npv"/><html:errors property="npv"/><br/>
-			comment : <html:text property="comment"/><html:errors property="comment"/><br/>
-			<html:submit/><html:cancel/>
-		</html:form>
+		<html:form action="/noteFund" styleId="noteFundForm">
+        <p align="center"><img src="/ifnote/images/edit_fund.png" width="597" height="121" alt="基金编辑"> </p>
+        <hr>
+        <table width="100%" border="0">
+          <tr>
+            <td><div align="center"><table width="100%" border="0">
+  <tr>
+    <td><div align="right">基金代码：</div></td>
+    <td><div align="left">
+      <html:text property="fund_code"/>
+      <html:errors property="fund_code"/>
+    </div></td>
+  </tr>
+  <tr>
+    <td><div align="right">购买净值：</div></td>
+    <td><div align="left">
+      <html:text property="npv"/>
+      <html:errors property="npv"/>
+    </div></td>
+  </tr>
+  <tr>
+    <td><div align="right">购买股数：</div></td>
+    <td><div align="left">
+      <html:text property="count"/>
+      <html:errors property="count"/>
+    </div></td>
+  </tr>
+  <tr>
+    <td><div align="right">说明：</div></td>
+    <td><div align="left">
+      <html:textarea property="comment"/>
+      <html:errors property="comment"/>
+    </div></td>
+  </tr>
+</table>
+</div></td>
+          </tr>
+          <tr>
+            <td><div align="center"><img src="/ifnote/images/submit.png" width="72" height="34"
+             style="cursor:hand;" onClick="javascript:document.noteFundForm.submit();"></div></td>
+          </tr>
+        </table>
+	</html:form>
 	</body>
 </html>
 

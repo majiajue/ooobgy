@@ -7,12 +7,51 @@
 		<title>JSP for NoteStockForm form</title>
 	</head>
 	<body>
-		<html:form action="/noteStock">
-			count : <html:text property="count"/><html:errors property="count"/><br/>
-			smv : <html:text property="smv"/><html:errors property="smv"/><br/>
-			stock_code : <html:text property="stock_code"/><html:errors property="stock_code"/><br/>
-			comment : <html:textarea property="comment"/><html:errors property="comment"/><br/>
-			<html:submit/><html:cancel/>
+		<html:form action="/noteStock" styleId="noteStockForm">
+        <p align="center"><img src="/ifnote/images/edit_stock.png" width="595" height="120"> 
+        </p>
+        <hr>
+        <table width="100%" border="0">
+          <tr>
+            <td><div align="center">
+            <table width="100%" border="0">
+  <tr>
+    <td><div align="right">股票代码：</div></td>
+    <td><div align="left">
+      <html:text property="stock_code"/>
+      <html:errors property="stock_code"/>
+    </div></td>
+  </tr>
+  <tr>
+    <td><div align="right">购买净值：</div></td>
+    <td><div align="left">
+      <html:text property="smv"/>
+      <html:errors property="smv"/>
+    </div></td>
+  </tr>
+  <tr>
+    <td><div align="right">购买股数：</div></td>
+    <td><div align="left">
+      <html:text property="count"/>
+      <html:errors property="count"/>
+    </div></td>
+  </tr>
+  <tr>
+    <td><div align="right">说明：</div></td>
+    <td><div align="left">
+      <html:textarea property="comment"/>
+      <html:errors property="comment"/>
+    </div></td>
+  </tr>
+</table>
+
+            </div></td>
+          </tr>
+          <tr>
+            <td><div align="center"><img src="/ifnote/images/submit.png" width="72" height="34"
+            style="cursor:hand;" onClick="javascript:document.noteStockForm.submit();"></div></td>
+          </tr>
+        </table>
 		</html:form>
 	</body>
 </html>

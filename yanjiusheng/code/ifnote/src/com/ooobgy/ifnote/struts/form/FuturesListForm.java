@@ -64,8 +64,7 @@ public class FuturesListForm extends ActionForm implements ListForm{
 			HttpServletRequest request) {
 		ActionErrors errors = new ActionErrors();
 		ActionMessage actionMessage = new ActionMessage("list");
-		errors.add("list", actionMessage);
-		
+		errors.add("list", actionMessage);		
 		reset(mapping, request);
 		
 		return errors;
@@ -152,5 +151,19 @@ public class FuturesListForm extends ActionForm implements ListForm{
 			disp.init();
 			this.disp_Futures.add(disp);
 		}
+	}
+
+	/**
+	 * @return the disp_Futures
+	 */
+	public List<Disp_Futures> getDisp_Futures() {
+		return disp_Futures;
+	}
+
+	/**
+	 * @param dispFutures the disp_Futures to set
+	 */
+	public void setDisp_Futures(List<Disp_Futures> dispFutures) {
+		disp_Futures = dispFutures;
 	}
 }
