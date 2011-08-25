@@ -20,6 +20,8 @@
     <form-bean name="stockListForm" type="com.ooobgy.ifnote.struts.form.StockListForm" />
     <form-bean name="noteDepositForm" type="com.ooobgy.ifnote.struts.form.NoteDepositForm" />
     <form-bean name="summaryForm" type="com.ooobgy.ifnote.struts.form.SummaryForm" />
+    <form-bean name="modifyUserPswForm" type="com.ooobgy.ifnote.struts.form.ModifyUserPswForm" />
+    <form-bean name="modifyUseInfoForm" type="com.ooobgy.ifnote.struts.form.ModifyUseInfoForm" />
 
   </form-beans>
 
@@ -35,6 +37,7 @@
 	<forward name="stockList" path="/user/stockList.jsp" />
     <forward name="delok" path="/component/delok.jsp" />
     <forward name="error" path="/error/error.html" />
+    <forward name="modifyOk" path="/modify/modifyOk.jsp" />
   </global-forwards>
 
   <action-mappings >
@@ -181,6 +184,24 @@
       path="/summary"
       scope="request"
       type="com.ooobgy.ifnote.struts.action.SummaryAction">
+      <set-property property="cancellable" value="true" />
+    </action>
+    <action
+      attribute="modifyUserPswForm"
+      input="/modify/modifyUserPsw.jsp"
+      name="modifyUserPswForm"
+      path="/modifyUserPsw"
+      scope="request"
+      type="com.ooobgy.ifnote.struts.action.ModifyUserPswAction">
+      <set-property property="cancellable" value="true" />
+    </action>
+    <action
+      attribute="modifyUseInfoForm"
+      input="/modify/modifyUseInfo.jsp"
+      name="modifyUseInfoForm"
+      path="/modifyUseInfo"
+      scope="request"
+      type="com.ooobgy.ifnote.struts.action.ModifyUseInfoAction">
       <set-property property="cancellable" value="true" />
     </action>
     

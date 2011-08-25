@@ -9,9 +9,21 @@
   <StrutsActivity path="/noteStock.do" location="950,850" dimension="325,104" />
   <StrutsActivity path="/cashList.do" location="350,1050" dimension="311,104" />
   <StrutsActivity path="/delNote.do" location="1250,550" dimension="312,104" />
+  <StrutsActivity path="/depositList.do" location="1250,1050" dimension="328,104" />
+  <StrutsActivity path="/fundList.do" location="1250,1250" dimension="311,104" />
+  <StrutsActivity path="/futuresList.do" location="350,1450" dimension="325,104" />
+  <StrutsActivity path="/loanList.do" location="1250,1450" dimension="311,104" />
+  <StrutsActivity path="/stockList.do" location="350,1650" dimension="315,104" />
+  <StrutsActivity path="/noteDeposit.do" location="950,1850" dimension="338,104" />
+  <StrutsActivity path="/summary.do" location="1550,1850" dimension="318,104" />
   <StrutsActivity path="userinfo;6" location="165,180" dimension="190,72" />
   <StrutsActivity path="success;6" location="50,350" dimension="118,72" />
   <StrutsActivity path="cashList;6" location="60,1185" dimension="143,87" />
+  <StrutsActivity path="depositList;6" location="1250,1650" dimension="161,87" />
+  <StrutsActivity path="fundList;6" location="1550,1650" dimension="143,87" />
+  <StrutsActivity path="futuresList;6" location="50,1750" dimension="157,87" />
+  <StrutsActivity path="loanList;6" location="350,1850" dimension="142,87" />
+  <StrutsActivity path="stockList;6" location="650,1850" dimension="148,87" />
   <StrutsActivity path="delok;6" location="1358,812" dimension="150,100" />
   <StrutsActivity path="error;6" location="391,276" dimension="150,100" />
   <StrutsActivity path="/home/login.jsp" location="650,450" dimension="130,48" />
@@ -23,30 +35,24 @@
   <StrutsActivity path="/inote/noteStock.jsp" location="50,1050" dimension="149,53" />
   <StrutsActivity path="/user/cashList.jsp" location="950,1050" dimension="132,53" />
   <StrutsActivity path="/component/delok.jsp" location="350,1250" dimension="161,53" />
+  <StrutsActivity path="/user/depositList.jsp" location="950,1250" dimension="150,53" />
+  <StrutsActivity path="/user/fundList.jsp" location="50,1350" dimension="132,53" />
+  <StrutsActivity path="/user/futuresList.jsp" location="950,1450" dimension="146,53" />
+  <StrutsActivity path="/user/loanList.jsp" location="50,1550" dimension="131,53" />
+  <StrutsActivity path="/user/stockList.jsp" location="950,1650" dimension="137,53" />
+  <StrutsActivity path="/inote/noteDeposit.jsp" location="650,550" dimension="172,48" />
+  <StrutsActivity path="/user/summary.jsp" location="50,1950" dimension="140,53" />
   <StrutsActivity path="/component/userInfo.jsp" location="360,120" dimension="178,48" />
   <StrutsActivity path="/success.jsp" location="240,345" dimension="112,48" />
   <StrutsActivity path="/error/error.html" location="650,1250" dimension="130,53" />
   <StrutsActivity path="/form/login.jsp" location="350,50" dimension="130,48" />
   <StrutsActivity path="/component/userInfo.jsp/userInfo.jsp" location="465,210" dimension="150,100" />
-  <StrutsActivity path="/inote/noteDeposit.jsp" location="650,550" dimension="172,48" />
-  <StrutsActivity path="/depositList.do" location="1250,1050" dimension="328,104" />
-  <StrutsActivity path="/user/depositList.jsp" location="950,1250" dimension="150,53" />
-  <StrutsActivity path="/fundList.do" location="1250,1250" dimension="311,104" />
-  <StrutsActivity path="/user/fundList.jsp" location="50,1350" dimension="132,53" />
-  <StrutsActivity path="/futuresList.do" location="350,1450" dimension="325,104" />
-  <StrutsActivity path="/user/futuresList.jsp" location="950,1450" dimension="146,53" />
-  <StrutsActivity path="/loanList.do" location="1250,1450" dimension="311,104" />
-  <StrutsActivity path="/user/loanList.jsp" location="50,1550" dimension="131,53" />
-  <StrutsActivity path="/stockList.do" location="350,1650" dimension="315,104" />
-  <StrutsActivity path="/user/stockList.jsp" location="950,1650" dimension="137,53" />
-  <StrutsActivity path="depositList;6" location="1250,1650" dimension="161,87" />
-  <StrutsActivity path="fundList;6" location="1550,1650" dimension="143,87" />
-  <StrutsActivity path="futuresList;6" location="50,1750" dimension="157,87" />
-  <StrutsActivity path="loanList;6" location="350,1850" dimension="142,87" />
-  <StrutsActivity path="stockList;6" location="650,1850" dimension="148,87" />
-  <StrutsActivity path="/noteDeposit.do" location="950,1850" dimension="338,104" />
-  <StrutsActivity path="/summary.do" location="1550,1850" dimension="318,104" />
-  <StrutsActivity path="/user/summary.jsp" location="50,1950" dimension="140,53" />
+  <StrutsActivity path="/modifyUserPsw.do" location="1850,650" dimension="354,104" />
+  <StrutsActivity path="/modify/modifyUserPsw.jsp" location="1850,850" dimension="191,53" />
+  <StrutsActivity path="/modifyUseInfo.do" location="1850,1050" dimension="350,104" />
+  <StrutsActivity path="/modify/modifyUseInfo.jsp" location="1850,1250" dimension="187,53" />
+  <StrutsActivity path="modifyOk;6" location="-75,425" dimension="150,100" />
+  <StrutsActivity path="/modify/modifyOk.jsp" location="1850,1650" dimension="159,53" />
   <StrutsTransition id="/user/cashList.jsp,null,/cashList.do,2" routingType="0">
     <AutomaticBendpoints>
       <AbsolutePoint location="986,1103" />
@@ -68,6 +74,14 @@
       <AbsolutePoint location="372,613" />
     </AutomaticBendpoints>
   </StrutsTransition>
+  <StrutsTransition id="/user/depositList.jsp,null,/depositList.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1100,1276" />
+      <AbsolutePoint location="1202,1276" />
+      <AbsolutePoint location="1202,1088" />
+      <AbsolutePoint location="1250,1088" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
   <StrutsTransition id="/inote/noteDeposit.jsp,null,/noteDeposit.do,2" routingType="0">
     <AutomaticBendpoints>
       <AbsolutePoint location="650,574" />
@@ -75,14 +89,6 @@
       <AbsolutePoint location="447,1029" />
       <AbsolutePoint location="1112,1029" />
       <AbsolutePoint location="1112,1850" />
-    </AutomaticBendpoints>
-  </StrutsTransition>
-  <StrutsTransition id="/user/depositList.jsp,null,/depositList.do,2" routingType="0">
-    <AutomaticBendpoints>
-      <AbsolutePoint location="1100,1276" />
-      <AbsolutePoint location="1202,1276" />
-      <AbsolutePoint location="1202,1088" />
-      <AbsolutePoint location="1250,1088" />
     </AutomaticBendpoints>
   </StrutsTransition>
   <StrutsTransition id="loanList;6,null,/user/loanList.jsp,1" routingType="0">
@@ -123,10 +129,24 @@
       <AbsolutePoint location="1023,1503" />
     </AutomaticBendpoints>
   </StrutsTransition>
+  <StrutsTransition id="modifyOk;6,null,/modify/modifyOk.jsp,1" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="0,525" />
+      <AbsolutePoint location="0,2078" />
+      <AbsolutePoint location="1929,2078" />
+      <AbsolutePoint location="1929,1703" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
   <StrutsTransition id="/user/futuresList.jsp,null,/futuresList.do,2" routingType="0">
     <AutomaticBendpoints>
       <AbsolutePoint location="950,1476" />
       <AbsolutePoint location="675,1476" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/modify/modifyUseInfo.jsp,null,/modifyUseInfo.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1943,1250" />
+      <AbsolutePoint location="1943,1154" />
     </AutomaticBendpoints>
   </StrutsTransition>
   <StrutsTransition id="delok;6,null,/component/delok.jsp,1" routingType="0">
@@ -146,11 +166,11 @@
   </StrutsTransition>
   <StrutsTransition id="/home/login.jsp,null,/login.do,2" routingType="0">
     <AutomaticBendpoints>
-      <AbsolutePoint location="715,498" />
-      <AbsolutePoint location="715,513" />
-      <AbsolutePoint location="-25,513" />
-      <AbsolutePoint location="-25,95" />
-      <AbsolutePoint location="135,95" />
+      <AbsolutePoint location="650,474" />
+      <AbsolutePoint location="630,474" />
+      <AbsolutePoint location="630,-30" />
+      <AbsolutePoint location="210,-30" />
+      <AbsolutePoint location="210,45" />
     </AutomaticBendpoints>
   </StrutsTransition>
   <StrutsTransition id="error;6,null,/error/error.html,1" routingType="0">
@@ -209,6 +229,12 @@
     <AutomaticBendpoints>
       <AbsolutePoint location="168,369" />
       <AbsolutePoint location="240,369" />
+    </AutomaticBendpoints>
+  </StrutsTransition>
+  <StrutsTransition id="/modify/modifyUserPsw.jsp,null,/modifyUserPsw.do,2" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="1945,850" />
+      <AbsolutePoint location="1945,754" />
     </AutomaticBendpoints>
   </StrutsTransition>
   <StrutsTransition id="stockList;6,null,/user/stockList.jsp,1" routingType="0">
