@@ -96,8 +96,10 @@ public class ModifyUseInfoForm extends ActionForm {
 	 * @param request
 	 */
 	public void reset(ActionMapping mapping, HttpServletRequest request) {
-		this.phone = "";
-		this.email = "";
+		HttpSession session = request.getSession();
+		User user = (User) session.getAttribute(SecretKey.USER_KEY);
+		this.phone = user.getPhoneNum();
+		this.email = user.getEmail();
 		this.psw = "";
 		super.reset(mapping, request);
 	}
