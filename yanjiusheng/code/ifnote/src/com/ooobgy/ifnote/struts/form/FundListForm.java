@@ -5,6 +5,7 @@
 package com.ooobgy.ifnote.struts.form;
 
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -18,8 +19,10 @@ import org.apache.struts.action.ActionMessage;
 import com.ooobgy.ifnote.constants.SecretKey;
 import com.ooobgy.ifnote.dbctrler.dao.Inote_FundDao;
 import com.ooobgy.ifnote.dbctrler.daoimpl.Inote_FundDaoImpl;
+import com.ooobgy.ifnote.dispbeans.Disp_Fund;
 import com.ooobgy.ifnote.entity.Inote_Fund;
 import com.ooobgy.ifnote.entity.User;
+import com.ooobgy.ifnote.struts.form.tpl.ListForm;
 
 /** 
  * MyEclipse Struts
@@ -28,7 +31,7 @@ import com.ooobgy.ifnote.entity.User;
  * XDoclet definition:
  * @struts.form name="fundListForm"
  */
-public class FundListForm extends ActionForm {
+public class FundListForm extends ActionForm implements ListForm {
 	/*
 	 * Generated fields
 	 */
@@ -45,6 +48,7 @@ public class FundListForm extends ActionForm {
 	private String endTime;
 	
 	private List<Inote_Fund> inote_Funds;
+	private List<Disp_Fund> disp_Funds;
 
 	/*
 	 * Generated Methods
@@ -85,8 +89,21 @@ public class FundListForm extends ActionForm {
 			startTime = "";
 			endTime = "";
 		}
+		makeDispBeans();
 		
 		super.reset(mapping, request);
+	}
+
+	/* (non-Javadoc)
+	 * @see com.ooobgy.ifnote.struts.form.ListForm#makeDispBeans()
+	 */
+	public void makeDispBeans() {
+		this.disp_Funds = new ArrayList<Disp_Fund>();
+		for (Inote_Fund inote : inote_Funds) {
+			Disp_Fund disp = new Disp_Fund(inote);
+			disp.init();
+			this.disp_Funds.add(disp);
+		}
 	}
 
 	/** 
@@ -133,5 +150,19 @@ public class FundListForm extends ActionForm {
 	 */
 	public void setInote_Funds(List<Inote_Fund> inoteFunds) {
 		inote_Funds = inoteFunds;
+	}
+
+	/**
+	 * @return the disp_Funds
+	 */
+	public List<Disp_Fund> getDisp_Funds() {
+		return disp_Funds;
+	}
+
+	/**
+	 * @param dispFunds the disp_Funds to set
+	 */
+	public void setDisp_Funds(List<Disp_Fund> dispFunds) {
+		disp_Funds = dispFunds;
 	}
 }

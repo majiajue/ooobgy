@@ -5,6 +5,7 @@
 package com.ooobgy.ifnote.struts.form;
 
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -18,8 +19,10 @@ import org.apache.struts.action.ActionMessage;
 import com.ooobgy.ifnote.constants.SecretKey;
 import com.ooobgy.ifnote.dbctrler.dao.Inote_StockDao;
 import com.ooobgy.ifnote.dbctrler.daoimpl.Inote_StockDaoImpl;
+import com.ooobgy.ifnote.dispbeans.Disp_Stock;
 import com.ooobgy.ifnote.entity.Inote_Stock;
 import com.ooobgy.ifnote.entity.User;
+import com.ooobgy.ifnote.struts.form.tpl.ListForm;
 
 /** 
  * MyEclipse Struts
@@ -28,7 +31,7 @@ import com.ooobgy.ifnote.entity.User;
  * XDoclet definition:
  * @struts.form name="stockListForm"
  */
-public class StockListForm extends ActionForm {
+public class StockListForm extends ActionForm implements ListForm {
 	/*
 	 * Generated fields
 	 */
@@ -45,6 +48,7 @@ public class StockListForm extends ActionForm {
 	private String endTime;
 	
 	private List<Inote_Stock> inote_Stocks;
+	private List<Disp_Stock> disp_Stocks;
 
 	/*
 	 * Generated Methods
@@ -85,6 +89,7 @@ public class StockListForm extends ActionForm {
 			startTime = "";
 			endTime = "";
 		}
+		makeDispBeans();
 		
 		super.reset(mapping, request);
 	}
@@ -133,5 +138,32 @@ public class StockListForm extends ActionForm {
 	 */
 	public void setInote_Stocks(List<Inote_Stock> inoteStocks) {
 		inote_Stocks = inoteStocks;
+	}
+
+	/**
+	 * @return the disp_Stocks
+	 */
+	public List<Disp_Stock> getDisp_Stocks() {
+		return disp_Stocks;
+	}
+
+	/**
+	 * @param dispStocks the disp_Stocks to set
+	 */
+	public void setDisp_Stocks(List<Disp_Stock> dispStocks) {
+		disp_Stocks = dispStocks;
+	}
+
+	/* (non-Javadoc)
+	 * @see com.ooobgy.ifnote.struts.form.tpl.ListForm#makeDispBeans()
+	 */
+	public void makeDispBeans() {
+		this.disp_Stocks = new ArrayList<Disp_Stock>();
+		for (Inote_Stock inote : inote_Stocks) {
+			Disp_Stock disp = new Disp_Stock(inote);
+			disp.init();
+			this.disp_Stocks.add(disp);
+		}
+		
 	}
 }

@@ -5,6 +5,7 @@
 package com.ooobgy.ifnote.struts.form;
 
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -18,8 +19,10 @@ import org.apache.struts.action.ActionMessage;
 import com.ooobgy.ifnote.constants.SecretKey;
 import com.ooobgy.ifnote.dbctrler.dao.Inote_FuturesDao;
 import com.ooobgy.ifnote.dbctrler.daoimpl.Inote_FuturesDaoImpl;
+import com.ooobgy.ifnote.dispbeans.Disp_Futures;
 import com.ooobgy.ifnote.entity.Inote_Futures;
 import com.ooobgy.ifnote.entity.User;
+import com.ooobgy.ifnote.struts.form.tpl.ListForm;
 
 /** 
  * MyEclipse Struts
@@ -28,7 +31,7 @@ import com.ooobgy.ifnote.entity.User;
  * XDoclet definition:
  * @struts.form name="futuresListForm"
  */
-public class FuturesListForm extends ActionForm {
+public class FuturesListForm extends ActionForm implements ListForm{
 	/*
 	 * Generated fields
 	 */
@@ -45,6 +48,7 @@ public class FuturesListForm extends ActionForm {
 	private String endTime;
 	
 	private List<Inote_Futures> inote_Futures;
+	private List<Disp_Futures> disp_Futures;
 
 	/*
 	 * Generated Methods
@@ -85,6 +89,8 @@ public class FuturesListForm extends ActionForm {
 			startTime = "";
 			endTime = "";
 		}
+		
+		makeDispBeans();
 		
 		super.reset(mapping, request);
 	}
@@ -133,5 +139,18 @@ public class FuturesListForm extends ActionForm {
 	 */
 	public void setInote_Futures(List<Inote_Futures> inoteFutures) {
 		inote_Futures = inoteFutures;
+	}
+
+	/* (non-Javadoc)
+	 * @see com.ooobgy.ifnote.struts.form.tpl.ListForm#makeDispBeans()
+	 */
+	public void makeDispBeans() {
+		this.disp_Futures = new ArrayList<Disp_Futures>();
+		
+		for (Inote_Futures inote : inote_Futures) {
+			Disp_Futures disp = new Disp_Futures(inote);
+			disp.init();
+			this.disp_Futures.add(disp);
+		}
 	}
 }
