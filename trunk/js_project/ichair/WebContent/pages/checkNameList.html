@@ -32,7 +32,11 @@ document.onreadystatechange=fLoad;
 <div align="center">
   <table border="0">
     <tr>
-      <td><textarea cols="20" rows="20" id="nameList" onpropertychange="nameListChange();">导入名单中...</textarea></td>
+      <td cellpadding="0"><div class="linenumshell">
+        <textarea name="lineRuler" cols="5" rows="20" id="lineRuler" class="linenum" readonly>学生编号导入中...</textarea>  
+      </div>
+<textarea cols="20" rows="20" id="nameList" onpropertychange="nameListChange();" onscroll="autoScrollLineNum();" class="namelist">导入名单中...</textarea>
+      </td>
       <td width="350">
   <table border="0" align="left">
   <tr>

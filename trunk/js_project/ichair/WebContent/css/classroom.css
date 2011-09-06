@@ -78,3 +78,23 @@
 	font-family: "微软雅黑";
 	font-size: 16px;
 }
+.linenum {
+	color: #1C75FB;
+	background-color:#C4E9FF;
+	text-align: right;
+	overflow: hidden;
+	border-right: 0px;
+	margin:0px; 
+	padding:0px;
+	border:1px solid #7f9db9;
+}
+.namelist {
+	border-left: 0px;
+	margin:0px; 
+	padding:0px 0px 0px 45px;
+	border:1px solid #7f9db9;
+}
+.linenumshell {
+	position:absolute;
+	z-index: 1;
+}
