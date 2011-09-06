@@ -67,32 +67,28 @@ function loadNameListURL(fileURL){
 	loadNameList(filePath);
 }
 
+function autoScrollLineNum(){
+	document.getElementById("lineRuler").scrollTop = document.getElementById("nameList").scrollTop;
+}
+
 function countStudents(){
 	var names = document.getElementById("nameList").value;
 	var nameList = names.split('\n');
 	var cnt = 0;
-//	var beautyList = "";
-	var lineNumReg = new RegExp("^[0-9]+\\.","g");
+	var lineNum = "";
 	for (var i in nameList) {
-//		if (beautyList != "") {
-//			beautyList = beautyList + "\n";
-//		}
+		if (lineNum != "") {
+			lineNum = lineNum + "\n";
+		}
 		var name = nameList[i].trim();
 		if (name != '') {
 			cnt ++;
-//			if (name.match(lineNumReg) == null) {
-//				name = cnt + ". " + name;
-//			} else {
-//				name = name.replace(lineNumReg, cnt + ".");
-//			}
-			//beautyList = beautyList + name;
+			lineNum = lineNum + cnt;
 		} 
-//		else {
-//			beautyList = beautyList + "\n";
-//		}
 	}
 	document.getElementById("studentCnt").innerHTML = cnt;
-	//document.getElementById("nameList").value = beautyList;
+	document.getElementById("lineRuler").value = lineNum + "\n";
+	autoScrollLineNum();
 }
 
 function checkStudentsCnt(){
