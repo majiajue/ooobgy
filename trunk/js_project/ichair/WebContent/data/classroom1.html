@@ -1,0 +1,26 @@
+<link href="../css/classroom.css" rel="stylesheet" type="text/css" />
+
+<DIV id=class_show>
+<TABLE id=class_tab border=1 width="306" bordercolor="#D9E1FF" cellspacing="0">
+<TBODY id=room>
+<TR id=col_ruler>
+<TD>&nbsp; </TD>
+<TD id=colr_1 class=colRuler><SPAN id=colrn_1>1</SPAN></TD>
+<TD id=colr_2 class=colRuler><SPAN id=colrn_2>2</SPAN></TD>
+<TD id=colr_3 class=colRuler><SPAN id=colrn_3>3</SPAN></TD></TR>
+<TR id=str_1>
+<TD id=rowr_1 class=rowRuler><SPAN id=rowrn_1>1</SPAN></TD>
+<TD id=st_1_1d class=sfloor onmouseover="inRuler(1, 1)" onmouseout="outRuler(1, 1)" onclick="modifyChair('st_1_1');"><SPAN id=st_1_1>&nbsp;</SPAN></TD>
+<TD id=st_1_2d class=chair onmouseover="inRuler(1, 2)" onmouseout="outRuler(1, 2)" onclick="modifyChair('st_1_2');"><SPAN id=st_1_2>&nbsp;</SPAN></TD>
+<TD id=st_1_3d class=sfloor onmouseover="inRuler(1, 3)" onmouseout="outRuler(1, 3)" onclick="modifyChair('st_1_3');"><SPAN id=st_1_3>&nbsp;</SPAN></TD></TR>
+<TR id=str_2>
+<TD id=rowr_2 class=rowRuler><SPAN id=rowrn_2>2</SPAN></TD>
+<TD id=st_2_1d class=sfloor onmouseover="inRuler(2, 1)" onmouseout="outRuler(2, 1)" onclick="modifyChair('st_2_1');"><SPAN id=st_2_1>&nbsp;</SPAN></TD>
+<TD id=st_2_2d class=chair onmouseover="inRuler(2, 2)" onmouseout="outRuler(2, 2)" onclick="modifyChair('st_2_2');"><SPAN id=st_2_2>&nbsp;</SPAN></TD>
+<TD id=st_2_3d class=chair onmouseover="inRuler(2, 3)" onmouseout="outRuler(2, 3)" onclick="modifyChair('st_2_3');"><SPAN id=st_2_3>&nbsp;</SPAN></TD></TR>
+<TR id=str_3>
+<TD id=rowr_3 class=rowRuler><SPAN id=rowrn_3>3</SPAN></TD>
+<TD id=st_3_1d class=sfloor onmouseover="inRuler(3, 1)" onmouseout="outRuler(3, 1)" onclick="modifyChair('st_3_1');"><SPAN id=st_3_1>&nbsp;</SPAN></TD>
+<TD id=st_3_2d class=chair onmouseover="inRuler(3, 2)" onmouseout="outRuler(3, 2)" onclick="modifyChair('st_3_2');"><SPAN id=st_3_2>&nbsp;</SPAN></TD>
+<TD id=st_3_3d class=sfloor onmouseover="inRuler(3, 3)" onmouseout="outRuler(3, 3)" onclick="modifyChair('st_3_3');"><SPAN id=st_3_3>&nbsp;</SPAN></TD></TR></TBODY></TABLE></DIV>
+<DIV id=classMem><INPUT id=colCnt value=3 type=hidden name=colCnt> <INPUT id=rowCnt value=3 type=hidden name=rowCnt> <INPUT id=chairCnt value=4 type=hidden name=chairCnt> </DIV>

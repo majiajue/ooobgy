@@ -1,0 +1,68 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>ooobgy排座系统</title>
+<object   id="fileDialog"   width="0px"   height="0px"   classid="clsid:F9043C85-F6F2-101A-A3C9-08002B2F49FB"   codebase="http://activex.microsoft.com/controls/vb5/comdlg32.cab">   
+  </object>
+<link href="../css/classroom.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="../js/nameListChecker.js"></script>
+<script type="text/javascript">
+function fLoad(){
+    if (document.readyState=="complete") {
+        pageLoad();
+	}
+}
+
+document.onreadystatechange=fLoad;
+</script>
+</head>
+<body>
+<div align="center"><img src="../images/title.png" width="500" height="70"></div>
+<hr/>
+<table border="0">
+  <tr>
+    <td width='300'><font face="微软雅黑" size="5">第二步，确认名单</font></td>
+    <td><img src="../images/pre.png" width="110" height="36" onClick="step1();" style="cursor:hand;"></td>
+    <td><img src="../images/next.png" width="110" height="36" onClick="step3();" style="cursor:hand;"></td>
+  </tr>
+</table>
+<blockquote><font size="2" color="#808080">操作说明:&nbsp;&nbsp;检查在文本框中的名单，一个人名一行。你可以修改名单，所做的修改在下一步会保存到默认名单里。你也可以导入一份外部的名单(一行一个名字的文本文件)，这份名单在下一步时会保存进默认名单中。
+</font></blockquote>
+<div align="center">
+  <table border="0">
+    <tr>
+      <td><textarea cols="20" rows="20" id="nameList" onpropertychange="nameListChange();">导入名单中...</textarea></td>
+      <td width="350">
+  <table border="0" align="left">
+  <tr>
+    <td align="left">教室容量：<span id="chiarCnt" class="red">-</span></td>
+  </tr>
+  <tr>
+    <td align="left">学生人数：<span id="studentCnt" class="red">-</span></td>
+  </tr>
+  <tr>
+    <td align="left"><span id="warning" class="red">&nbsp;</span></td>
+  </tr>
+  <tr>
+    <td align="left"><img src="../images/import.png" width="144" height="47" onClick="loadNameListFile();" style="cursor:hand;"><font size="4" face="微软雅黑">学生名单</font></td>
+  </tr>
+  <tr>
+    <td align="left"><font size="2" color="#808080">(一行一个名字的文本文件)</font></td>
+  </tr>
+</table>
+</td>
+    </tr>
+  </table>
+</div>
+
+<hr/>
+<div align="center"><font face="微软雅黑" size="2">Powered by  Frogcherry@ooobgy&nbsp;&nbsp;&nbsp; All Rights Reserved </font>
+</div>
+<div align="center">
+<font face="微软雅黑" size="2">
+Email:  frogcherry@gmail.com</font>
+</div>
+<textarea id="debug" cols="100" rows="100"></textarea>
+</body>
+</html>

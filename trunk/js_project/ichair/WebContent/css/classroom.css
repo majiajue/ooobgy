@@ -1,0 +1,80 @@
+@charset "utf-8";
+.chair {
+	background:url(../images/chair.png);
+	width: 72px;
+	height: 22px;
+	text-align: center;
+	font-family: "微软雅黑";
+	cursor: hand;
+}
+.chair_st {
+	background-color: #FFC977;
+	width: 72px;
+	height: 22px;
+	text-align: center;
+	font-family: "微软雅黑";
+	cursor: hand;
+}
+.sfloor {
+	background-color: #DBDBDB;
+	width: 72px;
+	height: 22px;
+	text-align: center;
+	font-family: "微软雅黑";
+	cursor: hand;
+}
+.colRuler {
+	background-color:#9BB6FB;
+	width: 72px;
+	height: 22px;
+	text-align: center;
+	font-family: "微软雅黑";
+	cursor: hand;
+}
+.rowRuler {
+	background-color:#E9B6FC;
+	width: 72px;
+	height: 22px;
+	text-align: center;
+	font-family: "微软雅黑";
+	cursor: hand;
+}
+.colRulerLight {
+	background-color:#2582FE;
+	width: 72px;
+	height: 22px;
+	text-align: center;
+	font-family: "微软雅黑";
+	cursor: hand;
+}
+.rowRulerLight {
+	background-color:#D248FB;
+	width: 72px;
+	height: 22px;
+	text-align: center;
+	font-family: "微软雅黑";
+	cursor: hand;
+}
+.black_board {
+	background-color: #333;
+	text-align: center;
+	font-family: "微软雅黑";
+	font-size: 24px;
+	color: #ffffff;
+	height: 80px;
+}
+.col_editor {
+	position:relative;
+	left: -24px;
+}
+.row_editor {
+	position:relative;
+	top: -24px;
+}.red {
+	color: #F00;
+	font-size: 20px;
+}
+.class_info {
+	font-family: "微软雅黑";
+	font-size: 16px;
+}

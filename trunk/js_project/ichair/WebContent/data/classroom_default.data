@@ -1,0 +1,116 @@
+<DIV id=class_show>
+<TABLE border=1>
+<TBODY id=room>
+<TR id=str_1>
+<TD id=st_1_1d class=sfloor onclick="modifyChair('st_1_1');"><SPAN id=st_1_1>&nbsp;</SPAN></TD>
+<TD id=st_1_2d class=chair onclick="modifyChair('st_1_2');"><SPAN id=st_1_2>&nbsp;</SPAN></TD>
+<TD id=st_1_3d class=chair onclick="modifyChair('st_1_3');"><SPAN id=st_1_3>&nbsp;</SPAN></TD>
+<TD id=st_1_4d class=chair onclick="modifyChair('st_1_4');"><SPAN id=st_1_4>&nbsp;</SPAN></TD>
+<TD id=st_1_5d class=sfloor onclick="modifyChair('st_1_5');"><SPAN id=st_1_5>&nbsp;</SPAN></TD>
+<TD id=st_1_6d class=chair onclick="modifyChair('st_1_6');"><SPAN id=st_1_6>&nbsp;</SPAN></TD>
+<TD id=st_1_7d class=chair onclick="modifyChair('st_1_7');"><SPAN id=st_1_7>&nbsp;</SPAN></TD>
+<TD id=st_1_8d class=chair onclick="modifyChair('st_1_8');"><SPAN id=st_1_8>&nbsp;</SPAN></TD>
+<TD id=st_1_9d class=sfloor onclick="modifyChair('st_1_9');"><SPAN id=st_1_9>&nbsp;</SPAN></TD>
+<TD id=st_1_10d class=chair onclick="modifyChair('st_1_10');"><SPAN id=st_1_10>&nbsp;</SPAN></TD>
+<TD id=st_1_11d class=chair onclick="modifyChair('st_1_11');"><SPAN id=st_1_11>&nbsp;</SPAN></TD>
+<TD id=st_1_12d class=chair onclick="modifyChair('st_1_12');"><SPAN id=st_1_12>&nbsp;</SPAN></TD>
+<TD id=st_1_13d class=sfloor onclick="modifyChair('st_1_13');"><SPAN id=st_1_13>&nbsp;</SPAN></TD></TR>
+<TR id=str_2>
+<TD id=st_2_1d class=sfloor onclick="modifyChair('st_2_1');"><SPAN id=st_2_1>&nbsp;</SPAN></TD>
+<TD id=st_2_2d class=chair onclick="modifyChair('st_2_2');"><SPAN id=st_2_2>&nbsp;</SPAN></TD>
+<TD id=st_2_3d class=chair onclick="modifyChair('st_2_3');"><SPAN id=st_2_3>&nbsp;</SPAN></TD>
+<TD id=st_2_4d class=chair onclick="modifyChair('st_2_4');"><SPAN id=st_2_4>&nbsp;</SPAN></TD>
+<TD id=st_2_5d class=sfloor onclick="modifyChair('st_2_5');"><SPAN id=st_2_5>&nbsp;</SPAN></TD>
+<TD id=st_2_6d class=chair onclick="modifyChair('st_2_6');"><SPAN id=st_2_6>&nbsp;</SPAN></TD>
+<TD id=st_2_7d class=chair onclick="modifyChair('st_2_7');"><SPAN id=st_2_7>&nbsp;</SPAN></TD>
+<TD id=st_2_8d class=chair onclick="modifyChair('st_2_8');"><SPAN id=st_2_8>&nbsp;</SPAN></TD>
+<TD id=st_2_9d class=sfloor onclick="modifyChair('st_2_9');"><SPAN id=st_2_9>&nbsp;</SPAN></TD>
+<TD id=st_2_10d class=chair onclick="modifyChair('st_2_10');"><SPAN id=st_2_10>&nbsp;</SPAN></TD>
+<TD id=st_2_11d class=chair onclick="modifyChair('st_2_11');"><SPAN id=st_2_11>&nbsp;</SPAN></TD>
+<TD id=st_2_12d class=chair onclick="modifyChair('st_2_12');"><SPAN id=st_2_12>&nbsp;</SPAN></TD>
+<TD id=st_2_13d class=sfloor onclick="modifyChair('st_2_13');"><SPAN id=st_2_13>&nbsp;</SPAN></TD></TR>
+<TR id=str_3>
+<TD id=st_3_1d class=sfloor onclick="modifyChair('st_3_1');"><SPAN id=st_3_1>&nbsp;</SPAN></TD>
+<TD id=st_3_2d class=chair onclick="modifyChair('st_3_2');"><SPAN id=st_3_2>&nbsp;</SPAN></TD>
+<TD id=st_3_3d class=chair onclick="modifyChair('st_3_3');"><SPAN id=st_3_3>&nbsp;</SPAN></TD>
+<TD id=st_3_4d class=chair onclick="modifyChair('st_3_4');"><SPAN id=st_3_4>&nbsp;</SPAN></TD>
+<TD id=st_3_5d class=sfloor onclick="modifyChair('st_3_5');"><SPAN id=st_3_5>&nbsp;</SPAN></TD>
+<TD id=st_3_6d class=chair onclick="modifyChair('st_3_6');"><SPAN id=st_3_6>&nbsp;</SPAN></TD>
+<TD id=st_3_7d class=chair onclick="modifyChair('st_3_7');"><SPAN id=st_3_7>&nbsp;</SPAN></TD>
+<TD id=st_3_8d class=chair onclick="modifyChair('st_3_8');"><SPAN id=st_3_8>&nbsp;</SPAN></TD>
+<TD id=st_3_9d class=sfloor onclick="modifyChair('st_3_9');"><SPAN id=st_3_9>&nbsp;</SPAN></TD>
+<TD id=st_3_10d class=chair onclick="modifyChair('st_3_10');"><SPAN id=st_3_10>&nbsp;</SPAN></TD>
+<TD id=st_3_11d class=chair onclick="modifyChair('st_3_11');"><SPAN id=st_3_11>&nbsp;</SPAN></TD>
+<TD id=st_3_12d class=chair onclick="modifyChair('st_3_12');"><SPAN id=st_3_12>&nbsp;</SPAN></TD>
+<TD id=st_3_13d class=sfloor onclick="modifyChair('st_3_13');"><SPAN id=st_3_13>&nbsp;</SPAN></TD></TR>
+<TR id=str_4>
+<TD id=st_4_1d class=sfloor onclick="modifyChair('st_4_1');"><SPAN id=st_4_1>&nbsp;</SPAN></TD>
+<TD id=st_4_2d class=chair onclick="modifyChair('st_4_2');"><SPAN id=st_4_2>&nbsp;</SPAN></TD>
+<TD id=st_4_3d class=chair onclick="modifyChair('st_4_3');"><SPAN id=st_4_3>&nbsp;</SPAN></TD>
+<TD id=st_4_4d class=chair onclick="modifyChair('st_4_4');"><SPAN id=st_4_4>&nbsp;</SPAN></TD>
+<TD id=st_4_5d class=sfloor onclick="modifyChair('st_4_5');"><SPAN id=st_4_5>&nbsp;</SPAN></TD>
+<TD id=st_4_6d class=chair onclick="modifyChair('st_4_6');"><SPAN id=st_4_6>&nbsp;</SPAN></TD>
+<TD id=st_4_7d class=chair onclick="modifyChair('st_4_7');"><SPAN id=st_4_7>&nbsp;</SPAN></TD>
+<TD id=st_4_8d class=chair onclick="modifyChair('st_4_8');"><SPAN id=st_4_8>&nbsp;</SPAN></TD>
+<TD id=st_4_9d class=sfloor onclick="modifyChair('st_4_9');"><SPAN id=st_4_9>&nbsp;</SPAN></TD>
+<TD id=st_4_10d class=chair onclick="modifyChair('st_4_10');"><SPAN id=st_4_10>&nbsp;</SPAN></TD>
+<TD id=st_4_11d class=chair onclick="modifyChair('st_4_11');"><SPAN id=st_4_11>&nbsp;</SPAN></TD>
+<TD id=st_4_12d class=chair onclick="modifyChair('st_4_12');"><SPAN id=st_4_12>&nbsp;</SPAN></TD>
+<TD id=st_4_13d class=sfloor onclick="modifyChair('st_4_13');"><SPAN id=st_4_13>&nbsp;</SPAN></TD></TR>
+<TR id=str_5>
+<TD id=st_5_1d class=sfloor onclick="modifyChair('st_5_1');"><SPAN id=st_5_1>&nbsp;</SPAN></TD>
+<TD id=st_5_2d class=chair onclick="modifyChair('st_5_2');"><SPAN id=st_5_2>&nbsp;</SPAN></TD>
+<TD id=st_5_3d class=chair onclick="modifyChair('st_5_3');"><SPAN id=st_5_3>&nbsp;</SPAN></TD>
+<TD id=st_5_4d class=chair onclick="modifyChair('st_5_4');"><SPAN id=st_5_4>&nbsp;</SPAN></TD>
+<TD id=st_5_5d class=sfloor onclick="modifyChair('st_5_5');"><SPAN id=st_5_5>&nbsp;</SPAN></TD>
+<TD id=st_5_6d class=chair onclick="modifyChair('st_5_6');"><SPAN id=st_5_6>&nbsp;</SPAN></TD>
+<TD id=st_5_7d class=chair onclick="modifyChair('st_5_7');"><SPAN id=st_5_7>&nbsp;</SPAN></TD>
+<TD id=st_5_8d class=chair onclick="modifyChair('st_5_8');"><SPAN id=st_5_8>&nbsp;</SPAN></TD>
+<TD id=st_5_9d class=sfloor onclick="modifyChair('st_5_9');"><SPAN id=st_5_9>&nbsp;</SPAN></TD>
+<TD id=st_5_10d class=chair onclick="modifyChair('st_5_10');"><SPAN id=st_5_10>&nbsp;</SPAN></TD>
+<TD id=st_5_11d class=chair onclick="modifyChair('st_5_11');"><SPAN id=st_5_11>&nbsp;</SPAN></TD>
+<TD id=st_5_12d class=chair onclick="modifyChair('st_5_12');"><SPAN id=st_5_12>&nbsp;</SPAN></TD>
+<TD id=st_5_13d class=sfloor onclick="modifyChair('st_5_13');"><SPAN id=st_5_13>&nbsp;</SPAN></TD></TR>
+<TR id=str_6>
+<TD id=st_6_1d class=sfloor onclick="modifyChair('st_6_1');"><SPAN id=st_6_1>&nbsp;</SPAN></TD>
+<TD id=st_6_2d class=chair onclick="modifyChair('st_6_2');"><SPAN id=st_6_2>&nbsp;</SPAN></TD>
+<TD id=st_6_3d class=chair onclick="modifyChair('st_6_3');"><SPAN id=st_6_3>&nbsp;</SPAN></TD>
+<TD id=st_6_4d class=chair onclick="modifyChair('st_6_4');"><SPAN id=st_6_4>&nbsp;</SPAN></TD>
+<TD id=st_6_5d class=sfloor onclick="modifyChair('st_6_5');"><SPAN id=st_6_5>&nbsp;</SPAN></TD>
+<TD id=st_6_6d class=chair onclick="modifyChair('st_6_6');"><SPAN id=st_6_6>&nbsp;</SPAN></TD>
+<TD id=st_6_7d class=chair onclick="modifyChair('st_6_7');"><SPAN id=st_6_7>&nbsp;</SPAN></TD>
+<TD id=st_6_8d class=chair onclick="modifyChair('st_6_8');"><SPAN id=st_6_8>&nbsp;</SPAN></TD>
+<TD id=st_6_9d class=sfloor onclick="modifyChair('st_6_9');"><SPAN id=st_6_9>&nbsp;</SPAN></TD>
+<TD id=st_6_10d class=chair onclick="modifyChair('st_6_10');"><SPAN id=st_6_10>&nbsp;</SPAN></TD>
+<TD id=st_6_11d class=chair onclick="modifyChair('st_6_11');"><SPAN id=st_6_11>&nbsp;</SPAN></TD>
+<TD id=st_6_12d class=chair onclick="modifyChair('st_6_12');"><SPAN id=st_6_12>&nbsp;</SPAN></TD>
+<TD id=st_6_13d class=sfloor onclick="modifyChair('st_6_13');"><SPAN id=st_6_13>&nbsp;</SPAN></TD></TR>
+<TR id=str_7>
+<TD id=st_7_1d class=sfloor onclick="modifyChair('st_7_1');"><SPAN id=st_7_1>&nbsp;</SPAN></TD>
+<TD id=st_7_2d class=chair onclick="modifyChair('st_7_2');"><SPAN id=st_7_2>&nbsp;</SPAN></TD>
+<TD id=st_7_3d class=chair onclick="modifyChair('st_7_3');"><SPAN id=st_7_3>&nbsp;</SPAN></TD>
+<TD id=st_7_4d class=chair onclick="modifyChair('st_7_4');"><SPAN id=st_7_4>&nbsp;</SPAN></TD>
+<TD id=st_7_5d class=sfloor onclick="modifyChair('st_7_5');"><SPAN id=st_7_5>&nbsp;</SPAN></TD>
+<TD id=st_7_6d class=chair onclick="modifyChair('st_7_6');"><SPAN id=st_7_6>&nbsp;</SPAN></TD>
+<TD id=st_7_7d class=chair onclick="modifyChair('st_7_7');"><SPAN id=st_7_7>&nbsp;</SPAN></TD>
+<TD id=st_7_8d class=chair onclick="modifyChair('st_7_8');"><SPAN id=st_7_8>&nbsp;</SPAN></TD>
+<TD id=st_7_9d class=sfloor onclick="modifyChair('st_7_9');"><SPAN id=st_7_9>&nbsp;</SPAN></TD>
+<TD id=st_7_10d class=chair onclick="modifyChair('st_7_10');"><SPAN id=st_7_10>&nbsp;</SPAN></TD>
+<TD id=st_7_11d class=chair onclick="modifyChair('st_7_11');"><SPAN id=st_7_11>&nbsp;</SPAN></TD>
+<TD id=st_7_12d class=chair onclick="modifyChair('st_7_12');"><SPAN id=st_7_12>&nbsp;</SPAN></TD>
+<TD id=st_7_13d class=sfloor onclick="modifyChair('st_7_13');"><SPAN id=st_7_13>&nbsp;</SPAN></TD></TR>
+<TR id=str_8>
+<TD id=st_8_1d class=sfloor onclick="modifyChair('st_8_1');"><SPAN id=st_8_1>&nbsp;</SPAN></TD>
+<TD id=st_8_2d class=chair onclick="modifyChair('st_8_2');"><SPAN id=st_8_2>&nbsp;</SPAN></TD>
+<TD id=st_8_3d class=chair onclick="modifyChair('st_8_3');"><SPAN id=st_8_3>&nbsp;</SPAN></TD>
+<TD id=st_8_4d class=chair onclick="modifyChair('st_8_4');"><SPAN id=st_8_4>&nbsp;</SPAN></TD>
+<TD id=st_8_5d class=sfloor onclick="modifyChair('st_8_5');"><SPAN id=st_8_5>&nbsp;</SPAN></TD>
+<TD id=st_8_6d class=chair onclick="modifyChair('st_8_6');"><SPAN id=st_8_6>&nbsp;</SPAN></TD>
+<TD id=st_8_7d class=chair onclick="modifyChair('st_8_7');"><SPAN id=st_8_7>&nbsp;</SPAN></TD>
+<TD id=st_8_8d class=chair onclick="modifyChair('st_8_8');"><SPAN id=st_8_8>&nbsp;</SPAN></TD>
+<TD id=st_8_9d class=sfloor onclick="modifyChair('st_8_9');"><SPAN id=st_8_9>&nbsp;</SPAN></TD>
+<TD id=st_8_10d class=chair onclick="modifyChair('st_8_10');"><SPAN id=st_8_10>&nbsp;</SPAN></TD>
+<TD id=st_8_11d class=chair onclick="modifyChair('st_8_11');"><SPAN id=st_8_11>&nbsp;</SPAN></TD>
+<TD id=st_8_12d class=chair onclick="modifyChair('st_8_12');"><SPAN id=st_8_12>&nbsp;</SPAN></TD>
+<TD id=st_8_13d class=sfloor onclick="modifyChair('st_8_13');"><SPAN id=st_8_13>&nbsp;</SPAN></TD></TR></TBODY></TABLE></DIV>
+<DIV id=classMem><INPUT id=colCnt value=13 type=hidden name=colCnt> <INPUT id=rowCnt value=8 type=hidden name=rowCnt> <INPUT id=chairCnt value=72 type=hidden name=chairCnt> </DIV>
