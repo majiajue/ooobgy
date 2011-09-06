@@ -1,0 +1,102 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>ooobgy排座系统</title>
+<link href="css/classroom.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="js/classroomEditor.js"></script>
+<script type="text/javascript">
+function fLoad(){
+if (document.readyState=="complete") {
+	loadClassroom('data/classroom.data','class_room');
+	}
+}
+
+document.onreadystatechange=fLoad;
+</script>
+</head>
+<body>
+<div align="center"><img src="../images/title.png" width="500" height="70"></div>
+<hr/>
+<table border="0">
+  <tr>
+    <td width='300'><font face="微软雅黑" size="5">第三步，排定座位</font></td>
+    <td><img src="../images/pre.png" width="110" height="36" onClick="step2('data/classroom.data');" style="cursor:hand;"></td>
+  </tr>
+</table>
+<blockquote><font size="2" color="#808080">操作说明:&nbsp;&nbsp;灰色的格子表示过道空间，点亮的格子为座位。通过点击格子可以点亮熄灭座位，点击表格右上角的左、右箭头可以减少、增加一列，点击右下角的上、下箭头可以减少、增加一列。完成布局设置后点击下一步，此次布局设定会自动保存。
+</font></blockquote>
+
+<table border="0" align="center">
+  <tr>
+    <td>
+    <table border="0">
+    <tr>
+    <td id="black_board" class="black_board">
+    黑&nbsp;&nbsp;&nbsp;&nbsp;板
+    </td>
+    <td></td>
+    </tr>
+    
+  <tr>
+    <td class="class_info">
+    教室容量：&nbsp;<span id="cnt" class="red">-</span>&nbsp;人</td>
+    <td>
+    <div class="col_editor">
+    <table border="0">
+  <tr>
+    <td><img src="images/del_col.png" width="15" height="15" alt="删除一列" style="cursor:hand;" onClick="delCol();"></td>
+    <td><img src="images/add_col.png" width="15" height="15" alt="增加一列" style="cursor:hand;" onClick="addCol();"></td>
+  </tr>
+    </table>
+    </div>
+    <table border="0">
+      <tr> </tr>
+    </table>
+
+    </td>
+  </tr>
+  <tr>
+    <td id="class_room">
+    <div>
+    <table border="1">
+  <tr>
+    <td>
+    教室数据加载中...
+    </td>
+  </tr>
+</table>
+</div>
+    </td>
+    <td></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td>
+    <div class="row_editor">
+    <table border="0">
+  <tr>
+    <td><img src="images/del_row.png" width="15" height="15"  alt="删除一行" style="cursor:hand;" onClick="delRow();"></td>
+    </tr>
+    <tr>
+    <td><img src="images/add_row.png" width="15" height="15"  alt="增加一行" style="cursor:hand;" onClick="addRow();"></td>
+  </tr>
+</table>
+</div>
+</td>
+  </tr>
+</table>
+
+    </td>
+  </tr>
+</table>
+<hr/>
+<div align="center"><font face="微软雅黑" size="2">Powered by  Frogcherry@ooobgy&nbsp;&nbsp;&nbsp; All Rights Reserved </font>
+</div>
+<div align="center">
+<font face="微软雅黑" size="2">
+Email:  frogcherry@gmail.com</font>
+</div>
+<textarea id="debug" cols="100" rows="100"></textarea>
+</body>
+</html>
