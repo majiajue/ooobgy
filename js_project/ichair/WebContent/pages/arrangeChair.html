@@ -3,28 +3,30 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>ooobgy排座系统</title>
+<object   id="fileDialog"   width="0px"   height="0px"   classid="clsid:F9043C85-F6F2-101A-A3C9-08002B2F49FB"   codebase="http://activex.microsoft.com/controls/vb5/comdlg32.cab">   
+  </object>
 <link href="css/classroom.css" rel="stylesheet" type="text/css">
 <script type="text/javascript" src="js/classroomEditor.js"></script>
 <script type="text/javascript">
 function fLoad(){
 if (document.readyState=="complete") {
-	loadClassroom('data/classroom.data','class_room');
-	}
+    loadClassroom('data/classroom.data','class_room');
+    }
 }
 
 document.onreadystatechange=fLoad;
 </script>
 </head>
 <body>
-<div align="center"><img src="../images/title.png" width="500" height="70"></div>
+<div align="center"><img src="images/title.png" width="500" height="70"></div>
 <hr/>
 <table border="0">
   <tr>
-    <td width='300'><font face="微软雅黑" size="5">第三步，排定座位</font></td>
-    <td><img src="../images/pre.png" width="110" height="36" onClick="step2('data/classroom.data');" style="cursor:hand;"></td>
+    <td width='300'><font face="微软雅黑" size="5">第一步，确定教室布局</font></td>
+    <td><img src="images/next.png" width="110" height="36" onClick="step2('data/classroom.data');" style="cursor:hand;"></td>
   </tr>
 </table>
-<blockquote><font size="2" color="#808080">操作说明:&nbsp;&nbsp;灰色的格子表示过道空间，点亮的格子为座位。通过点击格子可以点亮熄灭座位，点击表格右上角的左、右箭头可以减少、增加一列，点击右下角的上、下箭头可以减少、增加一列。完成布局设置后点击下一步，此次布局设定会自动保存。
+<blockquote><font size="2" color="#808080">操作说明:&nbsp;&nbsp;灰色的格子表示过道空间，点亮的格子为座位。通过点击格子可以点亮熄灭座位，点击表格右上角的左、右箭头可以减少、增加一列，点击右下角的上、下箭头可以减少、增加一列。完成布局设置后点击下一步，此次布局设定在点击"下一步"时会自动保存到默认布局。你也可以导入一份布局数据，注意，尝试导入非法数据可能会导致程序崩溃并损坏默认布局数据。
 </font></blockquote>
 
 <table border="0" align="center">
@@ -90,6 +92,11 @@ document.onreadystatechange=fLoad;
     </td>
   </tr>
 </table>
+<div align="center">
+<img src="images/import.png" width="129" height="44" style="cursor:hand;" onClick="loadData();">
+<font size="3" face="微软雅黑">自定义布局数据</font>
+</div>
+<div align="center"><font size="5" face="微软雅黑" color="#ff0000">警告</font>：尝试导入非法数据可能会导致程序崩溃并损坏默认布局数据。</div>
 <hr/>
 <div align="center"><font face="微软雅黑" size="2">Powered by  Frogcherry@ooobgy&nbsp;&nbsp;&nbsp; All Rights Reserved </font>
 </div>
@@ -97,6 +104,5 @@ document.onreadystatechange=fLoad;
 <font face="微软雅黑" size="2">
 Email:  frogcherry@gmail.com</font>
 </div>
-<textarea id="debug" cols="100" rows="100"></textarea>
 </body>
 </html>
