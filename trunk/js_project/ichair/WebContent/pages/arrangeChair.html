@@ -5,12 +5,12 @@
 <title>ooobgy排座系统</title>
 <object   id="fileDialog"   width="0px"   height="0px"   classid="clsid:F9043C85-F6F2-101A-A3C9-08002B2F49FB"   codebase="http://activex.microsoft.com/controls/vb5/comdlg32.cab">   
   </object>
-<link href="css/classroom.css" rel="stylesheet" type="text/css">
-<script type="text/javascript" src="js/classroomEditor.js"></script>
+<link href="../css/classchair.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="../js/arrangeChair.js"></script>
 <script type="text/javascript">
 function fLoad(){
-if (document.readyState=="complete") {
-    loadClassroom('data/classroom.data','class_room');
+    if (document.readyState=="complete") {
+        initClassRoom();
     }
 }
 
@@ -18,48 +18,46 @@ document.onreadystatechange=fLoad;
 </script>
 </head>
 <body>
-<div align="center"><img src="images/title.png" width="500" height="70"></div>
+<div align="center"><img src="../images/title.png" width="500" height="70"></div>
 <hr/>
 <table border="0">
   <tr>
-    <td width='300'><font face="微软雅黑" size="5">第一步，确定教室布局</font></td>
-    <td><img src="images/next.png" width="110" height="36" onClick="step2('data/classroom.data');" style="cursor:hand;"></td>
+    <td width='300'><font face="微软雅黑" size="5">第三步，排定学生座位</font></td>
+    <td><img src="../images/pre.png" width="110" height="36" onClick="step2();" style="cursor:hand;"></td>
   </tr>
 </table>
-<blockquote><font size="2" color="#808080">操作说明:&nbsp;&nbsp;灰色的格子表示过道空间，点亮的格子为座位。通过点击格子可以点亮熄灭座位，点击表格右上角的左、右箭头可以减少、增加一列，点击右下角的上、下箭头可以减少、增加一列。完成布局设置后点击下一步，此次布局设定在点击"下一步"时会自动保存到默认布局。你也可以导入一份布局数据，注意，尝试导入非法数据可能会导致程序崩溃并损坏默认布局数据。
+<blockquote><font size="2" color="#808080">操作说明:&nbsp;&nbsp;灰色的格子表示过道空间，点亮的格子为座位，座位排列为完全随机排列。如果教室容量小于学生数，系统也会将教室座位排满，并显示警告以及哪些学生无座位。如果对排座结果不满意，你可以”重新随机排座“。或者点击选择排座表上两个学生，点击”交换座位“手工调整座位。座位排定后，你可以选择导出excel格式或者是图片格式的排座表。
 </font></blockquote>
 
-<table border="0" align="center">
-  <tr>
-    <td>
-    <table border="0">
+    <table border="0" align="center">
     <tr>
     <td id="black_board" class="black_board">
     黑&nbsp;&nbsp;&nbsp;&nbsp;板
     </td>
-    <td></td>
     </tr>
     
   <tr>
+  <td>
+  <table border="0">
+  <tr>
     <td class="class_info">
-    教室容量：&nbsp;<span id="cnt" class="red">-</span>&nbsp;人</td>
-    <td>
-    <div class="col_editor">
-    <table border="0">
-  <tr>
-    <td><img src="images/del_col.png" width="15" height="15" alt="删除一列" style="cursor:hand;" onClick="delCol();"></td>
-    <td><img src="images/add_col.png" width="15" height="15" alt="增加一列" style="cursor:hand;" onClick="addCol();"></td>
-  </tr>
-    </table>
-    </div>
-    <table border="0">
-      <tr> </tr>
-    </table>
-
+    <div>教室容量：&nbsp;<span id="chairCntDisp" class="red">-</span>&nbsp;人</div>
+    <div>学生人数：&nbsp;<span id="studentCntDisp" class="red">-</span>&nbsp;人</div>
     </td>
+    <td align="right">
+    <table border="0">
+  <tr>
+    <td><img src="../images/reload.png" width="148" height="48" onClick="randomChair();" style="cursor:hand;"></td>
+    <td><div id="exchangeBtn"><img src="../images/exchange_dis.png" width="148" height="48"></div></td>
+  </tr>
+</table>    
+      </td>
+  </tr>
+</table>
+</td>
   </tr>
   <tr>
-    <td id="class_room">
+    <td id="class_room" align="center">
     <div>
     <table border="1">
   <tr>
@@ -70,33 +68,27 @@ document.onreadystatechange=fLoad;
 </table>
 </div>
     </td>
-    <td></td>
-  </tr>
-  <tr>
-    <td></td>
-    <td>
-    <div class="row_editor">
-    <table border="0">
-  <tr>
-    <td><img src="images/del_row.png" width="15" height="15"  alt="删除一行" style="cursor:hand;" onClick="delRow();"></td>
-    </tr>
-    <tr>
-    <td><img src="images/add_row.png" width="15" height="15"  alt="增加一行" style="cursor:hand;" onClick="addRow();"></td>
-  </tr>
-</table>
-</div>
-</td>
   </tr>
 </table>
 
-    </td>
+<table border="0" align="center" width="450">
+  <tr>
+    <td><div align="center" id="noChairWarning" class="red">
+
+</div></td>
+  </tr>
+  <tr>
+    <td align="center"><div align="center" id="unChairSts" class="unchairlist">
+
+</div></td>
   </tr>
 </table>
-<div align="center">
-<img src="images/import.png" width="129" height="44" style="cursor:hand;" onClick="loadData();">
-<font size="3" face="微软雅黑">自定义布局数据</font>
-</div>
-<div align="center"><font size="5" face="微软雅黑" color="#ff0000">警告</font>：尝试导入非法数据可能会导致程序崩溃并损坏默认布局数据。</div>
+
+
+
+
+
+
 <hr/>
 <div align="center"><font face="微软雅黑" size="2">Powered by  Frogcherry@ooobgy&nbsp;&nbsp;&nbsp; All Rights Reserved </font>
 </div>
@@ -104,5 +96,8 @@ document.onreadystatechange=fLoad;
 <font face="微软雅黑" size="2">
 Email:  frogcherry@gmail.com</font>
 </div>
+<textarea name="debug" cols="100" rows="50" id="debug"></textarea>
+<input name="st1" id="st1" type="hidden" value="">
+<input name="st2" id="st2" type="hidden" value="">
 </body>
 </html>

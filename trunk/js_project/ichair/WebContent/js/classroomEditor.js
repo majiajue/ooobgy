@@ -237,7 +237,6 @@ function modifyChair1(stid){
 		oldstr = "st";
 		re=new RegExp(oldstr,"g"); 
 		tt = tt.replace(re,"sf");
-		//tt = tt.replace('st',"sf");
 		alert(tt);
 	}
 
