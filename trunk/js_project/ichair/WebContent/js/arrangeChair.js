@@ -271,7 +271,45 @@ function step2(){
 	window.location.href = "checkNameList.html?chairCnt=" + cnt;
 }
 
-
+function saveAsExcel(){
+    var curTbl = document.getElementById("classroom");
+//    alert(curTbl);
+//    return;
+    var oXL = new ActiveXObject("Excel.Application");
+    //创建AX对象excel
+    var oWB = oXL.Workbooks.Add();
+    //获取workbook对象
+    var oSheet = oWB.ActiveSheet;
+    //激活当前sheet
+    var sel = document.body.createTextRange();
+    sel.moveToElementText(curTbl);
+    //把表格中的内容移到TextRange中
+    sel.select();
+    //全选TextRange中内容
+    sel.execCommand("Copy");
+    //复制TextRange中内容 
+    oSheet.Paste();
+    //粘贴到活动的EXCEL中  
+    //设置excel可见属性
+//    oXL.Visible = true;
+    
+    try{ 
+    	var fname = oXL.Application.GetSaveAsFilename("classroom.xlsx", "Excel Spreadsheets (*.xlsx), *.xlsx"); 
+    	if(fname){ 
+    		oWB.SaveAs(fname); 
+    	} 
+    }catch(e){
+    	alert("导出失败！请检查你是否按照microsoft office.我们建议的版本是2007以上，低版本也可能出现该错误！" +
+    			"\n下一条是错误日志，期望您的反馈:frogcherry@gmail.com");
+    	alert("Nested catch caught " + e); 
+    }finally{ 
+    	oWB.Close(savechanges=false); 
+    	oXL.Quit(); 
+    	oXL=null; 
+    //结束excel进程，退出完成 
+    	idTmr = window.setInterval("Cleanup();",1); 
+    }
+}
 
 
 
