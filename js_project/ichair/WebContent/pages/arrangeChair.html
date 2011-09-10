@@ -31,8 +31,10 @@ document.onreadystatechange=fLoad;
 
     <table border="0" align="center" id="excelsheet">
     <tr>
-    <td id="black_board" class="black_board">
+    <td>
+    <div id="black_board" class="black_board">
     黑&nbsp;&nbsp;&nbsp;&nbsp;板
+    </div>
     </td>
     </tr>
     
@@ -57,7 +59,23 @@ document.onreadystatechange=fLoad;
 </td>
   </tr>
   <tr>
-    <td id="class_room" align="center">
+  <td>
+  <table border="0">
+  <tr>
+    <td>&nbsp;</td>
+    <td>    
+    <div class="col_shift">
+    <table border="0">
+  <tr>
+    <td><img src="../images/del_col.png" width="15" height="15" alt="右移一列" style="cursor:hand;" onClick="shiftRight();"></td>
+    <td><img src="../images/add_col.png" width="15" height="15" alt="左移一列" style="cursor:hand;" onClick="shiftLeft();"></td>
+  </tr>
+    </table>
+    </div>
+    </td>
+  </tr>
+  <tr>
+        <td id="class_room" align="center">
     <div>
     <table border="1">
   <tr>
@@ -68,6 +86,27 @@ document.onreadystatechange=fLoad;
 </table>
 </div>
     </td>
+    <td></td>
+    </tr>
+    <tr>
+    <td></td>
+    <td>
+        <div class="row_shift">
+    <table border="0">
+  <tr>
+    <td><img src="../images/del_row.png" width="15" height="15"  alt="上移一行" style="cursor:hand;" onClick="shiftUp();"></td>
+    </tr>
+    <tr>
+    <td><img src="../images/add_row.png" width="15" height="15"  alt="下移一行" style="cursor:hand;" onClick="shiftDown();"></td>
+  </tr>
+</table>
+</div>
+    </td>
+  </tr>
+</table>
+
+  </td>
+
   </tr>
 </table>
 
