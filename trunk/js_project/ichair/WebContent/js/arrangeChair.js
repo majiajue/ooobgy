@@ -69,6 +69,14 @@ function initClassRoom(){
 	loadNameListURL("../data/nameList.txt");
 	loadChairList(classRoomData);
 	randomChair();
+	intiBlackBoard();
+}
+
+function intiBlackBoard(){
+	var preColCnt = document.getElementById("colCnt").value;
+	preColCnt = parseInt(preColCnt);
+	var width = 75 * preColCnt + 81;
+	document.getElementById("black_board").style.width = width;
 }
 
 function inRuler(row, col) {

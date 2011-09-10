@@ -79,7 +79,16 @@
 .row_editor {
 	position:relative;
 	top: -24px;
-}.red {
+}
+.col_shift {
+	position:relative;
+	left: -24px;
+}
+.row_shift {
+	position:relative;
+	top: -24px;
+}
+.red {
 	color: #F00;
 	font-size: 16px;
 	font-family: "微软雅黑";
