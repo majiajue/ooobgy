@@ -1,0 +1,29 @@
+ { 
+    "uid_or_mid": "107188702",
+    "entitys": [
+         {
+            "url": "http://s.taobao.com/search?q=y&keyword=&commend=all&ssid=s5-e&search_type=item&atype=&tracelog=&sourceId=tb.index",
+            "nodeFeature": "1",
+            "isUser": "1",
+            "mid": "5618641004102355756",
+            "isRefer": "1",
+            "logTime": "20110619111834"
+        },
+        {
+            "url": "http://s.taobao.com/search?q=y&keyword=&commend=all&ssid=s5-e&search_type=item&atype=&tracelog=&sourceId=tb.index",
+            "nodeFeature": "52, 85",
+            "isUser": "1",
+            "mid": "5618641004102355756",
+            "isRefer": "1",
+            "logTime": "20110619111834"
+        },
+        {
+            "url": "http://item.taobao.com/item.htm?id=9519056136",
+            "nodeFeature": "40, 99, 88",
+            "isUser": "1",
+            "mid": "5618641004102355756",
+            "isRefer": "0",
+            "logTime": "20110619112150"
+        }
+    ]
+}";

@@ -1,0 +1,23 @@
+
+scp ducheng@172.23.113.2:~/lemie/path_analysis.jar /home/taobao/
+
+export SKYNET_ID=17724;
+export SKYNET_BIZDATE=20110630;
+export SKYNET_ACTIONID=1;
+export SKYNET_JOBID=1;
+export SKYNET_PRIORITY=5
+
+
+hadoop jar /home/taobao/path_analysis.jar com.taobao.dw.pizza.path_analysis.mr.InvertedListBuilder \
+/group/tbdev/mingfeng/pizza/ods_path_node/pt=20110619000000/* \
+-o /group/tbdev/mingfeng/pizza/invert_list/pt=20110619000000/ 
+
+
+
+
+hadoop jar /home/taobao/path_analysis.jar com.taobao.dw.pizza.path_analysis.biz.PathAnalysis \
+/group/taobao/taobao/hive/r_pizza_log/pt=20110712000000/* \
+-t /group/taobao/taobao/dw/tmp/20110712/PathAnalysis \
+-o /group/taobao/taobao/dw/result/20110712/PathAnalysis \
+-invaliduser /group/taobao/taobao/hive/r_invalid_mid_or_uid/pt=20110712000000/r_invalid_mid_or_uid.txt \
+-nodepath /group/taobao/taobao/dw/stb/20110712/pizza_node/pizzaac176e2f-0
