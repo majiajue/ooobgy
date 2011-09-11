@@ -8,15 +8,15 @@ var chairList = new Array();
 
 String.prototype.trim=function(){
     return this.replace(/(^\s*)|(\s*$)/g, "");
- }
+ };
 
  String.prototype.ltrim=function(){
     return this.replace(/(^\s*)/g,"");
- }
+ };
  
  String.prototype.rtrim=function(){
     return this.replace(/(\s*$)/g,"");
- }
+ };
 
 function loadDataFilePath(filePath){
 	try {
@@ -63,16 +63,17 @@ function loadClassRoomURL(fileURL){
 }
 
 function initClassRoom(){
+	//alert("debug");
 	var classRoomData = loadClassRoomURL("../data/classroom.data");
 	document.getElementById("class_room").innerHTML = classRoomData;
 	document.getElementById("chairCntDisp").innerHTML = document.getElementById("chairCnt").value;
 	loadNameListURL("../data/nameList.txt");
 	loadChairList(classRoomData);
 	randomChair();
-	intiBlackBoard();
+	initBlackBoard();
 }
 
-function intiBlackBoard(){
+function initBlackBoard(){
 	var preColCnt = document.getElementById("colCnt").value;
 	preColCnt = parseInt(preColCnt);
 	var width = 75 * preColCnt + 81;
@@ -263,9 +264,7 @@ function exchangeChair() {
 	var st1 = document.getElementById("st1").value;
 	var st2 = document.getElementById("st2").value;
 	if ( (st1 != "") && (st2 != "") ) {
-		var tmp = document.getElementById(st1).innerHTML;
-		document.getElementById(st1).innerHTML = document.getElementById(st2).innerHTML;
-		document.getElementById(st2).innerHTML = tmp;
+		exchangeStudent(st1, st2);
 		document.getElementById('exchangeBtn').innerHTML = "<img src=\"../images/exchange_dis.png\" width=\"148\" height=\"48\">";
 		document.getElementById("st1").value = "";
 		document.getElementById("st2").value = "";
@@ -319,8 +318,105 @@ function saveAsExcel(){
     }
 }
 
+function exchangeStudent(st1, st2){
+	var tmp = document.getElementById(st1).innerHTML;
+	document.getElementById(st1).innerHTML = document.getElementById(st2).innerHTML;
+	document.getElementById(st2).innerHTML = tmp;
+}
 
+function exchangeStudentRC(r1, c1, r2, c2){
+	//alert("(" + r1 + ", " + c1 + ") <=> (" + r2 + ", " + c2 + ")");
+	var st1 = "st_" + r1 + "_" + c1;
+	var st2 = "st_" + r2 + "_" + c2;
+	exchangeStudent(st1, st2);
+}
 
+/**
+ * 测试是否为座位
+ * @returns isChair
+ */
+function isChair(row, col){
+	var type = document.getElementById("st_" + row + "_" + col + "d").className;
+	if (type == "chair" || type == "stchosed") {
+		return true;
+	} 
+	
+	return false;
+}
+
+/**
+ * 学生右移
+ */
+function shiftRight(){
+	var colCnt = document.getElementById("colCnt").value;
+	colCnt = parseInt(colCnt);
+	var rowCnt = document.getElementById("rowCnt").value;
+	rowCnt = parseInt(rowCnt);
+	
+	for ( var row = 1; row <= rowCnt; row++) {
+		for ( var col = colCnt; col > 0; ) {
+			var isTail = false;
+			while (col > 1 && !isChair(row, col)) {
+				col --;
+				if (col < 1) {
+					isTail = true;
+					break;
+				}
+			}
+			var next_col = col - 1;
+			while (next_col > 1 && !isChair(row, next_col)) {
+				next_col --;
+				if (next_col < 1) {
+					isTail = true;
+					break;
+				}
+			}
+			if (isTail || next_col < 1 || col < 1) {
+				break;
+			}
+			
+			exchangeStudentRC(row, col, row, next_col);
+			col = next_col;
+		}
+	}
+}
+
+/**
+ * 学生左移
+ */
+function shiftLeft(){
+	var colCnt = document.getElementById("colCnt").value;
+	colCnt = parseInt(colCnt);
+	var rowCnt = document.getElementById("rowCnt").value;
+	rowCnt = parseInt(rowCnt);
+	
+}
+
+/**
+ * 学生上移
+ */
+function shiftUp(){
+	var colCnt = document.getElementById("colCnt").value;
+	colCnt = parseInt(colCnt);
+	var rowCnt = document.getElementById("rowCnt").value;
+	rowCnt = parseInt(rowCnt);
+	for ( var col = 1; col <= colCnt; col++) {
+		for ( var row = 1; row <= rowCnt; row++) {
+			
+		}
+	}
+}
+
+/**
+ * 学生下移
+ */
+function shiftDown(){
+	var colCnt = document.getElementById("colCnt").value;
+	colCnt = parseInt(colCnt);
+	var rowCnt = document.getElementById("rowCnt").value;
+	rowCnt = parseInt(rowCnt);
+	
+}
 
 
 

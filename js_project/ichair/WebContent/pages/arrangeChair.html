@@ -10,6 +10,7 @@
 <script type="text/javascript">
 function fLoad(){
     if (document.readyState=="complete") {
+		//alert("start");
         initClassRoom();
     }
 }
@@ -67,8 +68,8 @@ document.onreadystatechange=fLoad;
     <div class="col_shift">
     <table border="0">
   <tr>
-    <td><img src="../images/del_col.png" width="15" height="15" alt="右移一列" style="cursor:hand;" onClick="shiftRight();"></td>
-    <td><img src="../images/add_col.png" width="15" height="15" alt="左移一列" style="cursor:hand;" onClick="shiftLeft();"></td>
+    <td><img src="../images/del_col.png" width="15" height="15" alt="左移一列" style="cursor:hand;" onClick="shiftLeft();"></td>
+    <td><img src="../images/add_col.png" width="15" height="15" alt="右移一列" style="cursor:hand;" onClick="shiftRight();"></td>
   </tr>
     </table>
     </div>
