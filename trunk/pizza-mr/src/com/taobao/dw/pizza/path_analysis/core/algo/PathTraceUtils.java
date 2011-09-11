@@ -2,11 +2,9 @@ package com.taobao.dw.pizza.path_analysis.core.algo;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -26,6 +24,7 @@ import com.taobao.dw.pizza.path_analysis.core.pojo.InvertedList;
  * 轨迹路径相关操作方法
  * 
  * @author 明风
+ * @modified: 周晓龙 2011年9月11日11:05:06
  */
 public class PathTraceUtils {
 	private static final String[] DEFAULT_PATH_PRO = {"-1","-1"};
@@ -97,7 +96,6 @@ public class PathTraceUtils {
 	 */
 	public static List<CompositeTrace> mergeTrace(List<AtomTrace> atomTraces){
 		List<CompositeTrace> results = new ArrayList<CompositeTrace>(atomTraces.size());
-		int k = 0;
 		for (int i = 0, j = atomTraces.size(); i < j; i++) {
 			AtomTrace at = atomTraces.get(i);
 

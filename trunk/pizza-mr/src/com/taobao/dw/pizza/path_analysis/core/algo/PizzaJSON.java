@@ -2,12 +2,9 @@ package com.taobao.dw.pizza.path_analysis.core.algo;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.regex.Pattern;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -121,7 +118,7 @@ public class PizzaJSON {
 			return results;
 		} catch (Exception e) {
 			System.err.println("ParsePathExp:"+e);
-			return Collections.EMPTY_LIST;
+			return Collections.emptyList();
 		}			
 	}
 

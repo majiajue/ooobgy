@@ -56,7 +56,7 @@ import com.taobao.dw.pizza.path_analysis.core.pojo.InvertedList;
  * @created 2011-08-10
  * 
  * @author 明风
- * 
+ * @deprecated 2011-9-11底层逻辑已改变，若需使用请从{@link PathMatcher}修改过来
  */
 public class PathMatcherDiagnose extends Configured implements Tool {
 	InvertedList invertedList;

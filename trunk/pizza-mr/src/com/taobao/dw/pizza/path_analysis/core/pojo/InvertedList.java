@@ -17,6 +17,7 @@ import com.taobao.dw.pizza.path_analysis.core.PizzaConst;
  * 
  * @author Ã÷·ç
  * @created 2011-07-28
+ * @modified: ÖÜÏşÁú
  */
 public class InvertedList {
 	/*
