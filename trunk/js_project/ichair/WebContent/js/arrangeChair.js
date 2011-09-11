@@ -186,6 +186,10 @@ function randomChair(){
 	}
 	if (chairCnt < studentCnt) {//座位不够
 		chairWarning(randIndexes);
+	} else if (chairCnt > studentCnt) {//座位多余的话要打扫座位
+		for ( var i = studentCnt; i < chairCnt; i++) {
+			document.getElementById(chairList[i]).innerHTML = "&nbsp;";
+		}
 	}
 }
 
@@ -291,19 +295,24 @@ function step2(){
 
 function saveAsExcel(){
 	cleanExchangeEvent();
-    var curTbl = document.getElementById("classroom");
+    var curTbl = document.getElementById("class_show");
 //    alert(curTbl);
 //    return;
     var oXL = new ActiveXObject("Excel.Application");
     //创建AX对象excel
+//    alert("tt1");
     var oWB = oXL.Workbooks.Add();
     //获取workbook对象
     var oSheet = oWB.ActiveSheet;
+//    alert("tt2");
     //激活当前sheet
     var sel = document.body.createTextRange();
+//    alert("tt3");
     sel.moveToElementText(curTbl);
+//    alert("tt4");
     //把表格中的内容移到TextRange中
     sel.select();
+//    alert("tt0");
     //全选TextRange中内容
     sel.execCommand("Copy");
     //复制TextRange中内容 
@@ -311,6 +320,7 @@ function saveAsExcel(){
     //粘贴到活动的EXCEL中  
     //设置excel可见属性
 //    oXL.Visible = true;
+//    alert("tt");
     
     try{ 
     	var fname = oXL.Application.GetSaveAsFilename("classroom.xlsx", "Excel Spreadsheets (*.xlsx), *.xlsx"); 
