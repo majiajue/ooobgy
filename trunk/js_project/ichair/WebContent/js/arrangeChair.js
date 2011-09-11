@@ -209,7 +209,7 @@ function chairWarning(randIndexes){
 		j++;
 		if (j == ROW_MAX) {
 			j = 0;
-			untable += "</tr><tr>"
+			untable += "</tr><tr>";
 		}
 		untable += "<td align='center' width='75'>" + unChairedSts[i] + "</td>";
 	}
@@ -257,6 +257,21 @@ function modifyChair(chairId){
 }
 
 /**
+ * 交换结束或者保存前要清除交换标记
+ */
+function cleanExchangeEvent(){
+	var st1 = document.getElementById("st1").value;
+	var st2 = document.getElementById("st2").value;
+	document.getElementById('exchangeBtn').innerHTML = "<img src=\"../images/exchange_dis.png\" width=\"148\" height=\"48\">";
+	if ( (st1 != "") && (st2 != "") ) {
+		document.getElementById("st1").value = "";
+		document.getElementById("st2").value = "";
+		document.getElementById(st1 + "d").className = "chair";
+		document.getElementById(st2 + "d").className = "chair";
+	}
+}
+
+/**
  * 交换座位事件
  * @return
  */
@@ -265,11 +280,7 @@ function exchangeChair() {
 	var st2 = document.getElementById("st2").value;
 	if ( (st1 != "") && (st2 != "") ) {
 		exchangeStudent(st1, st2);
-		document.getElementById('exchangeBtn').innerHTML = "<img src=\"../images/exchange_dis.png\" width=\"148\" height=\"48\">";
-		document.getElementById("st1").value = "";
-		document.getElementById("st2").value = "";
-		document.getElementById(st1 + "d").className = "chair";
-		document.getElementById(st2 + "d").className = "chair";
+		cleanExchangeEvent();
 	}
 }
 
@@ -279,6 +290,7 @@ function step2(){
 }
 
 function saveAsExcel(){
+	cleanExchangeEvent();
     var curTbl = document.getElementById("classroom");
 //    alert(curTbl);
 //    return;
