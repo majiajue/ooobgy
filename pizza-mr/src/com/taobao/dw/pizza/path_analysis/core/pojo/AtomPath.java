@@ -7,7 +7,7 @@ import com.taobao.dw.pizza.path_analysis.core.PizzaConst;
  * 原子路径
  * 
  * @author 明风
- *
+ * @modified: 周晓龙
  */
 public class AtomPath implements Cloneable{
 	public String pathId;

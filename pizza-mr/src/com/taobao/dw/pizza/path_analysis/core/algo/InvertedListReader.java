@@ -24,6 +24,7 @@ import com.taobao.dw.pizza.path_analysis.core.pojo.InvertedList;
  * 			}
  * 
  * @author 明风
+ * @modified: 周晓龙 2011年9月10日08:05:11
  *
  */
 public class InvertedListReader {

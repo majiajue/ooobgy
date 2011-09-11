@@ -9,7 +9,7 @@ import com.taobao.dw.pizza.path_analysis.core.PizzaConst;
  * 组合路径
  * 
  * @author 明风
- *
+ * @modified: 周晓龙
  */
 public class CompositePath {
 	public String pathId;

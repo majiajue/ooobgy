@@ -46,11 +46,9 @@ import com.taobao.dw.pizza.path_analysis.core.pojo.InvertedList;
  * 路径匹配
  * 
  * @author 明风
- * 
+ * @modified: 周晓龙 2011年9月11日11:04:49
  */
 public class PathMatcher extends Configured implements Tool {
-	InvertedList invertedList;
-
 	/**
 	 * 输入为：用户路径位于第9位的json文件，解析之后为： userRoute: a,b,c,d,e,f,g
 	 * 

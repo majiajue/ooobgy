@@ -8,7 +8,7 @@ import java.util.Map;
  * 组合轨迹
  * 
  * @author 明风
- *
+ * @modified: 周晓龙
  */
 public class CompositeTrace {
 	//起始轨迹
