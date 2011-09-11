@@ -426,9 +426,31 @@ function shiftUp(){
 	colCnt = parseInt(colCnt);
 	var rowCnt = document.getElementById("rowCnt").value;
 	rowCnt = parseInt(rowCnt);
+	
 	for ( var col = 1; col <= colCnt; col++) {
-		for ( var row = 1; row <= rowCnt; row++) {
+		for ( var row = 1; row <= rowCnt; ) {
+			var isTail = false;
+			while (row <= rowCnt && !isChair(row, col)) {
+				row ++;
+				if (row > rowCnt) {
+					isTail = true;
+					break;
+				}
+			}
+			var next_row = row + 1;
+			while (next_row <= rowCnt && !isChair(next_row, col)) {
+				next_row ++;
+				if (next_row > rowCnt) {
+					isTail = true;
+					break;
+				}
+			}
+			if (isTail || next_row > rowCnt || row > rowCnt) {
+				break;
+			}
 			
+			exchangeStudentRC(row, col, next_row, col);
+			row = next_row;
 		}
 	}
 }
@@ -442,6 +464,32 @@ function shiftDown(){
 	var rowCnt = document.getElementById("rowCnt").value;
 	rowCnt = parseInt(rowCnt);
 	
+	for ( var col = 1; col <= colCnt; col++) {
+		for ( var row = rowCnt; row > 0; ) {
+			var isTail = false;
+			while (row > 0 && !isChair(row, col)) {
+				row --;
+				if (row < 1) {
+					isTail = true;
+					break;
+				}
+			}
+			var next_row = row - 1;
+			while (next_row > 0 && !isChair(next_row, col)) {
+				next_row --;
+				if (next_row < 1) {
+					isTail = true;
+					break;
+				}
+			}
+			if (isTail || next_row < 1 || row < 1) {
+				break;
+			}
+			
+			exchangeStudentRC(row, col, next_row, col);
+			row = next_row;
+		}
+	}
 }
 
 
