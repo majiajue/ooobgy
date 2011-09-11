@@ -356,7 +356,7 @@ function shiftRight(){
 	for ( var row = 1; row <= rowCnt; row++) {
 		for ( var col = colCnt; col > 0; ) {
 			var isTail = false;
-			while (col > 1 && !isChair(row, col)) {
+			while (col > 0 && !isChair(row, col)) {
 				col --;
 				if (col < 1) {
 					isTail = true;
@@ -364,7 +364,7 @@ function shiftRight(){
 				}
 			}
 			var next_col = col - 1;
-			while (next_col > 1 && !isChair(row, next_col)) {
+			while (next_col > 0 && !isChair(row, next_col)) {
 				next_col --;
 				if (next_col < 1) {
 					isTail = true;
@@ -389,7 +389,33 @@ function shiftLeft(){
 	colCnt = parseInt(colCnt);
 	var rowCnt = document.getElementById("rowCnt").value;
 	rowCnt = parseInt(rowCnt);
-	
+	//alert("in");
+	for ( var row = 1; row <= rowCnt; row++) {
+		for ( var col = 1; col <= colCnt; ) {
+			var isTail = false;
+			while (col <= colCnt && !isChair(row, col)) {
+				col ++;
+				if (col > colCnt) {
+					isTail = true;
+					break;
+				}
+			}
+			var next_col = col + 1;
+			while (next_col <= colCnt && !isChair(row, next_col)) {
+				next_col ++;
+				if (next_col > colCnt) {
+					isTail = true;
+					break;
+				}
+			}
+			if (isTail || next_col > colCnt || col > colCnt) {
+				break;
+			}
+			
+			exchangeStudentRC(row, col, row, next_col);
+			col = next_col;
+		}
+	}
 }
 
 /**
