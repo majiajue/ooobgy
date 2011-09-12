@@ -18,9 +18,9 @@
 
     <target name="compile" depends="init">
         <javac srcdir="${src.java}" destdir="${build.dir}" source="1.6" target="1.6" nowarn="yes" debug="yes">
-			<classpath refid="class.path">
-			</classpath>
-            <compilerarg line="-encoding GBK"/>         
+        	  <classpath refid="class.path">
+        	    </classpath>
+            <compilerarg line="-encoding GBK"/>
         </javac>
     </target>
 
