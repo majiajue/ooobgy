@@ -290,12 +290,12 @@ public class PathTraceUtils {
 			nodeIds[i] = nodeIds[i].trim();
 		}
 
-		Set<String> unLonelyPaths = new HashSet<String>();// 非孤单路径
+		Set<String> unLonelyPaths = new LinkedHashSet<String>();// 非孤单路径
 		for (CompositeTrace ct : cts) {
 			unLonelyPaths.addAll(ct.cps.keySet());
 		}
 
-		Set<String[]> lonelyProfiles = new HashSet<String[]>();
+		Set<String[]> lonelyProfiles = new LinkedHashSet<String[]>();
 
 		for (int i = 0; i < nodeIds.length; i++) {
 			Set<String> lonelyPaths = iList.findPathsWithHeadNode(nodeIds[i]);
