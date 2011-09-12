@@ -133,10 +133,6 @@ public class PathMatcher extends Configured implements Tool {
 				return;
 			}
 
-			// System.out.println("NodeFeatureAttrs:"
-			// +nodeFeatureAttrs.keySet());
-			// System.out.println("RawTraces:" + Arrays.asList(rawTraces));
-
 			for (String rawTrace : rawTraces) {
 				try {
 					// 拆分用户轨迹为原子轨迹
@@ -162,6 +158,14 @@ public class PathMatcher extends Configured implements Tool {
 			}
 		}
 
+		/**
+		 * 输出LHP
+		 * @param lonelyPaths
+		 * @param nodeAttrs
+		 * @param output
+		 * @throws JSONException
+		 * @throws IOException
+		 */
 		private void outputLHPs(Set<String[]> lonelyPaths,
 				Map<String, JSONObject> nodeAttrs,
 				OutputCollector<Text, Text> output) throws JSONException, IOException {
@@ -175,7 +179,7 @@ public class PathMatcher extends Configured implements Tool {
 				if (lhp.length != 5) {
 					continue;
 				}
-				//LHP:[(1,p4,20,22,2),(1,p2,5,4,2)]
+				
 				sb = new StringBuilder();
 				sb.append(uid).append(PizzaConst.SPLIT);//user_id
 				sb.append(lhp[1]).append(PizzaConst.SPLIT);//path_key

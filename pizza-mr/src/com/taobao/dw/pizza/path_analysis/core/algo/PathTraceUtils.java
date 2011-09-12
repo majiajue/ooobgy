@@ -2,7 +2,6 @@ package com.taobao.dw.pizza.path_analysis.core.algo;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
 import java.util.List;
@@ -131,7 +130,7 @@ public class PathTraceUtils {
 				   	
 	 * @return
 	 */
-	static Pattern COMPLEX_PATH_PATTERN = Pattern.compile("\\((\\d+[\\+|\\-]\\d+)\\)");
+	private static Pattern COMPLEX_PATH_PATTERN = Pattern.compile("\\((\\d+[\\+|\\-]\\d+)\\)");
 
 	public static String[] splitPathToAtomPaths(String path) {
 		List<String> nodes = new ArrayList<String>();
@@ -153,7 +152,7 @@ public class PathTraceUtils {
 	    
 	 * @return 节点数组
 	 */
-	static Pattern COMPLEX_PATH_PATTERN2 = Pattern.compile("\\((\\d+)[\\+|\\-](\\d+)\\)");
+	private static Pattern COMPLEX_PATH_PATTERN2 = Pattern.compile("\\((\\d+)[\\+|\\-](\\d+)\\)");
 
 	public static String[] splitPathToNodes(String path) {
 		Set<String> nodes = new LinkedHashSet<String>();
