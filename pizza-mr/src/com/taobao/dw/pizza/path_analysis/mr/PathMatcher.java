@@ -36,7 +36,6 @@ import com.taobao.dw.pizza.path_analysis.core.PizzaConst;
 import com.taobao.dw.pizza.path_analysis.core.algo.InvertedListReader;
 import com.taobao.dw.pizza.path_analysis.core.algo.PizzaJSON;
 import com.taobao.dw.pizza.path_analysis.core.algo.PathTraceUtils;
-import com.taobao.dw.pizza.path_analysis.core.pojo.AtomPath;
 import com.taobao.dw.pizza.path_analysis.core.pojo.AtomTrace;
 import com.taobao.dw.pizza.path_analysis.core.pojo.CompositePath;
 import com.taobao.dw.pizza.path_analysis.core.pojo.CompositeTrace;
@@ -46,7 +45,8 @@ import com.taobao.dw.pizza.path_analysis.core.pojo.InvertedList;
  * 路径匹配
  * 
  * @author 明风
- * @modified: 周晓龙 2011年9月11日11:04:49·
+ * @modified: 周晓龙 2011年9月11日11:04:49
+ * @refactored: 周晓龙 2011年9月12日18:29:09
  */
 public class PathMatcher extends Configured implements Tool {
 	/**
@@ -63,14 +63,14 @@ public class PathMatcher extends Configured implements Tool {
 	 */
 	public static class PmMapper extends MapReduceBase implements
 			Mapper<LongWritable, Text, Text, Text> {
-		final InvertedList invertedList = new InvertedList();
-		Text key = new Text();
-		Text value = new Text();
+		private final InvertedList invertedList = new InvertedList();
+		private Text key = new Text();
+		private Text value = new Text();
 
-		Map<String, JSONObject> nodeFeatureAttrs;
-		String[] rawTraces;
-		Map<String, JSONObject> nodeIdsAttrs;
-		
+		private Map<String, JSONObject> nodeFeatureAttrs;
+		private String[] rawTraces;
+		private Map<String, JSONObject> nodeIdsAttrs;
+
 		@Override
 		public void configure(JobConf job) {
 			super.configure(job);
@@ -80,7 +80,7 @@ public class PathMatcher extends Configured implements Tool {
 				e.printStackTrace();
 				throw new RuntimeException(e);
 			}
-			System.out.println("InvertedList:" + this.invertedList);
+			// System.out.println("InvertedList:" + this.invertedList);
 		}
 
 		private void read(FileSystem fs, Path path) throws IOException {
@@ -93,7 +93,7 @@ public class PathMatcher extends Configured implements Tool {
 				InvertedListReader ilr = new InvertedListReader();
 				this.invertedList.addAll(ilr.readInvertedList(fis));
 				fis.close();
-			}			
+			}
 			this.invertedList.rebuildHeadNodeIndex();
 		}
 
@@ -119,47 +119,42 @@ public class PathMatcher extends Configured implements Tool {
 				throws IOException {
 			try {
 				nodeFeatureAttrs = PizzaJSON.parseUserRoute(value.toString());
-				rawTraces = PathTraceUtils.extractTraces(nodeFeatureAttrs.keySet());
-				nodeIdsAttrs = PathTraceUtils.rebuildNodeAttrs(nodeFeatureAttrs);
+				rawTraces = PathTraceUtils.extractTraces(nodeFeatureAttrs
+						.keySet());
+				nodeIdsAttrs = PathTraceUtils
+						.rebuildNodeAttrs(nodeFeatureAttrs);
 			} catch (Throwable e) {
 				System.err.println("Map 1:" + e);
 				System.err.println("Error format line:" + value.toString());
 				return;
 			}
 
-
-			if (nodeFeatureAttrs.size() == 0 || rawTraces.length == 0){
+			if (nodeFeatureAttrs.size() == 0 || rawTraces.length == 0) {
 				return;
 			}
 
-			//System.out.println("NodeFeatureAttrs:" +nodeFeatureAttrs.keySet());
-			//System.out.println("RawTraces:" + Arrays.asList(rawTraces));
+			// System.out.println("NodeFeatureAttrs:"
+			// +nodeFeatureAttrs.keySet());
+			// System.out.println("RawTraces:" + Arrays.asList(rawTraces));
 
 			for (String rawTrace : rawTraces) {
 				try {
-					 //单个首节点，特殊处理，rawTrace将会是一个首节点，因为有可能匹配多个首节点，所以还是可能会有多个。
-					if (nodeFeatureAttrs.size() == 1) {
-						List<AtomTrace> ats = PathTraceUtils.findAtsWithHeadNode(rawTrace, this.invertedList);
-						outputAtomTrace(ats, nodeIdsAttrs, output);
-					} else {
-						// 拆分用户轨迹为原子轨迹
-						List<AtomTrace> ats = PathTraceUtils.splitTrace(rawTrace);
-						if (ats.size() <= 0)
-							return;
-						//System.out.println("Original At:" + ats);
+					// 拆分用户轨迹为原子轨迹
+					List<AtomTrace> ats = PathTraceUtils.splitTrace(rawTrace);
+					if (ats.size() <= 0)
+						return;
 
-						// 从构造好的倒排表中，将原子轨迹对应的路径id和下一节点id，填充上
-						for (AtomTrace at : ats) {
-							invertedList.match(at);
-						}
-						//System.out.println("Matched At:" + ats);
-
-						// 合并原子轨迹为组合轨迹
-						List<CompositeTrace> cts = PathTraceUtils.mergeTrace(ats);
-
-						outputHeadAtomTraces(ats, nodeIdsAttrs, output);
-						outputCompositeTraces(cts, nodeIdsAttrs, output);
+					// 从构造好的倒排表中，将原子轨迹对应的路径id和下一节点id，填充上
+					for (AtomTrace at : ats) {
+						invertedList.match(at);
 					}
+
+					// 合并原子轨迹为组合轨迹,并输出
+					List<CompositeTrace> cts = PathTraceUtils.mergeTrace(ats);
+					outputCompositeTraces(cts, nodeIdsAttrs, output);
+					// 挖掘出孤单首节点LHP，并输出LHP
+					Set<String[]> lonelyPaths = PathTraceUtils.matchLonelyHeadNode(invertedList, rawTrace, cts);
+					outputLHPs(lonelyPaths, nodeIdsAttrs, output);
 				} catch (Throwable t) {
 					System.err.println("Map 2" + t);
 					t.printStackTrace();
@@ -167,110 +162,96 @@ public class PathMatcher extends Configured implements Tool {
 			}
 		}
 
-		/**
-		 *  输出原子轨迹起始于首节点，单独将首节点所有可以匹配路径输出一次，输出逻辑同单个首节点
-		 * 
-		 * @param ats
-		 * @param nodeIdsAttrs2
-		 * @param output
-		 * 
-		 * @throws IOException 
-		 * @throws JSONException 
-		 */
-		private void outputHeadAtomTraces(List<AtomTrace> ats, Map<String, JSONObject> nodeIdsAttrs, OutputCollector<Text, Text> output) throws JSONException, IOException {
-			for(AtomTrace at:ats){
-				if (invertedList.isHeadNode(at.startNode)){
-					List<AtomTrace> headAts = PathTraceUtils	.findAtsWithHeadNode(at.startNode,this.invertedList);
-					outputAtomTrace(headAts, nodeIdsAttrs, output);
-				}
-			}
-		}
-
-		/**
-		 * 遍历输出原子轨迹，针对只有一个首节点的路径，所以逻辑很简单，但是最终输出结果和组合路径需要保持格式一致
-		 * 
-		 * @param ats				原子路径
-		 * @param nodeAttrs	路径属性
-		 * @param output
-		 * @throws JSONException 
-		 * @throws IOException 
-		 */
-		private void outputAtomTrace(List<AtomTrace> ats, Map<String, JSONObject> nodeAttrs, OutputCollector<Text, Text> output) throws JSONException, IOException {
-			if (ats==null || ats.size() <=0 || nodeAttrs.size() <=0 ){
-				//System.err.println("Invalid AtomTrace or NodeMap. Nothing will be output!");
+		private void outputLHPs(Set<String[]> lonelyPaths,
+				Map<String, JSONObject> nodeAttrs,
+				OutputCollector<Text, Text> output) throws JSONException, IOException {
+			if (lonelyPaths == null || lonelyPaths.size() < 1 || nodeAttrs == null || nodeAttrs.size() < 1) {
 				return;
 			}
-
-			//System.out.println("Atom Traces: " + ats);			
-			String uid = nodeAttrs.values().iterator().next().getString("uid");			
-			for(AtomTrace at:ats){
-				for (AtomPath ap: at.atomPaths.values()){
-					if (!ap.isFirstPath){
-						continue;
-					}
-					
-					StringBuilder sb1 = new StringBuilder();
-					
-					sb1.append(uid).append(PizzaConst.SPLIT);
-					sb1.append(ap.pathId).append(PizzaConst.SPLIT);
-					sb1.append(ap.headNodeId).append(PizzaConst.SPLIT);
-					sb1.append(ap.headNodeId).append(PizzaConst.SPLIT);
-					sb1.append(ap.tailNodeId).append(PizzaConst.SPLIT);
-					sb1.append(ap.nextNodeId).append(PizzaConst.SPLIT);
-					//路径的首节点就是轨迹节点
-					sb1.append(ap.headNodeId).append(PizzaConst.SPLIT);
-					//只有一个节点，所以是首节点，也是未节点
-					sb1.append(true).append(PizzaConst.SPLIT);		
-					sb1.append(PizzaConst.INVALID_NODE_ID).append(PizzaConst.SPLIT);
-					sb1.append(true).append(PizzaConst.SPLIT);		
-					sb1.append(PizzaConst.INVALID_NODE_ID);	
-					key.set(sb1.toString());
-					
-					JSONObject node = nodeAttrs.get(ap.headNodeId);
-					if (node == null){
-						System.err.println("Still miss some node:" + ap.headNodeId + "---" + ap + "===" + ap.isFirstPath);
-						continue;
-					}
-					JSONObject cloneNode = new JSONObject();
-					for (String key:concernKeys){
-						cloneNode.put(key, node.get(key));
-					}				
-					
-					value.set(cloneNode.toString());
-					output.collect(key, value);
+			
+			String uid = nodeAttrs.values().iterator().next().getString("uid");
+			StringBuilder sb;
+			for (String[] lhp : lonelyPaths) {
+				if (lhp.length != 5) {
+					continue;
 				}
+				//LHP:[(1,p4,20,22,2),(1,p2,5,4,2)]
+				sb = new StringBuilder();
+				sb.append(uid).append(PizzaConst.SPLIT);//user_id
+				sb.append(lhp[1]).append(PizzaConst.SPLIT);//path_key
+				sb.append(lhp[0]).append(PizzaConst.SPLIT);//path_type_id
+				sb.append(lhp[0]).append(PizzaConst.SPLIT);//first_node_id
+				sb.append(lhp[3]).append(PizzaConst.SPLIT);//last_node_id
+				sb.append(lhp[2]).append(PizzaConst.SPLIT);//next_node_id
+				sb.append(lhp[0]).append(PizzaConst.SPLIT);//node_id
+				sb.append(true).append(PizzaConst.SPLIT);//is_first_node
+				sb.append("-1").append(PizzaConst.SPLIT);//pre_node_id  //在LHP中也没有提供跳入节点信息
+				sb.append(false).append(PizzaConst.SPLIT);//is_last_node
+				sb.append(lhp[4]).append(PizzaConst.SPLIT);//next_outer_node  //与CT不同，LHP提供了跳出节点信息
 				
-			}
-		}
+				JSONObject node = nodeAttrs.get(lhp[0]);
+				JSONObject cloneNode = new JSONObject();
+				for (String key : concernKeys) {
+					cloneNode.put(key, node.get(key));
+				}
 
+				key.set(sb.toString());
+				value.set(cloneNode.toString());//node_feature
+
+				output.collect(key, value);
+			}
+			
+		}
 
 		/**
 		 * 
 		 * @param cts
-		 * 				   样例：
-		 * 							 86+88-91
-		 * 									{-662107825=(86+88-91):-662107825,13,86,1, 
-		 * 									 -1442201463=(86+88-91):-1442201463,91,86,7, 
-		 * 									 -1898552851=(86+88-91):-1898552851,141,86,3}
+		 *            样例： 86+88-91 {-662107825=(86+88-91):-662107825,13,86,1,
+		 *            -1442201463=(86+88-91):-1442201463,91,86,7,
+		 *            -1898552851=(86+88-91):-1898552851,141,86,3}
 		 * @param nodeMap
-		 * 				   样例：
-		 * 						  	{52={"uid":"107188702","isUser":"1","nodeFeature":"52","logTime":"20110619111834","mid":"5618641004102355756","isRefer":"1","url":"http://s.taobao.com/search?q=防晒衣 长袖 透明&keyword=&commend=all&ssid=s5-e&search_type=item&atype=&tracelog=&sourceId=tb.index"}, 
-		 * 						     40={"uid":"107188702","isUser":"1","nodeFeature":"40","logTime":"20110619112150","mid":"5618641004102355756","isRefer":"0","url":"http://item.taobao.com/item.htm?id=9519056136"}}
+		 *            样例：
+		 *            {52={"uid":"107188702","isUser":"1","nodeFeature":"52",
+		 *            "logTime"
+		 *            :"20110619111834","mid":"5618641004102355756","isRefer"
+		 *            :"1","url":
+		 *            "http://s.taobao.com/search?q=防晒衣 长袖 透明&keyword=&commend=all&ssid=s5-e&search_type=item&atype=&tracelog=&sourceId=tb.index"
+		 *            },
+		 *            40={"uid":"107188702","isUser":"1","nodeFeature":"40","logTime"
+		 *            :"20110619112150","mid":"5618641004102355756","isRefer":
+		 *            "0"
+		 *            ,"url":"http://item.taobao.com/item.htm?id=9519056136"}}
 		 * @param output
 		 * 
-		 * @throws JSONException 
-		 * @throws IOException 
+		 * @throws JSONException
+		 * @throws IOException
 		 */
-		
-		String[] concernKeys = new String[]{"nodeFeature", "isUser", "mid"};
-		
-		private void outputCompositeTraces(List<CompositeTrace> cts, Map<String, JSONObject> nodeAttrs, OutputCollector<Text, Text> output) throws JSONException, IOException {
-			if (cts == null || cts.size() <=0 || nodeAttrs.size() <=0){
-				//System.err.println("Invalid CompositeTrace or NodeMap. Nothing will be output!");
+
+		private String[] concernKeys = new String[] { "nodeFeature", "isUser",
+				"mid" };
+
+		/**
+		 * 输出组合路径
+		 * @param cts
+		 * @param nodeAttrs
+		 * @param output
+		 * @throws JSONException
+		 * @throws IOException
+		 */
+		//TODO:这里这样直接输出组合路径有个问题。对于一些轨迹，来源节点和跳出节点的信息可能会丢失。（是否重要？）
+		//例如，我们定义路径1+2+3，某用户浏览轨迹101,1,2,105。
+		//按现在的逻辑，在节点1上，我们不知道来源于101节点，只知道是"-1"；
+		//在节点2上，我们不知道他是跳出到节点105，只知道是"-1"。
+		private void outputCompositeTraces(List<CompositeTrace> cts,
+				Map<String, JSONObject> nodeAttrs,
+				OutputCollector<Text, Text> output) throws JSONException,
+				IOException {
+			if (cts == null || cts.size() <= 0 || nodeAttrs.size() <= 0) {
+				// System.err.println("Invalid CompositeTrace or NodeMap. Nothing will be output!");
 				return;
 			}
-			//System.out.println("Composite Traces: " + cts);
-			
+			// System.out.println("Composite Traces: " + cts);
+
 			String uid = nodeAttrs.values().iterator().next().getString("uid");
 			for (CompositeTrace ct : cts) {
 				for (CompositePath cp : ct.cps.values()) {
@@ -283,7 +264,8 @@ public class PathMatcher extends Configured implements Tool {
 					sb1.append(cp.tailNodeId).append(PizzaConst.SPLIT);
 					sb1.append(cp.nextNodeId).append(PizzaConst.SPLIT);
 
-					String[] nodeIds = PathTraceUtils.splitPathToNodes(cp	.getPathKey());
+					String[] nodeIds = PathTraceUtils.splitPathToNodes(cp
+							.getPathKey());
 
 					for (int i = 0, j = nodeIds.length; i < j; i++) {
 
@@ -339,16 +321,17 @@ public class PathMatcher extends Configured implements Tool {
 	public static class PmReducer extends MapReduceBase implements
 			Reducer<Text, Text, LongWritable, Text> {
 		private LongWritable l = new LongWritable();
-		private Set<String> vs= new HashSet<String> ();
+		private Set<String> vs = new HashSet<String>();
 		private Text result = new Text();
+
 		@Override
 		public void reduce(Text key, Iterator<Text> values,
 				OutputCollector<LongWritable, Text> output, Reporter reporter)
 				throws IOException {
-			while( values.hasNext()){
+			while (values.hasNext()) {
 				vs.add(values.next().toString());
 			}
-			for (String v:vs){
+			for (String v : vs) {
 				result.set(key.toString() + PizzaConst.SPLIT + v);
 				output.collect(l, result);
 			}
@@ -381,7 +364,7 @@ public class PathMatcher extends Configured implements Tool {
 			pizzaJob.setJarByClass(PathMatcher.class);
 
 			pizzaJob.setMapperClass(PmMapper.class);
-			//pizzaJob.setNumReduceTasks(0);
+			// pizzaJob.setNumReduceTasks(0);
 			pizzaJob.setReducerClass(PmReducer.class);
 
 			pizzaJob.setMapOutputKeyClass(Text.class);
@@ -390,21 +373,22 @@ public class PathMatcher extends Configured implements Tool {
 			pizzaJob.setOutputKeyClass(LongWritable.class);
 			pizzaJob.setOutputValueClass(Text.class);
 
-			
 			FileInputFormat.addInputPath(pizzaJob, new Path(args[0]));
 
 			FileSystem fstm = FileSystem.get(pizzaJob);
 			Path outDir = new Path(args[1]);
 			fstm.delete(outDir, true);
-			
+
 			pizzaJob.setOutputFormat(SequenceFileOutputFormat.class);
-			
+
 			SequenceFileOutputFormat.setCompressOutput(pizzaJob, true);
-			SequenceFileOutputFormat.setOutputCompressionType(pizzaJob,	CompressionType.BLOCK);
-			SequenceFileOutputFormat.getOutputCompressorClass(pizzaJob,	GzipCodec.class);
-			
+			SequenceFileOutputFormat.setOutputCompressionType(pizzaJob,
+					CompressionType.BLOCK);
+			SequenceFileOutputFormat.getOutputCompressorClass(pizzaJob,
+					GzipCodec.class);
+
 			SequenceFileOutputFormat.setOutputPath(pizzaJob, new Path(args[1]));
-			
+
 			JobClient.runJob(pizzaJob);
 
 			return 0;
