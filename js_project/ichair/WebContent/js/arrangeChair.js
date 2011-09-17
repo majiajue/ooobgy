@@ -128,7 +128,7 @@ function loadChairList(data){
 	var sid;
 	var sStyle;
 	for ( var i = 1; i <= rowCnt; i++) {
-		for ( var j = 1; j <= rowCnt; j++) {
+		for ( var j = 1; j <= colCnt; j++) {
 			sid = "st_" + i + "_" + j;
 			sStyle = document.getElementById(sid + "d").className;
 			if (sStyle == "chair") {
