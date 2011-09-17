@@ -1,5 +1,5 @@
 <DIV id=class_show>
-<TABLE border=1 cellSpacing=0 borderColor=#723dfe width=531>
+<TABLE border=1 cellSpacing=0 borderColor=#723dfe width=1056>
 <TBODY id=room>
 <TR id=col_ruler>
 <TD>&nbsp; </TD>
@@ -8,53 +8,132 @@
 <TD id=colr_3 class=colRuler><SPAN id=colrn_3>3</SPAN></TD>
 <TD id=colr_4 class=colRuler><SPAN id=colrn_4>4</SPAN></TD>
 <TD id=colr_5 class=colRuler><SPAN id=colrn_5>5</SPAN></TD>
-<TD id=colr_6 class=colRuler><SPAN id=colrn_6>6</SPAN></TD></TR>
+<TD id=colr_6 class=colRuler><SPAN id=colrn_6>6</SPAN></TD>
+<TD id=colr_7 class=colRuler><SPAN id=colrn_7>7</SPAN></TD>
+<TD id=colr_8 class=colRuler><SPAN id=colrn_8>8</SPAN></TD>
+<TD id=colr_9 class=colRuler><SPAN id=colrn_9>9</SPAN></TD>
+<TD id=colr_10 class=colRuler><SPAN id=colrn_10>10</SPAN></TD>
+<TD id=colr_11 class=colRuler><SPAN id=colrn_11>11</SPAN></TD>
+<TD id=colr_12 class=colRuler><SPAN id=colrn_12>12</SPAN></TD>
+<TD id=colr_13 class=colRuler><SPAN id=colrn_13>13</SPAN></TD></TR>
 <TR id=str_1>
 <TD id=rowr_1 class=rowRuler><SPAN id=rowrn_1>1</SPAN></TD>
-<TD id=st_1_1d class=chair onmouseover="inRuler(1, 1)" onmouseout="outRuler(1, 1)" onclick="modifyChair('st_1_1');"><SPAN id=st_1_1>&nbsp;</SPAN></TD>
+<TD id=st_1_1d class=sfloor onmouseover="inRuler(1, 1)" onmouseout="outRuler(1, 1)" onclick="modifyChair('st_1_1');"><SPAN id=st_1_1>&nbsp;</SPAN></TD>
 <TD id=st_1_2d class=chair onmouseover="inRuler(1, 2)" onmouseout="outRuler(1, 2)" onclick="modifyChair('st_1_2');"><SPAN id=st_1_2>&nbsp;</SPAN></TD>
-<TD id=st_1_3d class=sfloor onmouseover="inRuler(1, 3)" onmouseout="outRuler(1, 3)" onclick="modifyChair('st_1_3');"><SPAN id=st_1_3>&nbsp;</SPAN></TD>
+<TD id=st_1_3d class=chair onmouseover="inRuler(1, 3)" onmouseout="outRuler(1, 3)" onclick="modifyChair('st_1_3');"><SPAN id=st_1_3>&nbsp;</SPAN></TD>
 <TD id=st_1_4d class=chair onmouseover="inRuler(1, 4)" onmouseout="outRuler(1, 4)" onclick="modifyChair('st_1_4');"><SPAN id=st_1_4>&nbsp;</SPAN></TD>
-<TD id=st_1_5d class=chair onmouseover="inRuler(1, 5)" onmouseout="outRuler(1, 5)" onclick="modifyChair('st_1_5');"><SPAN id=st_1_5>&nbsp;</SPAN></TD>
-<TD id=st_1_6d class=sfloor onmouseover="inRuler(1, 6)" onmouseout="outRuler(1, 6)" onclick="modifyChair('st_1_6');"><SPAN id=st_1_6>&nbsp;</SPAN></TD></TR>
+<TD id=st_1_5d class=sfloor onmouseover="inRuler(1, 5)" onmouseout="outRuler(1, 5)" onclick="modifyChair('st_1_5');"><SPAN id=st_1_5>&nbsp;</SPAN></TD>
+<TD id=st_1_6d class=chair onmouseover="inRuler(1, 6)" onmouseout="outRuler(1, 6)" onclick="modifyChair('st_1_6');"><SPAN id=st_1_6>&nbsp;</SPAN></TD>
+<TD id=st_1_7d class=chair onmouseover="inRuler(1, 7)" onmouseout="outRuler(1, 7)" onclick="modifyChair('st_1_7');"><SPAN id=st_1_7>&nbsp;</SPAN></TD>
+<TD id=st_1_8d class=chair onmouseover="inRuler(1, 8)" onmouseout="outRuler(1, 8)" onclick="modifyChair('st_1_8');"><SPAN id=st_1_8>&nbsp;</SPAN></TD>
+<TD id=st_1_9d class=sfloor onmouseover="inRuler(1, 9)" onmouseout="outRuler(1, 9)" onclick="modifyChair('st_1_9');"><SPAN id=st_1_9>&nbsp;</SPAN></TD>
+<TD id=st_1_10d class=chair onmouseover="inRuler(1, 10)" onmouseout="outRuler(1, 10)" onclick="modifyChair('st_1_10');"><SPAN id=st_1_10>&nbsp;</SPAN></TD>
+<TD id=st_1_11d class=chair onmouseover="inRuler(1, 11)" onmouseout="outRuler(1, 11)" onclick="modifyChair('st_1_11');"><SPAN id=st_1_11>&nbsp;</SPAN></TD>
+<TD id=st_1_12d class=chair onmouseover="inRuler(1, 12)" onmouseout="outRuler(1, 12)" onclick="modifyChair('st_1_12');"><SPAN id=st_1_12>&nbsp;</SPAN></TD>
+<TD id=st_1_13d class=sfloor onmouseover="inRuler(1, 13)" onmouseout="outRuler(1, 13)" onclick="modifyChair('st_1_13');"><SPAN id=st_1_13>&nbsp;</SPAN></TD></TR>
 <TR id=str_2>
 <TD id=rowr_2 class=rowRuler><SPAN id=rowrn_2>2</SPAN></TD>
-<TD id=st_2_1d class=chair onmouseover="inRuler(2, 1)" onmouseout="outRuler(2, 1)" onclick="modifyChair('st_2_1');"><SPAN id=st_2_1>&nbsp;</SPAN></TD>
+<TD id=st_2_1d class=sfloor onmouseover="inRuler(2, 1)" onmouseout="outRuler(2, 1)" onclick="modifyChair('st_2_1');"><SPAN id=st_2_1>&nbsp;</SPAN></TD>
 <TD id=st_2_2d class=chair onmouseover="inRuler(2, 2)" onmouseout="outRuler(2, 2)" onclick="modifyChair('st_2_2');"><SPAN id=st_2_2>&nbsp;</SPAN></TD>
-<TD id=st_2_3d class=sfloor onmouseover="inRuler(2, 3)" onmouseout="outRuler(2, 3)" onclick="modifyChair('st_2_3');"><SPAN id=st_2_3>&nbsp;</SPAN></TD>
+<TD id=st_2_3d class=chair onmouseover="inRuler(2, 3)" onmouseout="outRuler(2, 3)" onclick="modifyChair('st_2_3');"><SPAN id=st_2_3>&nbsp;</SPAN></TD>
 <TD id=st_2_4d class=chair onmouseover="inRuler(2, 4)" onmouseout="outRuler(2, 4)" onclick="modifyChair('st_2_4');"><SPAN id=st_2_4>&nbsp;</SPAN></TD>
-<TD id=st_2_5d class=chair onmouseover="inRuler(2, 5)" onmouseout="outRuler(2, 5)" onclick="modifyChair('st_2_5');"><SPAN id=st_2_5>&nbsp;</SPAN></TD>
-<TD id=st_2_6d class=sfloor onmouseover="inRuler(2, 6)" onmouseout="outRuler(2, 6)" onclick="modifyChair('st_2_6');"><SPAN id=st_2_6>&nbsp;</SPAN></TD></TR>
+<TD id=st_2_5d class=sfloor onmouseover="inRuler(2, 5)" onmouseout="outRuler(2, 5)" onclick="modifyChair('st_2_5');"><SPAN id=st_2_5>&nbsp;</SPAN></TD>
+<TD id=st_2_6d class=chair onmouseover="inRuler(2, 6)" onmouseout="outRuler(2, 6)" onclick="modifyChair('st_2_6');"><SPAN id=st_2_6>&nbsp;</SPAN></TD>
+<TD id=st_2_7d class=chair onmouseover="inRuler(2, 7)" onmouseout="outRuler(2, 7)" onclick="modifyChair('st_2_7');"><SPAN id=st_2_7>&nbsp;</SPAN></TD>
+<TD id=st_2_8d class=chair onmouseover="inRuler(2, 8)" onmouseout="outRuler(2, 8)" onclick="modifyChair('st_2_8');"><SPAN id=st_2_8>&nbsp;</SPAN></TD>
+<TD id=st_2_9d class=sfloor onmouseover="inRuler(2, 9)" onmouseout="outRuler(2, 9)" onclick="modifyChair('st_2_9');"><SPAN id=st_2_9>&nbsp;</SPAN></TD>
+<TD id=st_2_10d class=chair onmouseover="inRuler(2, 10)" onmouseout="outRuler(2, 10)" onclick="modifyChair('st_2_10');"><SPAN id=st_2_10>&nbsp;</SPAN></TD>
+<TD id=st_2_11d class=chair onmouseover="inRuler(2, 11)" onmouseout="outRuler(2, 11)" onclick="modifyChair('st_2_11');"><SPAN id=st_2_11>&nbsp;</SPAN></TD>
+<TD id=st_2_12d class=chair onmouseover="inRuler(2, 12)" onmouseout="outRuler(2, 12)" onclick="modifyChair('st_2_12');"><SPAN id=st_2_12>&nbsp;</SPAN></TD>
+<TD id=st_2_13d class=sfloor onmouseover="inRuler(2, 13)" onmouseout="outRuler(2, 13)" onclick="modifyChair('st_2_13');"><SPAN id=st_2_13>&nbsp;</SPAN></TD></TR>
 <TR id=str_3>
 <TD id=rowr_3 class=rowRuler><SPAN id=rowrn_3>3</SPAN></TD>
-<TD id=st_3_1d class=chair onmouseover="inRuler(3, 1)" onmouseout="outRuler(3, 1)" onclick="modifyChair('st_3_1');"><SPAN id=st_3_1>&nbsp;</SPAN></TD>
+<TD id=st_3_1d class=sfloor onmouseover="inRuler(3, 1)" onmouseout="outRuler(3, 1)" onclick="modifyChair('st_3_1');"><SPAN id=st_3_1>&nbsp;</SPAN></TD>
 <TD id=st_3_2d class=chair onmouseover="inRuler(3, 2)" onmouseout="outRuler(3, 2)" onclick="modifyChair('st_3_2');"><SPAN id=st_3_2>&nbsp;</SPAN></TD>
-<TD id=st_3_3d class=sfloor onmouseover="inRuler(3, 3)" onmouseout="outRuler(3, 3)" onclick="modifyChair('st_3_3');"><SPAN id=st_3_3>&nbsp;</SPAN></TD>
+<TD id=st_3_3d class=chair onmouseover="inRuler(3, 3)" onmouseout="outRuler(3, 3)" onclick="modifyChair('st_3_3');"><SPAN id=st_3_3>&nbsp;</SPAN></TD>
 <TD id=st_3_4d class=chair onmouseover="inRuler(3, 4)" onmouseout="outRuler(3, 4)" onclick="modifyChair('st_3_4');"><SPAN id=st_3_4>&nbsp;</SPAN></TD>
-<TD id=st_3_5d class=chair onmouseover="inRuler(3, 5)" onmouseout="outRuler(3, 5)" onclick="modifyChair('st_3_5');"><SPAN id=st_3_5>&nbsp;</SPAN></TD>
-<TD id=st_3_6d class=sfloor onmouseover="inRuler(3, 6)" onmouseout="outRuler(3, 6)" onclick="modifyChair('st_3_6');"><SPAN id=st_3_6>&nbsp;</SPAN></TD></TR>
+<TD id=st_3_5d class=sfloor onmouseover="inRuler(3, 5)" onmouseout="outRuler(3, 5)" onclick="modifyChair('st_3_5');"><SPAN id=st_3_5>&nbsp;</SPAN></TD>
+<TD id=st_3_6d class=chair onmouseover="inRuler(3, 6)" onmouseout="outRuler(3, 6)" onclick="modifyChair('st_3_6');"><SPAN id=st_3_6>&nbsp;</SPAN></TD>
+<TD id=st_3_7d class=chair onmouseover="inRuler(3, 7)" onmouseout="outRuler(3, 7)" onclick="modifyChair('st_3_7');"><SPAN id=st_3_7>&nbsp;</SPAN></TD>
+<TD id=st_3_8d class=chair onmouseover="inRuler(3, 8)" onmouseout="outRuler(3, 8)" onclick="modifyChair('st_3_8');"><SPAN id=st_3_8>&nbsp;</SPAN></TD>
+<TD id=st_3_9d class=sfloor onmouseover="inRuler(3, 9)" onmouseout="outRuler(3, 9)" onclick="modifyChair('st_3_9');"><SPAN id=st_3_9>&nbsp;</SPAN></TD>
+<TD id=st_3_10d class=chair onmouseover="inRuler(3, 10)" onmouseout="outRuler(3, 10)" onclick="modifyChair('st_3_10');"><SPAN id=st_3_10>&nbsp;</SPAN></TD>
+<TD id=st_3_11d class=chair onmouseover="inRuler(3, 11)" onmouseout="outRuler(3, 11)" onclick="modifyChair('st_3_11');"><SPAN id=st_3_11>&nbsp;</SPAN></TD>
+<TD id=st_3_12d class=chair onmouseover="inRuler(3, 12)" onmouseout="outRuler(3, 12)" onclick="modifyChair('st_3_12');"><SPAN id=st_3_12>&nbsp;</SPAN></TD>
+<TD id=st_3_13d class=sfloor onmouseover="inRuler(3, 13)" onmouseout="outRuler(3, 13)" onclick="modifyChair('st_3_13');"><SPAN id=st_3_13>&nbsp;</SPAN></TD></TR>
 <TR id=str_4>
 <TD id=rowr_4 class=rowRuler><SPAN id=rowrn_4>4</SPAN></TD>
-<TD id=st_4_1d class=chair onmouseover="inRuler(4, 1)" onmouseout="outRuler(4, 1)" onclick="modifyChair('st_4_1');"><SPAN id=st_4_1>&nbsp;</SPAN></TD>
+<TD id=st_4_1d class=sfloor onmouseover="inRuler(4, 1)" onmouseout="outRuler(4, 1)" onclick="modifyChair('st_4_1');"><SPAN id=st_4_1>&nbsp;</SPAN></TD>
 <TD id=st_4_2d class=chair onmouseover="inRuler(4, 2)" onmouseout="outRuler(4, 2)" onclick="modifyChair('st_4_2');"><SPAN id=st_4_2>&nbsp;</SPAN></TD>
-<TD id=st_4_3d class=sfloor onmouseover="inRuler(4, 3)" onmouseout="outRuler(4, 3)" onclick="modifyChair('st_4_3');"><SPAN id=st_4_3>&nbsp;</SPAN></TD>
+<TD id=st_4_3d class=chair onmouseover="inRuler(4, 3)" onmouseout="outRuler(4, 3)" onclick="modifyChair('st_4_3');"><SPAN id=st_4_3>&nbsp;</SPAN></TD>
 <TD id=st_4_4d class=chair onmouseover="inRuler(4, 4)" onmouseout="outRuler(4, 4)" onclick="modifyChair('st_4_4');"><SPAN id=st_4_4>&nbsp;</SPAN></TD>
-<TD id=st_4_5d class=chair onmouseover="inRuler(4, 5)" onmouseout="outRuler(4, 5)" onclick="modifyChair('st_4_5');"><SPAN id=st_4_5>&nbsp;</SPAN></TD>
-<TD id=st_4_6d class=sfloor onmouseover="inRuler(4, 6)" onmouseout="outRuler(4, 6)" onclick="modifyChair('st_4_6');"><SPAN id=st_4_6>&nbsp;</SPAN></TD></TR>
+<TD id=st_4_5d class=sfloor onmouseover="inRuler(4, 5)" onmouseout="outRuler(4, 5)" onclick="modifyChair('st_4_5');"><SPAN id=st_4_5>&nbsp;</SPAN></TD>
+<TD id=st_4_6d class=chair onmouseover="inRuler(4, 6)" onmouseout="outRuler(4, 6)" onclick="modifyChair('st_4_6');"><SPAN id=st_4_6>&nbsp;</SPAN></TD>
+<TD id=st_4_7d class=chair onmouseover="inRuler(4, 7)" onmouseout="outRuler(4, 7)" onclick="modifyChair('st_4_7');"><SPAN id=st_4_7>&nbsp;</SPAN></TD>
+<TD id=st_4_8d class=chair onmouseover="inRuler(4, 8)" onmouseout="outRuler(4, 8)" onclick="modifyChair('st_4_8');"><SPAN id=st_4_8>&nbsp;</SPAN></TD>
+<TD id=st_4_9d class=sfloor onmouseover="inRuler(4, 9)" onmouseout="outRuler(4, 9)" onclick="modifyChair('st_4_9');"><SPAN id=st_4_9>&nbsp;</SPAN></TD>
+<TD id=st_4_10d class=chair onmouseover="inRuler(4, 10)" onmouseout="outRuler(4, 10)" onclick="modifyChair('st_4_10');"><SPAN id=st_4_10>&nbsp;</SPAN></TD>
+<TD id=st_4_11d class=chair onmouseover="inRuler(4, 11)" onmouseout="outRuler(4, 11)" onclick="modifyChair('st_4_11');"><SPAN id=st_4_11>&nbsp;</SPAN></TD>
+<TD id=st_4_12d class=chair onmouseover="inRuler(4, 12)" onmouseout="outRuler(4, 12)" onclick="modifyChair('st_4_12');"><SPAN id=st_4_12>&nbsp;</SPAN></TD>
+<TD id=st_4_13d class=sfloor onmouseover="inRuler(4, 13)" onmouseout="outRuler(4, 13)" onclick="modifyChair('st_4_13');"><SPAN id=st_4_13>&nbsp;</SPAN></TD></TR>
 <TR id=str_5>
 <TD id=rowr_5 class=rowRuler><SPAN id=rowrn_5>5</SPAN></TD>
-<TD id=st_5_1d class=chair onmouseover="inRuler(5, 1)" onmouseout="outRuler(5, 1)" onclick="modifyChair('st_5_1');"><SPAN id=st_5_1>&nbsp;</SPAN></TD>
+<TD id=st_5_1d class=sfloor onmouseover="inRuler(5, 1)" onmouseout="outRuler(5, 1)" onclick="modifyChair('st_5_1');"><SPAN id=st_5_1>&nbsp;</SPAN></TD>
 <TD id=st_5_2d class=chair onmouseover="inRuler(5, 2)" onmouseout="outRuler(5, 2)" onclick="modifyChair('st_5_2');"><SPAN id=st_5_2>&nbsp;</SPAN></TD>
-<TD id=st_5_3d class=sfloor onmouseover="inRuler(5, 3)" onmouseout="outRuler(5, 3)" onclick="modifyChair('st_5_3');"><SPAN id=st_5_3>&nbsp;</SPAN></TD>
+<TD id=st_5_3d class=chair onmouseover="inRuler(5, 3)" onmouseout="outRuler(5, 3)" onclick="modifyChair('st_5_3');"><SPAN id=st_5_3>&nbsp;</SPAN></TD>
 <TD id=st_5_4d class=chair onmouseover="inRuler(5, 4)" onmouseout="outRuler(5, 4)" onclick="modifyChair('st_5_4');"><SPAN id=st_5_4>&nbsp;</SPAN></TD>
-<TD id=st_5_5d class=chair onmouseover="inRuler(5, 5)" onmouseout="outRuler(5, 5)" onclick="modifyChair('st_5_5');"><SPAN id=st_5_5>&nbsp;</SPAN></TD>
-<TD id=st_5_6d class=sfloor onmouseover="inRuler(5, 6)" onmouseout="outRuler(5, 6)" onclick="modifyChair('st_5_6');"><SPAN id=st_5_6>&nbsp;</SPAN></TD></TR>
+<TD id=st_5_5d class=sfloor onmouseover="inRuler(5, 5)" onmouseout="outRuler(5, 5)" onclick="modifyChair('st_5_5');"><SPAN id=st_5_5>&nbsp;</SPAN></TD>
+<TD id=st_5_6d class=chair onmouseover="inRuler(5, 6)" onmouseout="outRuler(5, 6)" onclick="modifyChair('st_5_6');"><SPAN id=st_5_6>&nbsp;</SPAN></TD>
+<TD id=st_5_7d class=chair onmouseover="inRuler(5, 7)" onmouseout="outRuler(5, 7)" onclick="modifyChair('st_5_7');"><SPAN id=st_5_7>&nbsp;</SPAN></TD>
+<TD id=st_5_8d class=chair onmouseover="inRuler(5, 8)" onmouseout="outRuler(5, 8)" onclick="modifyChair('st_5_8');"><SPAN id=st_5_8>&nbsp;</SPAN></TD>
+<TD id=st_5_9d class=sfloor onmouseover="inRuler(5, 9)" onmouseout="outRuler(5, 9)" onclick="modifyChair('st_5_9');"><SPAN id=st_5_9>&nbsp;</SPAN></TD>
+<TD id=st_5_10d class=chair onmouseover="inRuler(5, 10)" onmouseout="outRuler(5, 10)" onclick="modifyChair('st_5_10');"><SPAN id=st_5_10>&nbsp;</SPAN></TD>
+<TD id=st_5_11d class=chair onmouseover="inRuler(5, 11)" onmouseout="outRuler(5, 11)" onclick="modifyChair('st_5_11');"><SPAN id=st_5_11>&nbsp;</SPAN></TD>
+<TD id=st_5_12d class=chair onmouseover="inRuler(5, 12)" onmouseout="outRuler(5, 12)" onclick="modifyChair('st_5_12');"><SPAN id=st_5_12>&nbsp;</SPAN></TD>
+<TD id=st_5_13d class=sfloor onmouseover="inRuler(5, 13)" onmouseout="outRuler(5, 13)" onclick="modifyChair('st_5_13');"><SPAN id=st_5_13>&nbsp;</SPAN></TD></TR>
 <TR id=str_6>
 <TD id=rowr_6 class=rowRuler><SPAN id=rowrn_6>6</SPAN></TD>
-<TD id=st_6_1d class=chair onmouseover="inRuler(6, 1)" onmouseout="outRuler(6, 1)" onclick="modifyChair('st_6_1');"><SPAN id=st_6_1>&nbsp;</SPAN></TD>
+<TD id=st_6_1d class=sfloor onmouseover="inRuler(6, 1)" onmouseout="outRuler(6, 1)" onclick="modifyChair('st_6_1');"><SPAN id=st_6_1>&nbsp;</SPAN></TD>
 <TD id=st_6_2d class=chair onmouseover="inRuler(6, 2)" onmouseout="outRuler(6, 2)" onclick="modifyChair('st_6_2');"><SPAN id=st_6_2>&nbsp;</SPAN></TD>
-<TD id=st_6_3d class=sfloor onmouseover="inRuler(6, 3)" onmouseout="outRuler(6, 3)" onclick="modifyChair('st_6_3');"><SPAN id=st_6_3>&nbsp;</SPAN></TD>
+<TD id=st_6_3d class=chair onmouseover="inRuler(6, 3)" onmouseout="outRuler(6, 3)" onclick="modifyChair('st_6_3');"><SPAN id=st_6_3>&nbsp;</SPAN></TD>
 <TD id=st_6_4d class=chair onmouseover="inRuler(6, 4)" onmouseout="outRuler(6, 4)" onclick="modifyChair('st_6_4');"><SPAN id=st_6_4>&nbsp;</SPAN></TD>
-<TD id=st_6_5d class=chair onmouseover="inRuler(6, 5)" onmouseout="outRuler(6, 5)" onclick="modifyChair('st_6_5');"><SPAN id=st_6_5>&nbsp;</SPAN></TD>
-<TD id=st_6_6d class=sfloor onmouseover="inRuler(6, 6)" onmouseout="outRuler(6, 6)" onclick="modifyChair('st_6_6');"><SPAN id=st_6_6>&nbsp;</SPAN></TD></TR></TBODY></TABLE></DIV>
-<DIV id=classMem><INPUT id=colCnt value=6 type=hidden name=colCnt> <INPUT id=rowCnt value=6 type=hidden name=rowCnt> <INPUT id=chairCnt value=24 type=hidden name=chairCnt> </DIV>
+<TD id=st_6_5d class=sfloor onmouseover="inRuler(6, 5)" onmouseout="outRuler(6, 5)" onclick="modifyChair('st_6_5');"><SPAN id=st_6_5>&nbsp;</SPAN></TD>
+<TD id=st_6_6d class=chair onmouseover="inRuler(6, 6)" onmouseout="outRuler(6, 6)" onclick="modifyChair('st_6_6');"><SPAN id=st_6_6>&nbsp;</SPAN></TD>
+<TD id=st_6_7d class=chair onmouseover="inRuler(6, 7)" onmouseout="outRuler(6, 7)" onclick="modifyChair('st_6_7');"><SPAN id=st_6_7>&nbsp;</SPAN></TD>
+<TD id=st_6_8d class=chair onmouseover="inRuler(6, 8)" onmouseout="outRuler(6, 8)" onclick="modifyChair('st_6_8');"><SPAN id=st_6_8>&nbsp;</SPAN></TD>
+<TD id=st_6_9d class=sfloor onmouseover="inRuler(6, 9)" onmouseout="outRuler(6, 9)" onclick="modifyChair('st_6_9');"><SPAN id=st_6_9>&nbsp;</SPAN></TD>
+<TD id=st_6_10d class=chair onmouseover="inRuler(6, 10)" onmouseout="outRuler(6, 10)" onclick="modifyChair('st_6_10');"><SPAN id=st_6_10>&nbsp;</SPAN></TD>
+<TD id=st_6_11d class=chair onmouseover="inRuler(6, 11)" onmouseout="outRuler(6, 11)" onclick="modifyChair('st_6_11');"><SPAN id=st_6_11>&nbsp;</SPAN></TD>
+<TD id=st_6_12d class=chair onmouseover="inRuler(6, 12)" onmouseout="outRuler(6, 12)" onclick="modifyChair('st_6_12');"><SPAN id=st_6_12>&nbsp;</SPAN></TD>
+<TD id=st_6_13d class=sfloor onmouseover="inRuler(6, 13)" onmouseout="outRuler(6, 13)" onclick="modifyChair('st_6_13');"><SPAN id=st_6_13>&nbsp;</SPAN></TD></TR>
+<TR id=str_7>
+<TD id=rowr_7 class=rowRuler><SPAN id=rowrn_7>7</SPAN></TD>
+<TD id=st_7_1d class=sfloor onmouseover="inRuler(7, 1)" onmouseout="outRuler(7, 1)" onclick="modifyChair('st_7_1');"><SPAN id=st_7_1>&nbsp;</SPAN></TD>
+<TD id=st_7_2d class=chair onmouseover="inRuler(7, 2)" onmouseout="outRuler(7, 2)" onclick="modifyChair('st_7_2');"><SPAN id=st_7_2>&nbsp;</SPAN></TD>
+<TD id=st_7_3d class=chair onmouseover="inRuler(7, 3)" onmouseout="outRuler(7, 3)" onclick="modifyChair('st_7_3');"><SPAN id=st_7_3>&nbsp;</SPAN></TD>
+<TD id=st_7_4d class=chair onmouseover="inRuler(7, 4)" onmouseout="outRuler(7, 4)" onclick="modifyChair('st_7_4');"><SPAN id=st_7_4>&nbsp;</SPAN></TD>
+<TD id=st_7_5d class=sfloor onmouseover="inRuler(7, 5)" onmouseout="outRuler(7, 5)" onclick="modifyChair('st_7_5');"><SPAN id=st_7_5>&nbsp;</SPAN></TD>
+<TD id=st_7_6d class=chair onmouseover="inRuler(7, 6)" onmouseout="outRuler(7, 6)" onclick="modifyChair('st_7_6');"><SPAN id=st_7_6>&nbsp;</SPAN></TD>
+<TD id=st_7_7d class=chair onmouseover="inRuler(7, 7)" onmouseout="outRuler(7, 7)" onclick="modifyChair('st_7_7');"><SPAN id=st_7_7>&nbsp;</SPAN></TD>
+<TD id=st_7_8d class=chair onmouseover="inRuler(7, 8)" onmouseout="outRuler(7, 8)" onclick="modifyChair('st_7_8');"><SPAN id=st_7_8>&nbsp;</SPAN></TD>
+<TD id=st_7_9d class=sfloor onmouseover="inRuler(7, 9)" onmouseout="outRuler(7, 9)" onclick="modifyChair('st_7_9');"><SPAN id=st_7_9>&nbsp;</SPAN></TD>
+<TD id=st_7_10d class=chair onmouseover="inRuler(7, 10)" onmouseout="outRuler(7, 10)" onclick="modifyChair('st_7_10');"><SPAN id=st_7_10>&nbsp;</SPAN></TD>
+<TD id=st_7_11d class=chair onmouseover="inRuler(7, 11)" onmouseout="outRuler(7, 11)" onclick="modifyChair('st_7_11');"><SPAN id=st_7_11>&nbsp;</SPAN></TD>
+<TD id=st_7_12d class=chair onmouseover="inRuler(7, 12)" onmouseout="outRuler(7, 12)" onclick="modifyChair('st_7_12');"><SPAN id=st_7_12>&nbsp;</SPAN></TD>
+<TD id=st_7_13d class=sfloor onmouseover="inRuler(7, 13)" onmouseout="outRuler(7, 13)" onclick="modifyChair('st_7_13');"><SPAN id=st_7_13>&nbsp;</SPAN></TD></TR>
+<TR id=str_8>
+<TD id=rowr_8 class=rowRuler><SPAN id=rowrn_8>8</SPAN></TD>
+<TD id=st_8_1d class=sfloor onmouseover="inRuler(8, 1)" onmouseout="outRuler(8, 1)" onclick="modifyChair('st_8_1');"><SPAN id=st_8_1>&nbsp;</SPAN></TD>
+<TD id=st_8_2d class=chair onmouseover="inRuler(8, 2)" onmouseout="outRuler(8, 2)" onclick="modifyChair('st_8_2');"><SPAN id=st_8_2>&nbsp;</SPAN></TD>
+<TD id=st_8_3d class=chair onmouseover="inRuler(8, 3)" onmouseout="outRuler(8, 3)" onclick="modifyChair('st_8_3');"><SPAN id=st_8_3>&nbsp;</SPAN></TD>
+<TD id=st_8_4d class=chair onmouseover="inRuler(8, 4)" onmouseout="outRuler(8, 4)" onclick="modifyChair('st_8_4');"><SPAN id=st_8_4>&nbsp;</SPAN></TD>
+<TD id=st_8_5d class=sfloor onmouseover="inRuler(8, 5)" onmouseout="outRuler(8, 5)" onclick="modifyChair('st_8_5');"><SPAN id=st_8_5>&nbsp;</SPAN></TD>
+<TD id=st_8_6d class=chair onmouseover="inRuler(8, 6)" onmouseout="outRuler(8, 6)" onclick="modifyChair('st_8_6');"><SPAN id=st_8_6>&nbsp;</SPAN></TD>
+<TD id=st_8_7d class=chair onmouseover="inRuler(8, 7)" onmouseout="outRuler(8, 7)" onclick="modifyChair('st_8_7');"><SPAN id=st_8_7>&nbsp;</SPAN></TD>
+<TD id=st_8_8d class=chair onmouseover="inRuler(8, 8)" onmouseout="outRuler(8, 8)" onclick="modifyChair('st_8_8');"><SPAN id=st_8_8>&nbsp;</SPAN></TD>
+<TD id=st_8_9d class=sfloor onmouseover="inRuler(8, 9)" onmouseout="outRuler(8, 9)" onclick="modifyChair('st_8_9');"><SPAN id=st_8_9>&nbsp;</SPAN></TD>
+<TD id=st_8_10d class=chair onmouseover="inRuler(8, 10)" onmouseout="outRuler(8, 10)" onclick="modifyChair('st_8_10');"><SPAN id=st_8_10>&nbsp;</SPAN></TD>
+<TD id=st_8_11d class=chair onmouseover="inRuler(8, 11)" onmouseout="outRuler(8, 11)" onclick="modifyChair('st_8_11');"><SPAN id=st_8_11>&nbsp;</SPAN></TD>
+<TD id=st_8_12d class=chair onmouseover="inRuler(8, 12)" onmouseout="outRuler(8, 12)" onclick="modifyChair('st_8_12');"><SPAN id=st_8_12>&nbsp;</SPAN></TD>
+<TD id=st_8_13d class=sfloor onmouseover="inRuler(8, 13)" onmouseout="outRuler(8, 13)" onclick="modifyChair('st_8_13');"><SPAN id=st_8_13>&nbsp;</SPAN></TD></TR></TBODY></TABLE></DIV>
+<DIV id=classMem><INPUT id=colCnt value=13 type=hidden name=colCnt> <INPUT id=rowCnt value=8 type=hidden name=rowCnt> <INPUT id=chairCnt value=72 type=hidden name=chairCnt> </DIV>
