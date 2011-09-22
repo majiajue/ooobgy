@@ -1,0 +1,105 @@
+<?xml version="1.0"?>
+<project name="forgcherry_hw1" basedir="." default="all">
+	<description>
+    	forgcherry's hw1
+    </description>
+	<property name="src.java" value="src/java/main" />
+	<property name="src.test" value="src/java/tests" />
+	<property name="lib.dir" value="lib" />
+	<property name="dist.dir" value="dist" />
+	<property name="build.dir" value="build" />
+	<property name="javadoc.dir" value="docs/javadoc" />
+	<property name="report.tests" value="log/junit_tests" />
+	<property name="report.tests.html" value="${report.tests}/html" />
+
+	<path id="class.path">
+		<pathelement location="${build.dir}" />
+		<fileset dir="${lib.dir}">
+			<include name="**/*.jar" />
+		</fileset>
+	</path>
+
+	<target name="compile" depends="init">
+		<javac srcdir="${src.java}" destdir="${build.dir}" source="1.6" target="1.6" nowarn="yes" debug="yes" includeantruntime="yes">
+			<classpath refid="class.path">
+			</classpath>
+			<compilerarg line="-encoding GBK" />
+		</javac>
+	</target>
+
+	<target name="compile-test" depends="compile">
+		<javac srcdir="${src.test}" destdir="${build.dir}" source="1.6" target="1.6" nowarn="yes" debug="yes" includeantruntime="yes">
+			<classpath refid="class.path">
+			</classpath>
+			<compilerarg line="-encoding GBK" />
+		</javac>
+	</target>
+
+	<target name="comm" depends="compile,compile-test" description="Creates Jar of hw1">
+		<jar jarfile="dist/hw1_die.jar" compress="true" basedir="${build.dir}">
+		</jar>
+		<delete dir="${build.dir}" />
+	</target>
+
+	<target name="init">
+		<tstamp />
+		<mkdir dir="${build.dir}" />
+		<mkdir dir="${dist.dir}" />
+	</target>
+
+	<target name="clean">
+		<delete dir="${build.dir}" />
+		<delete dir="${dist.dir}" />
+	</target>
+
+	<target name="javadoc" description="Generate the Javadoc HTML pages.">
+		<delete dir="${javadoc.dir}" />
+		<mkdir dir="${javadoc.dir}" />
+		<javadoc destdir="${javadoc.dir}" windowtitle="Hw1_die Project Class Library" use="yes" linksource="yes" splitindex="yes" encoding="GBK" docencoding="UTF-8">
+			<classpath refid="class.path">
+			</classpath>
+			<packageset dir="${src.java}" defaultexcludes="yes">
+				<include name="edu/zju/sc/aoot/hw1/**" />
+			</packageset>
+			<packageset dir="${src.test}" defaultexcludes="yes">
+				<include name="edu/zju/sc/aoot/hw1/**" />
+			</packageset>
+		</javadoc>
+	</target>
+
+	<target name="test" depends="comm">
+		<delete dir="${report.tests}" />
+		<mkdir dir="${report.tests}" />
+		<junit printsummary="yes" haltonfailure="yes">
+			<classpath>
+				<fileset dir="${dist.dir}">
+					<include name="**/*.jar" />
+				</fileset>
+				<fileset dir="${lib.dir}">
+					<include name="**/*.jar" />
+				</fileset>
+			</classpath>
+
+			<batchtest todir="${report.tests}">
+				<formatter type="xml" />
+				<fileset dir="${src.test}">
+					<include name="**/*Test*.java" />
+					<exclude name="**/AllTests.java" />
+				</fileset>
+			</batchtest>
+		</junit>
+	</target>
+
+	<target name="junit-report" depends="test">
+		<delete dir="${report.tests.html}" />
+		<mkdir dir="${report.tests.html}" />
+		<junitreport todir="${report.tests}">		
+			<fileset dir="${report.tests}">
+				<include name="TEST-*.xml" />
+			</fileset>
+			<report todir="${report.tests.html}" />
+		</junitreport>
+	</target>
+	
+	<target name="all" depends="comm,javadoc,test,junit-report" />
+</project>

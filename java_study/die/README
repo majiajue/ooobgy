@@ -1,0 +1,6 @@
+功能和目录结构如作业要求所示，此处不再赘述。
+特别地：
+1.本工程建立于eclipse，保留eclipse的一些文件，如.setting文件夹、bin文件夹、.classpath、.project等
+2.为了使用和调试方便，我的工程中将代码打包成jar，放在dist下
+
+powered by Frogcherry 21151060周晓龙 frogcherry@gmail.com
