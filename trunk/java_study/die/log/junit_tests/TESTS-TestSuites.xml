@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites>
+  <testsuite errors="0" failures="0" hostname="Cherry-Laptop" id="0" name="TestDie" package="edu.zju.sc.aoot.hw1" tests="9" time="0.072" timestamp="2011-09-13T16:41:12">
+      <properties>
+          <property name="java.vendor" value="Sun Microsystems Inc." />
+
+          <property name="lib.dir" value="lib" />
+
+          <property name="sun.java.launcher" value="SUN_STANDARD" />
+
+          <property name="eclipse.pdebuild.templates" value="/D:/eclipse/plugins/org.eclipse.pde.build_3.7.0.v20110512-1320/templates/" />
+
+          <property name="sun.management.compiler" value="HotSpot Client Compiler" />
+
+          <property name="os.name" value="Windows 7" />
+
+          <property name="sun.boot.class.path" value="C:\Program Files\Java\jre6\lib\resources.jar;C:\Program Files\Java\jre6\lib\rt.jar;C:\Program Files\Java\jre6\lib\sunrsasign.jar;C:\Program Files\Java\jre6\lib\jsse.jar;C:\Program Files\Java\jre6\lib\jce.jar;C:\Program Files\Java\jre6\lib\charsets.jar;C:\Program Files\Java\jre6\lib\modules\jdk.boot.jar;C:\Program Files\Java\jre6\classes" />
+
+          <property name="TODAY" value="September 14 2011" />
+
+          <property name="sun.desktop" value="windows" />
+
+          <property name="java.vm.specification.vendor" value="Sun Microsystems Inc." />
+
+          <property name="ant.home" value="D:\eclipse\plugins\org.apache.ant_1.8.2.v20110505-1300" />
+
+          <property name="java.runtime.version" value="1.6.0_26-b03" />
+
+          <property name="user.name" value="Administrator" />
+
+          <property name="build.dir" value="build" />
+
+          <property name="src.java" value="src/java/main" />
+
+          <property name="user.language" value="zh" />
+
+          <property name="sun.boot.library.path" value="C:\Program Files\Java\jre6\bin" />
+
+          <property name="ant.file.forgcherry_hw1" value="D:\code\die\build.xml" />
+
+          <property name="ant.project.default-target" value="all" />
+
+          <property name="ant.project.name" value="forgcherry_hw1" />
+
+          <property name="DSTAMP" value="20110914" />
+
+          <property name="java.version" value="1.6.0_26" />
+
+          <property name="user.timezone" value="" />
+
+          <property name="sun.arch.data.model" value="32" />
+
+          <property name="java.endorsed.dirs" value="C:\Program Files\Java\jre6\lib\endorsed" />
+
+          <property name="sun.cpu.isalist" value="pentium_pro+mmx pentium_pro pentium+mmx pentium i486 i386 i86" />
+
+          <property name="sun.jnu.encoding" value="GBK" />
+
+          <property name="file.encoding.pkg" value="sun.io" />
+
+          <property name="file.separator" value="\" />
+
+          <property name="java.specification.name" value="Java Platform API Specification" />
+
+          <property name="java.class.version" value="50.0" />
+
+          <property name="user.country" value="CN" />
+
+          <property name="java.home" value="C:\Program Files\Java\jre6" />
+
+          <property name="dist.dir" value="dist" />
+
+          <property name="java.vm.info" value="mixed mode, sharing" />
+
+          <property name="ant.file" value="D:\code\die\build.xml" />
+
+          <property name="os.version" value="6.1" />
+
+          <property name="ant.file.type.forgcherry_hw1" value="file" />
+
+          <property name="path.separator" value=";" />
+
+          <property name="java.vm.version" value="20.1-b02" />
+
+          <property name="user.variant" value="" />
+
+          <property name="ant.library.dir" value="D:\eclipse\plugins\org.apache.ant_1.8.2.v20110505-1300\lib" />
+
+          <property name="java.awt.printerjob" value="sun.awt.windows.WPrinterJob" />
+
+          <property name="sun.io.unicode.encoding" value="UnicodeLittle" />
+
+          <property name="awt.toolkit" value="sun.awt.windows.WToolkit" />
+
+          <property name="eclipse.pdebuild.scripts" value="/D:/eclipse/plugins/org.eclipse.pde.build_3.7.0.v20110512-1320/scripts/" />
+
+          <property name="user.home" value="C:\Users\Administrator" />
+
+          <property name="java.specification.vendor" value="Sun Microsystems Inc." />
+
+          <property name="java.library.path" value="D:\eclipse;C:\windows\Sun\Java\bin;C:\windows\system32;C:\windows;C:/Program Files/Java/jre6/bin/client;C:/Program Files/Java/jre6/bin;C:/Program Files/Java/jre6/lib/i386;C:\Program Files\Broadcom\Broadcom 802.11 Network Adapter\Driver;;;;D:\oracle\product\10.2.0\db_1\bin;C:\Program Files\CodeGear\RAD Studio\6.0\bin;C:\Users\Public\Documents\RAD Studio\6.0\Bpl;C:\windows\system32;C:\windows;C:\windows\System32\Wbem;C:\windows\System32\WindowsPowerShell\v1.0\;D:\软件\Windows7Master;C:\Program Files\Microsoft SQL Server\80\Tools\Binn\;C:;D:\MySQL Datafiles\bin;C:\Program Files\Microsoft SQL Server\100\Tools\Binn\;C:\Program Files\Microsoft SQL Server\100\DTS\Binn\;C:\Program Files\Common Files\Thunder Network\KanKan\Codecs;D:\Program Files\TortoiseSVN\bin;C:\Program Files\Final Codecs\QTSystem\;D:\JAVAHOME\jdk\bin;C:\Users\Public\Documents\RAD Studio\6.0\Bpl;D:\JAVAHOME\ant\bin;D:\cygwin\bin;D:\masm32\BIN;D:\TC\BIN;D:\TASM\BIN;D:\Program Files\StormII\Codec;D:\Program Files\StormII;D:\Program Files\CVS Suite\CVSNT\;D:\eclipse;;.;D:\eclipse\configuration\org.eclipse.osgi\bundles\590\1\.cp" />
+
+          <property name="java.vendor.url" value="http://java.sun.com/" />
+
+          <property name="java.vm.vendor" value="Sun Microsystems Inc." />
+
+          <property name="java.runtime.name" value="Java(TM) SE Runtime Environment" />
+
+          <property name="sun.java.command" value="org.eclipse.ant.internal.launching.remote.InternalAntRunner -Dorg.eclipse.ant.core.ANT_PROCESS_ID=1315932066375 -Declipse.connect.port=65392 -Declipse.pdebuild.home=/D:/eclipse/plugins/org.eclipse.pde.build_3.7.0.v20110512-1320/./ -Declipse.pdebuild.scripts=/D:/eclipse/plugins/org.eclipse.pde.build_3.7.0.v20110512-1320/scripts/ -Declipse.pdebuild.templates=/D:/eclipse/plugins/org.eclipse.pde.build_3.7.0.v20110512-1320/templates/ -Dant.home=D:\eclipse\plugins\org.apache.ant_1.8.2.v20110505-1300 -logger org.eclipse.ant.internal.launching.remote.logger.RemoteAntBuildLogger -inputhandler org.eclipse.ant.internal.ui.antsupport.inputhandler.ProxyInputHandler -buildfile D:\code\die\build.xml" />
+
+          <property name="java.class.path" value="D:\eclipse\plugins\org.apache.ant_1.8.2.v20110505-1300\lib\ant-antlr.jar;D:\eclipse\plugins\org.apache.ant_1.8.2.v20110505-1300\lib\ant-apache-bcel.jar;D:\eclipse\plugins\org.apache.ant_1.8.2.v20110505-1300\lib\ant-apache-bsf.jar;D:\eclipse\plugins\org.apache.ant_1.8.2.v20110505-1300\lib\ant-apache-log4j.jar;D:\eclipse\plugins\org.apache.ant_1.8.2.v20110505-1300\lib\ant-apache-oro.jar;D:\eclipse\plugins\org.apache.ant_1.8.2.v20110505-1300\lib\ant-apache-regexp.jar;D:\eclipse\plugins\org.apache.ant_1.8.2.v20110505-1300\lib\ant-apache-resolver.jar;D:\eclipse\plugins\org.apache.ant_1.8.2.v20110505-1300\lib\ant-apache-xalan2.jar;D:\eclipse\plugins\org.apache.ant_1.8.2.v20110505-1300\lib\ant-commons-logging.jar;D:\eclipse\plugins\org.apache.ant_1.8.2.v20110505-1300\lib\ant-commons-net.jar;D:\eclipse\plugins\org.apache.ant_1.8.2.v20110505-1300\lib\ant-jai.jar;D:\eclipse\plugins\org.apache.ant_1.8.2.v20110505-1300\lib\ant-javamail.jar;D:\eclipse\plugins\org.apache.ant_1.8.2.v20110505-1300\lib\ant-jdepend.jar;D:\eclipse\plugins\org.apache.ant_1.8.2.v20110505-1300\lib\ant-jmf.jar;D:\eclipse\plugins\org.apache.ant_1.8.2.v20110505-1300\lib\ant-jsch.jar;D:\eclipse\plugins\org.apache.ant_1.8.2.v20110505-1300\lib\ant-junit.jar;D:\eclipse\plugins\org.apache.ant_1.8.2.v20110505-1300\lib\ant-junit4.jar;D:\eclipse\plugins\org.apache.ant_1.8.2.v20110505-1300\lib\ant-launcher.jar;D:\eclipse\plugins\org.apache.ant_1.8.2.v20110505-1300\lib\ant-netrexx.jar;D:\eclipse\plugins\org.apache.ant_1.8.2.v20110505-1300\lib\ant-swing.jar;D:\eclipse\plugins\org.apache.ant_1.8.2.v20110505-1300\lib\ant-testutil.jar;D:\eclipse\plugins\org.apache.ant_1.8.2.v20110505-1300\lib\ant.jar;D:\eclipse\configuration\org.eclipse.osgi\bundles\50\1\.cp\lib\antdebug.jar;D:\eclipse\configuration\org.eclipse.osgi\bundles\50\1\.cp\lib\remote.jar;D:\eclipse\configuration\org.eclipse.osgi\bundles\51\1\.cp\lib\remoteAnt.jar;D:\JAVAHOME\jdk\lib\tools.jar;D:\eclipse\plugins\org.eclipse.swt.win32.win32.x86_3.7.0.v3735b.jar" />
+
+          <property name="ant.version" value="Apache Ant(TM) version 1.8.2 compiled on December 20 2010" />
+
+          <property name="TSTAMP" value="0041" />
+
+          <property name="java.vm.specification.name" value="Java Virtual Machine Specification" />
+
+          <property name="java.vm.specification.version" value="1.0" />
+
+          <property name="report.tests.html" value="log/junit_tests/html" />
+
+          <property name="sun.cpu.endian" value="little" />
+
+          <property name="sun.os.patch.level" value="" />
+
+          <property name="src.test" value="src/java/tests" />
+
+          <property name="eclipse.pdebuild.home" value="/D:/eclipse/plugins/org.eclipse.pde.build_3.7.0.v20110512-1320/./" />
+
+          <property name="java.io.tmpdir" value="C:\Users\ADMINI~1\AppData\Local\Temp\" />
+
+          <property name="java.vendor.url.bug" value="http://java.sun.com/cgi-bin/bugreport.cgi" />
+
+          <property name="os.arch" value="x86" />
+
+          <property name="java.awt.graphicsenv" value="sun.awt.Win32GraphicsEnvironment" />
+
+          <property name="java.ext.dirs" value="C:\Program Files\Java\jre6\lib\ext;C:\windows\Sun\Java\lib\ext" />
+
+          <property name="user.dir" value="D:\code\die" />
+
+          <property name="line.separator" value="&#xd;&#xa;" />
+
+          <property name="java.vm.name" value="Java HotSpot(TM) Client VM" />
+
+          <property name="basedir" value="D:\code\die" />
+
+          <property name="report.tests" value="log/junit_tests" />
+
+          <property name="ant.java.version" value="1.6" />
+
+          <property name="ant.core.lib" value="D:\eclipse\plugins\org.apache.ant_1.8.2.v20110505-1300\lib\ant.jar" />
+
+          <property name="file.encoding" value="GBK" />
+
+          <property name="java.specification.version" value="1.6" />
+
+          <property name="ant.project.invoked-targets" value="all" />
+
+          <property name="javadoc.dir" value="docs/javadoc" />
+
+      </properties>
+
+      <testcase classname="edu.zju.sc.aoot.hw1.TestDie" name="testConstructorNoArgs" time="0.0040" />
+
+      <testcase classname="edu.zju.sc.aoot.hw1.TestDie" name="testConstructorWithArgs" time="0.0" />
+
+      <testcase classname="edu.zju.sc.aoot.hw1.TestDie" name="testConstructorWithIllArgs" time="0.0" />
+
+      <testcase classname="edu.zju.sc.aoot.hw1.TestDie" name="testRollDef" time="0.0" />
+
+      <testcase classname="edu.zju.sc.aoot.hw1.TestDie" name="testRollSep" time="0.0010" />
+
+      <testcase classname="edu.zju.sc.aoot.hw1.TestDie" name="testRollRand" time="0.0" />
+
+      <testcase classname="edu.zju.sc.aoot.hw1.TestDie" name="testTopFaceDef" time="0.0" />
+
+      <testcase classname="edu.zju.sc.aoot.hw1.TestDie" name="testTopFaceSep" time="0.0010" />
+
+      <testcase classname="edu.zju.sc.aoot.hw1.TestDie" name="testTopFaceRand" time="0.0" />
+
+      <system-out><![CDATA[]]></system-out>
+
+      <system-err><![CDATA[]]></system-err>
+
+  </testsuite>
+</testsuites>
