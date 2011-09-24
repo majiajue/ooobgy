@@ -7,6 +7,10 @@ package com.topcoder.commons.utils;
  * 
  * Thread Safety: This class is immutable and thread safe when array parameters
  * passed to it are used by the caller in thread safe manner.
+ * 
+ * @author frogcherry 周晓龙 frogcherry@gmail.com
+ * @version 1.0.0
+ * @since 1.0.0
  */
 class ExceptionHelper {
     /**
@@ -35,7 +39,8 @@ class ExceptionHelper {
      * Note: exceptions are populated without wrapping in this method.
      * 
      * @throws Exception
-     *             if any error occurred when using the reflection
+     *             if any error occurred when using the reflection.
+     *             Here not point the exceptions out. You should control them yourself.
      * @param message
      *            the message
      * @param exceptionClass
@@ -44,7 +49,8 @@ class ExceptionHelper {
      */
     public static <T extends Throwable> T constructException(
             Class<T> exceptionClass, String message) {
-        return null;
+    	Throwable e = new Throwable(message);
+        return exceptionClass.cast(e);
     }
 
     /**
@@ -67,7 +73,8 @@ class ExceptionHelper {
      * Note: exceptions are populated without wrapping in this method.
      * 
      * @throws Exception
-     *             if any error occurred when using the reflection
+     *             if any error occurred when using the reflection.
+     *             Here not point the exceptions out. You should control them yourself.
      * @param message
      *            the message
      * @param cause
@@ -78,6 +85,7 @@ class ExceptionHelper {
      */
     public static <T extends Throwable> T constructException(
             Class<T> exceptionClass, String message, Throwable cause) {
-        return null;
+    	Throwable e  = new Throwable(message, cause);
+        return exceptionClass.cast(e);
     }
 }
