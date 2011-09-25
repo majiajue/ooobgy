@@ -51,7 +51,10 @@ public class ParameterCheckUtility {
      * @param value
      *            the value of parameter to be checked
      */
-    public static void checkNotNull(Object value, String name) {
+    public static void checkNotNull(Object value, String name) throws IllegalArgumentException{
+        if (value == null) {
+            throw new IllegalArgumentException(getParamValueName(name) + " should not be null");
+        }
     }
 
     /**
@@ -81,6 +84,9 @@ public class ParameterCheckUtility {
      *            the value of parameter to be checked
      */
     public static void checkNotEmpty(String value, String name) {
+        if (value != null && value.isEmpty()) {
+            throw new IllegalArgumentException(getParamValueName(name) + " should not be empty");
+        }
     }
 
     /**
@@ -111,6 +117,9 @@ public class ParameterCheckUtility {
      *            the value of parameter to be checked
      */
     public static void checkNotEmptyAfterTrimming(String value, String name) {
+        if (value != null && value.trim().isEmpty()) {
+            throw new IllegalArgumentException(getParamValueName(name) + " should not be empty (trimmed)");
+        }
     }
 
     /**
@@ -134,6 +143,8 @@ public class ParameterCheckUtility {
      *            the value of parameter to be checked
      */
     public static void checkNotNullNorEmpty(String value, String name) {
+        checkNotNull(value, name);
+        checkNotEmpty(value, name);
     }
 
     /**
@@ -158,6 +169,8 @@ public class ParameterCheckUtility {
      */
     public static void checkNotNullNorEmptyAfterTrimming(String value,
             String name) {
+        checkNotNull(value, name);
+        checkNotEmptyAfterTrimming(value, name);
     }
 
     /**
@@ -191,6 +204,9 @@ public class ParameterCheckUtility {
      */
     public static void checkInstance(Object value, Class<?> expectedType,
             String name) {
+        if (expectedType.isInstance(value)) {
+            throw new IllegalArgumentException(getParamValueName(name) + " should be an instance of " + expectedType.getName());
+        }
     }
 
     /**
@@ -226,6 +242,9 @@ public class ParameterCheckUtility {
      */
     public static void checkNullOrInstance(Object value, Class<?> expectedType,
             String name) {
+        if (value != null && expectedType.isInstance(value)) {
+            throw new IllegalArgumentException(getParamValueName(name) + " should be null or an instance of " + expectedType.getName());
+        }
     }
 
     /**
@@ -257,6 +276,9 @@ public class ParameterCheckUtility {
      *            the parameter name
      */
     public static void checkExists(File file, String name) {
+        if (file != null && !file.exists()) {
+            throw new IllegalArgumentException(getParamValueName(name) + " should point to an existing file or directory");
+        }
     }
 
     /**
@@ -287,6 +309,9 @@ public class ParameterCheckUtility {
      *            the parameter name
      */
     public static void checkIsFile(File file, String name) {
+        if (file != null && !file.isFile()) {
+            throw new IllegalArgumentException(getParamValueName(name) + " should point to an existing file");
+        }
     }
 
     /**
@@ -317,6 +342,9 @@ public class ParameterCheckUtility {
      *            the parameter name
      */
     public static void checkIsDirectory(File file, String name) {
+        if (file != null && !file.isDirectory()) {
+            throw new IllegalArgumentException(getParamValueName(name) + " should point to an existing directory");
+        }
     }
 
     /**
@@ -346,6 +374,9 @@ public class ParameterCheckUtility {
      *            the value of collection parameter to be checked
      */
     public static void checkNotEmpty(Collection<?> collection, String name) {
+        if (collection != null && collection.isEmpty()) {
+            throw new IllegalArgumentException(getParamValueName(name) + " should not be empty");
+        }
     }
 
     /**
@@ -369,6 +400,8 @@ public class ParameterCheckUtility {
      */
     public static void checkNotNullNorEmpty(Collection<?> collection,
             String name) {
+        checkNotNull(collection, name);
+        checkNotEmpty(collection, name);
     }
 
     /**
@@ -398,6 +431,9 @@ public class ParameterCheckUtility {
      *            the value of map parameter to be checked
      */
     public static void checkNotEmpty(Map<?, ?> map, String name) {
+        if (map != null && map.isEmpty()) {
+            throw new IllegalArgumentException(getParamValueName(name) + " should not be empty");
+        }
     }
 
     /**
@@ -420,6 +456,8 @@ public class ParameterCheckUtility {
      *            the value of map parameter to be checked
      */
     public static void checkNotNullNorEmpty(Map<?, ?> map, String name) {
+        checkNotNull(map, name);
+        checkNotEmpty(map, name);
     }
 
     /**
@@ -452,6 +490,13 @@ public class ParameterCheckUtility {
      */
     public static void checkNotNullElements(Collection<?> collection,
             String name) {
+        if (collection != null) {
+            for (Object element : collection) {
+                if (element == null) {
+                    throw new IllegalArgumentException(getParamValueName(name) + " should not contain null");
+                }
+            }
+        }
     }
 
     /**
@@ -490,6 +535,30 @@ public class ParameterCheckUtility {
      */
     public static void checkNotEmptyElements(Collection<?> collection,
             boolean trimStrings, String name) {
+        if (collection != null) {
+            for (Object element : collection) {
+                if (element == null) {
+                    throw new IllegalArgumentException(getParamValueName(name) + " should not contain empty elements: an element is null");
+                }
+                if (element instanceof String) {
+                    String str = (String) element;
+                    if (trimStrings) {
+                        str.trim();
+                    }
+                    if (str.isEmpty()) {
+                        throw new IllegalArgumentException(getParamValueName(name) + " should not contain empty elements: a String element is empty");
+                    }
+                } else if (element instanceof Collection<?>) {
+                    if (((Collection<?>)element).isEmpty()) {
+                        throw new IllegalArgumentException(getParamValueName(name) + " should not contain empty elements: a Collection element is empty");
+                    }
+                } else if (element instanceof Map<?,?>){
+                    if (((Map<?,?>)element).isEmpty()) {
+                        throw new IllegalArgumentException(getParamValueName(name) + " should not contain empty elements: a Map element is empty");
+                    }
+                }
+            }
+        }
     }
 
     /**
@@ -518,6 +587,9 @@ public class ParameterCheckUtility {
      *            the value to be checked
      */
     public static void checkNotNullKeys(Map<?, ?> map, String name) {
+        if (map != null && map.containsKey(null)) {
+            throw new IllegalArgumentException(getParamValueName(name) + " should not contain null key");
+        }
     }
 
     /**
@@ -547,6 +619,9 @@ public class ParameterCheckUtility {
      *            the value of map parameter to be checked
      */
     public static void checkNotNullValues(Map<?, ?> map, String name) {
+        if (map != null && map.containsValue(null)) {
+            throw new IllegalArgumentException(getParamValueName(name) + " should not contain null value");
+        }
     }
 
     /**
@@ -583,6 +658,30 @@ public class ParameterCheckUtility {
      */
     public static void checkNotEmptyKeys(Map<?, ?> map, boolean trimStrings,
             String name) {
+        if (map != null) {
+            for (Object key : map.keySet()) {
+                if (key == null) {
+                    throw new IllegalArgumentException(getParamValueName(name) + " should not contain empty keys: a key is null");
+                }
+                if (key instanceof String) {
+                    String str = (String) key;
+                    if (trimStrings) {
+                        str.trim();
+                    }
+                    if (str.isEmpty()) {
+                        throw new IllegalArgumentException(getParamValueName(name) + " should not contain empty keys: a String key is empty");
+                    }
+                } else if (key instanceof Collection<?>) {
+                    if (((Collection<?>)key).isEmpty()) {
+                        throw new IllegalArgumentException(getParamValueName(name) + " should not contain empty keys: a Collection key is empty");
+                    }
+                } else if (key instanceof Map<?,?>){
+                    if (((Map<?,?>)key).isEmpty()) {
+                        throw new IllegalArgumentException(getParamValueName(name) + " should not contain empty keys: a Map key is empty");
+                    }
+                }
+            }
+        }
     }
 
     /**
@@ -620,6 +719,30 @@ public class ParameterCheckUtility {
      */
     public static void checkNotEmptyValues(Map<?, ?> map, boolean trimStrings,
             String name) {
+        if (map != null) {
+            for (Object value : map.values()) {
+                if (value == null) {
+                    throw new IllegalArgumentException(getParamValueName(name) + " should not contain empty values: a value is null");
+                }
+                if (value instanceof String) {
+                    String str = (String) value;
+                    if (trimStrings) {
+                        str.trim();
+                    }
+                    if (str.isEmpty()) {
+                        throw new IllegalArgumentException(getParamValueName(name) + " should not contain empty values: a String value is empty");
+                    }
+                } else if (value instanceof Collection<?>) {
+                    if (((Collection<?>)value).isEmpty()) {
+                        throw new IllegalArgumentException(getParamValueName(name) + " should not contain empty values: a Collection value is empty");
+                    }
+                } else if (value instanceof Map<?,?>){
+                    if (((Map<?,?>)value).isEmpty()) {
+                        throw new IllegalArgumentException(getParamValueName(name) + " should not contain empty values: a Map value is empty");
+                    }
+                }
+            }
+        }
     }
 
     /**
@@ -648,6 +771,9 @@ public class ParameterCheckUtility {
      *            the value of parameter to be checked
      */
     public static void checkNegative(double value, String name) {
+        if (value >= 0) {
+            throw new IllegalArgumentException(getParamValueName(name) + " should be negative");
+        }
     }
 
     /**
@@ -676,6 +802,9 @@ public class ParameterCheckUtility {
      *            the value of parameter to be checked
      */
     public static void checkPositive(double value, String name) {
+        if (value <= 0) {
+            throw new IllegalArgumentException(getParamValueName(name) + " should be positive");
+        }
     }
 
     /**
@@ -704,6 +833,9 @@ public class ParameterCheckUtility {
      *            the value of parameter to be checked
      */
     public static void checkNotNegative(double value, String name) {
+        if (value < 0) {
+            throw new IllegalArgumentException(getParamValueName(name) + " should be not negative");
+        }
     }
 
     /**
@@ -732,6 +864,9 @@ public class ParameterCheckUtility {
      *            the value of parameter to be checked
      */
     public static void checkNotPositive(double value, String name) {
+        if (value > 0) {
+            throw new IllegalArgumentException(getParamValueName(name) + " should be not positive");
+        }
     }
 
     /**
@@ -762,6 +897,9 @@ public class ParameterCheckUtility {
      *            the value of parameter to be checked
      */
     public static void checkNotZero(double value, String name) {
+        if (value == 0) {
+            throw new IllegalArgumentException(getParamValueName(name) + " should not be equal to 0");
+        }
     }
 
     /**
@@ -806,6 +944,15 @@ public class ParameterCheckUtility {
      */
     public static void checkGreaterThan(double value, double number,
             boolean inclusive, String name) {
+        if (inclusive) {
+            if (value < number) {
+                throw new IllegalArgumentException(getParamValueName(name) + " should be greater than or equal to " + number);
+            }
+        } else {
+            if (value <= number) {
+                throw new IllegalArgumentException(getParamValueName(name) + " should be greater than " + number);
+            }
+        }
     }
 
     /**
@@ -849,6 +996,15 @@ public class ParameterCheckUtility {
      */
     public static void checkLessThan(double value, double number,
             boolean inclusive, String name) {
+        if (inclusive) {
+            if (value > number) {
+                throw new IllegalArgumentException(getParamValueName(name) + " should be less than or equal to " + number);
+            }
+        } else {
+            if (value >= number) {
+                throw new IllegalArgumentException(getParamValueName(name) + " should be less than " + number);
+            }
+        }
     }
 
     /**
@@ -894,6 +1050,21 @@ public class ParameterCheckUtility {
      */
     public static void checkInRange(double value, double from, double to,
             boolean fromInclusive, boolean toInclusive, String name) {
+        boolean valid = true;
+        if (fromInclusive) {
+            valid = valid && (value >= from);
+        } else {
+            valid = valid && (value > from);
+        }
+        if (toInclusive) {
+            valid = valid && (value <= from);
+        } else {
+            valid = valid && (value > from);
+        }
+        if (!valid) {
+            String message = getParamValueName(name) + " should be in the range " + (fromInclusive ? "[" : "(") + from + ", " + to + (toInclusive ? "]" : ")");
+            throw new IllegalArgumentException(message);
+        }
     }
 
     /**
@@ -922,6 +1093,9 @@ public class ParameterCheckUtility {
      *            the value of parameter to be checked
      */
     public static void checkNegative(long value, String name) {
+        if (value >= 0) {
+            throw new IllegalArgumentException(getParamValueName(name) + " should be negative");
+        }
     }
 
     /**
@@ -950,6 +1124,9 @@ public class ParameterCheckUtility {
      *            the value of parameter to be checked
      */
     public static void checkPositive(long value, String name) {
+        if (value <= 0) {
+            throw new IllegalArgumentException(getParamValueName(name) + " should be positive");
+        }
     }
 
     /**
@@ -978,6 +1155,9 @@ public class ParameterCheckUtility {
      *            the value of parameter to be checked
      */
     public static void checkNotNegative(long value, String name) {
+        if (value < 0) {
+            throw new IllegalArgumentException(getParamValueName(name) + " should be not negative");
+        }
     }
 
     /**
@@ -1006,6 +1186,9 @@ public class ParameterCheckUtility {
      *            the value of parameter to be checked
      */
     public static void checkNotPositive(long value, String name) {
+        if (value > 0) {
+            throw new IllegalArgumentException(getParamValueName(name) + " should be not positive");
+        }
     }
 
     /**
@@ -1036,6 +1219,9 @@ public class ParameterCheckUtility {
      *            the value of parameter to be checked
      */
     public static void checkNotZero(long value, String name) {
+        if (value == 0) {
+            throw new IllegalArgumentException(getParamValueName(name) + " should not be equal to 0");
+        }
     }
 
     /**
@@ -1080,6 +1266,15 @@ public class ParameterCheckUtility {
      */
     public static void checkGreaterThan(long value, long number,
             boolean inclusive, String name) {
+        if (inclusive) {
+            if (value < number) {
+                throw new IllegalArgumentException(getParamValueName(name) + " should be greater than or equal to " + number);
+            }
+        } else {
+            if (value <= number) {
+                throw new IllegalArgumentException(getParamValueName(name) + " should be greater than " + number);
+            }
+        }
     }
 
     /**
@@ -1123,6 +1318,15 @@ public class ParameterCheckUtility {
      */
     public static void checkLessThan(long value, long number,
             boolean inclusive, String name) {
+        if (inclusive) {
+            if (value > number) {
+                throw new IllegalArgumentException(getParamValueName(name) + " should be less than or equal to " + number);
+            }
+        } else {
+            if (value >= number) {
+                throw new IllegalArgumentException(getParamValueName(name) + " should be less than " + number);
+            }
+        }
     }
 
     /**
@@ -1168,6 +1372,21 @@ public class ParameterCheckUtility {
      */
     public static void checkInRange(long value, long from, long to,
             boolean fromInclusive, boolean toInclusive, String name) {
+        boolean valid = true;
+        if (fromInclusive) {
+            valid = valid && (value >= from);
+        } else {
+            valid = valid && (value > from);
+        }
+        if (toInclusive) {
+            valid = valid && (value <= from);
+        } else {
+            valid = valid && (value > from);
+        }
+        if (!valid) {
+            String message = getParamValueName(name) + " should be in the range " + (fromInclusive ? "[" : "(") + from + ", " + to + (toInclusive ? "]" : ")");
+            throw new IllegalArgumentException(message);
+        }
     }
 
     /**
@@ -1183,8 +1402,7 @@ public class ParameterCheckUtility {
      *            the parameter name
      * @return the constructed parameter value name
      */
-    @SuppressWarnings("unused")
     private static String getParamValueName(String paramName) {
-        return null;
+        return "The '" + paramName + "' parameter";
     }
 }

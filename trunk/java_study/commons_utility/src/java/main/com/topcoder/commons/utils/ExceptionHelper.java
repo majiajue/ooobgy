@@ -1,5 +1,7 @@
 package com.topcoder.commons.utils;
 
+import java.lang.reflect.InvocationTargetException;
+
 /**
  * This is a static helper class that provides methods for constructing
  * exception instances using reflection. It is used by ValidationUtility,
@@ -30,17 +32,13 @@ class ExceptionHelper {
      * 
      * Returns: the constructed exception instance (not null)
      * 
-     * Throws: Exception if any error occurred when using the reflection
      * 
      * Implementation Notes: 1. Constructor<T> constructor =
      * exceptionClass.getConstructor(String.class); 2. T result =
      * constructor.newInstance(message); 3. Return result.
      * 
-     * Note: exceptions are populated without wrapping in this method.
+     * 由于这是包内私有工具方法，该方法忽略一切由反射可能引起的异常，正确性由作者保证
      * 
-     * @throws Exception
-     *             if any error occurred when using the reflection.
-     *             Here not point the exceptions out. You should control them yourself.
      * @param message
      *            the message
      * @param exceptionClass
@@ -49,8 +47,23 @@ class ExceptionHelper {
      */
     public static <T extends Throwable> T constructException(
             Class<T> exceptionClass, String message) {
-    	Throwable e = new Throwable(message);
-        return exceptionClass.cast(e);
+        try {
+            return exceptionClass.getConstructor(String.class).newInstance(
+                    message);
+        } catch (IllegalArgumentException e) {
+            e.printStackTrace();
+        } catch (SecurityException e) {
+            e.printStackTrace();
+        } catch (InstantiationException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        } catch (InvocationTargetException e) {
+            e.printStackTrace();
+        } catch (NoSuchMethodException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
     /**
@@ -64,7 +77,6 @@ class ExceptionHelper {
      * 
      * Returns: the constructed exception instance (not null)
      * 
-     * Throws: Exception if any error occurred when using the reflection
      * 
      * Implementation Notes: 1. Constructor<T> constructor =
      * exceptionClass.getConstructor(String.class, Throwable.class); 2. T result
@@ -72,9 +84,7 @@ class ExceptionHelper {
      * 
      * Note: exceptions are populated without wrapping in this method.
      * 
-     * @throws Exception
-     *             if any error occurred when using the reflection.
-     *             Here not point the exceptions out. You should control them yourself.
+     * 由于这是包内私有工具方法，该方法忽略一切由反射可能引起的异常，正确性由作者保证
      * @param message
      *            the message
      * @param cause
@@ -85,7 +95,21 @@ class ExceptionHelper {
      */
     public static <T extends Throwable> T constructException(
             Class<T> exceptionClass, String message, Throwable cause) {
-    	Throwable e  = new Throwable(message, cause);
-        return exceptionClass.cast(e);
+        try {
+            return exceptionClass.getConstructor(String.class).newInstance(message);
+        } catch (IllegalArgumentException e) {
+            e.printStackTrace();
+        } catch (SecurityException e) {
+            e.printStackTrace();
+        } catch (InstantiationException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        } catch (InvocationTargetException e) {
+            e.printStackTrace();
+        } catch (NoSuchMethodException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 }
