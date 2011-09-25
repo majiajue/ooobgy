@@ -1,7 +1,10 @@
 package com.topcoder.commons.utils;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Properties;
+import java.util.Set;
 
 /**
  * This is a utility class that provides static methods for retrieving
@@ -62,8 +65,12 @@ public class PropertiesUtility {
      */
     public static <T extends Throwable> String getStringProperty(
             Properties properties, String key, boolean required,
-            Class<T> exceptionClass) {
-        return null;
+            Class<T> exceptionClass) throws T {
+        String value = properties.getProperty(key);
+        if (value == null && required) {
+            throw ExceptionHelper.constructException(exceptionClass, getPropertyTitle(key) + " is required");
+        }
+        return value;
     }
 
     /**
@@ -108,8 +115,17 @@ public class PropertiesUtility {
      */
     public static <T extends Throwable> String[] getStringsProperty(
             Properties properties, String key, String delimiter,
-            boolean required, Class<T> exceptionClass) {
-        return null;
+            boolean required, Class<T> exceptionClass) throws T {
+        String value = properties.getProperty(key);
+        if (value == null) {
+            if (required) {
+                throw ExceptionHelper.constructException(exceptionClass, getPropertyTitle(key) + " is required");
+            }else{
+                return null;
+            }   
+        }
+        
+        return value.split(delimiter);
     }
 
     /**
@@ -156,8 +172,21 @@ public class PropertiesUtility {
      */
     public static <T extends Throwable> Integer getIntegerProperty(
             Properties properties, String key, boolean required,
-            Class<T> exceptionClass) {
-        return null;
+            Class<T> exceptionClass) throws T {
+        String value = properties.getProperty(key);
+        if (value == null) {
+            if (required) {
+                throw ExceptionHelper.constructException(exceptionClass, getPropertyTitle(key) + " is required");
+            }else{
+                return null;
+            }   
+        }
+        
+        try {
+            return Integer.parseInt(value);
+        } catch (NumberFormatException e) {
+            throw ExceptionHelper.constructException(exceptionClass, getPropertyTitle(key) + " should be a valid integer", e);
+        }
     }
 
     /**
@@ -204,8 +233,21 @@ public class PropertiesUtility {
      */
     public static <T extends Throwable> Long getLongProperty(
             Properties properties, String key, boolean required,
-            Class<T> exceptionClass) {
-        return null;
+            Class<T> exceptionClass) throws T {
+        String value = properties.getProperty(key);
+        if (value == null) {
+            if (required) {
+                throw ExceptionHelper.constructException(exceptionClass, getPropertyTitle(key) + " is required");
+            }else{
+                return null;
+            }   
+        }
+        
+        try {
+            return Long.parseLong(value);
+        } catch (NumberFormatException e) {
+            throw ExceptionHelper.constructException(exceptionClass, getPropertyTitle(key) + " should be a valid long integer", e);
+        }
     }
 
     /**
@@ -256,8 +298,21 @@ public class PropertiesUtility {
      */
     public static <T extends Throwable> Double getDoubleProperty(
             Properties properties, String key, boolean required,
-            Class<T> exceptionClass) {
-        return null;
+            Class<T> exceptionClass) throws T {
+        String value = properties.getProperty(key);
+        if (value == null) {
+            if (required) {
+                throw ExceptionHelper.constructException(exceptionClass, getPropertyTitle(key) + " is required");
+            }else{
+                return null;
+            }   
+        }
+        
+        try {
+            return Double.parseDouble(value);
+        } catch (NumberFormatException e) {
+            throw ExceptionHelper.constructException(exceptionClass, getPropertyTitle(key) + " should be a valid double", e);
+        }
     }
 
     /**
@@ -307,8 +362,21 @@ public class PropertiesUtility {
      */
     public static <T extends Throwable> Date getDateProperty(
             Properties properties, String key, String format, boolean required,
-            Class<T> exceptionClass) {
-        return null;
+            Class<T> exceptionClass) throws T {
+        String value = properties.getProperty(key);
+        if (value == null) {
+            if (required) {
+                throw ExceptionHelper.constructException(exceptionClass, getPropertyTitle(key) + " is required");
+            }else{
+                return null;
+            }   
+        }
+        
+        try {
+            return (new SimpleDateFormat(format)).parse(value);
+        } catch (ParseException e) {
+            throw ExceptionHelper.constructException(exceptionClass, getPropertyTitle(key) + " should be in format [" + format + "]", e);
+        }
     }
 
     /**
@@ -356,8 +424,21 @@ public class PropertiesUtility {
      */
     public static <T extends Throwable> Class<?> getClassProperty(
             Properties properties, String key, boolean required,
-            Class<T> exceptionClass) {
-        return null;
+            Class<T> exceptionClass) throws T {
+        String value = properties.getProperty(key);
+        if (value == null) {
+            if (required) {
+                throw ExceptionHelper.constructException(exceptionClass, getPropertyTitle(key) + " is required");
+            }else{
+                return null;
+            }   
+        }
+        
+        try {
+            return Class.forName(value);
+        } catch (Exception e) {
+            throw ExceptionHelper.constructException(exceptionClass, getPropertyTitle(key) + " contains invalid full class name (" + value + ")", e);
+        }
     }
 
     /**
@@ -386,7 +467,19 @@ public class PropertiesUtility {
      */
     public static Properties getSubConfiguration(Properties properties,
             String configName) {
-        return null;
+        String prefix = configName + ".";
+        Set<Object> keys = properties.keySet();
+        Properties result = new Properties();
+        for (Object keyO : keys) {
+            String key = keyO.toString();
+            if (key.startsWith(prefix)) {
+                String value = properties.getProperty(key);
+                String newKey = key.substring(prefix.length());
+                result.put(newKey, value);
+            }
+        }
+        
+        return result;
     }
 
     /**
@@ -402,8 +495,7 @@ public class PropertiesUtility {
      *            the property key
      * @return the constructed property title
      */
-    @SuppressWarnings("unused")
     private static String getPropertyTitle(String key) {
-        return null;
+        return "The property '" + key + "'";
     }
 }
