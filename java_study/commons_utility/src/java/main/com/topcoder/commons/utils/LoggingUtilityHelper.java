@@ -1,5 +1,7 @@
 package com.topcoder.commons.utils;
 
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
 import java.util.Date;
 
 /**
@@ -34,7 +36,7 @@ class LoggingUtilityHelper {
      * @return the constructed method entrance message
      */
     public static String getMethodEntranceMessage(String signature) {
-        return null;
+        return "Entering method [" + signature + "].";
     }
 
     /**
@@ -57,10 +59,22 @@ class LoggingUtilityHelper {
      * @param paramNames
      *            the names of input parameters (not null)
      * @return the constructed log message
+     * @throws IndexOutOfBoundsException
+     *            可能抛出数组越界异常，当paramNames的长度大于paramValues的长度时
      */
     public static String getInputParametersMessage(String[] paramNames,
             Object[] paramValues) {
-        return null;
+        StringBuilder sb = new StringBuilder("Input parameters [");
+        for (int i = 0; i < paramNames.length; i++) {
+            if (i!=0) {
+                sb.append(" ,");
+            }
+            sb.append(paramNames[i]).append(":");
+            sb.append(paramValues[i]);
+        }
+        sb.append("]");
+        
+        return sb.toString();
     }
 
     /**
@@ -89,7 +103,16 @@ class LoggingUtilityHelper {
      */
     public static String getMethodExitMessage(String signature,
             Date entranceTimestamp) {
-        return null;
+        StringBuilder sb = new StringBuilder("Exiting method [");
+        sb.append(signature).append("]");
+        if (entranceTimestamp !=null) {
+            sb.append(", time spent in the method: ");
+            sb.append((new Date()).getTime() - entranceTimestamp.getTime());
+            sb.append(" milliseconds");
+        }
+        sb.append(".");
+        
+        return sb.toString();
     }
 
     /**
@@ -106,7 +129,7 @@ class LoggingUtilityHelper {
      * @return the constructed log message
      */
     public static String getOutputValueMessage(Object value) {
-        return null;
+        return "Output parameter: " + value;
     }
 
     /**
@@ -135,6 +158,14 @@ class LoggingUtilityHelper {
      */
     public static String getExceptionMessage(String signature,
             Throwable exception) {
-        return null;
+        StringBuilder sb = new StringBuilder("Error in method [");
+        sb.append(signature).append("], details: ").append(exception.getMessage());
+        ByteArrayOutputStream out = new ByteArrayOutputStream();
+        PrintStream ps = new PrintStream(out);
+        ps.println();
+        exception.printStackTrace(ps);
+        sb.append(out.toString());
+        
+        return sb.toString();
     }
 }
