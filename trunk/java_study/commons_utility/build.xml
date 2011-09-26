@@ -1,105 +1,136 @@
 <?xml version="1.0"?>
 <project name="commons_utility" basedir="." default="comm">
-    <description>
+	<description>
         forgcherry's hw2 commons_utility
     </description>
-    <property name="src.java" value="src/java/main" />
-    <property name="src.test" value="src/java/tests" />
-    <property name="lib.dir" value="lib" />
-    <property name="dist.dir" value="dist" />
-    <property name="build.dir" value="build" />
-    <property name="javadoc.dir" value="docs/javadoc" />
-    <property name="report.tests" value="log/junit_tests" />
-    <property name="report.tests.html" value="${report.tests}/html" />
+	<property name="srcdir" value="src" />
+	<property name="src.java" value="src/java/main" />
+	<property name="src.test" value="src/java/tests" />
+	<property name="lib.dir" value="lib" />
+	<property name="dist.dir" value="dist" />
+	<property name="build.dir" value="build" />
+	<property name="javadoc.dir" value="docs/javadoc" />
+	<property name="testlogdir" value="log" />
+	<property name="report.tests" value="${testlogdir}/junit_tests" />
+	<property name="report.tests.html" value="${report.tests}/html" />
+	<property name="instrumented.dir" value="${build.dir}/instrumented" />
+	<property name="log.coveragereport" value="${testlogdir}/coveragereport" />
+	<property name="cobertura.datafile" value="${testlogdir}/cobertura.ser" />
 
-    <path id="class.path">
-        <pathelement location="${build.dir}" />
-        <fileset dir="${lib.dir}">
-            <include name="**/*.jar" />
-        </fileset>
-    </path>
 
-    <target name="compile" depends="init">
-        <javac srcdir="${src.java}" destdir="${build.dir}" source="1.6" target="1.6" nowarn="yes" debug="yes" includeantruntime="yes">
-            <classpath refid="class.path">
-            </classpath>
-            <compilerarg line="-encoding UTF-8" />
-        </javac>
-    </target>
 
-    <target name="compile-test" depends="compile">
-        <javac srcdir="${src.test}" destdir="${build.dir}" source="1.6" target="1.6" nowarn="yes" debug="yes" includeantruntime="yes">
-            <classpath refid="class.path">
-            </classpath>
-            <compilerarg line="-encoding UTF-8" />
-        </javac>
-    </target>
+	<path id="class.path">
+		<pathelement location="${build.dir}" />
+		<fileset dir="${lib.dir}">
+			<include name="**/*.jar" />
+		</fileset>
+	</path>
 
-    <target name="comm" depends="compile,compile-test" description="Creates Jar of commons_utility">
-        <jar jarfile="dist/commons_utility.jar" compress="true" basedir="${build.dir}">
-        </jar>
-        <delete dir="${build.dir}" />
-    </target>
+	<taskdef resource="tasks.properties">
+		<classpath refid="class.path">
+		</classpath>
+	</taskdef>
 
-    <target name="init">
-        <tstamp />
-        <mkdir dir="${build.dir}" />
-        <mkdir dir="${dist.dir}" />
-    </target>
+	<target name="compile" depends="init">
+		<javac srcdir="${src.java}" destdir="${build.dir}" source="1.6" target="1.6" nowarn="yes" debug="yes" includeantruntime="yes">
+			<classpath refid="class.path">
+			</classpath>
+			<compilerarg line="-encoding UTF-8" />
+		</javac>
+	</target>
 
-    <target name="clean">
-        <delete dir="${build.dir}" />
-        <delete dir="${dist.dir}" />
-    </target>
+	<target name="compile-test" depends="compile">
+		<javac srcdir="${src.test}" destdir="${build.dir}" source="1.6" target="1.6" nowarn="yes" debug="yes" includeantruntime="yes">
+			<classpath refid="class.path">
+			</classpath>
+			<compilerarg line="-encoding UTF-8" />
+		</javac>
+	</target>
 
-    <target name="javadoc" description="Generate the Javadoc HTML pages.">
-        <delete dir="${javadoc.dir}" />
-        <mkdir dir="${javadoc.dir}" />
-        <javadoc destdir="${javadoc.dir}" windowtitle="Commons Utility Class Library" use="yes" linksource="yes" splitindex="yes" encoding="UTF-8" docencoding="UTF-8">
-            <classpath refid="class.path">
-            </classpath>
-            <packageset dir="${src.java}" defaultexcludes="yes">
-                <include name="**" />
-            </packageset>
-            <packageset dir="${src.test}" defaultexcludes="yes">
-                <include name="**" />
-            </packageset>
-        </javadoc>
-    </target>
+	<target name="comm" depends="compile" description="Creates Jar of commons_utility">
+		<jar jarfile="dist/commons_utility.jar" compress="true" basedir="${build.dir}">
+		</jar>
+	</target>
 
-    <target name="test" depends="comm">
-        <delete dir="${report.tests}" />
-        <mkdir dir="${report.tests}" />
-        <junit printsummary="yes" haltonfailure="yes">
-            <classpath>
-                <fileset dir="${dist.dir}">
-                    <include name="**/*.jar" />
-                </fileset>
-                <fileset dir="${lib.dir}">
-                    <include name="**/*.jar" />
-                </fileset>
-            </classpath>
+	<target name="init">
+		<tstamp />
+		<mkdir dir="${build.dir}" />
+		<mkdir dir="${dist.dir}" />
+		<mkdir dir="${testlogdir}" />
+		<mkdir dir="${javadoc.dir}" />
+	</target>
 
-            <batchtest todir="${report.tests}">
-                <formatter type="xml" />
-                <fileset dir="${src.test}">
-                    <include name="**/*Test*.java" />
-                    <exclude name="**/AllTests.java" />
-                </fileset>
-            </batchtest>
-        </junit>
-    </target>
+	<target name="clean">
+		<delete dir="${build.dir}" />
+		<delete dir="${dist.dir}" />
+		<delete dir="${testlogdir}" />
+		<delete dir="${javadoc.dir}" />
+	</target>
 
-    <target name="junit-report" depends="test">
-        <delete dir="${report.tests.html}" />
-        <mkdir dir="${report.tests.html}" />
-        <junitreport todir="${report.tests}">       
-            <fileset dir="${report.tests}">
-                <include name="TEST-*.xml" />
-            </fileset>
-            <report todir="${report.tests.html}" />
-        </junitreport>
-    </target>
-    
-    <target name="all" depends="comm,javadoc,test,junit-report" />
+	<target name="javadoc" description="Generate the Javadoc HTML pages.">
+		<delete dir="${javadoc.dir}" />
+		<mkdir dir="${javadoc.dir}" />
+		<javadoc destdir="${javadoc.dir}" windowtitle="Commons Utility Class Library" use="yes" linksource="yes" splitindex="yes" encoding="UTF-8" docencoding="UTF-8">
+			<classpath refid="class.path">
+			</classpath>
+			<packageset dir="${src.java}" defaultexcludes="yes">
+				<include name="**" />
+			</packageset>
+			<packageset dir="${src.test}" defaultexcludes="yes">
+				<include name="**" />
+			</packageset>
+		</javadoc>
+	</target>
+
+	<target name="test" depends="comm, instrument">
+		<delete dir="${report.tests}" />
+		<mkdir dir="${report.tests}" />
+		<junit fork="yes" printsummary="yes" haltonfailure="yes" failureProperty="test.failed">
+			<classpath location="${instrumented.dir}" />
+			<classpath location="${build.dir}" />
+			<classpath refid="class.path" />
+			<sysproperty key="net.sourceforge.cobertura.datafile"
+			        file="${cobertura.datafile}" />
+			<batchtest todir="${report.tests}">
+				<formatter type="xml" />
+				<fileset dir="${src.test}">
+					<include name="**/*Test*.java" />
+					<exclude name="**/AllTests.java" />
+				</fileset>
+			</batchtest>
+		</junit>
+	</target>
+
+	<target name="junit-report" depends="test">
+		<delete dir="${report.tests.html}" />
+		<mkdir dir="${report.tests.html}" />
+		<junitreport todir="${report.tests}">
+			<fileset dir="${report.tests}">
+				<include name="TEST-*.xml" />
+			</fileset>
+			<report todir="${report.tests.html}" />
+		</junitreport>
+	</target>
+
+	<target name="instrument" depends="compile, compile-test">
+		<cobertura-instrument todir="${instrumented.dir}" datafile="${cobertura.datafile}">
+			<fileset dir="${build.dir}">
+				<include name="**/*.class" />
+				<exclude name="**/*Test.class" />
+			</fileset>
+		</cobertura-instrument>
+	</target>
+
+	<target name="coveragereport" depends="test">
+		<cobertura-report format="html" destdir="${log.coveragereport}" srcdir="${srcdir}" datafile="${cobertura.datafile}">
+			<fileset dir="${src.java}">
+				<include name="**/*.java" />
+			</fileset>
+			<fileset dir="${src.test}">
+				<include name="**/*.java" />
+			</fileset>
+		</cobertura-report>
+	</target>
+
+	<target name="all" depends="comm,javadoc,test,junit-report,coveragereport" />
 </project>
