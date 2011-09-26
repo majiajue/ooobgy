@@ -24,7 +24,6 @@ public class LoggingWrapperUtility {
      * class loading and never changed after that. Is used in logEntrance(),
      * logExit() and logException().
      */
-    @SuppressWarnings("unused")
     private static final DateFormat TIMESTAMP_FORMAT = new SimpleDateFormat(
             "[yyyy-MM-dd HH:mm:ss] ");
 
@@ -65,6 +64,7 @@ public class LoggingWrapperUtility {
      */
     public static void logEntrance(Log log, String signature,
             String[] paramNames, Object[] paramValues) {
+        logEntrance(log, signature, paramNames, paramValues, false, Level.DEBUG);
     }
 
     /**
@@ -103,10 +103,21 @@ public class LoggingWrapperUtility {
      * @param paramNames
      *            the names of input parameters (null of method doesn't accept
      *            any parameters)
+     * @throws IndexOutOfBoundsException
+     *            当paraNames的长度大于paramValues的长度可能抛出。这种情况是错误的传参
      */
     public static void logEntrance(Log log, String signature,
             String[] paramNames, Object[] paramValues, boolean addTimestamp,
             Level level) {
+        if (log == null) {
+            return;
+        }
+        String timeDate = addTimestamp ? TIMESTAMP_FORMAT.format(new Date()) : "";
+        String message = timeDate + LoggingUtilityHelper.getMethodEntranceMessage(signature);
+        log.log(level, message);
+        if (paramNames != null) {
+            log.log(level, LoggingUtilityHelper.getInputParametersMessage(paramNames, paramValues));
+        }
     }
 
     /**
@@ -134,6 +145,7 @@ public class LoggingWrapperUtility {
      *            className#methodName)
      */
     public static void logExit(Log log, String signature, Object[] value) {
+        logExit(log, signature, value, null);
     }
 
     /**
@@ -168,6 +180,7 @@ public class LoggingWrapperUtility {
      */
     public static void logExit(Log log, String signature, Object[] value,
             Date entranceTimestamp) {
+        logExit(log, signature, value, entranceTimestamp, false, Level.DEBUG);
     }
 
     /**
@@ -210,6 +223,15 @@ public class LoggingWrapperUtility {
      */
     public static void logExit(Log log, String signature, Object[] value,
             Date entranceTimestamp, boolean addTimestamp, Level level) {
+        if (log == null) {
+            return;
+        }
+        String timeDate = addTimestamp ? TIMESTAMP_FORMAT.format(new Date()) : "";
+        String message = timeDate + LoggingUtilityHelper.getMethodExitMessage(signature, entranceTimestamp);
+        log.log(level, message);
+        if (value != null) {
+            log.log(level, LoggingUtilityHelper.getOutputValueMessage(value[0]));
+        }
     }
 
     /**
@@ -241,7 +263,7 @@ public class LoggingWrapperUtility {
      */
     public static <T extends Throwable> T logException(Log log,
             String signature, T exception) {
-        return null;
+        return logException(log, signature, exception, false, Level.DEBUG);
     }
 
     /**
@@ -281,6 +303,13 @@ public class LoggingWrapperUtility {
      */
     public static <T extends Throwable> T logException(Log log,
             String signature, T exception, boolean addTimestamp, Level level) {
-        return null;
+        if (log == null) {
+            return exception;
+        }
+        String timeDate = addTimestamp ? TIMESTAMP_FORMAT.format(new Date()) : "";
+        String message = timeDate + LoggingUtilityHelper.getExceptionMessage(signature, exception);
+        log.log(level, message);
+        
+        return exception;
     }
 }
