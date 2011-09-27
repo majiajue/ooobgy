@@ -17,6 +17,9 @@ import java.util.Set;
  * 
  * Thread Safety: This class is immutable and thread safe when properties
  * parameters passed to it are used by the caller in thread safe manner.
+ * @author frogcherry 周晓龙 frogcherry@gmail.com
+ * @version 1.0.0
+ * @since 1.0.0
  */
 public class PropertiesUtility {
     /**

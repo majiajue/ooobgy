@@ -4,6 +4,12 @@ import org.junit.Test;
 
 import junit.framework.TestCase;
 
+/**
+ * 
+ * @author frogcherry 周晓龙 frogcherry@gmail.com
+ * @version 1.0.0
+ * @since 1.0.0
+ */
 public class LoggingUtilityHelperTest extends TestCase {
 
     @Test
