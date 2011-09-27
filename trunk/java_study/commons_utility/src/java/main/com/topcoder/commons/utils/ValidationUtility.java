@@ -581,7 +581,7 @@ public class ValidationUtility {
                 if (element instanceof String) {
                     String str = (String) element;
                     if (trimStrings) {
-                        str.trim();
+                        str = str.trim();
                     }
                     if (str.isEmpty()) {
                         throw ExceptionHelper.constructException(exceptionClass, name + " should not contain empty elements: a String element is empty");
@@ -715,7 +715,7 @@ public class ValidationUtility {
                 if (key instanceof String) {
                     String str = (String) key;
                     if (trimStrings) {
-                        str.trim();
+                        str = str.trim();
                     }
                     if (str.isEmpty()) {
                         throw ExceptionHelper.constructException(exceptionClass, name + " should not contain empty keys: a String key is empty");
@@ -784,7 +784,7 @@ public class ValidationUtility {
                 if (value instanceof String) {
                     String str = (String) value;
                     if (trimStrings) {
-                        str.trim();
+                        str = str.trim();
                     }
                     if (str.isEmpty()) {
                         throw ExceptionHelper.constructException(exceptionClass, name + " should not contain empty values: a String value is empty");
@@ -1124,14 +1124,14 @@ public class ValidationUtility {
             String name, Class<T> exceptionClass) throws T {
         boolean valid = true;
         if (fromInclusive) {
-            valid = valid && (value >= from);
+            valid = (value >= from);
         } else {
-            valid = valid && (value > from);
+            valid = (value > from);
         }
         if (toInclusive) {
-            valid = valid && (value <= from);
+            valid = valid && (value <= to);
         } else {
-            valid = valid && (value > from);
+            valid = valid && (value < to);
         }
         if (!valid) {
             String message = name + " should be in the range " + (fromInclusive ? "[" : "(") + from + ", " + to + (toInclusive ? "]" : ")");
@@ -1459,14 +1459,14 @@ public class ValidationUtility {
             String name, Class<T> exceptionClass) throws T {
         boolean valid = true;
         if (fromInclusive) {
-            valid = valid && (value >= from);
+            valid = (value >= from);
         } else {
-            valid = valid && (value > from);
+            valid = (value > from);
         }
         if (toInclusive) {
-            valid = valid && (value <= from);
+            valid = valid && (value <= to);
         } else {
-            valid = valid && (value > from);
+            valid = valid && (value < to);
         }
         if (!valid) {
             String message = name + " should be in the range " + (fromInclusive ? "[" : "(") + from + ", " + to + (toInclusive ? "]" : ")");
