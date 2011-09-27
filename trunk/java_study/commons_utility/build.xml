@@ -3,6 +3,7 @@
 	<description>
         forgcherry's hw2 commons_utility
     </description>
+	<property name="project.name" value="commons_utility" />
 	<property name="srcdir" value="src" />
 	<property name="src.java" value="src/java/main" />
 	<property name="src.test" value="src/java/tests" />
@@ -16,8 +17,10 @@
 	<property name="instrumented.dir" value="${build.dir}/instrumented" />
 	<property name="log.coveragereport" value="${testlogdir}/coveragereport" />
 	<property name="cobertura.datafile" value="${testlogdir}/cobertura.ser" />
-
-
+	<property name="dist" value="dist" />
+	<property name="dist.jar" value="${dist}/commons_utility.jar" />
+	<property name="encoding.code" value="UTF-8" />
+	<property name="encoding.javadoc" value="GBK" />
 
 	<path id="class.path">
 		<pathelement location="${build.dir}" />
@@ -35,7 +38,7 @@
 		<javac srcdir="${src.java}" destdir="${build.dir}" source="1.6" target="1.6" nowarn="yes" debug="yes" includeantruntime="yes">
 			<classpath refid="class.path">
 			</classpath>
-			<compilerarg line="-encoding UTF-8" />
+			<compilerarg line="-encoding ${encoding.code}" />
 		</javac>
 	</target>
 
@@ -43,12 +46,12 @@
 		<javac srcdir="${src.test}" destdir="${build.dir}" source="1.6" target="1.6" nowarn="yes" debug="yes" includeantruntime="yes">
 			<classpath refid="class.path">
 			</classpath>
-			<compilerarg line="-encoding UTF-8" />
+			<compilerarg line="-encoding ${encoding.code}" />
 		</javac>
 	</target>
 
-	<target name="comm" depends="compile" description="Creates Jar of commons_utility">
-		<jar jarfile="dist/commons_utility.jar" compress="true" basedir="${build.dir}">
+	<target name="comm" depends="compile" description="Creates Jar of ${project.name}">
+		<jar jarfile="${dist.jar}" compress="true" basedir="${build.dir}">
 		</jar>
 	</target>
 
@@ -70,7 +73,7 @@
 	<target name="javadoc" description="Generate the Javadoc HTML pages.">
 		<delete dir="${javadoc.dir}" />
 		<mkdir dir="${javadoc.dir}" />
-		<javadoc destdir="${javadoc.dir}" windowtitle="Commons Utility Class Library" use="yes" linksource="yes" splitindex="yes" encoding="UTF-8" docencoding="UTF-8">
+		<javadoc destdir="${javadoc.dir}" windowtitle="${project.name} Class Library" use="yes" linksource="yes" splitindex="yes" encoding="${encoding.code}" docencoding="${encoding.javadoc}">
 			<classpath refid="class.path">
 			</classpath>
 			<packageset dir="${src.java}" defaultexcludes="yes">
@@ -89,8 +92,7 @@
 			<classpath location="${instrumented.dir}" />
 			<classpath location="${build.dir}" />
 			<classpath refid="class.path" />
-			<sysproperty key="net.sourceforge.cobertura.datafile"
-			        file="${cobertura.datafile}" />
+			<sysproperty key="net.sourceforge.cobertura.datafile" file="${cobertura.datafile}" />
 			<batchtest todir="${report.tests}">
 				<formatter type="xml" />
 				<fileset dir="${src.test}">

@@ -7,11 +7,32 @@ package com.topcoder.util.log;
  * @since 1.0.0
  */
 public enum Level {
+    /**
+     * debug级别log
+     */
     DEBUG,
+    /**
+     * info级别log
+     */
     INFO,
+    /**
+     * warn级别log
+     */
     WARN,
+    /**
+     * error级别log
+     */
     ERROR,
+    /**
+     * fatal级别log
+     */
     FATAL,
+    /**
+     * 全部log
+     */
     ALL,
-    OFF;
+    /**
+     * 关闭log
+     */
+    OFF
 }
