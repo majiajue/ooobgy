@@ -114,6 +114,8 @@
 
 	<target name="instrument" depends="compile, compile-test">
 		<cobertura-instrument todir="${instrumented.dir}" datafile="${cobertura.datafile}">
+			<ignore regex="com.topcoder.commons.utils.testutil.*" />
+			<ignore regex="com.topcoder.util.log.*" />
 			<fileset dir="${build.dir}">
 				<include name="**/*.class" />
 				<exclude name="**/*Test.class" />
@@ -132,5 +134,5 @@
 		</cobertura-report>
 	</target>
 
-	<target name="all" depends="comm,javadoc,test,junit-report,coveragereport" />
+	<target name="all" depends="clean,comm,javadoc,test,junit-report,coveragereport" />
 </project>
