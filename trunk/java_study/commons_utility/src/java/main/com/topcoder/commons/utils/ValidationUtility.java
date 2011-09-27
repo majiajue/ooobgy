@@ -217,7 +217,7 @@ public class ValidationUtility {
      */
     public static <T extends Throwable> void checkInstance(Object value,
             Class<?> expectedType, String name, Class<T> exceptionClass) throws T {
-        if (expectedType.isInstance(value)) {
+        if (!expectedType.isInstance(value)) {
             throw ExceptionHelper.constructException(exceptionClass, name + " should be an instance of " + expectedType.getName());
         }
     }
@@ -256,7 +256,7 @@ public class ValidationUtility {
      */
     public static <T extends Throwable> void checkNullOrInstance(Object value,
             Class<?> expectedType, String name, Class<T> exceptionClass) throws T {
-        if (value != null && expectedType.isInstance(value)) {
+        if (value != null && !expectedType.isInstance(value)) {
             throw ExceptionHelper.constructException(exceptionClass, name + " should be null or an instance of " + expectedType.getName());
         }
     }
