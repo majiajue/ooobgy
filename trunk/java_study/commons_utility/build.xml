@@ -9,7 +9,7 @@
 	<property name="lib.dir" value="lib" />
 	<property name="dist.dir" value="dist" />
 	<property name="build.dir" value="build" />
-	<property name="javadoc.dir" value="docs/javadoc" />
+	<property name="javadoc.dir" value="docs/javadocs" />
 	<property name="testlogdir" value="log" />
 	<property name="report.tests" value="${testlogdir}/junit_tests" />
 	<property name="report.tests.html" value="${report.tests}/html" />
