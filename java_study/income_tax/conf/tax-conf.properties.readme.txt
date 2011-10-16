@@ -1,0 +1,30 @@
+以下是配置文件的说明：
+
+##part 1. month salary ==============第一部分计算月薪所得
+#1.1  tax ---------------月薪个人所得税
+tax.salary.base = 3500          ##个税起征点
+tax.salary.level.1 = 0-3          ##每一级使用tax.salary.level.i = xx-yy表示
+tax.salary.level.2 = 1500-10      ##超出额大于xx部分征税百分比yy
+tax.salary.level.3 = 4500-20      ##i是从1起始的标号，整数，xx、yy为浮点数
+tax.salary.level.4 = 9000-25     
+tax.salary.level.5 = 35000-30
+tax.salary.level.6 = 55000-35
+tax.salary.level.7 = 80000-45
+#1.2  social security --------------月薪所交社保公积金
+ss.avgs = 2290         ##当地平均月薪，用于计算社保基数(*60%),社保、公积金封顶(*300%)
+ss.com.pension = 14      ##ss.com开头为公司部分，养老保险
+ss.com.medicare = 11.5   ##ss.com开头为公司部分，医疗保险  
+ss.com.unemp = 2         ##ss.com开头为公司部分，失业保险
+ss.com.injure = 0.5      ##ss.com开头为公司部分，工伤保险
+ss.com.maternity = 0.8   ##ss.com开头为公司部分，生育保险
+ss.com.accfund = 8       ##ss.com开头为公司部分，公积金
+ss.indv.pension = 14     ##ss.indv开头为个人部分，养老保险
+ss.indv.medicare = 11.5  ##ss.indv开头为个人部分，医疗保险
+ss.indv.unemp = 2        ##ss.indv开头为个人部分，失业保险
+ss.indv.accfund = 8      ##ss.indv开头为个人部分，公积金
+
+##part 2. interest tax ==============第二部分，利息所得税
+tax.interest = 20  ##税率20%
+
+##part 3. accidental income ==============第三部分，意外所得 所得税
+tax.accidental = 20  ##税率20%
