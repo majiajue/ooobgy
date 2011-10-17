@@ -1,12 +1,13 @@
 <?xml version="1.0"?>
-<project name="commons_utility" basedir="." default="comm">
+<project name="commons_utility" basedir="." default="main">
 	<description>
-        forgcherry's hw2 commons_utility
+        forgcherry's hw3 income tax calculator
     </description>
-	<property name="project.name" value="commons_utility" />
+	<property name="project.name" value="income_tax_cal" />
 	<property name="srcdir" value="src" />
 	<property name="src.java" value="src/java/main" />
 	<property name="src.test" value="src/java/tests" />
+	<property name="src.demo" value="src/java/demo" />
 	<property name="lib.dir" value="lib" />
 	<property name="dist.dir" value="dist" />
 	<property name="build.dir" value="build" />
@@ -18,7 +19,8 @@
 	<property name="log.coveragereport" value="${testlogdir}/coveragereport" />
 	<property name="cobertura.datafile" value="${testlogdir}/cobertura.ser" />
 	<property name="dist" value="dist" />
-	<property name="dist.jar" value="${dist}/commons_utility.jar" />
+	<property name="dist.jar" value="${dist}/tax_utility.jar" />
+	<property name="demo.jar" value="${dist}/tax_demo.jar" />
 	<property name="encoding.code" value="UTF-8" />
 	<property name="encoding.javadoc" value="GBK" />
 
@@ -50,8 +52,21 @@
 		</javac>
 	</target>
 
-	<target name="comm" depends="compile" description="Creates Jar of ${project.name}">
+	<target name="main" depends="compile" description="Creates Jar of ${project.name}">
 		<jar jarfile="${dist.jar}" compress="true" basedir="${build.dir}">
+		</jar>
+	</target>
+
+	<target name="compile_demo" depends="main">
+		<javac srcdir="${src.demo}" destdir="${build.dir}" source="1.6" target="1.6" nowarn="yes" debug="yes" includeantruntime="yes">
+			<classpath refid="class.path">
+			</classpath>
+			<compilerarg line="-encoding ${encoding.code}" />
+		</javac>
+	</target>
+
+	<target name="demo" depends="compile, compile_demo" description="Creates demo Jar of ${project.name}">
+		<jar jarfile="${demo.jar}" compress="true" basedir="${build.dir}">
 		</jar>
 	</target>
 
@@ -79,13 +94,16 @@
 			<packageset dir="${src.java}" defaultexcludes="yes">
 				<include name="**" />
 			</packageset>
+			<packageset dir="${src.demo}" defaultexcludes="yes">
+				<include name="**" />
+			</packageset>
 			<packageset dir="${src.test}" defaultexcludes="yes">
 				<include name="**" />
 			</packageset>
 		</javadoc>
 	</target>
 
-	<target name="test" depends="comm, instrument">
+	<target name="test" depends="main, instrument">
 		<delete dir="${report.tests}" />
 		<mkdir dir="${report.tests}" />
 		<junit fork="yes" printsummary="yes" haltonfailure="yes" failureProperty="test.failed">
@@ -116,10 +134,8 @@
 
 	<target name="instrument" depends="compile, compile-test">
 		<cobertura-instrument todir="${instrumented.dir}" datafile="${cobertura.datafile}">
-			<ignore regex="com.topcoder.commons.utils.testutil.*" />
-			<ignore regex="com.topcoder.util.log.*" />
 			<fileset dir="${build.dir}">
-				<include name="**/*.class" />
+				<include name="com/ooobgy/income/**/*.class" />
 				<exclude name="**/*Test.class" />
 			</fileset>
 		</cobertura-instrument>
@@ -128,7 +144,7 @@
 	<target name="coveragereport" depends="test">
 		<cobertura-report format="html" destdir="${log.coveragereport}" srcdir="${srcdir}" datafile="${cobertura.datafile}">
 			<fileset dir="${src.java}">
-				<include name="**/*.java" />
+				<include name="com/ooobgy/income/**/*.java" />
 			</fileset>
 			<fileset dir="${src.test}">
 				<include name="**/*.java" />
@@ -136,5 +152,5 @@
 		</cobertura-report>
 	</target>
 
-	<target name="all" depends="clean,comm,javadoc,test,junit-report,coveragereport" />
+	<target name="all" depends="clean,main,demo,javadoc,test,junit-report,coveragereport" />
 </project>
