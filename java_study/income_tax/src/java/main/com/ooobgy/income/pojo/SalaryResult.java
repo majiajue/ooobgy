@@ -55,9 +55,6 @@ public class SalaryResult {
     public BigDecimal getPostTaxSalary() {
         return postTaxSalary;
     }
-    public void setPostTaxSalary(BigDecimal postTaxSalary) {
-        this.postTaxSalary = postTaxSalary;
-    }
     public BigDecimal getTax() {
         return tax;
     }
@@ -76,6 +73,9 @@ public class SalaryResult {
     public void sumIndvSSTotal() {
         this.indvSSTotal = this.indvSSPension.add(this.indvSSMedicare)
                 .add(this.indvSSUnEmp).add(this.indvSSAccFund);
+    }
+    public void sumPostSalary(){
+        this.postTaxSalary = this.preTaxSalary.subtract(this.indvSSTotal).subtract(this.tax);
     }
     public BigDecimal getIndvSSPension() {
         return indvSSPension;

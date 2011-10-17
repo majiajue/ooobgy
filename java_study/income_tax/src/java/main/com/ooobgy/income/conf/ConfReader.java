@@ -63,10 +63,10 @@ public class ConfReader {
             stc.setComMaternity(getDecimalProp(properties, IncomeConsts.SS_COM + IncomeConsts.DOT + IncomeConsts.SS_MATERNITY).multiply(IncomeConsts.PERCENT_1));
             stc.setComAccFund(getDecimalProp(properties, IncomeConsts.SS_COM + IncomeConsts.DOT + IncomeConsts.SS_ACCFUND).multiply(IncomeConsts.PERCENT_1));
 
-            stc.setIndvPension(getDecimalProp(properties, IncomeConsts.SS_COM + IncomeConsts.DOT + IncomeConsts.SS_PENSION).multiply(IncomeConsts.PERCENT_1));
-            stc.setIndvMedicare(getDecimalProp(properties, IncomeConsts.SS_COM + IncomeConsts.DOT + IncomeConsts.SS_MEDICARE).multiply(IncomeConsts.PERCENT_1));
-            stc.setIndvUnEmp(getDecimalProp(properties, IncomeConsts.SS_COM + IncomeConsts.DOT + IncomeConsts.SS_UNEMP).multiply(IncomeConsts.PERCENT_1));
-            stc.setIndvAccFund(getDecimalProp(properties, IncomeConsts.SS_COM + IncomeConsts.DOT + IncomeConsts.SS_ACCFUND).multiply(IncomeConsts.PERCENT_1));
+            stc.setIndvPension(getDecimalProp(properties, IncomeConsts.SS_INDV + IncomeConsts.DOT + IncomeConsts.SS_PENSION).multiply(IncomeConsts.PERCENT_1));
+            stc.setIndvMedicare(getDecimalProp(properties, IncomeConsts.SS_INDV + IncomeConsts.DOT + IncomeConsts.SS_MEDICARE).multiply(IncomeConsts.PERCENT_1));
+            stc.setIndvUnEmp(getDecimalProp(properties, IncomeConsts.SS_INDV + IncomeConsts.DOT + IncomeConsts.SS_UNEMP).multiply(IncomeConsts.PERCENT_1));
+            stc.setIndvAccFund(getDecimalProp(properties, IncomeConsts.SS_INDV + IncomeConsts.DOT + IncomeConsts.SS_ACCFUND).multiply(IncomeConsts.PERCENT_1));
             
             
             Properties lvProps = PropertiesUtility.getSubConfiguration(properties, IncomeConsts.SALARY_TAX_LEVEL);

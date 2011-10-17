@@ -39,7 +39,7 @@ public class IncomeConsts {
     /** 养老保险 */
     public static final String SS_PENSION = "pension";
     /** 医疗保险 */
-    public static final String SS_MEDICARE = "mendicare";
+    public static final String SS_MEDICARE = "medicare";
     /** 失业保险 */
     public static final String SS_UNEMP = "unemp";
     /** 工伤保险 */

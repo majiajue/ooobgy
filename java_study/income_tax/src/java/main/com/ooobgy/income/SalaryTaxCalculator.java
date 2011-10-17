@@ -118,12 +118,13 @@ public class SalaryTaxCalculator {
         }
         
         res.setTax(tax);
+        res.sumPostSalary();
         
         if (includeCompany) {
             res = calculatesComSS(conf, salary, res);
         }
         
-        return null;
+        return res;
     }
     
     /**
