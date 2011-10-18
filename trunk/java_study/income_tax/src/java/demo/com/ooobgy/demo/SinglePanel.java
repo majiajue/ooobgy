@@ -5,6 +5,7 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.regex.Pattern;
 
 import javax.swing.BorderFactory;
@@ -14,12 +15,14 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.text.AttributeSet;
 import javax.swing.text.BadLocationException;
-import javax.swing.text.DocumentFilter;
-import javax.swing.text.DocumentFilter.FilterBypass;
 import javax.swing.text.PlainDocument;
 
+import com.ooobgy.income.AccTaxCalculator;
+import com.ooobgy.income.InterTaxCalculator;
+import com.ooobgy.income.SalaryTaxCalculator;
 import com.ooobgy.income.consts.IncomeConsts;
 import com.ooobgy.income.pojo.OtherTaxConf;
+import com.ooobgy.income.pojo.SalaryResult;
 import com.ooobgy.income.pojo.SalaryTaxConf;
 
 public class SinglePanel{
@@ -30,56 +33,47 @@ public class SinglePanel{
     private String type;
     
     private JTextField preTax;
-    private String preTaxOld = "";
     private JTextField postTax;
     private JTextField tax;
     private JTextField indvSSTotal;
     private JTextField inTaxSalary;
     private JTextField indvPenRate;
-    private String indvPenRateOld = "";
     private JTextField indvPen;
     private JTextField indvMedRate;
-    private String indvMedRateOld = "";
     private JTextField indvMed;
     private JTextField indvUnempRate;
-    private String indvUnempRateOld = "";
     private JTextField indvUnemp;
     private JTextField indvAccFundRate;
-    private String indvAccFundRateOld = "";
     private JTextField indvAccFund;
     private JTextField comSSTotal;
     private JTextField comTotalCost;
     private JTextField comPenRate;
-    private String comPenRateOld = "";
     private JTextField comPen;
     private JTextField comMedRate;
-    private String comMedRateOld = "";
     private JTextField comMed;
     private JTextField comUnempRate;
-    private String comUnempRateOld = "";
     private JTextField comUnemp;
     private JTextField comInjRate;
-    private String comInjRateOld = "";
     private JTextField comInj;
     private JTextField comMateRate;
-    private String comMateRateOld = "";
     private JTextField comMate;
     private JTextField comAccFundRate;
-    private String comAccFundRateOld = "";
     private JTextField comAccFund;
     private JTextField avgSalary;
-    private String avgSalaryOld = "";
     private JTextField ssBase;
     private JTextField ssAcc;
     private JTextField ssTop;
-   public JComboBox getCalType() {
+    private boolean precise;
+    
+    public JComboBox getCalType() {
         return calType;
     }
 
-    public SinglePanel(SalaryTaxConf stConf, OtherTaxConf otConf) {
+    public SinglePanel(SalaryTaxConf stConf, OtherTaxConf otConf, boolean isPrecise) {
         super();
         this.stConf = stConf;
         this.otConf = otConf;
+        this.precise = isPrecise;
     }
     
     private static class DoubleDocument extends PlainDocument {
@@ -87,6 +81,12 @@ public class SinglePanel{
         private String oldStr = "";
         private static final Pattern doublePattern = Pattern.compile("(^[1-9]\\d*(\\.\\d+)?)|(^0(\\.\\d+)?)");
         private static final Pattern halfDoublePattern = Pattern.compile("(^[1-9]\\d*\\.?)|(^0\\.?)");
+        private SinglePanel owner;
+        
+        public DoubleDocument(SinglePanel owner) {
+            super();
+            this.owner = owner;
+        }
 
         @Override
         public void insertString(int offs, String str, AttributeSet a) 
@@ -118,8 +118,7 @@ public class SinglePanel{
             String newStr = this.getText(0, getLength());
             if (isLegalDouble(newStr)) {
                 oldStr = newStr;
-                //TODO: 计算
-                
+                this.owner.calculate();
             } else {
                 if (!isHalfDouble(newStr)) {
                     super.replace(0, getLength(), oldStr, null);
@@ -146,7 +145,7 @@ public class SinglePanel{
         private boolean isLegalDouble(String num){
             
             boolean valid = doublePattern.matcher(num).matches();
-            System.out.println(num + " d: " + valid);
+//            System.out.println(num + " d: " + valid);
             return valid;
         }
         
@@ -155,7 +154,7 @@ public class SinglePanel{
                 return true;
             }
             boolean valid = halfDoublePattern.matcher(num).matches();
-            System.out.println(num + " hd: " + valid);
+//            System.out.println(num + " hd: " + valid);
             return valid;
         }
     }
@@ -168,11 +167,11 @@ public class SinglePanel{
         calType.addItem(TPConst.TYPE_SALARY);
         calType.addItem(TPConst.TYPE_INTER);
         calType.addItem(TPConst.TYPE_ACC);
+        type = TPConst.TYPE_SALARY;
         
         JLabel l2 = new JLabel("税前收入：");
         preTax = new JTextField("", 20);
-        preTax.setDocument(new DoubleDocument());
-        
+        preTax.setDocument(new DoubleDocument(this));
         
         JLabel l3 = new JLabel("税后收入：");
         postTax = new JTextField("", 20);
@@ -208,7 +207,9 @@ public class SinglePanel{
         inTaxSalary.setEditable(false);
         
         ilines[2].add(new JLabel("养老  "));
-        indvPenRate = new JTextField(getPercentRate(stConf.getIndvPension()), 5);
+        indvPenRate = new JTextField(getPercentRate(stConf.getIndvPension()).toString(), 5);
+        indvPenRate.setDocument(new DoubleDocument(this));
+//        indvPenRate.setText(getPercentRate(stConf.getIndvPension()).toString());
         ilines[2].add(indvPenRate);
         ilines[2].add(new JLabel("%:  "));
         indvPen = new JTextField("", 8);
@@ -216,7 +217,8 @@ public class SinglePanel{
         ilines[2].add(indvPen);
         
         ilines[3].add(new JLabel("医疗  "));
-        indvMedRate = new JTextField(getPercentRate(stConf.getIndvMedicare()), 5);
+        indvMedRate = new JTextField(getPercentRate(stConf.getIndvMedicare()).toString(), 5);
+        indvMedRate.setDocument(new DoubleDocument(this));
         ilines[3].add(indvMedRate);
         ilines[3].add(new JLabel("%:  "));
         indvMed = new JTextField("", 8);
@@ -224,7 +226,8 @@ public class SinglePanel{
         ilines[3].add(indvMed);
         
         ilines[4].add(new JLabel("失业  "));
-        indvUnempRate = new JTextField(getPercentRate(stConf.getIndvUnEmp()), 5);
+        indvUnempRate = new JTextField(getPercentRate(stConf.getIndvUnEmp()).toString(), 5);
+        indvUnempRate.setDocument(new DoubleDocument(this));
         ilines[4].add(indvUnempRate);
         ilines[4].add(new JLabel("%:  "));
         indvUnemp = new JTextField("", 8);
@@ -232,7 +235,8 @@ public class SinglePanel{
         ilines[4].add(indvUnemp);
         
         ilines[7].add(new JLabel("公积金  "));
-        indvAccFundRate = new JTextField(getPercentRate(stConf.getIndvAccFund()), 5);
+        indvAccFundRate = new JTextField(getPercentRate(stConf.getIndvAccFund()).toString(), 5);
+        indvAccFundRate.setDocument(new DoubleDocument(this));
         ilines[7].add(indvAccFundRate);
         ilines[7].add(new JLabel("%:  "));
         indvAccFund = new JTextField("", 8);
@@ -254,7 +258,8 @@ public class SinglePanel{
         comTotalCost.setEditable(false);
 
         clines[2].add(new JLabel("养老  "));
-        comPenRate = new JTextField(getPercentRate(stConf.getComPension()), 5);
+        comPenRate = new JTextField(getPercentRate(stConf.getComPension()).toString(), 5);
+        comPenRate.setDocument(new DoubleDocument(this));
         clines[2].add(comPenRate);
         clines[2].add(new JLabel("%:  "));
         comPen = new JTextField("", 8);
@@ -262,7 +267,8 @@ public class SinglePanel{
         clines[2].add(comPen);
 
         clines[3].add(new JLabel("医疗  "));
-        comMedRate = new JTextField(getPercentRate(stConf.getComMedicare()), 5);
+        comMedRate = new JTextField(getPercentRate(stConf.getComMedicare()).toString(), 5);
+        comMedRate.setDocument(new DoubleDocument(this));
         clines[3].add(comMedRate);
         clines[3].add(new JLabel("%:  "));
         comMed = new JTextField("", 8);
@@ -270,7 +276,8 @@ public class SinglePanel{
         clines[3].add(comMed);
 
         clines[4].add(new JLabel("失业  "));
-        comUnempRate = new JTextField(getPercentRate(stConf.getComUnEmp()), 5);
+        comUnempRate = new JTextField(getPercentRate(stConf.getComUnEmp()).toString(), 5);
+        comUnempRate.setDocument(new DoubleDocument(this));
         clines[4].add(comUnempRate);
         clines[4].add(new JLabel("%:  "));
         comUnemp = new JTextField("", 8);
@@ -278,7 +285,8 @@ public class SinglePanel{
         clines[4].add(comUnemp);
 
         clines[5].add(new JLabel("工伤  "));
-        comInjRate = new JTextField(getPercentRate(stConf.getComInjure()), 5);
+        comInjRate = new JTextField(getPercentRate(stConf.getComInjure()).toString(), 5);
+        comInjRate.setDocument(new DoubleDocument(this));
         clines[5].add(comInjRate);
         clines[5].add(new JLabel("%:  "));
         comInj = new JTextField("", 8);
@@ -286,7 +294,8 @@ public class SinglePanel{
         clines[5].add(comInj);
 
         clines[6].add(new JLabel("生育  "));
-        comMateRate = new JTextField(getPercentRate(stConf.getComMaternity()), 5);
+        comMateRate = new JTextField(getPercentRate(stConf.getComMaternity()).toString(), 5);
+        comMateRate.setDocument(new DoubleDocument(this));
         clines[6].add(comMateRate);
         clines[6].add(new JLabel("%:  "));
         comMate = new JTextField("", 8);
@@ -294,7 +303,8 @@ public class SinglePanel{
         clines[6].add(comMate);
 
         clines[7].add(new JLabel("公积金  "));
-        comAccFundRate = new JTextField(getPercentRate(stConf.getComAccFund()), 5);
+        comAccFundRate = new JTextField(getPercentRate(stConf.getComAccFund()).toString(), 5);
+        comAccFundRate.setDocument(new DoubleDocument(this));
         clines[7].add(comAccFundRate);
         clines[7].add(new JLabel("%:  "));
         comAccFund = new JTextField("", 8);
@@ -303,12 +313,12 @@ public class SinglePanel{
         
         ssPanel.add(indvPan);
         ssPanel.add(comPan);
-        //TODO: 继续画社保部分
         
         final JPanel basePanel = new JPanel(new GridLayout(2, 1));
         JPanel bline1 = new JPanel(new GridLayout(1, 2));
         bline1.add(new JLabel("地区平均月薪(用于计算社保基数)："));
         avgSalary = new JTextField(stConf.getAvgSalary().toString(), 10);
+        avgSalary.setDocument(new DoubleDocument(this));
         bline1.add(avgSalary);
         JPanel bline2 = new JPanel();
         bline2.add(new JLabel("缴费基数：社保"));
@@ -350,12 +360,18 @@ public class SinglePanel{
         this.context.add(taxPanel, BorderLayout.NORTH);
         this.context.add(ssPanel);
         this.context.add(basePanel, BorderLayout.SOUTH);
+        
+        this.preTax.setText(TPConst.DEMO_INCOME);
  
         return this.context;
     }
 
-    private String getPercentRate(BigDecimal rate) {
-        return rate.multiply(IncomeConsts.HUNDRED).toString();
+    private BigDecimal getPercentRate(BigDecimal rate) {
+        return rate.multiply(IncomeConsts.HUNDRED).setScale(rate.scale()-2);
+    }
+    
+    private BigDecimal parsePercentRate(BigDecimal rate) {
+        return rate.multiply(IncomeConsts.PERCENT_1);
     }
 
     private JPanel[] makeSSPan(JPanel ssPan) {
@@ -374,5 +390,96 @@ public class SinglePanel{
         }
         
         return lines;
+    }
+    
+    private void calculate(){
+        reConfig();
+        BigDecimal income = getItemValue(preTax, IncomeConsts.ZERO);
+        
+        if (type.equals(TPConst.TYPE_SALARY)) {
+            SalaryResult res = SalaryTaxCalculator.calculateAll(stConf, income);
+            showSalaryResult(res);
+        } else if (type.equals(TPConst.TYPE_ACC)) {
+            BigDecimal taxVal = AccTaxCalculator.calculateTax(income, otConf);
+            BigDecimal postTaxVal = AccTaxCalculator.calculatePostTaxIncome(income, otConf);
+            setItemVal(this.tax, taxVal);
+            setItemVal(this.postTax, postTaxVal);
+        } else if (type.equals(TPConst.TYPE_INTER)) {
+            BigDecimal taxVal = InterTaxCalculator.calculateTax(income, otConf);
+            BigDecimal postTaxVal = InterTaxCalculator.calculatePostTaxIncome(income, otConf);
+            setItemVal(this.tax, taxVal);
+            setItemVal(this.postTax, postTaxVal);
+        }
+    }
+    
+    private void showSalaryResult(SalaryResult res){
+        setItemVal(this.postTax, res.getPostTaxSalary());
+        setItemVal(this.tax, res.getTax());
+        
+        setItemVal(this.indvSSTotal, res.getIndvSSTotal());
+        setItemVal(this.inTaxSalary, res.getInTaxSalary());
+        setItemVal(this.indvPen, res.getIndvSSPension());
+        setItemVal(this.indvMed, res.getIndvSSMedicare());
+        setItemVal(this.indvUnemp, res.getIndvSSUnEmp());
+        setItemVal(this.indvAccFund, res.getIndvSSAccFund());
+        
+        setItemVal(this.comSSTotal, res.getComSSTotal());
+        setItemVal(this.comTotalCost, res.getComTotalCost());
+        setItemVal(this.comPen, res.getComSSPension());
+        setItemVal(this.comMed, res.getComSSMedicare());
+        setItemVal(this.comUnemp, res.getComSSUnEmp());
+        setItemVal(this.comInj, res.getComSSInjure());
+        setItemVal(this.comMate, res.getComSSMaternity());
+        setItemVal(this.comAccFund, res.getComSSAccFund());
+        
+        setItemVal(this.ssBase, res.getSsBase());
+        setItemVal(this.ssAcc, res.getAccBase());
+    }
+
+    private void setItemVal(JTextField item, BigDecimal value) {
+        BigDecimal val = value;
+        if (!isPrecise()) {
+            val = val.setScale(TPConst.DEF_PRECISE, RoundingMode.HALF_UP);
+        }
+        item.setText(val.toString());
+    }
+
+    private void reConfig() {
+        stConf.setAvgSalary(getItemValue(avgSalary, stConf.getAvgSalary()));
+        
+        stConf.setComPension(parsePercentRate(getItemValue(comPenRate, getPercentRate(stConf.getComPension()))));
+        stConf.setComMedicare(parsePercentRate(getItemValue(comMedRate, getPercentRate(stConf.getComMedicare()))));
+        stConf.setComUnEmp(parsePercentRate(getItemValue(comUnempRate, getPercentRate(stConf.getComUnEmp()))));
+        stConf.setComInjure(parsePercentRate(getItemValue(comInjRate, getPercentRate(stConf.getComInjure()))));
+        stConf.setComMaternity(parsePercentRate(getItemValue(comMateRate, getPercentRate(stConf.getComMaternity()))));
+        stConf.setComAccFund(parsePercentRate(getItemValue(comAccFundRate, getPercentRate(stConf.getComAccFund()))));
+        
+        stConf.setIndvPension(parsePercentRate(getItemValue(indvPenRate, getPercentRate(stConf.getIndvPension()))));
+        stConf.setIndvMedicare(parsePercentRate(getItemValue(indvMedRate, getPercentRate(stConf.getIndvMedicare()))));
+        stConf.setIndvUnEmp(parsePercentRate(getItemValue(indvUnempRate, getPercentRate(stConf.getIndvUnEmp()))));
+        stConf.setIndvAccFund(parsePercentRate(getItemValue(indvAccFundRate, getPercentRate(stConf.getIndvAccFund()))));
+    
+        setItemVal(this.ssTop, stConf.getTopSS());
+    }
+    
+    private BigDecimal getItemValue(JTextField item, BigDecimal def){
+        try {
+            BigDecimal value = new BigDecimal(item.getDocument().getText(0, item.getDocument().getLength()));
+            return value;
+        } catch (BadLocationException e) {
+            setItemVal(item, def);
+            return def;
+        } catch (NumberFormatException e) {
+            setItemVal(item, def);
+            return def;
+        }
+    }
+
+    public boolean isPrecise() {
+        return precise;
+    }
+
+    public void setPrecise(boolean precise) {
+        this.precise = precise;
     }
 }
