@@ -20,6 +20,7 @@ public class TaxPlatform extends JApplet{
     private SalaryTaxConf stConf;
     private OtherTaxConf otConf;
     private final String defPropFilePath;
+    private SinglePanel sp;
     
     public TaxPlatform(String defPropFilePath) throws HeadlessException {
         super();
@@ -29,7 +30,7 @@ public class TaxPlatform extends JApplet{
     private JPanel setUpView() throws IllTaxConfException, FileNotFoundException, IOException {
         this.stConf = ConfReader.makeSalaryTaxConf(defPropFilePath);
         this.otConf = ConfReader.makeOtherTaxConf(defPropFilePath);
-        SinglePanel sp = new SinglePanel(stConf, otConf);
+        sp = new SinglePanel(stConf, otConf);
         JPanel singlePanel = sp.setUpView();
         
         JPanel context = new JPanel(new GridLayout(1, 2));
