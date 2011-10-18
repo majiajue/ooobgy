@@ -37,6 +37,8 @@ public class SalaryTaxCalculator {
         
         BigDecimal ssBase = getSSBase(conf, salary);
         BigDecimal accfundBase = getAccFundBase(conf, salary);
+        res.setSsBase(ssBase);
+        res.setAccBase(accfundBase);
         
         res.setPreTaxSalary(salary);
         res.setIndvSSPension(ssBase.multiply(conf.getIndvPension()));
@@ -68,6 +70,8 @@ public class SalaryTaxCalculator {
         
         BigDecimal ssBase = getSSBase(conf, salary);
         BigDecimal accfundBase = getAccFundBase(conf, salary);
+        res.setSsBase(ssBase);
+        res.setAccBase(accfundBase);
         
         res.setPreTaxSalary(salary);
         res.setComSSPension(ssBase.multiply(conf.getComPension()));

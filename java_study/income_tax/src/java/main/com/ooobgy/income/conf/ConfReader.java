@@ -86,8 +86,8 @@ public class ConfReader {
     public static OtherTaxConf makeOtherTaxConf(Properties properties) throws IllTaxConfException {
         OtherTaxConf otc = new OtherTaxConf();
         try{
-            otc.setAccidentalTax(getDecimalProp(properties, IncomeConsts.ACCIDENTAL_TAX));
-            otc.setInterestTax(getDecimalProp(properties, IncomeConsts.INTEREST_TAX));
+            otc.setAccidentalTax(getDecimalProp(properties, IncomeConsts.ACCIDENTAL_TAX).multiply(IncomeConsts.PERCENT_1));
+            otc.setInterestTax(getDecimalProp(properties, IncomeConsts.INTEREST_TAX).multiply(IncomeConsts.PERCENT_1));
         } catch (NumberFormatException e) {
             throw new IllTaxConfException("个税征收等级配置数值格式错误", e);
         }//当配置不存在时或个税等级配置错误还可能抛出IllTaxConfException，已包含所需信息，让它自然抛出即可

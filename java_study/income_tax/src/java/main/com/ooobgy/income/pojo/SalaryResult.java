@@ -46,6 +46,11 @@ public class SalaryResult {
     /** 单位缴公积金  */
     private BigDecimal comSSAccFund;
     
+    /** 社保缴费基数  */
+    private BigDecimal ssBase;
+    /** 公积金缴费基数  */
+    private BigDecimal accBase;
+    
     public BigDecimal getPreTaxSalary() {
         return preTaxSalary;
     }
@@ -151,5 +156,17 @@ public class SalaryResult {
     }
     public void setComSSAccFund(BigDecimal comSSAccFund) {
         this.comSSAccFund = comSSAccFund;
+    }
+    public BigDecimal getSsBase() {
+        return ssBase;
+    }
+    public void setSsBase(BigDecimal ssBase) {
+        this.ssBase = ssBase;
+    }
+    public BigDecimal getAccBase() {
+        return accBase;
+    }
+    public void setAccBase(BigDecimal accBase) {
+        this.accBase = accBase;
     }
 }

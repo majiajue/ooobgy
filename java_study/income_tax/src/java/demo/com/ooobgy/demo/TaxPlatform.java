@@ -30,7 +30,7 @@ public class TaxPlatform extends JApplet{
     private JPanel setUpView() throws IllTaxConfException, FileNotFoundException, IOException {
         this.stConf = ConfReader.makeSalaryTaxConf(defPropFilePath);
         this.otConf = ConfReader.makeOtherTaxConf(defPropFilePath);
-        sp = new SinglePanel(stConf, otConf);
+        sp = new SinglePanel(stConf, otConf, false);
         JPanel singlePanel = sp.setUpView();
         
         JPanel context = new JPanel(new GridLayout(1, 2));
