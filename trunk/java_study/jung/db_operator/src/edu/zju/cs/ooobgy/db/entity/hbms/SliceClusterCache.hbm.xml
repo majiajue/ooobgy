@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2010-12-21 15:48:25 by Hibernate Tools 3.4.0.Beta1 -->
+<hibernate-mapping>
+ <class name="edu.zju.cs.ooobgy.db.entity.SliceClusterCache" table="Slice_Cluster_Cache">
+  <id name="scc_id" type="java.lang.Integer">
+   <column name="PID" sql-type="INTEGER"/>
+   <generator class="native"/>
+  </id>
+  <property generated="never" lazy="false" name="time_range" type="java.lang.String">
+   <column name="time_range" sql-type="VARCHAR(6)"/>
+  </property>
+  <property name="members" type="string">
+   <column name="members" sql-type="text"/>
+  </property>
+ </class>
+</hibernate-mapping>

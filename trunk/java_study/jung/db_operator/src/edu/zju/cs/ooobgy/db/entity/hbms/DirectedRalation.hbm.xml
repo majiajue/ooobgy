@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2010-12-21 16:09:44 by Hibernate Tools 3.4.0.Beta1 -->
+<hibernate-mapping>
+ <class name="edu.zju.cs.ooobgy.db.entity.DirectedRalation" table="DIRECTEDRALATION">
+  <id name="dr_id" type="java.lang.Integer">
+   <column name="DR_ID" sql-type="INTEGER"/>
+   <generator class="native"/>
+  </id>
+  <property generated="never" lazy="false" name="time_range" type="java.lang.String">
+   <column name="TIME_RANGE" sql-type="VARCHAR(6)"/>
+  </property>
+  <property generated="never" lazy="false" name="caller" type="java.lang.String">
+   <column name="CALLER" sql-type="VARCHAR(15)"/>
+  </property>
+  <property generated="never" lazy="false" name="receiver" type="java.lang.String">
+   <column name="RECEIVER" sql-type="VARCHAR(15)"/>
+  </property>
+  <property generated="never" lazy="false" name="call_count" type="java.lang.Integer">
+   <column name="CALL_COUNT" sql-type="INTEGER"/>
+  </property>
+  <property generated="never" lazy="false" name="call_time" type="java.lang.Integer">
+   <column name="CALL_TIME" sql-type="INTEGER"/>
+  </property>
+  <property generated="never" lazy="false" name="dr_weight" type="java.lang.Double">
+   <column name="DR_WEIGHT" sql-type="INTEGER"/>
+  </property>
+ </class>
+</hibernate-mapping>
