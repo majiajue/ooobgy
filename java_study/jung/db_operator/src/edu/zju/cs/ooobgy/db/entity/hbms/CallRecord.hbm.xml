@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2010-12-21 15:38:42 by Hibernate Tools 3.4.0.Beta1 -->
+<hibernate-mapping>
+ <class name="edu.zju.cs.ooobgy.db.entity.CallRecord" table="CALLRECORD">
+  <id name="callId" type="java.lang.Integer">
+   <column name="CALL_ID" sql-type="INTEGER"/>
+   <generator class="native"/>
+  </id>
+  <property generated="never" lazy="false" name="caller" type="java.lang.String">
+   <column name="CALLER" sql-type="VARCHAR(15)"/>
+  </property>
+  <property generated="never" lazy="false" name="receiver" type="java.lang.String">
+   <column name="RECEIVER" sql-type="VARCHAR(15)"/>
+  </property>
+  <property generated="never" lazy="false" name="stime" type="java.sql.Timestamp">
+   <column name="STIME" sql-type="TIMESTAMP"/>
+  </property>
+  <property generated="never" lazy="false" name="duringTime" type="java.lang.Integer">
+   <column name="DURING_TIME" sql-type="INTEGER"/>
+  </property>
+  <property generated="never" lazy="false" name="stationId" type="java.lang.String">
+   <column name="STATION_ID" sql-type="VARCHAR(15)"/>
+  </property>
+  <property generated="never" lazy="false" name="stationCode" type="java.lang.String">
+   <column name="STATION_CODE" sql-type="VARCHAR(5)"/>
+  </property>
+ </class>
+</hibernate-mapping>
