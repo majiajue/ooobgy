@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src/jai"/>
+	<classpathentry kind="src" path="src/visalization"/>
+	<classpathentry kind="src" path="src/j3d"/>
+	<classpathentry kind="src" path="src/samples"/>
+	<classpathentry kind="src" path="src/api"/>
+	<classpathentry kind="src" path="src/io"/>
+	<classpathentry kind="src" path="src/jai-samples"/>
+	<classpathentry kind="src" path="src/graph"/>
+	<classpathentry kind="src" path="src/algorithms"/>
+	<classpathentry kind="src" path="src/j3d-demos"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.6"/>
+	<classpathentry kind="lib" path="lib/collections-generic-4.01.jar"/>
+	<classpathentry kind="lib" path="lib/colt.jar"/>
+	<classpathentry kind="lib" path="lib/jai_core.jar"/>
+	<classpathentry kind="lib" path="lib/j3dcore.jar"/>
+	<classpathentry kind="lib" path="lib/vecmath.jar"/>
+	<classpathentry kind="lib" path="lib/j3dutils.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
