@@ -37,6 +37,11 @@ body{
     margin: 15px 0 5px 0;
 }
 
+.title{
+	text-align: center;
+	font-size: 36px;
+}
+
 .input{
     width: 200px;
     height: 30px;
