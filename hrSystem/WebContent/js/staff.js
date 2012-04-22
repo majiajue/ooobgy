@@ -37,7 +37,7 @@ Ext.application({
         loadStaff();
         
         function loadStaff(){
-        	store.load({params:{path:authzRoot},
+        	store.load({params:{},
         		callback: function(){//刷新初始
         			//TODO
         		}});
