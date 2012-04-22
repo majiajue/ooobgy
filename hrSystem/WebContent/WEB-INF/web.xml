@@ -14,4 +14,14 @@
     <servlet-name>hello</servlet-name>
     <url-pattern>/action/hello</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>GetDomainL1Action</display-name>
+    <servlet-name>GetDomainL1Action</servlet-name>
+    <servlet-class>com.ooobgy.action.ajax.GetDomainL1Action</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GetDomainL1Action</servlet-name>
+    <url-pattern>/get/getd1</url-pattern>
+  </servlet-mapping>
 </web-app>
