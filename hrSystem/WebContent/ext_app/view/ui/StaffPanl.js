@@ -19,32 +19,32 @@ Ext.define('FcSVNAdmin.view.ui.StaffPanl', {
 			}, {
 				xtype : 'gridcolumn',
 				dataIndex : 'name',
-				text : 'name',
+				text : '姓名',
 				width : 150
 			}, {
 				xtype : 'gridcolumn',
 				dataIndex : 'login',
-				text : 'login',
+				text : 'alias',
 				width : 150
 			}, {
 				xtype : 'gridcolumn',
 				dataIndex : 'psw',
-				text : 'psw',
+				text : '密码',
 				width : 100
 			}, {
 				xtype : 'gridcolumn',
 				dataIndex : 'domainl1_name',
-				text : 'domainl1_name',
+				text : '分公司',
 				width : 250
 			}, {
 				xtype : 'gridcolumn',
 				dataIndex : 'domainl2_name',
-				text : 'domainl2_name',
+				text : '部门',
 				width : 150
 			}, {
 				xtype : 'gridcolumn',
 				dataIndex : 'domainl3_name',
-				text : 'domainl3_name',
+				text : '业务线',
 				width : 150
 			}, {
 				xtype : 'gridcolumn',
@@ -54,42 +54,42 @@ Ext.define('FcSVNAdmin.view.ui.StaffPanl', {
 			}, {
 				xtype : 'gridcolumn',
 				dataIndex : 'role_name',
-				text : 'role_name',
+				text : '角色',
 				width : 150
 			}, {
 				xtype : 'gridcolumn',
 				dataIndex : 'level_name',
-				text : 'level_name',
+				text : '职称',
 				width : 150
 			}, {
 				xtype : 'gridcolumn',
 				dataIndex : 'salary',
-				text : 'salary',
+				text : '月薪',
 				width : 250
 			}, {
 				xtype : 'gridcolumn',
 				dataIndex : 'location',
-				text : 'location',
+				text : '位置',
 				width : 150
 			}, {
 				xtype : 'gridcolumn',
 				dataIndex : 'phone',
-				text : 'phone',
+				text : '电话',
 				width : 150
 			}, {
 				xtype : 'gridcolumn',
 				dataIndex : 'gender',
-				text : 'gender',
+				text : '性别',
 				width : 150
 			}, {
 				xtype : 'gridcolumn',
 				dataIndex : 'age',
-				text : 'age',
+				text : '年龄',
 				width : 150
 			}, {
 				xtype : 'gridcolumn',
 				dataIndex : 'checkin',
-				text : 'checkin',
+				text : '入职时间',
 				width : 150
 			} ],
 			viewConfig : {
