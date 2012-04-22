@@ -1,4 +1,4 @@
-package com.ooobgy.action.ajax;
+package com.ooobgy.action.ajax.meta;
 
 import javax.servlet.http.HttpServletRequest;
 

@@ -18,7 +18,7 @@
     <description></description>
     <display-name>GetDomainL1Action</display-name>
     <servlet-name>GetDomainL1Action</servlet-name>
-    <servlet-class>com.ooobgy.action.ajax.GetDomainL1Action</servlet-class>
+    <servlet-class>com.ooobgy.action.ajax.meta.meta.GetDomainL1Action</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>GetDomainL1Action</servlet-name>
@@ -28,7 +28,7 @@
     <description></description>
     <display-name>GetDomainL2Action</display-name>
     <servlet-name>GetDomainL2Action</servlet-name>
-    <servlet-class>com.ooobgy.action.ajax.GetDomainL2Action</servlet-class>
+    <servlet-class>com.ooobgy.action.ajax.meta.GetDomainL2Action</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>GetDomainL2Action</servlet-name>
@@ -38,7 +38,7 @@
     <description></description>
     <display-name>GetDomainL3Action</display-name>
     <servlet-name>GetDomainL3Action</servlet-name>
-    <servlet-class>com.ooobgy.action.ajax.GetDomainL3Action</servlet-class>
+    <servlet-class>com.ooobgy.action.ajax.meta.GetDomainL3Action</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>GetDomainL3Action</servlet-name>
