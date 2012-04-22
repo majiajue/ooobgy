@@ -4,4 +4,14 @@
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
   </welcome-file-list>
+  <servlet>
+    <description>hello</description>
+    <display-name>hello</display-name>
+    <servlet-name>hello</servlet-name>
+    <servlet-class>com.ooobgy.action.ajax.HelloAction</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>hello</servlet-name>
+    <url-pattern>/action/hello</url-pattern>
+  </servlet-mapping>
 </web-app>
