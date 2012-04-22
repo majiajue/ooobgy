@@ -3,7 +3,7 @@ $(document).ready(function(){
 		cache : false,
 		type : "GET",
 		dataType : "json",
-		url : "action/hello",
+		url : "get/getd2",
 		data : {
 			"id" : "12",
 			"psw" : {key1: "v1"}

@@ -24,4 +24,24 @@
     <servlet-name>GetDomainL1Action</servlet-name>
     <url-pattern>/get/getd1</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>GetDomainL2Action</display-name>
+    <servlet-name>GetDomainL2Action</servlet-name>
+    <servlet-class>com.ooobgy.action.ajax.GetDomainL2Action</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GetDomainL2Action</servlet-name>
+    <url-pattern>/get/getd2</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>GetDomainL3Action</display-name>
+    <servlet-name>GetDomainL3Action</servlet-name>
+    <servlet-class>com.ooobgy.action.ajax.GetDomainL3Action</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GetDomainL3Action</servlet-name>
+    <url-pattern>/get/getd3</url-pattern>
+  </servlet-mapping>
 </web-app>

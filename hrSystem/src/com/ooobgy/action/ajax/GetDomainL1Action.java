@@ -33,7 +33,8 @@ public class GetDomainL1Action extends AjaxAction {
 				+ "    staff t2"
 				+ " on "
 				+ "    t1.leader = t2.id;";
-		return SelectJson.select(query);
+		String json = SelectJson.select(query);
+		return json;
 	}
 
 }
