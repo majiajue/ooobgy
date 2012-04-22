@@ -84,4 +84,14 @@
     <servlet-name>GetCheckoutAction</servlet-name>
     <url-pattern>/get/checkout</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>GetStaffAction</display-name>
+    <servlet-name>GetStaffAction</servlet-name>
+    <servlet-class>com.ooobgy.action.ajax.data.GetStaffAction</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GetStaffAction</servlet-name>
+    <url-pattern>/get/staff</url-pattern>
+  </servlet-mapping>
 </web-app>
