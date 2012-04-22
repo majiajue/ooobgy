@@ -3,22 +3,16 @@ $(document).ready(function(){
 		cache : false,
 		type : "GET",
 		dataType : "json",
-		url : "action/login.json",
+		url : "action/hello",
 		data : {
-			"id" : id,
-			"psw" : psw
+			"id" : "12",
+			"psw" : {key1: "v1"}
 		},
 		error : function (){
 			printError("服务器错误，无法登陆");
 		},
 		success : function(data) {
-			if (data.type == "ok") {
-				window.location.href = "authz";
-			} else if (data.type == "eu") {
-				printError("用户名或密码错误");
-			} else {
-				printError("你没有SVN相关权限");
-			}
+			$("body").html(data);
 		}
 	});
 });

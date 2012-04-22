@@ -13,7 +13,7 @@ public class HelloAction extends AjaxAction {
 
 	@Override
 	protected String wirteJson(HttpServletRequest req) {
-		return "{type:'ok', data : '[12,13]'}";
+		return "{type:'ok', data : [12,13]}";
 	}
 
 }
