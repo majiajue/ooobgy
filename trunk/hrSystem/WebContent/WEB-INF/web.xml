@@ -22,7 +22,7 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>GetDomainL1Action</servlet-name>
-    <url-pattern>/get/getd1</url-pattern>
+    <url-pattern>/get/d1</url-pattern>
   </servlet-mapping>
   <servlet>
     <description></description>
@@ -32,7 +32,7 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>GetDomainL2Action</servlet-name>
-    <url-pattern>/get/getd2</url-pattern>
+    <url-pattern>/get/d2</url-pattern>
   </servlet-mapping>
   <servlet>
     <description></description>
@@ -42,6 +42,26 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>GetDomainL3Action</servlet-name>
-    <url-pattern>/get/getd3</url-pattern>
+    <url-pattern>/get/d3</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>GetRoleAction</display-name>
+    <servlet-name>GetRoleAction</servlet-name>
+    <servlet-class>com.ooobgy.action.ajax.meta.GetRoleAction</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GetRoleAction</servlet-name>
+    <url-pattern>/get/role</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>GetLevelAction</display-name>
+    <servlet-name>GetLevelAction</servlet-name>
+    <servlet-class>com.ooobgy.action.ajax.meta.GetLevelAction</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GetLevelAction</servlet-name>
+    <url-pattern>/get/level</url-pattern>
   </servlet-mapping>
 </web-app>
