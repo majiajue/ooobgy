@@ -64,4 +64,24 @@
     <servlet-name>GetLevelAction</servlet-name>
     <url-pattern>/get/level</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>GetCheckinAction</display-name>
+    <servlet-name>GetCheckinAction</servlet-name>
+    <servlet-class>com.ooobgy.action.ajax.data.GetCheckinAction</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GetCheckinAction</servlet-name>
+    <url-pattern>/get/checkin</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>GetCheckoutAction</display-name>
+    <servlet-name>GetCheckoutAction</servlet-name>
+    <servlet-class>com.ooobgy.action.ajax.data.GetCheckoutAction</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GetCheckoutAction</servlet-name>
+    <url-pattern>/get/checkout</url-pattern>
+  </servlet-mapping>
 </web-app>
