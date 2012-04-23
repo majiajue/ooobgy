@@ -20,6 +20,21 @@ Ext.application({
         	model : "FcSVNAdmin.model.StaffModel"
         });
         
+        function addRule(){
+        	Ext.Msg.confirm('构建中...', '未完成的功能',function(btn){
+        	});
+        }
+        
+        
+        
+        function refreshInfo(){
+        	Ext.Msg.confirm('警告', '刷新将丢失未保存的修改！确定？',function(btn){
+        		if (btn == 'yes') {
+        			loadStaff();
+				}
+        	});
+        }
+        
         var staffGrid = Ext.create('FcSVNAdmin.view.StaffPanl', {
             renderTo: Ext.get("info_panl"),
             loadMask: true,
@@ -27,7 +42,37 @@ Ext.application({
 			dockedItems : [ {
 				xtype : 'toolbar',
 				dock : 'top',
-				items : [ ]
+				items : [ {
+					xtype : 'button',
+					text : '新增员工',
+					handler : addRule
+				}, {
+					xtype : 'tbseparator'
+				}, {
+					xtype : 'button',
+					text : '删除选中',
+					handler : addRule
+				}, {
+					xtype : 'tbseparator'
+				}, {
+					xtype : 'button',
+					text : '修改选中',
+					handler : addRule
+				}, {
+					xtype : 'tbseparator'
+				}, {
+					xtype : 'button',
+					text : '保存修改',
+					handler : addRule
+				}, {
+					xtype : 'tbseparator'
+				}, {
+					xtype : 'button',
+					text : '重新载入',
+					handler : refreshInfo
+				}, {
+					xtype : 'tbseparator'
+				} ]
 			} 
 			]
         });
