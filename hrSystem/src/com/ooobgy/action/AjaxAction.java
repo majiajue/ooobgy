@@ -20,6 +20,7 @@ public abstract class AjaxAction extends HttpServlet {
 	public void service(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 		resp.setContentType("application/x-json");
+		resp.setCharacterEncoding("UTF-8");
 		String jsonStr = this.wirteJson(req);
 		PrintWriter out = resp.getWriter();
 		out.write(jsonStr);

@@ -94,4 +94,13 @@
     <servlet-name>GetStaffAction</servlet-name>
     <url-pattern>/get/staff</url-pattern>
   </servlet-mapping>
+  <filter>
+    <display-name>CharacterEncodingFilter</display-name>
+    <filter-name>CharacterEncodingFilter</filter-name>
+    <filter-class>com.ooobgy.filter.CharacterEncodingFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>CharacterEncodingFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
 </web-app>
