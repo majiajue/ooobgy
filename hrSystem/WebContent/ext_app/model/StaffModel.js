@@ -4,7 +4,6 @@ Ext.define('FcSVNAdmin.model.StaffModel', {
 		{name: 'id', type: 'string'},
 		{name: 'name', type: 'string'},
 		{name: 'login', type: 'string'},
-		{name: 'psw', type: 'string'},
 		{name: 'domainl1_name', type: 'string'},
 		{name: 'domainl2_name', type: 'string'},
 		{name: 'domainl3_name', type: 'string'},
@@ -14,8 +13,8 @@ Ext.define('FcSVNAdmin.model.StaffModel', {
 		{name: 'salary', type: 'string'},
 		{name: 'location', type: 'string'},
 		{name: 'phone', type: 'string'},
-		{name: 'gender', type: 'string'},
-		{name: 'age', type: 'string'},
+		{name: 'gender', type: 'number'},
+		{name: 'age', type: 'number'},
 		{name: 'checkin', type: 'string'}
     ]
 });
